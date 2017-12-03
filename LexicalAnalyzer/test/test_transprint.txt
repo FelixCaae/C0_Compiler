@@ -1,0 +1,4 @@
+void main()
+{
+printf("I want to print \n\0%d%z");
+}

@@ -1,0 +1,8 @@
+const int StudentID;
+const char Tom=¡¯T¡¯;
+void main()
+{
+StudentID=1007;
+printf(Tom);
+printf(StudentID);
+}

@@ -1,0 +1,9 @@
+const char Tom='T';
+const char Jerry='J';
+void main()
+{
+printf(Tom);
+printf("And");
+printf(Jerry);
+printf("are good friends");
+}

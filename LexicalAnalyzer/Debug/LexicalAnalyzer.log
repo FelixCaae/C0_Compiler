@@ -1,0 +1,20 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(387,5): warning MSB8028: 中间目录(Debug\)包含从另一个项目(LexicalAnalyzer.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+  stdafx.cpp
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\stdafx.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\stdafx.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\targetver.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  SyntaxAnalyzer.cpp
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\stdafx.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\targetver.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  LexicalAnalyzer.cpp
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\lexicalanalyzer.cpp : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\stdafx.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\targetver.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  IO.cpp
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\stdafx.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\targetver.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  Error.cpp
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\stdafx.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\targetver.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+  正在生成代码...
+  LexicalAnalyzer.vcxproj -> C:\Users\FelixFelicis\Documents\Visual Studio 2017\Projects\LexicalAnalyzer\Debug\C0_Complier.lib

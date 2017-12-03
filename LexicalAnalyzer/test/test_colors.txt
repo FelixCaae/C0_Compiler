@@ -1,0 +1,8 @@
+void main()
+{
+printf("*Apple is red*");
+printf("[Peach is pink]");
+printf("<Sky is blue>");
+printf("\And grass is green/");
+printf("I can print string correctly!");
+}

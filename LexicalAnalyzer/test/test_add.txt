@@ -1,0 +1,6 @@
+int number1,number2;
+void main()
+{
+scanf(number1,number2);
+printf(number1+number2);
+}

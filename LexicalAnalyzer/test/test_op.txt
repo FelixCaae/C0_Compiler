@@ -1,0 +1,12 @@
+char op;
+void main()
+{
+op=¡¯_¡¯;
+print(op);
+op=¡¯+¡¯;
+print(op);
+op=¡¯*¡¯;
+print(op);
+op=¡¯/¡¯;
+print(op);
+}

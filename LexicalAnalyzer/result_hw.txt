@@ -1,0 +1,11 @@
+26 void
+36 main
+10 (
+11 )
+6 {
+34 printf
+10 (
+4 "HelloWorld!This is the first test program written with C0 grammar!\n"
+11 )
+9 ;
+7 }

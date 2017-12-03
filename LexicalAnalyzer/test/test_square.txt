@@ -1,0 +1,21 @@
+int array[100]
+void init()
+{
+int i=0;
+do
+{
+array[i]=i*i;
+i=i+1;
+}while(i!=100)
+}
+void output(int index)
+{
+printf("Square:",array[index])
+}
+void int main()
+{ 
+   int input;
+   scanf(input);
+   init();
+   output(input);
+}
