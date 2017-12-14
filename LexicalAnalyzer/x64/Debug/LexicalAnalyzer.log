@@ -1,7 +1,0 @@
-﻿  Error.cpp
-c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\error.cpp(71): warning C4477: “sprintf”: 格式字符串“%s”需要类型“char *”的参数，但可变参数 3 拥有了类型“int”
-c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\error.cpp(71): warning C4313: “sprintf”: 格式字符串中的“%s”与“int”类型的参数 3 冲突
-c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\error.cpp(71): warning C4473: “sprintf”: 没有为格式字符串传递足够的参数
-  c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\error.cpp(71): note: 占位符和其参数预计 4 可变参数，但提供的却是 3 参数
-  c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\lexicalanalyzer\error.cpp(71): note: 缺失的可变参数 4 为格式字符串“%d”所需
-  LexicalAnalyzer.vcxproj -> C:\Users\FelixFelicis\Documents\Visual Studio 2017\Projects\LexicalAnalyzer\x64\Debug\C0_Complier.lib
