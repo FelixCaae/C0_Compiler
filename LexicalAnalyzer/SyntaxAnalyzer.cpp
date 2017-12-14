@@ -19,7 +19,7 @@ void parseConstGrup();
 void parseConstDecl();
 bool parseVarGrup();
 bool parseVarDecl();
-void parseFuncDecl();
+bool parseFuncDecl();
 void parseParamList(IdenType paramType[], int* paramNum);
 void parseStatements();
 void parseStat();
@@ -41,7 +41,6 @@ void parseConstant(int *val);
 void parseReadStat();
 void parseWriteStat();
 void parseReturnStat();
-bool mainFound = false;
 int slevel = 0;
 char tokenbak[tokenStrLen];
 syntaxClass lexToSyntax()
@@ -310,8 +309,9 @@ bool parseVarGrup()
 	outputSyntax(VARGRUP,false);
 	return NORMAL;
 }
-void parseFuncDecl()
+bool parseFuncDecl()
 {
+	bool mainFound = false;
 	outputSyntax(FUNCDECL);
 	IdenType it;
 	char funcName[tokenStrLen];
@@ -354,6 +354,7 @@ void parseFuncDecl()
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL,false);
+	return mainFound;
 }
 void parseParamList(IdenType paramType[],int* paramNum)
 {
@@ -875,12 +876,18 @@ void parseReadStat()
 void parseProgram()
 {
 	outputSyntax(PROGRAM);
-	if (lextype==CONSTYP)parseConstGrup();
-	if(lextype==INTYP||lextype==CHARTYP)parseVarGrup();
-	while (!mainFound) {
-		parseFuncDecl();
+	bool mainFound = false;
+	if (lextype == CONSTYP)
+	{
+		parseConstGrup();
 	}
-	mainFound = false;
+	if (lextype == INTYP || lextype == CHARTYP)
+	{
+		parseVarGrup();
+	}
+	while (!mainFound) {
+		mainFound=parseFuncDecl();
+	}
 	outputSyntax(PROGRAM, false);
 	shouldBe(END);
 }
