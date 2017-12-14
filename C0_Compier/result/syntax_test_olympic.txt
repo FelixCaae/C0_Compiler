@@ -1,0 +1,46 @@
+            <program>
+              <constDeclGroup>
+              <keyword> const <\keyword>
+                <constDecl>
+                  <type>
+                  <keyword> int <\keyword>
+                  <\type>
+                <identifier> _Date_ <\identifier>
+                <seperator> = <\seperator>
+                <unsignedInt> 20080808 <\unsignedInt>
+                <\constDecl>
+              <seperator> ; <\seperator>
+              <\constDeclGroup>
+              <funcDecl>
+              <keyword> void <\keyword>
+              <keyword> main <\keyword>
+                <paramList>
+                <seperator> ( <\seperator>
+                <seperator> ) <\seperator>
+                <\paramList>
+              <seperator> { <\seperator>
+                <compoundStatement>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "Beijing Olympic Games is held on" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> _Date_ <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <\compoundStatement>
+              <seperator> } <\seperator>
+              <\funcDecl>
+            <\program>
+          <end> ÿ <\end>

@@ -1,7 +1,9 @@
-void main()
+void calculate()
 {
   int a,b;
   char op;
+  int i;
+  i=0;
   scanf(a,b,op);
   switch(op){
 case '+':
@@ -12,5 +14,16 @@ case '*':
 printf(a*b);
 case '/':
 printf(a/b);
-	}
+case 'e':{
+	do
+	{
+	a=a*10;
+	b=b-1;
+	}while(b!=0)
+}
+}
+}
+void main()
+{
+  calculate();
 }

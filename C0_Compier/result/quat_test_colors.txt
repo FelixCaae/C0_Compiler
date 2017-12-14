@@ -1,0 +1,6 @@
+	void main()
+	print "*Apple is red*"
+	print "[Peach is pink]"
+	print "<Sky is blue>"
+	print "\And grass is green/"
+	print "I can print string correctly!"

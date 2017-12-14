@@ -1,0 +1,19 @@
+	int init()
+	i = 0 
+do_7:
+	tmp1 = i * i
+	array[i] = tmp1
+	tmp3 = i + 1
+	i = tmp3 
+	i != 100
+	BZ do_7
+	int output()
+	para int index
+	print "Square:"
+	tmp0 = array[index]
+	print tmp0
+	void main()
+	read input
+	call init
+	push input
+	call output

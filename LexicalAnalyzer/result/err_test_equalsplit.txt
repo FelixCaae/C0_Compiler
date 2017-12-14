@@ -1,1 +1,0 @@
-*****Error6: Identifier:if can`t be declared twice line:8

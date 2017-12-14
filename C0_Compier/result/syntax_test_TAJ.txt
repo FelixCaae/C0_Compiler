@@ -1,0 +1,87 @@
+            <program>
+              <constDeclGroup>
+              <keyword> const <\keyword>
+                <constDecl>
+                  <type>
+                  <keyword> char <\keyword>
+                  <\type>
+                <identifier> Tom <\identifier>
+                <seperator> = <\seperator>
+                <char> 'T' <\char>
+                <\constDecl>
+              <seperator> ; <\seperator>
+              <keyword> const <\keyword>
+                <constDecl>
+                  <type>
+                  <keyword> char <\keyword>
+                  <\type>
+                <identifier> Jerry <\identifier>
+                <seperator> = <\seperator>
+                <char> 'J' <\char>
+                <\constDecl>
+              <seperator> ; <\seperator>
+              <\constDeclGroup>
+              <funcDecl>
+              <keyword> void <\keyword>
+              <keyword> main <\keyword>
+                <paramList>
+                <seperator> ( <\seperator>
+                <seperator> ) <\seperator>
+                <\paramList>
+              <seperator> { <\seperator>
+                <compoundStatement>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> Tom <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "And" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> Jerry <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "are good friends" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <\compoundStatement>
+              <seperator> } <\seperator>
+              <\funcDecl>
+            <\program>
+          <end> ÿ <\end>

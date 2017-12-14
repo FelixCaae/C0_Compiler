@@ -1,0 +1,15 @@
+	void main()
+	alpha = 97 
+do_15:
+	print alpha
+	tmp1 = alpha + 1
+	alpha = tmp1 
+	alpha <= 122
+	BZ do_15
+	alpha = 65 
+do_16:
+	print alpha
+	tmp3 = alpha + 1
+	alpha = tmp3 
+	alpha <= 90
+	BZ do_16

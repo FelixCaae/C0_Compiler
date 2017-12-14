@@ -1,0 +1,5 @@
+	void main()
+	read number1
+	read number2
+	tmp0 = number1 + number2
+	print tmp0

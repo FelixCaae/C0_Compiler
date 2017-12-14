@@ -1,0 +1,2 @@
+	void main()
+	print "HelloWorld!This is the first test program written with C0 grammar!\n"

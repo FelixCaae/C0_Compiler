@@ -1338,8 +1338,10 @@
   <funcDecl>
   <keyword> void <\keyword>
   <keyword> main <\keyword>
-  <seperator> ( <\seperator>
-  <seperator> ) <\seperator>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
   <seperator> { <\seperator>
     <compoundStatement>
       <statements>

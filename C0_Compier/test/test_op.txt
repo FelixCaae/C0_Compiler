@@ -2,11 +2,11 @@ char op;
 void main()
 {
 op='_';
-print(op);
+printf(op);
 op='+';
-print(op);
+printf(op);
 op='*';
-print(op);
+printf(op);
 op='/';
-print(op);
+printf(op);
 }

@@ -1,0 +1,111 @@
+            <program>
+              <varDeclGroup>
+                <varDecl>
+                  <type>
+                  <keyword> int <\keyword>
+                  <\type>
+                <identifier> i <\identifier>
+                <\varDecl>
+              <seperator> ; <\seperator>
+              <\varDeclGroup>
+              <funcDecl>
+              <keyword> void <\keyword>
+              <keyword> main <\keyword>
+                <paramList>
+                <seperator> ( <\seperator>
+                <seperator> ) <\seperator>
+                <\paramList>
+              <seperator> { <\seperator>
+                <compoundStatement>
+                  <statements>
+                    <statement>
+                    <identifier> i <\identifier>
+                      <assignStat>
+                      <seperator> = <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <unsignedInt> 1 <\unsignedInt>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <\assignStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <loopStat>
+                      <keyword> do <\keyword>
+                        <statement>
+                        <seperator> { <\seperator>
+                          <statements>
+                            <statement>
+                              <writeStat>
+                              <keyword> printf <\keyword>
+                              <seperator> ( <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> i <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <seperator> ) <\seperator>
+                              <\writeStat>
+                            <seperator> ; <\seperator>
+                            <\statement>
+                            <statement>
+                            <identifier> i <\identifier>
+                              <assignStat>
+                              <seperator> = <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> i <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <seperator> + <\seperator>
+                                  <term>
+                                    <factor>
+                                    <unsignedInt> 1 <\unsignedInt>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <\assignStat>
+                            <seperator> ; <\seperator>
+                            <\statement>
+                          <\statements>
+                        <seperator> } <\seperator>
+                        <\statement>
+                      <keyword> while <\keyword>
+                      <seperator> ( <\seperator>
+                        <condition>
+                          <expression>
+                            <term>
+                              <factor>
+                              <identifier> i <\identifier>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                          <identifier>
+                          <seperator> != <\seperator>
+                          <\identifier>
+                          <expression>
+                            <term>
+                              <factor>
+                              <unsignedInt> 100 <\unsignedInt>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                        <\condition>
+                      <seperator> ) <\seperator>
+                      <\loopStat>
+                    <\statement>
+                    <statement>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <\compoundStatement>
+              <seperator> } <\seperator>
+              <\funcDecl>
+            <\program>
+          <end> ÿ <\end>

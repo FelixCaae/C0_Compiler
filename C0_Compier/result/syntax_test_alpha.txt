@@ -1,0 +1,238 @@
+            <program>
+              <constDeclGroup>
+              <keyword> const <\keyword>
+                <constDecl>
+                  <type>
+                  <keyword> char <\keyword>
+                  <\type>
+                <identifier> a_l <\identifier>
+                <seperator> = <\seperator>
+                <char> 'a' <\char>
+                <\constDecl>
+              <seperator> ; <\seperator>
+              <keyword> const <\keyword>
+                <constDecl>
+                  <type>
+                  <keyword> char <\keyword>
+                  <\type>
+                <identifier> z_l <\identifier>
+                <seperator> = <\seperator>
+                <char> 'z' <\char>
+                <\constDecl>
+              <seperator> ; <\seperator>
+              <keyword> const <\keyword>
+                <constDecl>
+                  <type>
+                  <keyword> char <\keyword>
+                  <\type>
+                <identifier> a_u <\identifier>
+                <seperator> = <\seperator>
+                <char> 'A' <\char>
+                <\constDecl>
+              <seperator> ; <\seperator>
+              <keyword> const <\keyword>
+                <constDecl>
+                  <type>
+                  <keyword> char <\keyword>
+                  <\type>
+                <identifier> z_u <\identifier>
+                <seperator> = <\seperator>
+                <char> 'Z' <\char>
+                <\constDecl>
+              <seperator> ; <\seperator>
+              <\constDeclGroup>
+              <varDeclGroup>
+                <varDecl>
+                  <type>
+                  <keyword> int <\keyword>
+                  <\type>
+                <identifier> alpha <\identifier>
+                <\varDecl>
+              <seperator> ; <\seperator>
+              <\varDeclGroup>
+              <funcDecl>
+              <keyword> void <\keyword>
+              <keyword> main <\keyword>
+                <paramList>
+                <seperator> ( <\seperator>
+                <seperator> ) <\seperator>
+                <\paramList>
+              <seperator> { <\seperator>
+                <compoundStatement>
+                  <statements>
+                    <statement>
+                    <identifier> alpha <\identifier>
+                      <assignStat>
+                      <seperator> = <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a_l <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <\assignStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <loopStat>
+                      <keyword> do <\keyword>
+                        <statement>
+                        <seperator> { <\seperator>
+                          <statements>
+                            <statement>
+                              <writeStat>
+                              <keyword> printf <\keyword>
+                              <seperator> ( <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> alpha <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <seperator> ) <\seperator>
+                              <\writeStat>
+                            <seperator> ; <\seperator>
+                            <\statement>
+                            <statement>
+                            <identifier> alpha <\identifier>
+                              <assignStat>
+                              <seperator> = <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> alpha <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <seperator> + <\seperator>
+                                  <term>
+                                    <factor>
+                                    <unsignedInt> 1 <\unsignedInt>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <\assignStat>
+                            <seperator> ; <\seperator>
+                            <\statement>
+                          <\statements>
+                        <seperator> } <\seperator>
+                        <\statement>
+                      <keyword> while <\keyword>
+                      <seperator> ( <\seperator>
+                        <condition>
+                          <expression>
+                            <term>
+                              <factor>
+                              <identifier> alpha <\identifier>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                          <identifier>
+                          <seperator> <= <\seperator>
+                          <\identifier>
+                          <expression>
+                            <term>
+                              <factor>
+                              <identifier> z_l <\identifier>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                        <\condition>
+                      <seperator> ) <\seperator>
+                      <\loopStat>
+                    <\statement>
+                    <statement>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                    <identifier> alpha <\identifier>
+                      <assignStat>
+                      <seperator> = <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a_u <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <\assignStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <loopStat>
+                      <keyword> do <\keyword>
+                        <statement>
+                        <seperator> { <\seperator>
+                          <statements>
+                            <statement>
+                              <writeStat>
+                              <keyword> printf <\keyword>
+                              <seperator> ( <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> alpha <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <seperator> ) <\seperator>
+                              <\writeStat>
+                            <seperator> ; <\seperator>
+                            <\statement>
+                            <statement>
+                            <identifier> alpha <\identifier>
+                              <assignStat>
+                              <seperator> = <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> alpha <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <seperator> + <\seperator>
+                                  <term>
+                                    <factor>
+                                    <unsignedInt> 1 <\unsignedInt>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <\assignStat>
+                            <seperator> ; <\seperator>
+                            <\statement>
+                          <\statements>
+                        <seperator> } <\seperator>
+                        <\statement>
+                      <keyword> while <\keyword>
+                      <seperator> ( <\seperator>
+                        <condition>
+                          <expression>
+                            <term>
+                              <factor>
+                              <identifier> alpha <\identifier>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                          <identifier>
+                          <seperator> <= <\seperator>
+                          <\identifier>
+                          <expression>
+                            <term>
+                              <factor>
+                              <identifier> z_u <\identifier>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                        <\condition>
+                      <seperator> ) <\seperator>
+                      <\loopStat>
+                    <\statement>
+                    <statement>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <\compoundStatement>
+              <seperator> } <\seperator>
+              <\funcDecl>
+            <\program>
+          <end> ÿ <\end>

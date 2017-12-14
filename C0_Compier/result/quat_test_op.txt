@@ -1,0 +1,9 @@
+	void main()
+	op = 95 
+	print op
+	op = 43 
+	print op
+	op = 42 
+	print op
+	op = 47 
+	print op

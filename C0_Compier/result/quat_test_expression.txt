@@ -1,28 +1,27 @@
-	GOTO main
-	void test_hw()
+	int test_hw()
 	print "HelloWorld!This is the first test program written with C0 grammar!\n"
 	int get10()
 	ret 10
-	void test_condition()
+	int test_condition()
 	1 == 1
-	BNZ if_1
+	BNZ if_8
 	print "a==1"
-if_1:
+if_8:
 	1 != 0
-	BNZ if_2
+	BNZ if_9
 	print "a!=0"
-if_2:
+if_9:
 	tmp2 = 1 + 1
 	tmp3 = 1 - 1
 	0 > 0
-	BNZ if_3
+	BNZ if_10
 	print "a+b>a-b"
-if_3:
+if_10:
 	97 > 1
-	BNZ if_4
+	BNZ if_11
 	print "'a' > 1"
-if_4:
-	void test_expression()
+if_11:
+	int test_expression()
 	a1 = 1 
 	tmp1 = 0 - 1
 	tmp1 = 0 - 1
@@ -102,24 +101,24 @@ if_4:
 	ca[0] = tmp80
 	tmp82 = ia[1]
 	tmp82 == 97
-	BNZ if_5
+	BNZ if_12
 	ca[0] = tmp85
-if_5:
+if_12:
 	print "result is a"
 	tmp87 = ca[1]
 	print tmp87
-	void test_chicken_rabbit()
+	int test_chicken_rabbit()
 	print "Please input the number of heads and feet:"
 	read head
 	read foot
 	head < 0
-	BNZ if_6
+	BNZ if_13
 	print "head num can`t be less than zero"
-if_6:
+if_13:
 	foot < 0
-	BNZ if_7
+	BNZ if_14
 	print "foot num can`t be less than zero"
-if_7:
+if_14:
 	tmp2 = 4 * head
 	tmp3 = tmp2 - foot
 	tmp4 = 4 - 2

@@ -1,0 +1,33 @@
+27	NOTYP	void	row:0	colmn:3
+37	MAINFUNC	main	row:0	colmn:4
+11	LPAR	(	row:0	colmn:5
+12	RPAR	)	row:0	colmn:6
+6	LCURB	{	row:1	colmn:0
+35	PRINTFUNC	printf	row:2	colmn:0
+11	LPAR	(	row:2	colmn:1
+4	STR	"*Apple is red*"	row:2	colmn:2
+12	RPAR	)	row:2	colmn:3
+9	SEMI	;	row:2	colmn:4
+35	PRINTFUNC	printf	row:3	colmn:0
+11	LPAR	(	row:3	colmn:1
+4	STR	"[Peach is pink]"	row:3	colmn:2
+12	RPAR	)	row:3	colmn:3
+9	SEMI	;	row:3	colmn:4
+35	PRINTFUNC	printf	row:4	colmn:0
+11	LPAR	(	row:4	colmn:1
+4	STR	"<Sky is blue>"	row:4	colmn:2
+12	RPAR	)	row:4	colmn:3
+9	SEMI	;	row:4	colmn:4
+35	PRINTFUNC	printf	row:5	colmn:0
+11	LPAR	(	row:5	colmn:1
+4	STR	"\And grass is green/"	row:5	colmn:2
+12	RPAR	)	row:5	colmn:3
+9	SEMI	;	row:5	colmn:4
+35	PRINTFUNC	printf	row:6	colmn:0
+11	LPAR	(	row:6	colmn:1
+4	STR	"I can print string correctly!"	row:6	colmn:2
+12	RPAR	)	row:6	colmn:3
+9	SEMI	;	row:6	colmn:4
+7	RCURB	}	row:7	colmn:0
+39	ENDOFINPUT	ÿ	row:7	colmn:1
+39	ENDOFINPUT	ÿ	row:7	colmn:2

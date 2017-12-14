@@ -1,0 +1,37 @@
+	int calculate()
+	i = 0 
+	read a
+	read b
+	read op
+	43 == op
+	BNZ switch_18
+	tmp2 = a + b
+	print tmp2
+case_0_19:
+	45 == op
+	BNZ switch_18
+	tmp4 = a - b
+	print tmp4
+case_0_20:
+	42 == op
+	BNZ switch_18
+	tmp6 = a * b
+	print tmp6
+case_0_21:
+	47 == op
+	BNZ switch_18
+	tmp8 = a / b
+	print tmp8
+case_0_22:
+	101 == op
+	BNZ switch_18
+do_24:
+	tmp11 = a * 10
+	a = tmp11 
+	tmp13 = b - 1
+	b = tmp13 
+	b != 0
+	BZ do_24
+case_0_23:
+	void main()
+	call calculate

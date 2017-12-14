@@ -1,0 +1,21 @@
+28	CONSTYP	const	row:0	colmn:3
+25	INTYP	int	row:0	colmn:4
+2	IDEN	_Date_	row:0	colmn:5
+5	ASSIGN	=	row:0	colmn:6
+1	INT	20080808	row:0	colmn:7
+9	SEMI	;	row:0	colmn:8
+27	NOTYP	void	row:1	colmn:0
+37	MAINFUNC	main	row:1	colmn:1
+11	LPAR	(	row:1	colmn:2
+12	RPAR	)	row:1	colmn:3
+6	LCURB	{	row:2	colmn:0
+35	PRINTFUNC	printf	row:3	colmn:0
+11	LPAR	(	row:3	colmn:1
+4	STR	"Beijing Olympic Games is held on"	row:3	colmn:2
+8	COMMA	,	row:3	colmn:3
+2	IDEN	_Date_	row:3	colmn:4
+12	RPAR	)	row:3	colmn:5
+9	SEMI	;	row:3	colmn:6
+7	RCURB	}	row:4	colmn:0
+39	ENDOFINPUT	ÿ	row:4	colmn:1
+39	ENDOFINPUT	ÿ	row:4	colmn:2

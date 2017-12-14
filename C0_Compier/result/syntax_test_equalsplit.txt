@@ -2,35 +2,43 @@
   <constDeclGroup>
   <keyword> const <\keyword>
     <constDecl>
-    <keyword> int <\keyword>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
     <identifier> MaxN <\identifier>
     <seperator> = <\seperator>
-      <unsignedInt>
-      <unsignedInt> 100 <\unsignedInt>
-      <\unsignedInt>
+    <unsignedInt> 100 <\unsignedInt>
     <\constDecl>
   <seperator> ; <\seperator>
   <\constDeclGroup>
   <varDeclGroup>
     <varDecl>
-    <keyword> int <\keyword>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
     <identifier> n <\identifier>
     <\varDecl>
   <seperator> ; <\seperator>
     <varDecl>
-    <keyword> int <\keyword>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
     <identifier> s <\identifier>
     <\varDecl>
   <seperator> ; <\seperator>
     <varDecl>
-    <keyword> int <\keyword>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
     <identifier> i <\identifier>
     <seperator> , <\seperator>
     <identifier> j <\identifier>
     <\varDecl>
   <seperator> ; <\seperator>
     <varDecl>
-    <keyword> int <\keyword>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
     <identifier> dyn <\identifier>
     <seperator> [ <\seperator>
     <unsignedInt> 5050 <\unsignedInt>
@@ -38,7 +46,9 @@
     <\varDecl>
   <seperator> ; <\seperator>
     <varDecl>
-    <keyword> int <\keyword>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
     <identifier> Mod <\identifier>
     <\retract>
   <\varDeclGroup>
@@ -75,13 +85,13 @@
                   <\factor>
                 <\term>
               <\expression>
-            <seperator> < <\seperator>
+              <identifier>
+              <seperator> < <\seperator>
+              <\identifier>
               <expression>
                 <term>
                   <factor>
-                    <unsignedInt>
-                    <unsignedInt> 0 <\unsignedInt>
-                    <\unsignedInt>
+                  <unsignedInt> 0 <\unsignedInt>
                   <\factor>
                 <\term>
               <\expression>
@@ -118,31 +128,33 @@
               <term>
                 <factor>
                 <identifier> Mod <\identifier>
-                <seperator> ( <\seperator>
-                  <argumentList>
-                    <expression>
-                      <term>
-                        <factor>
-                        <identifier> a <\identifier>
-                        <\factor>
-                      <\term>
-                    <seperator> - <\seperator>
-                      <term>
-                        <factor>
-                        <identifier> b <\identifier>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <seperator> , <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <identifier> b <\identifier>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <\argumentList>
-                <seperator> ) <\seperator>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> a <\identifier>
+                          <\factor>
+                        <\term>
+                      <seperator> - <\seperator>
+                        <term>
+                          <factor>
+                          <identifier> b <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> b <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
                 <\factor>
               <\term>
             <\expression>
@@ -157,8 +169,10 @@
   <funcDecl>
   <keyword> void <\keyword>
   <keyword> main <\keyword>
-  <seperator> ( <\seperator>
-  <seperator> ) <\seperator>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
   <seperator> { <\seperator>
     <compoundStatement>
       <statements>
@@ -183,13 +197,13 @@
                   <\factor>
                 <\term>
               <\expression>
-            <seperator> < <\seperator>
+              <identifier>
+              <seperator> < <\seperator>
+              <\identifier>
               <expression>
                 <term>
                   <factor>
-                    <unsignedInt>
-                    <unsignedInt> 0 <\unsignedInt>
-                    <\unsignedInt>
+                  <unsignedInt> 0 <\unsignedInt>
                   <\factor>
                 <\term>
               <\expression>
@@ -224,7 +238,9 @@
                   <\factor>
                 <\term>
               <\expression>
-            <seperator> > <\seperator>
+              <identifier>
+              <seperator> > <\seperator>
+              <\identifier>
               <expression>
                 <term>
                   <factor>
@@ -280,9 +296,7 @@
                   <seperator> + <\seperator>
                     <term>
                       <factor>
-                        <unsignedInt>
-                        <unsignedInt> 1 <\unsignedInt>
-                        <\unsignedInt>
+                      <unsignedInt> 1 <\unsignedInt>
                       <\factor>
                     <\term>
                   <\expression>
@@ -302,37 +316,37 @@
                 <term>
                   <factor>
                   <identifier> Mod <\identifier>
-                  <seperator> ( <\seperator>
-                    <argumentList>
-                      <expression>
-                        <term>
-                          <factor>
-                          <identifier> s <\identifier>
-                          <\factor>
-                        <\term>
-                      <\expression>
-                    <seperator> , <\seperator>
-                      <expression>
-                        <term>
-                          <factor>
-                            <unsignedInt>
+                    <funCallStat>
+                    <seperator> ( <\seperator>
+                      <argumentList>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> s <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
                             <unsignedInt> 4 <\unsignedInt>
-                            <\unsignedInt>
-                          <\factor>
-                        <\term>
-                      <\expression>
-                    <\argumentList>
-                  <seperator> ) <\seperator>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <\argumentList>
+                    <seperator> ) <\seperator>
+                    <\funCallStat>
                   <\factor>
                 <\term>
               <\expression>
-            <seperator> != <\seperator>
+              <identifier>
+              <seperator> != <\seperator>
+              <\identifier>
               <expression>
                 <term>
                   <factor>
-                    <unsignedInt>
-                    <unsignedInt> 0 <\unsignedInt>
-                    <\unsignedInt>
+                  <unsignedInt> 0 <\unsignedInt>
                   <\factor>
                 <\term>
               <\expression>
@@ -348,9 +362,7 @@
                     <expression>
                       <term>
                         <factor>
-                          <unsignedInt>
-                          <unsignedInt> 0 <\unsignedInt>
-                          <\unsignedInt>
+                        <unsignedInt> 0 <\unsignedInt>
                         <\factor>
                       <\term>
                     <\expression>
@@ -380,9 +392,7 @@
                 <\factor>
               <seperator> / <\seperator>
                 <factor>
-                  <unsignedInt>
-                  <unsignedInt> 4 <\unsignedInt>
-                  <\unsignedInt>
+                <unsignedInt> 4 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -391,42 +401,34 @@
         <\statement>
         <statement>
         <identifier> dyn <\identifier>
-        <seperator> [ <\seperator>
-          <expression>
-          <seperator> + <\seperator>
-            <term>
-              <factor>
-                <unsignedInt>
-                <unsignedInt> 0 <\unsignedInt>
-                <\unsignedInt>
-              <\factor>
-            <\term>
-          <seperator> - <\seperator>
-            <term>
-              <factor>
-                <unsignedInt>
-                <unsignedInt> 1 <\unsignedInt>
-                <\unsignedInt>
-              <\factor>
-            <\term>
-          <seperator> + <\seperator>
-            <term>
-              <factor>
-                <unsignedInt>
-                <unsignedInt> 2 <\unsignedInt>
-                <\unsignedInt>
-              <\factor>
-            <\term>
-          <\expression>
-        <seperator> ] <\seperator>
           <assignStat>
+          <seperator> [ <\seperator>
+            <expression>
+            <seperator> + <\seperator>
+              <term>
+                <factor>
+                <unsignedInt> 0 <\unsignedInt>
+                <\factor>
+              <\term>
+            <seperator> - <\seperator>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <seperator> + <\seperator>
+              <term>
+                <factor>
+                <unsignedInt> 2 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ] <\seperator>
           <seperator> = <\seperator>
             <expression>
               <term>
                 <factor>
-                  <unsignedInt>
-                  <unsignedInt> 1 <\unsignedInt>
-                  <\unsignedInt>
+                <unsignedInt> 1 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -440,9 +442,7 @@
             <expression>
               <term>
                 <factor>
-                  <unsignedInt>
-                  <unsignedInt> 1 <\unsignedInt>
-                  <\unsignedInt>
+                <unsignedInt> 1 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -493,13 +493,13 @@
                                   <\factor>
                                 <\term>
                               <\expression>
-                            <seperator> > <\seperator>
+                              <identifier>
+                              <seperator> > <\seperator>
+                              <\identifier>
                               <expression>
                                 <term>
                                   <factor>
-                                    <unsignedInt>
-                                    <unsignedInt> 0 <\unsignedInt>
-                                    <\unsignedInt>
+                                  <unsignedInt> 0 <\unsignedInt>
                                   <\factor>
                                 <\term>
                               <\expression>
@@ -510,16 +510,16 @@
                               <statements>
                                 <statement>
                                 <identifier> dyn <\identifier>
-                                <seperator> [ <\seperator>
-                                  <expression>
-                                    <term>
-                                      <factor>
-                                      <identifier> j <\identifier>
-                                      <\factor>
-                                    <\term>
-                                  <\expression>
-                                <seperator> ] <\seperator>
                                   <assignStat>
+                                  <seperator> [ <\seperator>
+                                    <expression>
+                                      <term>
+                                        <factor>
+                                        <identifier> j <\identifier>
+                                        <\factor>
+                                      <\term>
+                                    <\expression>
+                                  <seperator> ] <\seperator>
                                   <seperator> = <\seperator>
                                     <expression>
                                       <term>
@@ -579,9 +579,7 @@
                             <seperator> - <\seperator>
                               <term>
                                 <factor>
-                                  <unsignedInt>
-                                  <unsignedInt> 1 <\unsignedInt>
-                                  <\unsignedInt>
+                                <unsignedInt> 1 <\unsignedInt>
                                 <\factor>
                               <\term>
                             <\expression>
@@ -601,7 +599,9 @@
                           <\factor>
                         <\term>
                       <\expression>
-                    <seperator> >= <\seperator>
+                      <identifier>
+                      <seperator> >= <\seperator>
+                      <\identifier>
                       <expression>
                         <term>
                           <factor>
@@ -626,9 +626,7 @@
                     <seperator> + <\seperator>
                       <term>
                         <factor>
-                          <unsignedInt>
-                          <unsignedInt> 1 <\unsignedInt>
-                          <\unsignedInt>
+                        <unsignedInt> 1 <\unsignedInt>
                         <\factor>
                       <\term>
                     <\expression>
@@ -648,7 +646,9 @@
                   <\factor>
                 <\term>
               <\expression>
-            <seperator> <= <\seperator>
+              <identifier>
+              <seperator> <= <\seperator>
+              <\identifier>
               <expression>
                 <term>
                   <factor>
@@ -680,9 +680,7 @@
                 <\factor>
               <seperator> / <\seperator>
                 <factor>
-                  <unsignedInt>
-                  <unsignedInt> 2 <\unsignedInt>
-                  <\unsignedInt>
+                <unsignedInt> 2 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>

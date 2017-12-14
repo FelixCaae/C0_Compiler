@@ -1,5 +1,0 @@
-const int _Date_=20080808;
-void main()
-{
-printf("Beijing Olympic Games is held on",Date);
-}

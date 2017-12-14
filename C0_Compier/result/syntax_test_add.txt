@@ -1,0 +1,60 @@
+            <program>
+              <varDeclGroup>
+                <varDecl>
+                  <type>
+                  <keyword> int <\keyword>
+                  <\type>
+                <identifier> number1 <\identifier>
+                <seperator> , <\seperator>
+                <identifier> number2 <\identifier>
+                <\varDecl>
+              <seperator> ; <\seperator>
+              <\varDeclGroup>
+              <funcDecl>
+              <keyword> void <\keyword>
+              <keyword> main <\keyword>
+                <paramList>
+                <seperator> ( <\seperator>
+                <seperator> ) <\seperator>
+                <\paramList>
+              <seperator> { <\seperator>
+                <compoundStatement>
+                  <statements>
+                    <statement>
+                      <readStat>
+                      <keyword> scanf <\keyword>
+                      <seperator> ( <\seperator>
+                      <identifier> number1 <\identifier>
+                      <seperator> , <\seperator>
+                      <identifier> number2 <\identifier>
+                      <seperator> ) <\seperator>
+                      <\readStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> number1 <\identifier>
+                            <\factor>
+                          <\term>
+                        <seperator> + <\seperator>
+                          <term>
+                            <factor>
+                            <identifier> number2 <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <\compoundStatement>
+              <seperator> } <\seperator>
+              <\funcDecl>
+            <\program>
+          <end> ÿ <\end>
