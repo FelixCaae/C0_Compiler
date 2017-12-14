@@ -46,6 +46,14 @@ namespace C0_UnitTest
 			Assert::AreNotEqual(lookupIdent("gl", linkHead), NotFound);
 			Assert::AreNotEqual(lookupIdent("gl", linkGlobal), NotFound);
 		}
+		TEST_METHOD(TEST_SYMTABLE_UNLINK)
+		{
+			insertIdent("var1", INTS, OVAR);
+			unlink();
+			Assert::AreEqual(lookupIdent("var1"), NotFound);
+			insertIdent("var1", INTS, OVAR);
+
+		}
 		TEST_METHOD(TEST_QCODEOUT)
 		{
 			char * buffer[3];

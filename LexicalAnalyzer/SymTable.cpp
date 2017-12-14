@@ -81,6 +81,7 @@ void unlink()
 		if(symTable[entry-1]._next==entry)
 		{
 			linkTail = entry - 1;
+			symTable[entry - 1]._next = NotExist;
 		}
 		else
 		{

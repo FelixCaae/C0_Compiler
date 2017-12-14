@@ -268,6 +268,7 @@ bool parseVarDecl()
 		else if (lextype == LPAR)
 		{
 			retractSym(2);
+			unlink();
 			outputSyntax(SRETRACT, false);
 			return RETRACT;
 		}
