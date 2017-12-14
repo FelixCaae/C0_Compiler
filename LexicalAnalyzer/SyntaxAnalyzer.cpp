@@ -25,8 +25,8 @@ void parseStatements();
 void parseStat();
 void parseCompoundStat();
 void parseAFHead();
-void parseAssignStat(char * name);
-void parseFuncCallStat(char* name);
+void parseAssignStat(int iden);
+void parseFuncCallStat(int iden);
 void parseArgList(IdenType pt[], int);
 void parseExpression(int *r);
 void parseTerm(int*r);
@@ -124,6 +124,10 @@ void parseIden(char * val)
 {
 	strcpy(val, token);
 	shouldBe(IDEN);
+	for (; *val!='\0'; val++)
+	{
+		*val = *val | 0x60;//tolower
+	}
 }
 void parseChar(int *val)
 {
@@ -334,6 +338,7 @@ void parseFuncDecl()
 	else
 	{
 		parseIden(funcName);
+		shouldNotExist(funcName);
 	}
 	int id = insertIdent(funcName, it, OFUNC, 0);
 	emit(QFUNCDECL, id);
@@ -362,6 +367,7 @@ void parseParamList(IdenType paramType[],int* paramNum)
 		{
 			parseTypeIden(&it);
 			parseIden(idenName);
+			shouldNotExist(idenName);
 			paramType[paramCounter++] = it;
 			int r=insertIdent(idenName, it, OVAR);
 			emit(QPARA,r);
@@ -529,7 +535,7 @@ void parseFactor(int *r)
 	case IDEN: {
 		char idenName[tokenStrLen];
 		parseIden(idenName);
-		int ident = lookupIdent(idenName);
+		int ident = shouldExist(idenName);
 		IdenType it = symTable[ident]._type;
 		if (symTable[ident]._type == NOTYPS)
 		{
@@ -708,31 +714,31 @@ void parseAFHead()
 {
 	char idenName[tokenStrLen];
 	parseIden(idenName);
+	int iden=shouldExist(idenName);
 	if (lextype == LPAR)
 	{
-		parseFuncCallStat(idenName);
+		parseFuncCallStat(iden);
 	}
 	else
 	{
 		parseAssignStat(idenName);
 	}
 }
-void parseAssignStat(char *name)
+void parseAssignStat(int iden)
 {
 	outputSyntax(ASSIGNSTAT);
 	bool isAR = false;
 	int sub;
 	int store,val;
 	IdenType storeIt,valIt;
-	int r=lookupIdent(name);
-	storeIt=symTable[r]._type;
-	if (symTable[r]._obj == OCONST)
+	storeIt=symTable[iden]._type;
+	if (symTable[iden]._obj == OCONST)
 	{
 		error(ERR_CONST);
 	}
 	if(lextype==LBRAK)
 	{
-		if (symTable[r]._obj != OARRAY)
+		if (symTable[iden]._obj != OARRAY)
 		{
 			error(ERR_REQUIRE_ARRAY);
 		}
@@ -750,26 +756,25 @@ void parseAssignStat(char *name)
 	//be careful with the range a char-type var can hold
 	if (isAR)
 	{
-		emit(QARL, r, sub, val);
+		emit(QARL, iden, sub, val);
 	}
 	else
 	{
-		emit(QASSIGN, r, val);
+		emit(QASSIGN, iden, val);
 	}
 	outputSyntax(ASSIGNSTAT,false);
 }
-void parseFuncCallStat(char *name)
+void parseFuncCallStat(int iden)
 {
 	outputSyntax(FUNCALLSTAT);
-	int ident=lookupIdent(name);
-	int ref = symTable[ident]._ref;
-	if (symTable[ident]._obj != OFUNC)
+	int ref = symTable[iden]._ref;
+	if (symTable[iden]._obj != OFUNC)
 	{
 		error(ERR_REQUIRE_FUNC);
 	}
 	shouldBe(LPAR);
 	parseArgList( funcTable[ref]._param, funcTable[ref]._paraNum);
-	emit(QCALL,ident);
+	emit(QCALL,iden);
 	shouldBe(RPAR);
 	outputSyntax(FUNCALLSTAT,false);
 }
@@ -857,7 +862,7 @@ void parseReadStat()
 	do
 	{
 		parseIden(idenName);
-		iden=lookupIdent(idenName);
+		iden= shouldExist(idenName);
 		if (symTable[iden]._obj !=OVAR)
 		{
 			error(ERR_REQUIRE_VAR);
