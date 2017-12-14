@@ -41,7 +41,6 @@ void parseConstant(int *val);
 void parseReadStat();
 void parseWriteStat();
 void parseReturnStat();
-bool funcFound=false;
 bool mainFound = false;
 int slevel = 0;
 char tokenbak[tokenStrLen];
@@ -552,7 +551,7 @@ void parseFactor(int *r)
 		}
 		else if (lextype == LPAR)
 		{
-			parseFuncCallStat(idenName);
+			parseFuncCallStat(ident);
 			int tmp = genTemp(it);
 			emit(QRETX, tmp);
 			*r = tmp;
@@ -721,7 +720,7 @@ void parseAFHead()
 	}
 	else
 	{
-		parseAssignStat(idenName);
+		parseAssignStat(iden);
 	}
 }
 void parseAssignStat(int iden)
@@ -881,6 +880,7 @@ void parseProgram()
 	while (!mainFound) {
 		parseFuncDecl();
 	}
+	mainFound = false;
 	outputSyntax(PROGRAM, false);
 	shouldBe(END);
 }
