@@ -1,24 +1,87 @@
+void test_hw()
+{
+printf("HelloWorld!This is the first test program written with C0 grammar!\n");
+}
 int get10()
 {
     return (10);
 }
+void test_condition()
+{
+    const char ch='a';
+    const int a=1,b=1;
+    if(a==1)
+    {
+        printf("a==1");
+    }
+    if(a)
+    {
+        printf("a!=0");
+    }
+    if(a+b>a-b)
+    {
+        printf("a+b>a-b");
+    }
+    if('a'>1)
+    {
+        printf("'a' > 1");
+    }
+}
+void test_expression()
+{
+int ia[2];
+char ca[1];
+int a1,a2,a3,a4,a5;
+char c1,c2,c3,c4,c5;
+a1=1;
+a2=+(+1)+(-1++1);
+a3=a1*(a2/(a2*a2)/a1)*a2;
+a4=((a2+a3)*(a2+a3)+a3*6)/get10();
+a5=a4-get10();
+ia[0]=a1+a2+a3+a4+a5;
+ia[1]=ia[0]/5;
+printf("result is 1:",ia[1]);
+c1='a';
+c2='_';
+c3='+';
+c4='Z';
+c5='e';
+a1=+(+c1)+(-c1+c1);
+a2=a1*(c1/(a1*a1)/a1)*a1;
+a3=c1*2/2+1-1+c2-c2;
+a4=c4-7;
+a5=c2+c5-get10()*10-6;
+ia[0]=a1+a2+a3+a4+5;
+ia[1]=ia[0]/5;
+ca[0]='b';
+if(ia[1]=='a')
+{
+  ca[0]='a';
+}
+printf("result is a",ca[1]);
+}
+void test_chicken_rabbit()
+{
+   const int chicken_feet=2,rabbit_feet=4;
+   int rabbit_num,chicken_num;
+   int head,foot;
+   printf("Please input the number of heads and feet:");
+   scanf(head,foot);
+   if(head<0)
+   {
+        printf("head num can`t be less than zero");
+   }
+   if(foot<0)
+   {
+        printf("foot num can`t be less than zero");
+   }
+   chicken_num=(rabbit_feet*head-foot)/(rabbit_feet-chicken_feet);
+   rabbit_num=head-chicken_num;
+}
 void main()
 {
-int a1,a2,a3,a4,a5;
-a1=1;
-a2=1+1;
-a3=a1*a2;
-a4=(a1+a2)*(a1+a2);
-a5=a4-get10();
-printf(a1,a2,a3,a4,a5);
-char c1,c2,c3,c4;
-c1='a';
-c2=c1+1;
-c3=c1+10;
-c4=99;
-printf(c1);
-printf(c2);
-printf(c3);
-printf(c4);
+test_hw();
+test_condition();
+test_expression();
 return;
 }

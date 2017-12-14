@@ -45,7 +45,14 @@
 				</Compiler>
 			</Target>
 		</Build>
+		<Unit filename="Error.cpp" />
+		<Unit filename="Error.h" />
+		<Unit filename="IO.cpp" />
+		<Unit filename="IO.h" />
+		<Unit filename="Lexeme.h" />
 		<Unit filename="LexicalAnalyzer.cpp" />
+		<Unit filename="Syntax.h" />
+		<Unit filename="SyntaxAnalyzer.cpp" />
 		<Unit filename="stdafx.cpp" />
 		<Unit filename="stdafx.h" />
 		<Unit filename="targetver.h" />
@@ -53,7 +60,6 @@
 			<code_completion />
 			<envvars />
 			<debugger />
-			<lib_finder disable_auto="1" />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

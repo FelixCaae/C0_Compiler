@@ -1,0 +1,11 @@
+void A()
+{
+}
+int a()
+{
+}
+void main()
+{
+   char a_;
+   char A_;
+}

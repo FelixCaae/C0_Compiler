@@ -18,13 +18,6 @@ const char blankSet[] = { ' ','\n','\t','\0'};
 const char resrvWrdsSet[][lexNameLen] = { "int","char","void","const","if","do","while","switch",
 "case","return","printf","scanf","main"
 };
-const char lexClassName[][lexNameLen] =
-{
-	"INT","IDEN","CHR","STR","ASSIGN","LCURB","RCURB","COMMA","SEMI","COLON","LPAR","RPAR","LBRAK","RBRAK","PLUS","MINUS",
-	"STAR","DIV","GT","LS","GTEQU","LSEQU","EQU","NEQU",
-	"INTYP","CHARTYP","NOTYP","CONSTYP","IFSY","DOSY","WHILESY","SWITCHSY","CASESY",
-	"RETURNSY","PRINTFUNC","SCANFUNC","MAINFUNC"
-};
 enum lexClass
 {
 	INT=1, IDEN, CHR, STR, ASSIGN, LCURB, RCURB, COMMA, SEMI, COLON, LPAR, RPAR, LBRAK, RBRAK, PLUS, MINUS,
@@ -35,6 +28,8 @@ enum lexClass
 };
 extern lexClass lextype;
 unsigned int catToNum();
+int findReserveWord();
+int findSeperator();
 void catToString(char*);
 void readSym();
 void retractSym(int num=1);

@@ -1,0 +1,16 @@
+void main()
+{
+  int a,b;
+  char op;
+  scanf(a,b,op);
+  switch(op){
+case '+':
+printf(a+b);
+case '-':
+printf(a-b);
+case '*':
+printf(a*b);
+case '/':
+printf(a/b);
+	}
+}

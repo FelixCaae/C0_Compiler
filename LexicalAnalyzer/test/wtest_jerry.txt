@@ -1,5 +1,5 @@
 const int StudentID=1008;
-const char Jerry=¡¯J¡¯;
+const char Jerry='J';
 void main()
 {
 StudentID=1008;

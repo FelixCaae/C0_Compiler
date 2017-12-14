@@ -1,16 +1,15 @@
-char alpha;
 const char a_l='a';
 const char z_l='z';
 const char a_u='A';
 const char z_u='Z';
+char alpha;
 void main()
 {
   alpha=a_l;
   do{
-printf(alpha);
-alpha=alpha+1;
-}
-  }while(a<=z_l);
+    printf(alpha);
+    alpha=alpha+1;
+    }while(a<=z_l);
 alpha=a_u;
   do
 {

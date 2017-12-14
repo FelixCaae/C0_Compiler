@@ -1,0 +1,73 @@
+<program>
+  <constDeclGroup>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> MaxN <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 100 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <\constDeclGroup>
+  <varDeclGroup>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> n <\identifier>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> s <\identifier>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> i <\identifier>
+    <seperator> , <\seperator>
+    <identifier> j <\identifier>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> dyn <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 5050 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> Mod <\identifier>
+    <\retract>
+  <\varDeclGroup>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <seperator> Mod <\seperator>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> a <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> b <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>

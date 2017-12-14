@@ -11,7 +11,7 @@ using namespace std;
 
 char chr=0;
 char token[tokenStrLen];
-int lineCounter = 0, columnCounter = 0;
+int lineCounter = 1, columnCounter = 0;
 int tokenidx = 0;
 int nodesNum = 0;
 lexClass lextype;
@@ -108,12 +108,9 @@ void readChar()
 	if (chr == '\n')
 	{
 		lineCounter += 1;
-		columnCounter = 1;
+		columnCounter = 0;
 	}
-	else {
-		columnCounter += 1;
-	}
-    if (tokenidx == tokenStrLen)error(1);
+    if (tokenidx == tokenStrLen)error(ERR_TOKEN_FLOW);
     token[tokenidx++] = chr;
     token[tokenidx] = '\0';
 }
@@ -175,7 +172,7 @@ void scannIDEN()
     {
         if (!isAlpha() && !isNumber())
         {
-            error(2);
+            error(ERR_LEX);
         }
         readChar();
     }
@@ -192,12 +189,12 @@ void scannCHR()
     readChar();
     if (!isChar())
     {
-        error(4);
+        error(ERR_LEX);
     }
     readChar();
     if (!isSingleQuote())
     {
-        error(4);
+        error(ERR_LEX);
     }
 }
 void scannSTR()
@@ -208,7 +205,7 @@ void scannSTR()
     {
         if (!isAsciiChar())
         {
-            error(5);
+            error(ERR_LEX);
         }
         readChar();
     }
@@ -251,7 +248,7 @@ void scannSEP()
         readChar();
         if (chr != '=')
         {
-            error(6);
+            error(ERR_LEX);
         }
         else
         {
@@ -276,7 +273,7 @@ void scannSEP()
         int r = findSeperator();
         if (r == 0)
         {
-            error(6);
+            error(ERR_LEX);
         }
         lextype = (lexClass)(STR + r);
     }
@@ -289,7 +286,7 @@ void scannINT()
     {
         if (!isNumber())
         {
-            error(2);
+            error(ERR_LEX);
         }
         readChar();
     }
@@ -338,8 +335,9 @@ void scann()
 	}
     else
     {
-        error(7);
+        error(ERR_LEX);
     }
+	outputLexeme();
 }
 void readSym()
 {
@@ -350,6 +348,7 @@ void readSym()
 	}
 	else {
 		scann();
+		columnCounter += 1;
 		if (nodesNum < maxRetractNum)
 		{
 			newNode();
@@ -365,7 +364,7 @@ void retractSym(int num)
 	while (num-- > 0) {
 		if (currentNode == NULL || currentNode->_back == NULL)
 		{
-			error(10);
+			error(ERR_LEX);
 		}
 		else
 		{

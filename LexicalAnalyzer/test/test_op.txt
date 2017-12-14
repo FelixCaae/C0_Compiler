@@ -1,12 +1,12 @@
 char op;
 void main()
 {
-op=¡¯_¡¯;
+op='_';
 print(op);
-op=¡¯+¡¯;
+op='+';
 print(op);
-op=¡¯*¡¯;
+op='*';
 print(op);
-op=¡¯/¡¯;
+op='/';
 print(op);
 }

@@ -36,6 +36,12 @@
     <ClInclude Include="IO.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SymTable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CodeGen.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -51,6 +57,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="IO.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SymTable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="CodeGen.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
