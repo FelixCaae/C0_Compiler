@@ -9,7 +9,7 @@
 #include "SymTable.h"
 //recursively called function]
 void parseProgram();
-void parseIden(char *val);
+void parseIden(int *val,bool setTable);
 void parseInt(int *val);
 void parseChar(int *val);
 void parseStr(int*val);
@@ -43,6 +43,8 @@ void parseWriteStat();
 void parseReturnStat();
 int slevel = 0;
 char tokenbak[tokenStrLen];
+const bool set = true;
+const bool get = false;
 syntaxClass lexToSyntax()
 {
 	if (findReserveWord() != 0)return SKEY;
@@ -118,13 +120,24 @@ int shouldExist(char *name)
 	}
 	return r;
 }
-void parseIden(char * val)
+void parseIden(int *val,bool set)
 {
-	strcpy(val, token);
+	strcpy(tokenbak, token);
+	char *p = tokenbak;
 	shouldBe(IDEN);
-	for (; *val!='\0'; val++)
+	for (; *p!='\0'; p++)
 	{
-		*val = *val | 0x60;//tolower
+		if(*p<='Z'&&*p>='A')
+			*p = *p | 0x60;//tolower
+	}
+	if (set)
+	{
+		shouldNotExist(tokenbak);
+		*val=insertIdent(tokenbak, INTS, OVAR, 0);
+	}
+	else
+	{
+		*val=shouldExist(tokenbak);
 	}
 }
 void parseChar(int *val)
@@ -209,14 +222,13 @@ void parseRelation(lexClass* lex)//out:
 void parseConstDecl()
 {
 	outputSyntax(CONSTDECL);
-	char idenName[tokenStrLen];
+	int iden;
 	IdenType varType;
 	int val;
 	parseTypeIden(&varType);
 	while (true)
 	{
-		parseIden(idenName);
-		shouldNotExist(idenName);
+		parseIden(&iden,set);
 		shouldBe(ASSIGN);
 		if(varType==INTS)
 		{
@@ -226,7 +238,7 @@ void parseConstDecl()
 		{
 			parseChar(&val);
 		}
-		insertIdent(idenName, varType, OCONST, val);
+		modifyIdent(iden, varType, OCONST, val);
 		if (couldBe(COMMA))
 		{
 			continue;
@@ -242,17 +254,16 @@ bool parseVarDecl()
 {
 	outputSyntax(VARDECL);
 	IdenType it;
-	char idenName[tokenStrLen];
+	int iden;
 	int dimension;
 	parseTypeIden(&it);
 	while (true)
 	{
-		parseIden(idenName);
-		shouldNotExist(idenName);
+		parseIden(&iden,set);
 		if (lextype == LBRAK)
 		{
 			parseSubscript(true,&dimension);
-			insertIdent(idenName, it, OARRAY, dimension);
+			modifyIdent(iden, it, OARRAY, dimension);
 		}
 		else if (lextype == LPAR)
 		{
@@ -262,7 +273,7 @@ bool parseVarDecl()
 		}
 		else
 		{
-			insertIdent(idenName, it, OVAR);
+			modifyIdent(iden, it, OVAR);
 		}
 
 		if (couldBe(COMMA))
@@ -314,7 +325,7 @@ bool parseFuncDecl()
 	bool mainFound = false;
 	outputSyntax(FUNCDECL);
 	IdenType it;
-	char funcName[tokenStrLen];
+	int func;
 	IdenType paramType[maxParmNum];
 	int paramNum=0;
 	if (couldBe(NOTYP))
@@ -327,7 +338,7 @@ bool parseFuncDecl()
 	if (couldBe(MAINFUNC))
 	{
 		//setLabel(findLabel("main"));
-		strcpy(funcName, "main");
+		func = insertIdent("main", NOTYPS, OFUNC);
 		if (it != NOTYPS)
 		{
 			error(ERR_MAIN_RET_TYPE);
@@ -336,18 +347,16 @@ bool parseFuncDecl()
 	}
 	else
 	{
-		parseIden(funcName);
-		shouldNotExist(funcName);
+		parseIden(&func,set);
 	}
-	int id = insertIdent(funcName, it, OFUNC, 0);
-	emit(QFUNCDECL, id);
+	emit(QFUNCDECL, func);
 	parseParamList(paramType, &paramNum);
 	if (mainFound && paramNum)
 	{
 		error(ERR_MAIN_PARAM);
 	}
-	int func = insertFunc(it, paramNum, paramType);
-	symTable[id]._ref = func;
+	int ref = insertFunc(it, paramNum, paramType);
+	modifyIdent(func, it, OFUNC, ref);
 	shouldBe(LCURB);
 	enterFunc();
 	parseCompoundStat();
@@ -361,17 +370,16 @@ void parseParamList(IdenType paramType[],int* paramNum)
 	outputSyntax(PARAMLIST);
 	int paramCounter=0;
 	IdenType it;
-	char idenName[tokenStrLen];
+	int iden;
 	shouldBe(LPAR);
 		while (!couldBe(RPAR))
 		{
 			parseTypeIden(&it);
-			parseIden(idenName);
-			shouldNotExist(idenName);
+			parseIden(&iden, set);
 			paramType[paramCounter++] = it;
-			int r=insertIdent(idenName, it, OVAR);
-			emit(QPARA,r);
-			r = shouldBe2(COMMA, RPAR);
+			modifyIdent(iden, it, OVAR);
+			emit(QPARA,iden);
+			int r = shouldBe2(COMMA, RPAR);
 			if (r == 1)
 			{
 				continue;
@@ -533,11 +541,10 @@ void parseFactor(int *r)
 	switch (lextype)
 	{
 	case IDEN: {
-		char idenName[tokenStrLen];
-		parseIden(idenName);
-		int ident = shouldExist(idenName);
-		IdenType it = symTable[ident]._type;
-		if (symTable[ident]._type == NOTYPS)
+		int iden;
+		parseIden(&iden,get);
+		IdenType it = symTable[iden]._type;
+		if (symTable[iden]._type == NOTYPS)
 		{
 			error(ERR_REQUIRE_RET);
 		}
@@ -547,19 +554,19 @@ void parseFactor(int *r)
 			int sub;
 			parseSubscript(false, &sub);
 			int tmp= genTemp(it);
-			emit(QARR, tmp, ident, sub);
+			emit(QARR, tmp, iden, sub);
 			*r = tmp;
 		}
 		else if (lextype == LPAR)
 		{
-			parseFuncCallStat(ident);
+			parseFuncCallStat(iden);
 			int tmp = genTemp(it);
 			emit(QRETX, tmp);
 			*r = tmp;
 		}
 		else
 		{
-			*r = ident;
+			*r = iden;
 		}
 		break;
 	}
@@ -712,9 +719,8 @@ void parseConstant(int *r)
 }
 void parseAFHead()
 {
-	char idenName[tokenStrLen];
-	parseIden(idenName);
-	int iden=shouldExist(idenName);
+	int iden;
+	parseIden(&iden,get);
 	if (lextype == LPAR)
 	{
 		parseFuncCallStat(iden);
@@ -857,12 +863,10 @@ void parseReadStat()
 	outputSyntax(READSTAT);
 	shouldBe(SCANFUNC);
 	shouldBe(LPAR);
-	char idenName[tokenStrLen];
 	int iden;
 	do
 	{
-		parseIden(idenName);
-		iden= shouldExist(idenName);
+		parseIden(&iden,get);
 		if (symTable[iden]._obj !=OVAR)
 		{
 			error(ERR_REQUIRE_VAR);

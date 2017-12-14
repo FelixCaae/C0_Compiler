@@ -18,11 +18,11 @@ namespace C0_UnitTest
 		char *buffer[2];
 		TEST_METHOD_INITIALIZE(INI)
 		{
-			
+			lineCounter = 0;
 		}
 		TEST_METHOD_CLEANUP(CLE)
 		{
-			cleanup();
+			cleanup();//symTable
 		}
 		TEST_METHOD(TestMethod1)
 		{

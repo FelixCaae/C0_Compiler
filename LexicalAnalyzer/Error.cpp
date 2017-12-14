@@ -6,6 +6,7 @@
 #include "Syntax.h"
 #include <exception>
 #include "IO.h"
+extern char tokenbak[tokenStrLen];
 void error(int err,int detail)
 {
 	//printf("Error happended!");
@@ -63,12 +64,12 @@ void error(int err,int detail)
 	}
 	case ERR_IDEN_DECLARED:
 	{
-		sprintf(buffer, "*****Error%d: Identifier:%s can`t be declared twice line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Identifier:%s can`t be declared twice line:%d\n", err, tokenbak, lineCounter);
 		break;
 	}
 	case ERR_IDEN_NOT_DECLARED:
 	{
-		sprintf(buffer, "*****Error%d: Identifier:%s is not declared:%s line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Identifier:%s is not declared line:%d\n", err, tokenbak, lineCounter);
 		break;
 	}
 	case ERR_INTOCHAR:

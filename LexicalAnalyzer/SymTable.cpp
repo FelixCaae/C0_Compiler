@@ -18,6 +18,31 @@ unsigned int linkHead = NotExist;
 unsigned int linkTail = NotExist;
 unsigned int linkBak = NotExist;
 unsigned int tempCounter = 0;
+int countSize(int iden)
+{
+	return 0;
+}
+void cleanup()
+{
+	linkTail = NotExist;
+	linkHead = NotExist;
+	curFunc = 0;
+	curSym = 0;
+	curStr = 0;
+}
+int genTemp(IdenType it, bool isConst, int val)
+{
+	char tempName[tokenStrLen];
+	do {
+		sprintf(tempName, "tmp%d", tempCounter++);
+	} while (lookupIdent(tempName) != NotExist);
+	IdenObj io = OVAR;
+	if (isConst)
+	{
+		io = OCONST;
+	}
+	return insertIdent(tempName, it, io, val);
+}
 void enterFunc()
 {
 	linkHead = NotExist;
@@ -43,43 +68,50 @@ void link(int entry)
 	symTable[entry]._next = NotExist;
 	linkTail = entry;
 }
-void cleanup()
+void unlink()
 {
-	linkTail = NotExist;
-	linkHead = NotExist;
-	curFunc = 0;
-	curSym = 0;
-	curStr = 0;
+	int entry = curSym;
+	curSym--;
+	if (linkHead == entry)
+	{
+		linkHead = NotExist;
+	}
+	if (entry > 0)
+	{
+		if(symTable[entry-1]._next==entry)
+		{
+			linkTail = entry - 1;
+		}
+		else
+		{
+			linkTail = NotExist;
+		}
+	}
 }
-int lookupStr(char*str);
 int insertIdent(char *name, IdenType type, IdenObj obj,int ref)
 {
-	int r;
 	if (curSym == symTableSize)
 	{
 		error(ERR_TAB_FLOW);
-		r = NotExist;
+		return  NotExist;
 	}
 	if (NotFound == lookupIdent(name,linkHead))
 	{
+		link(curSym);
 		strcpy(symTable[curSym]._name,name);
 		symTable[curSym]._obj = obj;
 		symTable[curSym]._type = type;
 		symTable[curSym]._ref = ref;
-		link(curSym);
-		if (curSym != 0)
-		{
-			symTable[curSym]._adr = symTable[curSym - 1]._adr+1;
-		}
-		r = curSym;
-		curSym++;
+		return curSym++;
 	}
-	else
-	{
-		r = NotExist;
-		error(ERR_IDEN_DECLARED);
-	}
-	return r;
+	error(ERR_IDEN_DECLARED);
+	return NotExist;
+}
+void modifyIdent(int iden, IdenType type, IdenObj obj, int ref)
+{
+	symTable[iden]._type = type;
+	symTable[iden]._obj = obj;
+	symTable[iden]._ref = ref;
 }
 int insertString(char *str)
 {
@@ -117,7 +149,7 @@ int lookupIdent(char *name,int scope)
 {
 
 	int i = scope;
-	while (i != NotExist)
+	while (i != NotExist&&i<curSym)
 	{
 		if (strcmp(symTable[i]._name, name) == 0)
 		{
@@ -130,19 +162,6 @@ int lookupIdent(char *name,int scope)
 int lookupIdent(char *name)
 {
 	int id = lookupIdent(name, linkHead);
-	if (id == NotExist)id = lookupIdent(name, linkGlobal);
+	if (id == NotFound)id = lookupIdent(name, linkGlobal);
 	return id;
-}
-int genTemp(IdenType it,bool isConst,int val)
-{
-	char tempName[tokenStrLen];
-	do{
-		sprintf(tempName, "tmp%d", tempCounter++);
-	} while (lookupIdent(tempName) != NotExist);
-	IdenObj io=OVAR;
-	if (isConst)
-	{
-		io = OCONST;
-	}
-	return insertIdent(tempName, it, io,val);
 }
