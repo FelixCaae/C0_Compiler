@@ -35,7 +35,7 @@ namespace C0_UnitTest
 			Assert::AreNotEqual(lookupIdent("gl",linkHead), NotFound);
 			Assert::AreNotEqual(lookupIdent("gl", linkGlobal), NotFound);
 			insertIdent("func1", INTS, OFUNC);
-			enterFunc();
+			enterFunc(0);
 			insertIdent("lc", CHARS, OVAR);
 			Assert::AreNotEqual(lookupIdent("gl",linkGlobal), NotFound);
 			Assert::AreEqual(lookupIdent("gl",linkHead), NotFound);
@@ -59,7 +59,7 @@ namespace C0_UnitTest
 			Assert::AreEqual(lookupIdent("var2"), NotFound);
 			Assert::AreEqual(lookupIdent("var3"), NotFound);
 			insertIdent("var1", INTS, OVAR);
-			enterFunc();
+			enterFunc(0);
 			insertIdent("var1", INTS, OVAR);
 			genTemp(INTS);
 			genTemp(INTS);
@@ -70,6 +70,24 @@ namespace C0_UnitTest
 			Assert::AreNotEqual(lookupIdent("var1", linkHead), NotFound);
 			unlink();
 			Assert::AreEqual(lookupIdent("var1", linkHead), NotFound);
+		}
+		TEST_METHOD(TEST_SYMTABLE_LOC_ADR)
+		{
+			insertIdent("var1", INTS, OVAR);
+			insertIdent("var2", CHARS, OVAR);
+			insertIdent("ar1", INTS, OARRAY, 10);
+			insertIdent("c1", INTS, OCONST, 10);
+			insertIdent("func1", INTS, OFUNC);
+			insertIdent("func2", INTS, OFUNC);
+			locateAdr();
+			Assert::AreEqual(symTable[4]._adr == 45, true);
+			enterFunc(0);
+			insertIdent("var1", INTS, OVAR);
+			insertIdent("var2", CHARS, OARRAY, 20);
+			insertIdent("var3", INTS, OVAR);
+			locateAdr();
+			int iden = lookupIdent("var3");
+			Assert::AreEqual(symTable[iden]._adr ==24,true);
 		}
 		TEST_METHOD(TEST_QCODEOUT)
 		{

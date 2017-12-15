@@ -7,6 +7,9 @@ const unsigned int constTableSize = 800;
 const unsigned int strTableSize = 400;
 const unsigned int funcTableSize = 400;
 const unsigned int maxParmNum = 20;
+const unsigned int IntSize = 4;
+const unsigned int CharSize = 1;
+const unsigned int ReserveSize = 10 * IntSize;//s0-s8 ra
 const int NotFound = -1;
 const int NotExist = -1;
 const int SearchAll = -1;
@@ -31,17 +34,17 @@ struct funcTableEntry
 	IdenType _ret;
 	int _paraNum;
 	IdenType _param[maxParmNum];
+	int _size;
 };
 extern symTableEntry symTable[strTableSize];
 extern funcTableEntry funcTable[funcTableSize];
 //extern conTableEntry conTable[constTableSize];
 extern strTableEntry strTable[strTableSize];
-
 void cleanup();
 void link(int entry);
 void unlink();
 void unlinkAll();
-void enterFunc();
+void enterFunc(unsigned int ref);
 void leaveFunc();
 void locateAdr();
 int insertIdent(char *name, IdenType type, IdenObj obj, int ref = 0);

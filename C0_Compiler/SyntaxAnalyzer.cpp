@@ -359,7 +359,7 @@ bool parseFuncDecl()
 	int ref = insertFunc(it, paramNum, paramType);
 	modifyIdent(func, it, OFUNC, ref);
 	shouldBe(LCURB);
-	enterFunc();
+	enterFunc(ref);
 	parseCompoundStat();
 	leaveFunc();
 	shouldBe(RCURB);

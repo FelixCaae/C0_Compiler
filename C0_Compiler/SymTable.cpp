@@ -8,6 +8,7 @@ symTableEntry symTable[strTableSize];
 //conTableEntry conTable[constTableSize];
 funcTableEntry funcTable[funcTableSize];
 strTableEntry strTable[strTableSize];
+unsigned int funcRef=NotExist;
 unsigned int curLevPos=0;
 unsigned int curSym=0;
 unsigned int curStr = 0;
@@ -20,6 +21,31 @@ unsigned int linkBak = NotExist;
 unsigned int tempCounter = 0;
 int countSize(int iden)
 {
+	int tsize;
+	if (symTable[iden]._type == INTS)
+	{
+		tsize=IntSize;
+	}
+	else if(symTable[iden]._type == CHARS)
+	{
+		tsize=CharSize;
+	}
+	if (symTable[iden]._obj == OVAR)
+	{
+		return tsize;
+	}
+	else if (symTable[iden]._obj == OCONST)
+	{
+		return 0;
+	}
+	else if (symTable[iden]._obj == OARRAY)
+	{
+		return tsize*symTable[iden]._ref;
+	}
+	else if (symTable[iden]._obj == OFUNC)
+	{
+		return 0;
+	}
 	return 0;
 }
 void cleanup()
@@ -43,8 +69,9 @@ int genTemp(IdenType it, bool isConst, int val)
 	}
 	return insertIdent(tempName, it, io, val);
 }
-void enterFunc()
+void enterFunc(unsigned int ref)
 {
+	funcRef = ref;
 	linkHead = NotExist;
 	linkBak = linkTail;
 	linkTail = NotExist;
@@ -52,6 +79,7 @@ void enterFunc()
 }
 void leaveFunc()
 {
+	funcRef = NotExist;
 	linkHead = linkGlobal;
 	linkTail = linkBak;
 }
@@ -174,4 +202,17 @@ int lookupIdent(char *name)
 	int id = lookupIdent(name, linkHead);
 	if (id == NotFound)id = lookupIdent(name, linkGlobal);
 	return id;
+}
+void locateAdr()
+{
+	int entry = linkHead;
+	int adr=0,size=0;
+	while (entry != NotExist)
+	{
+		symTable[entry]._adr = adr;
+		adr += countSize(entry);
+		entry = symTable[entry]._next;
+	}
+	if(funcRef!=NotExist)
+		funcTable[funcRef]._size = adr+ReserveSize;
 }
