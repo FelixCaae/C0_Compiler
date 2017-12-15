@@ -70,13 +70,14 @@ void link(int entry)
 }
 void unlink()
 {
-	int entry = curSym;
 	curSym--;
+	int entry = curSym;
 	if (linkHead == entry)
 	{
+		linkTail = NotExist;
 		linkHead = NotExist;
 	}
-	if (entry > 0)
+	else if (entry > 0)
 	{
 		if(symTable[entry-1]._next==entry)
 		{
@@ -86,7 +87,15 @@ void unlink()
 		else
 		{
 			linkTail = NotExist;
+			linkHead = NotExist;
 		}
+	}
+}
+void unlinkAll()
+{
+	while (linkTail != NotExist)
+	{
+		unlink();
 	}
 }
 int insertIdent(char *name, IdenType type, IdenObj obj,int ref)

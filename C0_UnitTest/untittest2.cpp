@@ -52,7 +52,24 @@ namespace C0_UnitTest
 			unlink();
 			Assert::AreEqual(lookupIdent("var1"), NotFound);
 			insertIdent("var1", INTS, OVAR);
-
+			insertIdent("var2", INTS, OVAR);
+			insertIdent("var3", INTS, OVAR);
+			unlinkAll();
+			Assert::AreEqual(lookupIdent("var1"),NotFound);
+			Assert::AreEqual(lookupIdent("var2"), NotFound);
+			Assert::AreEqual(lookupIdent("var3"), NotFound);
+			insertIdent("var1", INTS, OVAR);
+			enterFunc();
+			insertIdent("var1", INTS, OVAR);
+			genTemp(INTS);
+			genTemp(INTS);
+			genTemp(INTS);
+			unlinkAll();
+			Assert::AreEqual(lookupIdent("var1", linkHead),NotFound);
+			leaveFunc();
+			Assert::AreNotEqual(lookupIdent("var1", linkHead), NotFound);
+			unlink();
+			Assert::AreEqual(lookupIdent("var1", linkHead), NotFound);
 		}
 		TEST_METHOD(TEST_QCODEOUT)
 		{
