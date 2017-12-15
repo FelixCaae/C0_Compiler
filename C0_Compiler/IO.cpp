@@ -15,6 +15,7 @@ using namespace std;
 #define LABEL(arg) labelTable[arg]
 #define OP(arg) (symTable[arg]._obj==OCONST?to_string(symTable[arg]._ref).c_str():NAME(arg))
 #define STR(arg) strTable[arg]._buffer
+#define REG(arg) regName[arg]
 using namespace std;
 bool toConsole = true;
 FILE * inFile=NULL;
@@ -188,9 +189,33 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 	strcat(str, "\n");
 	output(buffer,outQCode,true);
 }
-void outputTCode(tCType tc, reg r1, reg r2)
+void outputTCode(tCType tc, reg r1, reg r2 ,reg r3)
 {
-
+	switch (tc)
+	{
+	case TADD:
+		sprintf("add %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TADDI:
+		sprintf("addi %s,%s,%d", REG(r1), REG(r2), r3);
+		break;
+	case TSUB:
+		sprintf("sub %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TSUBI:
+		sprintf("subi %s,%s,%d", REG(r1), REG(r2), REG(r3));
+		break;
+	case TMULT:
+		sprintf("mul %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TDIV:
+		sprintf("div %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TLA:
+		sprintf("la %s,%s", REG(r1), STR(r2));
+	case TBNE:
+		sprintf();
+	}
 }
 char * getFileName(char *arg)
 {
