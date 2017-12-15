@@ -17,7 +17,7 @@ enum returnFormat
 	RNOVAL, RVAL
 };
 enum tCType {
-	TADD,TADDI,TSUB,TSUBI,TDIV,TMULT,TLW,TSW,TJUMP,TJAL,TBNE,TBEQ,
+	TDATA, TLA,TASCIIZ,TADD,TADDI,TSUB,TSUBI,TDIV,TMULT,TLW,TLI,TSW,TJUMP,TJAL,TJR,TBNE,TBEQ,
 };
 enum reg
 {
@@ -33,6 +33,11 @@ int genLabel(lableType lt,char*name=0);
 int findLabel(char*name);
 void setLabel(int label);
 void emit(qCType q, int arg1 = 0, int arg2 = 0, int arg3 = 0);
+void clearQCode();
+void locateGlobalData();
+void objFuncHead(int func);
+void objFuncTail(int func);
+void objBody();
 void emit(char * code);
 void emit(qCType, char* arg1, char* arg2, char*arg3);
 void emit(tCType t,reg r1, reg r2,char *label);

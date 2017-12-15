@@ -255,6 +255,14 @@ void init(int argc, char ** argv)
 		error(ERR_FILE);
 	}
 	outQCode = f;
+	strcpy(name, "result/mips_");
+	strcat(name, rawname);
+	f = fopen(name, "w+");
+	if (f == NULL)
+	{
+		error(ERR_FILE);
+	}
+	outTCode = f;
 }
 void close()
 {
@@ -263,4 +271,5 @@ void close()
 	if (outSyntax)fclose(outSyntax);
 	if (outErr)fclose(outErr);
 	if (outQCode)fclose(outQCode);
+	if (outTCode)fclose(outTCode);
 }

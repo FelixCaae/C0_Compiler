@@ -1,9 +1,9 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C0_Complier", "LexicalAnalyzer\LexicalAnalyzer.vcxproj", "{FEC896DB-A180-4DE9-BA7A-1ECF0EAF900F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C0_Complier", "C0_Compiler\C0_Compiler.vcxproj", "{FEC896DB-A180-4DE9-BA7A-1ECF0EAF900F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "C0_UnitTest", "C0_UnitTest\C0_UnitTest.vcxproj", "{07754784-5348-4D3A-9230-78D8DB49C8EA}"
 EndProject

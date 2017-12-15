@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "../LexicalAnalyzer/SymTable.h"
-#include "../LexicalAnalyzer/CodeGen.h"
-#include "../LexicalAnalyzer/IO.h"
+#include "../C0_Compiler/SymTable.h"
+#include "../C0_Compiler/CodeGen.h"
+#include "../C0_Compiler/IO.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace C0_UnitTest
