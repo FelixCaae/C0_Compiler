@@ -1,9 +1,10 @@
-	var char ch
-	var int it
-	array char car[3]
-	const char ch2 = 97
 	void main()
-if_17:
-	it = ch + car
-	it == car
-	BNZ if_17
+	i = 1 
+do_0:
+	print i
+	mp2 = i + 1
+	i = mp2 
+	i != 100
+	BZ do_0
+main:
+main_end:

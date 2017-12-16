@@ -1,10 +1,11 @@
 #include "stdafx.h"
-#include"CodeGen.h"
-#include"IO.h"
-#include "SymTable.h"
 #include <cstring>
 #include <string>
 #include <stdio.h>
+#include "error.h"
+#include"CodeGen.h"
+#include"IO.h"
+#include "SymTable.h"
 #define REG(arg) regName[arg]
 using namespace std;
 extern const unsigned int IntSize, CharSize;
@@ -65,9 +66,16 @@ int findLabel(char * name)
 	}
 	return -1;
 }
-void setLabel(int label)
+void setLabel(int label,int pos)
 {
-	labelLine[label] = line;
+	if (pos ==LPHEAD)
+	{
+		labelLine[label] = 0;
+	}
+	else if(pos==LPCUR)
+	{
+		labelLine[label] = line;
+	}
 	outputLabel(label);
 }
 void clearQCode()
@@ -126,11 +134,11 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		}
 		else
 		{
-			sprintf(buffer, "%s .data %d", NAME(r1), countSize(r1));
+			sprintf(buffer, "%s :.data %d", NAME(r1), countSize(r1));
 		}
 		break;
 	case TASCIIZ:
-		sprintf(buffer, "%s .asciiz \"%s\"", STRNAME(r1), STR(r1));
+		sprintf(buffer, "%s :.asciiz \"%s\"", STRNAME(r1), STR(r1));
 		break;
 	case TLA:
 		if (r3 == LAIDEN)
@@ -145,6 +153,18 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 	case TLI:
 		sprintf(buffer, "li %s,%d", REG(r1), r2);
 		break;
+	case TLW:
+		sprintf(buffer, "lw %s,%d(%s)", REG(r1), r3,REG(r2));
+		break;
+	case TLB:
+		sprintf(buffer, "lb %s,%d(%s)",REG(r1), r3, REG(r2));
+		break;
+	case TSW:
+		sprintf(buffer, "sw %s,%d(%s)", REG(r1), r3, REG(r2));
+		break;
+	case TSB:
+		sprintf(buffer, "sb %s,%d(%s)", REG(r1), r3, REG(r2));
+		break;
 	case TBEQ:
 		sprintf(buffer, "beq %s,%s,%s",REG(r1),REG(r2),LABEL(r3));
 		break;
@@ -157,17 +177,51 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 	case TJUMP:
 		sprintf(buffer, "j %s", LABEL(r1));
 		break;
+	case TJR:
+		sprintf(buffer, "jr ");
+		break;
+	case TSEQ:
+		sprintf(buffer, "seq %s,%s,%s", REG(r1),REG(r2),REG(r3));
+		break;
+	case TSNE:
+		sprintf(buffer, "sne %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TSGT:
+		sprintf(buffer, "sgt %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TSGE:
+		sprintf(buffer, "sge %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TSLT:
+		sprintf(buffer, "slt %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TSLE:
+		sprintf(buffer, "sle %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		break;
+	case TSYSCALL:
+		sprintf(buffer, "syscall");
+		break;
+	default:
+		error(ERR_INSTR_NOT_DEFINE);
 	}
+	outputOCode();
 }
-void objectify()
+void objectify(bool hasHead)
 {
 	int lhead=genLabel(LFUNC,symTable[funcRef]._name);
 	int ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
-	outputLabel(lhead,true);
-	objFuncHead();
-	objBody(ltail);
-	outputLabel(ltail,true);
-	objFuncTail();
+	setLabel(lhead, LPHEAD);
+	setLabel(ltail, LPCUR);
+	if (hasHead)
+	{
+		objFuncHead();
+		objBody(ltail);
+		objFuncTail();
+	}
+	else
+	{
+		objBody(ltail);
+	}
 }
 void objFuncHead()
 {
@@ -218,6 +272,7 @@ void objBody(int ltail)
 		arg2 = qCode[lc * 4 + 2];
 		arg3 = qCode[lc * 4 + 3];
 		objLabel(lc);
+		lc++;
 		switch (qt)
 		{
 		case QARL:
@@ -292,8 +347,18 @@ void objBody(int ltail)
 		case QNEQU:
 			objCondition(TSNE, arg1, arg2);
 			break;
+		case QFUNCDECL:
+		case QPARA:
+		case QVAR:
+		case QARRAY:
+		case QCONST:
+			break;
+		default:
+			error(ERR_QCODE_NOT_DEFINE);
+			break;
 		}
 	}
+	objLabel(lc);
 	clearQCode();
 }
 void objLabel(int lc)
@@ -304,14 +369,10 @@ void objLabel(int lc)
 		{
 			outputLabel(i,true);
 		}
-		else if (labelLine[i] < lc)
-		{
-			break;
-		}
 
 	}
 }
-void objLoad(int reg, int iden,int offset=_0)
+void objLoad(int reg, int iden,int offset)
 {
 	symTableEntry entry = symTable[iden];
 	if (entry._obj == OCONST)
@@ -349,7 +410,7 @@ void objLoad(int reg, int iden,int offset=_0)
 		 }
 	}
 }
-void objSave(int val,int adr,int iden,int offset=_0)
+void objSave(int val,int adr,int iden,int offset)
 {
 	symTableEntry entry = symTable[iden];
 	if (entry._obj == OCONST)
@@ -389,7 +450,6 @@ void objSave(int val,int adr,int iden,int offset=_0)
 }
 void objArthOp(tCType tc, int iden1, int iden2, int iden3)
 {
-	objLoad(t0, iden1);
 	objLoad(t1, iden2);
 	objLoad(t2, iden3);
 	emitObj(tc, t0, t1, t2);
@@ -421,15 +481,17 @@ void objWrite(int  pf,int iden)
 	}
 	else if (pf == FEXPRESSION)
 	{
+		emitObj(TLA, a0, iden, LAIDEN);
 		if (symTable[iden]._type == CHARS)
 		{
 			emitObj(TLI, v0, MIPS_PRINT_CHAR);
+			emitObj(TLB, a0, a0, 0);
 		}
 		else if(symTable[iden]._type ==INTS)
 		{
 			emitObj(TLI, v0, MIPS_PRINT_INT);
+			emitObj(TLW, a0, a0, 0);
 		}
-		emitObj(TLA, a0, iden, LAIDEN);
 	}
 	emitObj(TSYSCALL);
 	emitObj(TLI, v0, MIPS_PRINT_CHAR);
@@ -451,8 +513,9 @@ void objFuncTail()
 void objGloblData()
 {
 	int entry = linkGlobal;
-	emitObj(TDATA);
-	while (symTable[entry]._adr==Global)
+	emitObj(TDATA,NotExist);
+	while (symTable[entry]._adr==Global&&
+		(symTable[entry]._obj==OVAR||symTable[entry]._obj==OARRAY))
 	{
 		emitObj(TDATA, entry);
 		entry++;

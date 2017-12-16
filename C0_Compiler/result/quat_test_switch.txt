@@ -4,34 +4,38 @@
 	read b
 	read op
 	43 == op
-	BNZ switch_18
-	tmp2 = a + b
-	print tmp2
-case_0_19:
+	BNZ switch_0
+	mp2 = a + b
+	print mp2
+case_1_0:
 	45 == op
-	BNZ switch_18
-	tmp4 = a - b
-	print tmp4
-case_0_20:
+	BNZ switch_0
+	mp4 = a - b
+	print mp4
+case_1_1:
 	42 == op
-	BNZ switch_18
-	tmp6 = a * b
-	print tmp6
-case_0_21:
+	BNZ switch_0
+	mp6 = a * b
+	print mp6
+case_1_2:
 	47 == op
-	BNZ switch_18
-	tmp8 = a / b
-	print tmp8
-case_0_22:
+	BNZ switch_0
+	mp8 = a / b
+	print mp8
+case_1_3:
 	101 == op
-	BNZ switch_18
-do_24:
-	tmp11 = a * 10
-	a = tmp11 
-	tmp13 = b - 1
-	b = tmp13 
+	BNZ switch_0
+do_1:
+	mp11 = a * 10
+	a = mp11 
+	mp13 = b - 1
+	b = mp13 
 	b != 0
-	BZ do_24
-case_0_23:
+	BZ do_1
+case_1_4:
+calculate:
+calculate_end:
 	void main()
 	call calculate
+main:
+main_end:

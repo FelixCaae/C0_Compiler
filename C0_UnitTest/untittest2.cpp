@@ -111,5 +111,35 @@ namespace C0_UnitTest
 			emit(QEQU, 1, 2);
 			emit(QBNZ, l);
 		}
+
+		TEST_METHOD(TEST_MIPSOUT)
+		{
+			char * buffer[3];
+			buffer[1] = "test/test_100.txt";
+			init(2, buffer);
+			int ch=insertIdent("ch", CHARS, OVAR);
+			int it=insertIdent("it", INTS, OVAR);
+			int car=insertIdent("car", CHARS, OARRAY, 3);
+			int ch2=insertIdent("ch2", CHARS, OCONST, 'a');
+			int mainfunc = insertFunc(NOTYPS, 0, NULL);
+			int main=insertIdent("main", NOTYPS, OFUNC,mainfunc);
+			int str=insertString("HelloWorld");
+			int lhead = genLabel(LFUNC, "main");
+			int ltail = genLabel(LFUNCEND, "main");
+			setLabel(lhead,LPHEAD);
+			emit(QVAR, ch);
+			emit(QVAR, it);
+			emit(QARRAY, car);
+			emit(QCONST, ch2);
+			emit(QFUNCDECL, main);
+			emit(QPLUS, ch, it, ch2);
+			emit(QEQU, ch, ch2);
+			emit(QRET);
+			setLabel(ltail);
+		//	outputLabel(lhead, true);
+			objBody(ltail);
+			//outputLabel(ltail, true);
+
+		}
 	};
 }

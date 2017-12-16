@@ -49,7 +49,6 @@ void unlinkAll();
 void enterFunc(unsigned int ref);
 void leaveFunc();
 void locateAdr();
-void locateGlobl();
 int countSize(int iden);
 int insertIdent(char *name, IdenType type, IdenObj obj, int ref = 0);
 int lookupIdent(char *name,int scope);

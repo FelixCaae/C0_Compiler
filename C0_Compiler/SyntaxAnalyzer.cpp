@@ -351,17 +351,19 @@ bool parseFuncDecl()
 		parseIden(&func,set);
 	}
 	emit(QFUNCDECL, func);
+	parseParamList(paramType, &paramNum);
 	int ref = insertFunc(it, paramNum, paramType);
 	modifyIdent(func, it, OFUNC, ref);
-	shouldBe(LCURB);
-	enterFunc(func);
-	parseParamList(paramType, &paramNum);
 	if (mainFound && paramNum)
 	{
 		error(ERR_MAIN_PARAM);
 	}
+
+	shouldBe(LCURB);
+	enterFunc(func);
 	parseCompoundStat();
-	objectify();
+	locateAdr();
+	objectify(!mainFound);
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL,false);
@@ -918,9 +920,9 @@ void parseProgram()
 		parseVarGrup();
 	}
 	while (!mainFound) {
-		mainFound=parseFuncDecl();
+		mainFound = parseFuncDecl();
 	}
-	locateGlobl();
+	objGloblData();
 	outputSyntax(PROGRAM, false);
 	shouldBe(END);
 }
@@ -936,7 +938,7 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "test/test_equalsplit.txt";
+	buffer[1] = "../x64/Debug/test/test_switch.txt";
 	if (syntaxAnalyze(2, (char**)buffer))
 	{
 		printf("Success!");

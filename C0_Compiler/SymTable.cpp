@@ -33,7 +33,7 @@ void cleanup()
 int genTemp(IdenType it, bool isConst, int val)
 {
 	char tempName[tokenStrLen];
-	sprintf(tempName, "tmp%d", tempCounter++);
+	sprintf(tempName, "%tmp%d", tempCounter++);
 
 	IdenObj io = OVAR;
 	if (isConst)
@@ -55,7 +55,6 @@ void leaveFunc()
 	funcRef = NotExist;
 	linkHead = linkGlobal;
 	linkTail = linkBak;
-	locateAdr();
 	unlink();
 }
 void link(int entry)
@@ -115,6 +114,10 @@ int insertIdent(char *name, IdenType type, IdenObj obj,int ref)
 		symTable[curSym]._obj = obj;
 		symTable[curSym]._type = type;
 		symTable[curSym]._ref = ref;
+		if (funcRef == NotExist)
+		{
+			symTable[curSym]._adr = Global;
+		}
 		return curSym++;
 	}
 	error(ERR_IDEN_DECLARED);
@@ -190,17 +193,7 @@ void locateAdr()
 		entry = symTable[entry]._next;
 	}
 	if(funcRef!=NotExist)
-		funcTable[funcRef]._size = adr;
-}
-void locateGlobl()
-{
-	int entry = Global;
-	while (entry != NotExist)
-	{
-		symTable[entry]._adr = Global;
-		entry = symTable[entry]._next;
-	}
-	entry = linkGlobal;
+		funcTable[symTable[funcRef]._ref]._size = adr;
 }
 int countSize(int iden)
 {

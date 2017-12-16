@@ -1,0 +1,30 @@
+main:
+li $t0,1
+la $t1,i
+sw $t0,0($t1)
+do_0:
+la $a0,i
+li $v0,1
+lw $a0,0($a0)
+syscall
+li $v0,11
+li $a0,10
+syscall
+la $t1,i
+lw $t1,0($t1)
+li $t2,1
+add $t0,$t1,$t2
+addi $t1,$sp,0
+sw $t0,0($t1)
+addi $t0,$sp,0
+lw $t0,0($t0)
+la $t1,i
+sw $t0,0($t1)
+la $t0,i
+lw $t0,0($t0)
+li $t1,100
+sne $v1,$t0,$t1
+bne $0,$v1,do_0
+main_end:
+.data
+i :.data 4

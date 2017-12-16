@@ -3,7 +3,7 @@ const unsigned int maxQCodeSize=5000;
 const unsigned int maxLabelStrLen = 15;
 const unsigned int maxLabelNum = 800;
 const unsigned int RAADR = 8* 4;
-const unsigned int ReserveSize = 9 * IntSize;//s0-s8 ra
+const unsigned int ReserveSize = 36;//s0-s7 ra
 extern char labelTable[maxLabelNum][maxLabelStrLen];
 extern int labelLine[maxLabelNum];
 enum qCType {
@@ -36,16 +36,20 @@ enum lableType
 {
 	LFUNC,LFUNCEND,LIF,LWHILE,LSWITCH,LCASE,L
 };
+enum linePos
+{
+	LPHEAD,LPTAIL,LPCUR,LPNULL
+};
 extern char labelTable[maxLabelNum][maxLabelStrLen];
 extern int labelLine[maxLabelNum];
 int genLabel(lableType lt,char*name=0);
 int findLabel(char*name);
-void setLabel(int label);
+void setLabel(int label,int _line=LPCUR);
 void emit(qCType q, int arg1 = 0, int arg2 = 0, int arg3 = 0);
 void emitObj(tCType t, int arg1 = 0, int arg2=0,int arg3=0);
 void emitObj(char* chr);
 void clearQCode();
-void objectify();
+void objectify(bool hasHead=true);
 void objFuncHead();
 void objBody(int ltail);
 void objLabel(int lc);
