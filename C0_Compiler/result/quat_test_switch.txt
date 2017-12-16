@@ -1,8 +1,8 @@
 	int calculate()
-	var void calculate
-	var void calculate
 	var int a
-	var void calculate
+	var int b
+	var char op
+	var int i
 	i = 0 
 	read a
 	read b

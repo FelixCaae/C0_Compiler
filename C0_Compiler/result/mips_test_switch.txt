@@ -13,8 +13,17 @@ calculate:
 	addi $t1,$sp,9
 	sw $t0,0($t1)
 	li $v0,5
+	syscall
+	addi $t0,$sp,0
+	sw $v0,0($t0)
 	li $v0,5
+	syscall
+	addi $t0,$sp,4
+	sw $v0,0($t0)
 	li $v0,12
+	syscall
+	addi $t0,$sp,8
+	lb $v0,0($t0)
 	li $t0,43
 	addi $t1,$sp,8
 	lb $t1,0($t1)

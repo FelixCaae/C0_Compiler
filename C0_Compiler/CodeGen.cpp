@@ -76,6 +76,10 @@ void setLabel(int label,int pos)
 	{
 		labelLine[label] = line;
 	}
+	else if (pos == LPNULL)
+	{
+		labelLine[label] = -1;
+	}
 	outputLabel(label);
 }
 void clearQCode()
@@ -206,7 +210,11 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 	}
 	outputOCode();
 }
-void objectify(bool hasHead)
+void objEntry()
+{
+	//
+}
+void objFunc(bool hasHead)
 {
 	int lhead=genLabel(LFUNC,symTable[funcRef]._name);
 	int ltail = genLabel(LFUNCEND, symTable[funcRef]._name);

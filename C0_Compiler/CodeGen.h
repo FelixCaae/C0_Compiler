@@ -38,7 +38,7 @@ enum lableType
 };
 enum linePos
 {
-	LPHEAD,LPTAIL,LPCUR,LPNULL
+	LPHEAD,LPTAIL,LPCUR,LPNULL=-1
 };
 extern char labelTable[maxLabelNum][maxLabelStrLen];
 extern int labelLine[maxLabelNum];
@@ -49,7 +49,8 @@ void emit(qCType q, int arg1 = 0, int arg2 = 0, int arg3 = 0);
 void emitObj(tCType t, int arg1 = 0, int arg2=0,int arg3=0);
 void emitObj(char* chr);
 void clearQCode();
-void objectify(bool hasHead=true);
+void objEntry();
+void objFunc(bool hasHead = true);
 void objFuncHead();
 void objBody(int ltail);
 void objLabel(int lc);

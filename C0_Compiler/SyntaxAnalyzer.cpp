@@ -238,7 +238,7 @@ void parseConstDecl()
 		{
 			parseChar(&val);
 		}
-		emit(QCONST, varType, iden, val);
+		emit(QCONST,iden);
 		modifyIdent(iden, varType, OCONST, val);
 		if (couldBe(COMMA))
 		{
@@ -265,7 +265,7 @@ bool parseVarDecl()
 		{
 			parseSubscript(true,&dimension);
 			modifyIdent(iden, it, OARRAY, dimension);
-			emit(QARRAY, it, iden, dimension);
+			emit(QARRAY, iden);
 		}
 		else if (lextype == LPAR)
 		{
@@ -277,7 +277,7 @@ bool parseVarDecl()
 		else
 		{
 			modifyIdent(iden, it, OVAR);
-			emit(QVAR, it, iden);
+			emit(QVAR, iden);
 		}
 
 		if (couldBe(COMMA))
@@ -366,7 +366,7 @@ bool parseFuncDecl()
 	enterFunc(func);
 	parseCompoundStat();
 	locateAdr();
-	objectify(!mainFound);
+	objFunc(!mainFound);
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL,false);
@@ -923,6 +923,7 @@ void parseProgram()
 	{
 		parseVarGrup();
 	}
+	
 	while (!mainFound) {
 		mainFound = parseFuncDecl();
 	}

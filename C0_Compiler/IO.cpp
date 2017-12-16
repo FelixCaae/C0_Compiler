@@ -90,13 +90,13 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 	switch (qc)
 	{
 	case QVAR:
-		sprintf(str, "var %s %s", typeName[symTable[arg1]._type], symTable[arg1]._name);
+		sprintf(str, "var %s %s", TYPE(arg1),NAME(arg1));
 		break;
 	case QCONST:
-		sprintf(str, "const %s %s = %d", typeName[symTable[arg1]._type], symTable[arg1]._name, symTable[arg1]._ref);
+		sprintf(str, "const %s %s = %d", TYPE(arg1), NAME(arg1),REF(arg1));
 		break;
 	case QARRAY:
-		sprintf(str, "array %s %s[%d]", typeName[symTable[arg1]._type], symTable[arg1]._name, symTable[arg1]._ref);
+		sprintf(str, "array %s %s[%d]", TYPE(arg1), NAME(arg2), REF(arg1));
 		break;
 	case QFUNCDECL:
 		sprintf(str, "%s %s()", typeName[symTable[arg1]._type], symTable[arg1]._name);
@@ -188,7 +188,7 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		break;
 	}
 	strcat(str, "\n");
-	output(buffer,outQCode,false);
+	output(buffer,outQCode,true);
 }
 void outputOCode()
 {
