@@ -107,7 +107,7 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		sprintf(buffer, "sub %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TSUBI:
-		sprintf(buffer, "subi %s,%s,%d", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer, "subi %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TMULT:
 		sprintf(buffer, "mul %s,%s,%s", REG(r1), REG(r2), REG(r3));
@@ -214,7 +214,6 @@ void objectify(bool hasHead)
 	setLabel(ltail, LPCUR);
 	if (hasHead)
 	{
-		objFuncHead();
 		objBody(ltail);
 		objFuncTail();
 	}
@@ -348,6 +347,11 @@ void objBody(int ltail)
 			objCondition(TSNE, arg1, arg2);
 			break;
 		case QFUNCDECL:
+			if (strcmp(NAME(arg2), "main") != 0)
+			{
+				objFuncHead();
+			}
+			break;
 		case QPARA:
 		case QVAR:
 		case QARRAY:
