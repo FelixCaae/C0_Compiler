@@ -29,17 +29,17 @@ int genLabel(lableType lt,char *name)
 	switch (lt)
 	{
 	case LIF:
-		sprintf(labelTable[labelCounter],"if_%d",++labelID);
+		sprintf(labelTable[labelCounter],"if_%d",labelID++);
 		break;
 	case LWHILE:
-		sprintf(labelTable[labelCounter], "do_%d", ++labelID);
+		sprintf(labelTable[labelCounter], "do_%d", labelID++);
 		break;
 	case LSWITCH:
-		sprintf(labelTable[labelCounter], "switch_%d", ++labelID);
+		sprintf(labelTable[labelCounter], "switch_%d", labelID++);
 		caseID = 0;
 		break;
 	case LCASE:
-		sprintf(labelTable[labelCounter], "case_%d_%d",labelID,++caseID);
+		sprintf(labelTable[labelCounter], "case_%d_%d",labelID,caseID++);
 		break;
 	case LFUNC:
 		sprintf(labelTable[labelCounter], name);

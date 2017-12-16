@@ -238,6 +238,7 @@ void parseConstDecl()
 		{
 			parseChar(&val);
 		}
+		emit(QCONST, varType, iden, val);
 		modifyIdent(iden, varType, OCONST, val);
 		if (couldBe(COMMA))
 		{
@@ -264,6 +265,7 @@ bool parseVarDecl()
 		{
 			parseSubscript(true,&dimension);
 			modifyIdent(iden, it, OARRAY, dimension);
+			emit(QARRAY, it, iden, dimension);
 		}
 		else if (lextype == LPAR)
 		{
@@ -275,6 +277,7 @@ bool parseVarDecl()
 		else
 		{
 			modifyIdent(iden, it, OVAR);
+			emit(QVAR, it, iden);
 		}
 
 		if (couldBe(COMMA))
@@ -698,6 +701,7 @@ void parseSwitchStat()
 	shouldBe(RPAR);
 	shouldBe(LCURB);
 	parseSwitchTab(val,label);
+	setLabel(label);
 	shouldBe(RCURB);
 	outputSyntax(SWITCHSTAT,false);
 }
