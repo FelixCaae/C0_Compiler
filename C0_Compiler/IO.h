@@ -2,6 +2,13 @@
 #include "Syntax.h"
 #include "CodeGen.h"
 #include "stdio.h"
+#define NAME(arg) symTable[arg]._name
+#define STRNAME(arg) strTable[arg]._adr
+#define TYPE(arg) typeName[symTable[arg]._type]
+#define LABEL(arg) labelTable[arg]
+#define OP(arg) (symTable[arg]._obj==OCONST?to_string(symTable[arg]._ref).c_str():NAME(arg))
+#define STR(arg) strTable[arg]._buffer
+#define REG(arg) regName[arg]
 extern FILE * inFile;
 extern FILE * outLex;
 extern FILE * outSyntax;
@@ -9,6 +16,7 @@ extern FILE * outQCode;
 extern FILE * outTCode;
 extern FILE * outErr;
 extern bool toConsole;
+extern char buffer[];
 const unsigned int maxOutputLength = 88;
 const char * const syntaxClassName[] = {
 	"unsignedInt","identifier", "char", "string","seperator","keyword",
@@ -46,7 +54,7 @@ void outputSyntax(syntaxClass sc, bool isHead = true);
 void outputTerminalS(syntaxClass sc);
 void outputLabel(int l);
 void outputQCode(qCType qc, int arg1, int arg2, int arg3);
-void outputTCode(tCType tc, reg r1, reg r2);
+void outputOCode();
 void output(char*ch,FILE* outFile,bool toConsole=false);
 void init(int argc, char**argv);
 void close();

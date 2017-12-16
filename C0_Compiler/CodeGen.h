@@ -2,6 +2,8 @@
 const unsigned int maxQCodeSize=5000;
 const unsigned int maxLabelStrLen = 15;
 const unsigned int maxLabelNum = 800;
+const unsigned int RAADR = 8* 4;
+const unsigned int ReserveSize = 9 * IntSize;//s0-s8 ra
 extern char labelTable[maxLabelNum][maxLabelStrLen];
 extern int labelLine[maxLabelNum];
 enum qCType {
@@ -17,7 +19,10 @@ enum returnFormat
 	RNOVAL, RVAL
 };
 enum tCType {
-	TDATA, TLA,TASCIIZ,TADD,TADDI,TSUB,TSUBI,TDIV,TMULT,TLW,TLI,TSW,TJUMP,TJAL,TJR,TBNE,TBEQ,
+	TDATA,TASCIIZ,TLA,TADD,TADDI,TSUB,TSUBI,TDIV,TDIVI,TMULT,TMULTI,
+	TLW,TLB,TLI,TSW,TSB,
+	TSLL,TSLR,
+	TJUMP,TJAL,TJR,TBNE,TBEQ,
 };
 enum reg
 {
@@ -33,11 +38,12 @@ int genLabel(lableType lt,char*name=0);
 int findLabel(char*name);
 void setLabel(int label);
 void emit(qCType q, int arg1 = 0, int arg2 = 0, int arg3 = 0);
+void emitObj(tCType t, int arg1 = 0, int arg2=0,int arg3=0);
+void emitObj(char* chr);
 void clearQCode();
-void locateGlobalData();
-void objFuncHead(int func);
-void objFuncTail(int func);
+void objFuncHead();
+void objFuncTail();
+void objSave(int val, int adr, int iden, int offset = _0);
+void objLoad(int reg, int iden, int offset = _0);
 void objBody();
-void emit(char * code);
-void emit(qCType, char* arg1, char* arg2, char*arg3);
-void emit(tCType t,reg r1, reg r2,char *label);
+void objGloblData();

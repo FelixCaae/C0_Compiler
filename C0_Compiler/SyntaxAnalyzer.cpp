@@ -351,16 +351,19 @@ bool parseFuncDecl()
 		parseIden(&func,set);
 	}
 	emit(QFUNCDECL, func);
+	int ref = insertFunc(it, paramNum, paramType);
+	modifyIdent(func, it, OFUNC, ref);
+	shouldBe(LCURB);
+	enterFunc(ref);
 	parseParamList(paramType, &paramNum);
 	if (mainFound && paramNum)
 	{
 		error(ERR_MAIN_PARAM);
 	}
-	int ref = insertFunc(it, paramNum, paramType);
-	modifyIdent(func, it, OFUNC, ref);
-	shouldBe(LCURB);
-	enterFunc(ref);
+	objFuncHead();
 	parseCompoundStat();
+	objBody();
+	objFuncTail();
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL,false);
@@ -482,20 +485,29 @@ void parseExpression(int *r)
 		}
 		val1 = symTable[first]._ref;
 		val2 = symTable[second]._ref;
-		if (neg == 1)
-		{
-			emit(QMINUS, store, first, second);
-			vresult = val1 - val2;
-		}
-		else if (neg == 2)
-		{
-			emit(QPLUS, store, first, second);
-			vresult = val1 - val2;
-		}
 		if (symTable[first]._obj == OCONST&& symTable[second]._obj == OCONST)
 		{
 			symTable[store]._obj = OCONST;
+			if (neg == 1)
+			{
+				vresult = val1 - val2;
+			}
+			else if (neg == 2)
+			{
+				vresult = val1 - val2;
+			}
 			symTable[store]._ref = vresult;
+		}
+		else
+		{
+			if (neg == 1)
+			{
+				emit(QMINUS, store, first, second);
+			}
+			else if (neg == 2)
+			{
+				emit(QPLUS, store, first, second);
+			}
 		}
 		first = store;
 	}
@@ -518,17 +530,34 @@ void parseTerm(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		if(op==1)
+		if (symTable[first]._obj == OCONST && symTable[second]._obj == OCONST)
 		{
-			vresult = val1*val2;
-			emit(QSTAR, store, first, second);
-		}
-		else if(op==2)
-		{
-			if (val2 != 0) {
-				vresult = val1 / val2;
+			if (op == 1)
+			{
+				vresult = val1*val2;
 			}
-			emit(QDIV, store,first,second);
+			else if (op == 2)
+			{
+				if (val2 != 0) {
+					vresult = val1 / val2;
+				}
+				else
+				{
+					error(ERR_DIV_ZERO);
+				}
+			}
+			symTable[first]._ref = vresult;
+		}
+		else
+		{
+			if (op == 1)
+			{
+				emit(QSTAR, store, first, second);
+			}
+			else if (op == 2)
+			{
+				emit(QDIV, store, first, second);
+			}
 		}
 		first = store;
 		val1 = symTable[first]._ref;
@@ -893,6 +922,7 @@ void parseProgram()
 	while (!mainFound) {
 		mainFound=parseFuncDecl();
 	}
+	locateGlobl();
 	outputSyntax(PROGRAM, false);
 	shouldBe(END);
 }

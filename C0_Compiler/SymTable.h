@@ -9,10 +9,11 @@ const unsigned int funcTableSize = 400;
 const unsigned int maxParmNum = 20;
 const unsigned int IntSize = 4;
 const unsigned int CharSize = 1;
-const unsigned int ReserveSize = 10 * IntSize;//s0-s8 ra
 const int NotFound = -1;
 const int NotExist = -1;
 const int SearchAll = -1;
+const int Global = -1;
+extern unsigned int funcRef;
 extern unsigned int linkHead;
 extern const unsigned int linkGlobal;
 struct symTableEntry
@@ -28,6 +29,7 @@ struct symTableEntry
 struct strTableEntry
 {
 	char _buffer[maxStrLength];
+	char _adr[tokenStrLen];
 };
 struct funcTableEntry
 {
@@ -47,6 +49,8 @@ void unlinkAll();
 void enterFunc(unsigned int ref);
 void leaveFunc();
 void locateAdr();
+void locateGlobl();
+int countSize(int iden);
 int insertIdent(char *name, IdenType type, IdenObj obj, int ref = 0);
 int lookupIdent(char *name,int scope);
 int lookupIdent(char *name);

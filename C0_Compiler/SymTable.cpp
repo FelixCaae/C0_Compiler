@@ -19,35 +19,9 @@ unsigned int linkHead = NotExist;
 unsigned int linkTail = NotExist;
 unsigned int linkBak = NotExist;
 unsigned int tempCounter = 0;
-int countSize(int iden)
-{
-	int tsize;
-	if (symTable[iden]._type == INTS)
-	{
-		tsize=IntSize;
-	}
-	else if(symTable[iden]._type == CHARS)
-	{
-		tsize=CharSize;
-	}
-	if (symTable[iden]._obj == OVAR)
-	{
-		return tsize;
-	}
-	else if (symTable[iden]._obj == OCONST)
-	{
-		return 0;
-	}
-	else if (symTable[iden]._obj == OARRAY)
-	{
-		return tsize*symTable[iden]._ref;
-	}
-	else if (symTable[iden]._obj == OFUNC)
-	{
-		return 0;
-	}
-	return 0;
-}
+void locateAdr();
+void locateGlobl();
+int countSize(int iden);
 void cleanup()
 {
 	linkTail = NotExist;
@@ -82,6 +56,8 @@ void leaveFunc()
 	funcRef = NotExist;
 	linkHead = linkGlobal;
 	linkTail = linkBak;
+	locateAdr();
+	unlink();
 }
 void link(int entry)
 {
@@ -158,6 +134,7 @@ int insertString(char *str)
 	{
 		r = curStr;
 		strcpy(strTable[curStr]._buffer,str);
+		sprintf(strTable[curStr]._adr, "Str_%d", curStr);
 		curStr += 1;
 	}
 	return r;
@@ -214,5 +191,44 @@ void locateAdr()
 		entry = symTable[entry]._next;
 	}
 	if(funcRef!=NotExist)
-		funcTable[funcRef]._size = adr+ReserveSize;
+		funcTable[funcRef]._size = adr;
+}
+void locateGlobl()
+{
+	int entry = Global;
+	while (entry != NotExist)
+	{
+		symTable[entry]._adr = Global;
+		entry = symTable[entry]._next;
+	}
+	entry = linkGlobal;
+}
+int countSize(int iden)
+{
+	int tsize;
+	if (symTable[iden]._type == INTS)
+	{
+		tsize = IntSize;
+	}
+	else if (symTable[iden]._type == CHARS)
+	{
+		tsize = CharSize;
+	}
+	if (symTable[iden]._obj == OVAR)
+	{
+		return tsize;
+	}
+	else if (symTable[iden]._obj == OCONST)
+	{
+		return 0;
+	}
+	else if (symTable[iden]._obj == OARRAY)
+	{
+		return tsize*symTable[iden]._ref;
+	}
+	else if (symTable[iden]._obj == OFUNC)
+	{
+		return 0;
+	}
+	return 0;
 }
