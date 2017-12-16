@@ -854,12 +854,12 @@ void parseReturnStat()
 	{
 		int val;
 		parseExpression(&val);
-		emit(QRET, RVAL, val);
+		emit(QRET, val);
 		shouldBe(RPAR);
 	}
 	else
 	{
-		emit(QRET, RNOVAL);
+		emit(QRET, NotExist);
 	}
 	outputSyntax(RETURNSTAT, false);
 }

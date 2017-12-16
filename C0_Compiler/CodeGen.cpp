@@ -139,7 +139,10 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		sprintf(buffer, "bne %s,%s,%s", REG(r1), REG(r2), LABEL(r3));
 		break;
 	case TJAL:
-		sprintf(buffer, "jal %s",LABEL(r3));
+		sprintf(buffer, "jal %s",LABEL(r1));
+		break;
+	case TJUMP:
+		sprintf(buffer, "j %s", LABEL(r1));
 		break;
 	}
 }
@@ -222,6 +225,42 @@ void objBody()
 			break;
 		case QCALL:
 			emitObj(TJAL, arg1);
+			break;
+		case QDIV:
+			objArthOp(TDIV, arg1, arg2, arg3);
+			break;
+		case QGOTO:
+			emitObj(TJUMP, arg1);
+			break;
+		case QMINUS:
+			objArthOp(TSUB,arg1,arg2,arg3);
+			break;
+		case QPLUS:
+			objArthOp(TADD, arg1, arg2, arg3);
+			break;
+		case QPRINT:
+			objWrite(arg1, arg2);
+			break;
+		case QREAD:
+			objRead(arg1);
+			break;
+		case QRET:
+			emitObj(T);
+			break;
+		case QRETX:
+			objSave(v0, t0, arg1);
+			break;
+		case QSTAR:
+			objArthOp(TMULT, arg1, arg2, arg3);
+			break;
+		case QGT:
+		case QLS:
+		case QGTEQU:
+		case QLSEQU:
+		case QEQU:
+		case QNEQU:
+			objCondition(qt, arg1, arg2);
+			break;
 		}
 	}
 }
@@ -301,11 +340,30 @@ void objSave(int val,int adr,int iden,int offset=_0)
 		}
 	}
 }
-void objLoadAr(reg r, int ar, int sub)
+void objArthOp(tCType tc, int iden1, int iden2, int iden3)
 {
+	objLoad(t0, iden1);
+	objLoad(t1, iden2);
+	objLoad(t2, iden3);
+	emitObj(tc, t0, t1, t2);
+	objSave(t0, t1, iden1);
+}
+void objCondition(qCType qc,int iden1,int iden2)
+{
+}
+void objRead(int iden)
+{
+	if (symTable[iden]._type == INTS)
+	{
+		emitObj(TLI, v0, 5);
+	}
+	else if (symTable[iden]._type == CHARS)
+	{
+		emitObj(TLI, v0, 11);
+	}
 
 }
-void objLoadStr(int reg, int str)
+void objWrite(printFormat pf,int iden)
 {
 
 }

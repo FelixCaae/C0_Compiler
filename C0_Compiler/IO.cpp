@@ -112,11 +112,11 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		sprintf(str, "read %s", NAME(arg1));
 		break;
 	case QRET:
-		if (arg1 == RVAL)
+		if (arg1 !=NotExist)
 		{
 			sprintf(str, "ret %s", OP(arg2));
 		}
-		else if (arg1 == RNOVAL)
+		else
 		{
 			sprintf(str, "ret");
 		}

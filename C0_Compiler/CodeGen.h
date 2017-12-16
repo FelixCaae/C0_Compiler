@@ -23,6 +23,7 @@ enum tCType {
 	TLW,TLB,TLI,TSW,TSB,
 	TSLL,TSLR,
 	TJUMP,TJAL,TJR,TBNE,TBEQ,
+	TSYSCALL
 };
 enum reg
 {
@@ -42,8 +43,12 @@ void emitObj(tCType t, int arg1 = 0, int arg2=0,int arg3=0);
 void emitObj(char* chr);
 void clearQCode();
 void objFuncHead();
+void objBody();
 void objFuncTail();
 void objSave(int val, int adr, int iden, int offset = _0);
 void objLoad(int reg, int iden, int offset = _0);
-void objBody();
+void objCondition(qCType qc,int iden1,int iden2);
+void objArthOp(tCType tc, int iden1, int iden2, int iden3);
+void objRead(int iden);
+void objWrite(int pf,int iden);
 void objGloblData();
