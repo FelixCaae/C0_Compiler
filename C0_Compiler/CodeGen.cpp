@@ -11,32 +11,41 @@ extern const unsigned int IntSize, CharSize;
 extern unsigned int curStr;
 unsigned int qcPos;
 unsigned int labelCounter=0;
-unsigned int caseCounter=0;
+unsigned int labelID = 0;
+unsigned int caseID=0;
 unsigned int line=0;
 char labelTable[maxLabelNum][maxLabelStrLen];
 int labelLine[maxLabelNum];
 int qCode[maxQCodeSize * 4];
-
+const unsigned int condR = v1;
+const unsigned int MIPS_PRINT_CHAR=11;
+const unsigned int MIPS_PRINT_INT=1;
+const unsigned int MIPS_PRINT_STR=4;
+const unsigned int MIPS_READ_INT=5;
+const unsigned int MIPS_READ_CHAR=12;
 int genLabel(lableType lt,char *name)
 {
 	switch (lt)
 	{
 	case LIF:
-		sprintf(labelTable[labelCounter],"if_%d",labelCounter);
+		sprintf(labelTable[labelCounter],"if_%d",labelID++);
 		break;
 	case LWHILE:
-		sprintf(labelTable[labelCounter], "do_%d", labelCounter);
+		sprintf(labelTable[labelCounter], "do_%d", labelID++);
 		break;
 	case LSWITCH:
-		sprintf(labelTable[labelCounter], "switch_%d", labelCounter);
-		caseCounter = 0;
+		sprintf(labelTable[labelCounter], "switch_%d", labelID++);
+		caseID = 0;
 		break;
 	case LCASE:
-		sprintf(labelTable[labelCounter], "case_%d_%d", caseCounter,labelCounter);
+		sprintf(labelTable[labelCounter], "case_%d_%d",labelID,caseID++);
 		break;
 	case LFUNC:
-	//	strcat(labelTable[labelCounter], "\");
 		sprintf(labelTable[labelCounter], name);
+		break;
+	case LFUNCEND:
+		sprintf(labelTable[labelCounter], name);
+		strcat(labelTable[labelCounter], "_end");
 		break;
 	case L:
 		sprintf(labelTable[labelCounter], name);
@@ -61,12 +70,9 @@ void setLabel(int label)
 	labelLine[label] = line;
 	outputLabel(label);
 }
-void clearLabel()
-{
-
-}
 void clearQCode()
 {
+	labelCounter = 0;
 	line = 0;
 }
 void emit(qCType qc,int arg1,int arg2,int arg3)
@@ -84,22 +90,22 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 	switch (tc)
 	{
 	case TADD:
-		sprintf(buffer,"add %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer, "add %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TADDI:
-		sprintf(buffer,"addi %s,%s,%d", REG(r1), REG(r2), r3);
+		sprintf(buffer, "addi %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TSUB:
-		sprintf(buffer,"sub %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer, "sub %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TSUBI:
-		sprintf(buffer,"subi %s,%s,%d", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer, "subi %s,%s,%d", REG(r1), REG(r2), REG(r3));
 		break;
 	case TMULT:
-		sprintf(buffer,"mul %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer, "mul %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TDIV:
-		sprintf(buffer,"div %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer, "div %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TMULTI:
 		sprintf(buffer, "mul %s,%s,%d", REG(r1), REG(r2), r3);
@@ -127,7 +133,14 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		sprintf(buffer, "%s .asciiz \"%s\"", STRNAME(r1), STR(r1));
 		break;
 	case TLA:
-		sprintf(buffer, "la %s,%s", REG(r1), NAME(r2));
+		if (r3 == LAIDEN)
+		{
+			sprintf(buffer, "la %s,%s", REG(r1), NAME(r2));
+		}
+		else if(r3==LASTR)
+		{
+			sprintf(buffer, "la %s,%s", REG(r1), STRNAME(r2));
+		}
 		break;
 	case TLI:
 		sprintf(buffer, "li %s,%d", REG(r1), r2);
@@ -254,12 +267,22 @@ void objBody()
 			objArthOp(TMULT, arg1, arg2, arg3);
 			break;
 		case QGT:
+			objCondition(TSGT, arg1, arg2);
+			break;
 		case QLS:
+			objCondition(TSLT, arg1, arg2);
+			break;
 		case QGTEQU:
+			objCondition(TSGE, arg1, arg2);
+			break;
 		case QLSEQU:
+			objCondition(TSLE, arg1, arg2);
+			break;
 		case QEQU:
+			objCondition(TSEQ, arg1, arg2);
+			break;
 		case QNEQU:
-			objCondition(qt, arg1, arg2);
+			objCondition(TSNE, arg1, arg2);
 			break;
 		}
 	}
@@ -348,24 +371,46 @@ void objArthOp(tCType tc, int iden1, int iden2, int iden3)
 	emitObj(tc, t0, t1, t2);
 	objSave(t0, t1, iden1);
 }
-void objCondition(qCType qc,int iden1,int iden2)
+void objCondition(tCType tc,int iden1,int iden2)
 {
+	objLoad(t0, iden1);
+	objLoad(t1, iden2);
+	emitObj(tc, condR, t0, t1);
 }
 void objRead(int iden)
 {
 	if (symTable[iden]._type == INTS)
 	{
-		emitObj(TLI, v0, 5);
+		emitObj(TLI, v0, MIPS_READ_INT);
 	}
 	else if (symTable[iden]._type == CHARS)
 	{
-		emitObj(TLI, v0, 11);
+		emitObj(TLI, v0, MIPS_READ_CHAR);
 	}
-
 }
-void objWrite(printFormat pf,int iden)
+void objWrite(int  pf,int iden)
 {
-
+	if (pf == FSTRING)
+	{
+		emitObj(TLI, v0, MIPS_PRINT_STR);
+		objLoad(a0, iden);
+	}
+	else if (pf == FEXPRESSION)
+	{
+		if (symTable[iden]._type == CHARS)
+		{
+			emitObj(TLI, v0, MIPS_PRINT_CHAR);
+		}
+		else if(symTable[iden]._type ==INTS)
+		{
+			emitObj(TLI, v0, MIPS_PRINT_INT);
+		}
+		emitObj(TLA, a0, iden, LAIDEN);
+	}
+	emitObj(TSYSCALL);
+	emitObj(TLI, v0, MIPS_PRINT_CHAR);
+	emitObj(TLI, a0, '\n');
+	emitObj(TSYSCALL);
 }
 void objFuncTail()
 {

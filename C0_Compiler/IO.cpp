@@ -176,8 +176,9 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		sprintf(str, "%s == %s", OP(arg1), OP(arg2));
 		break;
 	case QNEQU:
-		
 		sprintf(str, "%s != %s", OP(arg1), OP(arg2));
+		break;
+	default:
 		break;
 	}
 	strcat(str, "\n");

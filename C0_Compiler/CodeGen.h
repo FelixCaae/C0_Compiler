@@ -18,10 +18,13 @@ enum returnFormat
 {
 	RNOVAL, RVAL
 };
+const unsigned int LAIDEN = 0;
+const unsigned int LASTR = 1;
 enum tCType {
 	TDATA,TASCIIZ,TLA,TADD,TADDI,TSUB,TSUBI,TDIV,TDIVI,TMULT,TMULTI,
 	TLW,TLB,TLI,TSW,TSB,
 	TSLL,TSLR,
+	TSLT,TSLE,TSEQ,TSGT,TSGE,TSNE,
 	TJUMP,TJAL,TJR,TBNE,TBEQ,
 	TSYSCALL
 };
@@ -31,7 +34,7 @@ enum reg
 };
 enum lableType
 {
-	LFUNC,LIF,LWHILE,LSWITCH,LCASE,L
+	LFUNC,LFUNCEND,LIF,LWHILE,LSWITCH,LCASE,L
 };
 extern char labelTable[maxLabelNum][maxLabelStrLen];
 extern int labelLine[maxLabelNum];
@@ -47,7 +50,7 @@ void objBody();
 void objFuncTail();
 void objSave(int val, int adr, int iden, int offset = _0);
 void objLoad(int reg, int iden, int offset = _0);
-void objCondition(qCType qc,int iden1,int iden2);
+void objCondition(tCType tc,int iden1,int iden2);
 void objArthOp(tCType tc, int iden1, int iden2, int iden3);
 void objRead(int iden);
 void objWrite(int pf,int iden);
