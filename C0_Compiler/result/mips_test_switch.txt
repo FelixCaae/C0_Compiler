@@ -1,155 +1,155 @@
 calculate:
-subi $sp,$sp,73
-sw $s0,37($sp)
-sw $s1,41($sp)
-sw $s2,45($sp)
-sw $s3,49($sp)
-sw $s4,53($sp)
-sw $s5,57($sp)
-sw $s6,61($sp)
-sw $s7,65($sp)
-sw $ra,32($sp)
-li $t0,0
-addi $t1,$sp,9
-sw $t0,0($t1)
-li $v0,5
-li $v0,5
-li $v0,12
-li $t0,43
-addi $t1,$sp,8
-lb $t1,0($t1)
-seq $v1,$t0,$t1
-beq $0,$v1,switch_0
-addi $t1,$sp,0
-lw $t1,0($t1)
-addi $t2,$sp,4
-lw $t2,0($t2)
-add $t0,$t1,$t2
-addi $t1,$sp,13
-sw $t0,0($t1)
-la $a0,mp2
-li $v0,1
-lw $a0,0($a0)
-syscall
-li $v0,11
-li $a0,10
-syscall
-case_1_0:
-li $t0,45
-addi $t1,$sp,8
-lb $t1,0($t1)
-seq $v1,$t0,$t1
-beq $0,$v1,switch_0
-addi $t1,$sp,0
-lw $t1,0($t1)
-addi $t2,$sp,4
-lw $t2,0($t2)
-sub $t0,$t1,$t2
-addi $t1,$sp,17
-sw $t0,0($t1)
-la $a0,mp4
-li $v0,1
-lw $a0,0($a0)
-syscall
-li $v0,11
-li $a0,10
-syscall
+	subi $sp,$sp,73
+	sw $s0,37($sp)
+	sw $s1,41($sp)
+	sw $s2,45($sp)
+	sw $s3,49($sp)
+	sw $s4,53($sp)
+	sw $s5,57($sp)
+	sw $s6,61($sp)
+	sw $s7,65($sp)
+	sw $ra,32($sp)
+	li $t0,0
+	addi $t1,$sp,9
+	sw $t0,0($t1)
+	li $v0,5
+	li $v0,5
+	li $v0,12
+	li $t0,43
+	addi $t1,$sp,8
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,switch_1
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	addi $t2,$sp,4
+	lw $t2,0($t2)
+	add $t0,$t1,$t2
+	addi $t1,$sp,13
+	sw $t0,0($t1)
+	la $a0,mp2
+	li $v0,1
+	lw $a0,0($a0)
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 case_1_1:
-li $t0,42
-addi $t1,$sp,8
-lb $t1,0($t1)
-seq $v1,$t0,$t1
-beq $0,$v1,switch_0
-addi $t1,$sp,0
-lw $t1,0($t1)
-addi $t2,$sp,4
-lw $t2,0($t2)
-mul $t0,$t1,$t2
-addi $t1,$sp,21
-sw $t0,0($t1)
-la $a0,mp6
-li $v0,1
-lw $a0,0($a0)
-syscall
-li $v0,11
-li $a0,10
-syscall
+	li $t0,45
+	addi $t1,$sp,8
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,switch_1
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	addi $t2,$sp,4
+	lw $t2,0($t2)
+	sub $t0,$t1,$t2
+	addi $t1,$sp,17
+	sw $t0,0($t1)
+	la $a0,mp4
+	li $v0,1
+	lw $a0,0($a0)
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 case_1_2:
-li $t0,47
-addi $t1,$sp,8
-lb $t1,0($t1)
-seq $v1,$t0,$t1
-beq $0,$v1,switch_0
-addi $t1,$sp,0
-lw $t1,0($t1)
-addi $t2,$sp,4
-lw $t2,0($t2)
-div $t0,$t1,$t2
-addi $t1,$sp,25
-sw $t0,0($t1)
-la $a0,mp8
-li $v0,1
-lw $a0,0($a0)
-syscall
-li $v0,11
-li $a0,10
-syscall
+	li $t0,42
+	addi $t1,$sp,8
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,switch_1
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	addi $t2,$sp,4
+	lw $t2,0($t2)
+	mul $t0,$t1,$t2
+	addi $t1,$sp,21
+	sw $t0,0($t1)
+	la $a0,mp6
+	li $v0,1
+	lw $a0,0($a0)
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 case_1_3:
-li $t0,101
-addi $t1,$sp,8
-lb $t1,0($t1)
-seq $v1,$t0,$t1
-beq $0,$v1,switch_0
-do_1:
-addi $t1,$sp,0
-lw $t1,0($t1)
-li $t2,10
-mul $t0,$t1,$t2
-addi $t1,$sp,29
-sw $t0,0($t1)
-addi $t0,$sp,29
-lw $t0,0($t0)
-addi $t1,$sp,0
-sw $t0,0($t1)
-addi $t1,$sp,4
-lw $t1,0($t1)
-li $t2,1
-sub $t0,$t1,$t2
-addi $t1,$sp,33
-sw $t0,0($t1)
-addi $t0,$sp,33
-lw $t0,0($t0)
-addi $t1,$sp,4
-sw $t0,0($t1)
-addi $t0,$sp,4
-lw $t0,0($t0)
-li $t1,0
-sne $v1,$t0,$t1
-bne $0,$v1,do_1
-switch_0:
+	li $t0,47
+	addi $t1,$sp,8
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,switch_1
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	addi $t2,$sp,4
+	lw $t2,0($t2)
+	div $t0,$t1,$t2
+	addi $t1,$sp,25
+	sw $t0,0($t1)
+	la $a0,mp8
+	li $v0,1
+	lw $a0,0($a0)
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 case_1_4:
+	li $t0,101
+	addi $t1,$sp,8
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,switch_1
+do_2:
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	li $t2,10
+	mul $t0,$t1,$t2
+	addi $t1,$sp,29
+	sw $t0,0($t1)
+	addi $t0,$sp,29
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	li $t2,1
+	sub $t0,$t1,$t2
+	addi $t1,$sp,33
+	sw $t0,0($t1)
+	addi $t0,$sp,33
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	li $t1,0
+	sne $v1,$t0,$t1
+	bne $0,$v1,do_2
+switch_1:
+case_1_5:
 calculate_end:
-lw $s0,37($sp)
-lw $s1,41($sp)
-lw $s2,45($sp)
-lw $s3,49($sp)
-lw $s4,53($sp)
-lw $s5,57($sp)
-lw $s6,61($sp)
-lw $s7,65($sp)
-lw $ra,69($sp)
-addi $sp,$sp,73
-jr 
+	lw $s0,37($sp)
+	lw $s1,41($sp)
+	lw $s2,45($sp)
+	lw $s3,49($sp)
+	lw $s4,53($sp)
+	lw $s5,57($sp)
+	lw $s6,61($sp)
+	lw $s7,65($sp)
+	lw $ra,69($sp)
+	addi $sp,$sp,73
+	jr 
 main:
-subi $sp,$sp,36
-sw $s0,0($sp)
-sw $s1,4($sp)
-sw $s2,8($sp)
-sw $s3,12($sp)
-sw $s4,16($sp)
-sw $s5,20($sp)
-sw $s6,24($sp)
-sw $s7,28($sp)
-sw $ra,32($sp)
+	subi $sp,$sp,36
+	sw $s0,0($sp)
+	sw $s1,4($sp)
+	sw $s2,8($sp)
+	sw $s3,12($sp)
+	sw $s4,16($sp)
+	sw $s5,20($sp)
+	sw $s6,24($sp)
+	sw $s7,28($sp)
+	sw $ra,32($sp)
 main_end:
-.data
+	.data

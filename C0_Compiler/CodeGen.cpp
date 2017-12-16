@@ -475,6 +475,8 @@ void objRead(int iden)
 	{
 		emitObj(TLI, v0, MIPS_READ_CHAR);
 	}
+	emitObj(TSYSCALL);
+	objSave(v0, t0, iden);
 }
 void objWrite(int  pf,int iden)
 {
