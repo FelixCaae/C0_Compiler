@@ -354,16 +354,14 @@ bool parseFuncDecl()
 	int ref = insertFunc(it, paramNum, paramType);
 	modifyIdent(func, it, OFUNC, ref);
 	shouldBe(LCURB);
-	enterFunc(ref);
+	enterFunc(func);
 	parseParamList(paramType, &paramNum);
 	if (mainFound && paramNum)
 	{
 		error(ERR_MAIN_PARAM);
 	}
-	objFuncHead();
 	parseCompoundStat();
-	objBody();
-	objFuncTail();
+	objectify();
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL,false);

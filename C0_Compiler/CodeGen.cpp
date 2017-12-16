@@ -159,18 +159,21 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		break;
 	}
 }
-const char* genStrName(int str)
+void objectify()
 {
-	const char* name= ("str_" + to_string(str)).c_str();
-}
-void resetObj()
-{
-
+	int lhead=genLabel(LFUNC,symTable[funcRef]._name);
+	int ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
+	outputLabel(lhead,true);
+	objFuncHead();
+	objBody(ltail);
+	outputLabel(ltail,true);
+	objFuncTail();
 }
 void objFuncHead()
 {
 	int offset = 4;
-	funcTableEntry entry = funcTable[funcRef];
+
+	funcTableEntry entry = funcTable[symTable[funcRef]._ref];
 	int paraNum = entry._paraNum;
 	IdenType *para = entry._param;
 	if (paraNum > 4)
@@ -203,9 +206,9 @@ void objFuncHead()
 		}
 	}
 }
-void objBody()
+void objBody(int ltail)
 {
-	int lc = 0;
+	int lc = 0,lbc=0;
 	qCType qt;
 	int arg1, arg2, arg3;
 	while (lc != line)
@@ -214,6 +217,7 @@ void objBody()
 		arg1 = qCode[lc * 4 + 1];
 		arg2 = qCode[lc * 4 + 2];
 		arg3 = qCode[lc * 4 + 3];
+		objLabel(lc);
 		switch (qt)
 		{
 		case QARL:
@@ -258,7 +262,11 @@ void objBody()
 			objRead(arg1);
 			break;
 		case QRET:
-			emitObj(T);
+			if (arg1 != NotExist)
+			{
+				objLoad(v0, arg1);
+			}
+			emitObj(TJUMP,ltail);
 			break;
 		case QRETX:
 			objSave(v0, t0, arg1);
@@ -285,6 +293,22 @@ void objBody()
 			objCondition(TSNE, arg1, arg2);
 			break;
 		}
+	}
+	clearQCode();
+}
+void objLabel(int lc)
+{
+	for (int i = 0; i < labelCounter; i++)
+	{
+		if (labelLine[i] == lc)
+		{
+			outputLabel(i,true);
+		}
+		else if (labelLine[i] < lc)
+		{
+			break;
+		}
+
 	}
 }
 void objLoad(int reg, int iden,int offset=_0)
@@ -415,7 +439,7 @@ void objWrite(int  pf,int iden)
 void objFuncTail()
 {
 	int offset = 4;
-	funcTableEntry entry = funcTable[funcRef];
+	funcTableEntry entry = funcTable[symTable[funcRef]._ref];
 	for (int i = 0; i < 8; i++)
 	{
 		emitObj(TLW, s0 + i, sp, i * offset+entry._size);

@@ -68,12 +68,18 @@ void outputSyntax(syntaxClass sc,bool isHead)
 			output(buffer, outSyntax);
 		}
 }
-void outputLabel(int l)
+void outputLabel(int l,bool isObj)
 {
 	char str[100];
 	strcpy(str, LABEL(l));
 	strcat(str, ":\n");
-	output(str,outQCode,true);
+	if (!isObj) {
+		output(str, outQCode, false);
+	}
+	else
+	{
+		output(str, outTCode, true);
+	}
 }
 void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 {
@@ -182,7 +188,7 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		break;
 	}
 	strcat(str, "\n");
-	output(buffer,outQCode,true);
+	output(buffer,outQCode,false);
 }
 void outputOCode()
 {
