@@ -36,36 +36,33 @@ if_4:
 	var char c4
 	var char c5
 	a1 = 1 
-	$tmp2 = 0 - 1
 	a2 = 1 
-	$tmp7 = a2 * a2
-	$tmp8 = a2 / $tmp7
-	$tmp9 = $tmp8 / a1
-	$tmp10 = a1 * $tmp9
-	$tmp11 = $tmp10 * a2
-	a3 = $tmp11 
-	$tmp12 = a2 + a3
-	$tmp13 = a2 + a3
-	$tmp14 = $tmp12 * $tmp13
-	$tmp16 = a3 * 6
-	$tmp17 = $tmp14 + $tmp16
+	$tmp17 = a2 * a2
+	$tmp18 = a2 / $tmp17
+	$tmp19 = $tmp18 / a1
+	$tmp20 = a1 * $tmp19
+	$tmp21 = $tmp20 * a2
+	a3 = $tmp21 
+	$tmp22 = a2 + a3
+	$tmp23 = a2 + a3
+	$tmp24 = $tmp22 * $tmp23
+	$tmp26 = a3 * 6
+	$tmp27 = $tmp24 + $tmp26
 	call get10
-	$tmp18 = RET
-	$tmp19 = $tmp17 / $tmp18
-	a4 = $tmp19 
-	$tmp29 = 2 - $tmp28
-	$tmp30 = 7 + $tmp29
-	$tmp31 = a4 * $tmp30
-	$tmp33 = $tmp31 + 2
+	$tmp28 = RET
+	$tmp29 = $tmp27 / $tmp28
+	a4 = $tmp29 
+	$tmp41 = a4 * 9
+	$tmp43 = $tmp41 + 2
 	call get10
-	$tmp34 = RET
-	$tmp35 = $tmp33 - $tmp34
-	a5 = $tmp35 
-	$tmp37 = a1 + a2
-	$tmp38 = $tmp37 + a3
-	$tmp39 = $tmp38 + a4
-	$tmp40 = $tmp39 + a5
-	ia[0] = $tmp40
+	$tmp44 = RET
+	$tmp45 = $tmp43 - $tmp44
+	a5 = $tmp45 
+	$tmp47 = a1 + a2
+	$tmp48 = $tmp47 + a3
+	$tmp49 = $tmp48 + a4
+	$tmp50 = $tmp49 + a5
+	ia[0] = $tmp50
 	print "a1"
 	print a1
 	print "a2"
@@ -77,45 +74,46 @@ if_4:
 	print "a5"
 	print a5
 	print "ia[0] is :"
-	$tmp42 = ia[0]
-	print $tmp42
-	$tmp45 = ia[0]
-	$tmp47 = $tmp45 / 5
-	ia[1] = $tmp47
+	$tmp52 = ia[0]
+	print $tmp52
+	$tmp55 = ia[0]
+	$tmp57 = $tmp55 / 5
+	ia[1] = $tmp57
 	print "result is 1:"
-	$tmp49 = ia[1]
-	print $tmp49
+	$tmp59 = ia[1]
+	print $tmp59
 	c1 = 97 
 	c2 = 95 
 	c3 = 43 
 	c4 = 90 
 	c5 = 101 
-	c1 = 0 - c1
-	$tmp56 = c1 + c1
-	$tmp57 = c1 + $tmp56
-	a1 = $tmp57 
-	$tmp58 = a1 * a1
-	$tmp59 = c1 / $tmp58
-	$tmp60 = $tmp59 / a1
-	$tmp61 = a1 * $tmp60
-	$tmp62 = $tmp61 * a1
-	a2 = $tmp62 
-	$tmp64 = c1 * 2
-	$tmp66 = $tmp64 / 2
-	$tmp68 = $tmp66 + 1
-	$tmp70 = $tmp68 - 1
-	$tmp71 = $tmp70 + c2
-	$tmp72 = $tmp71 - c2
-	a3 = $tmp72 
-	$tmp74 = c4 - 7
-	a4 = $tmp74 
-	$tmp75 = c2 + c5
+	$tmp66 = 0 - c1
+	$tmp66 = $tmp66 + c1
+	$tmp67 = c1 + $tmp66
+	a1 = $tmp67 
+	$tmp68 = c1 / a1
+	$tmp69 = $tmp68 * a1
+	$tmp70 = $tmp69 / c1
+	$tmp71 = a1 * $tmp70
+	$tmp72 = a1 / c1
+	$tmp73 = $tmp71 * $tmp72
+	a2 = $tmp73 
+	$tmp75 = c1 * 2
+	$tmp77 = $tmp75 / 2
+	$tmp79 = $tmp77 + 1
+	$tmp81 = $tmp79 - 1
+	$tmp82 = $tmp81 + c2
+	$tmp83 = $tmp82 - c2
+	a3 = $tmp83 
+	$tmp85 = c4 + 7
+	a4 = $tmp85 
+	$tmp86 = c2 + c5
 	call get10
-	$tmp76 = RET
-	$tmp78 = $tmp76 * 10
-	$tmp79 = $tmp75 - $tmp78
-	$tmp81 = $tmp79 - 6
-	a5 = $tmp81 
+	$tmp87 = RET
+	$tmp89 = $tmp87 * 10
+	$tmp90 = $tmp86 - $tmp89
+	$tmp92 = $tmp90 + 1
+	a5 = $tmp92 
 	print "a1"
 	print a1
 	print "a2"
@@ -126,23 +124,31 @@ if_4:
 	print a4
 	print "a5"
 	print a5
-	$tmp83 = a1 + a2
-	$tmp84 = $tmp83 + a3
-	$tmp85 = $tmp84 + a4
-	$tmp86 = $tmp85 + a5
-	ia[0] = $tmp86
-	$tmp89 = ia[0]
-	$tmp91 = $tmp89 / 5
-	ia[1] = $tmp91
-	ca[0] = $tmp93
-	$tmp95 = ia[1]
-	$tmp95 == 97
+	$tmp94 = a1 + a2
+	$tmp95 = $tmp94 + a3
+	$tmp96 = $tmp95 + a4
+	$tmp97 = $tmp96 + a5
+	ia[0] = $tmp97
+	ca[0] = $tmp99
+	a1 == 97
 	BNZ if_5
-	ca[0] = $tmp98
+	a2 == 97
+	BNZ if_6
+	a3 == 97
+	BNZ if_7
+	a4 == 97
+	BNZ if_8
+	a5 == 97
+	BNZ if_9
+	ca[0] = $tmp106
+if_9:
+if_8:
+if_7:
+if_6:
 if_5:
 	print "result is a"
-	$tmp100 = ca[1]
-	print $tmp100
+	$tmp108 = ca[0]
+	print $tmp108
 	int test_chicken_rabbit()
 	const int chicken_feet = 2
 	const int rabbit_feet = 4
@@ -154,23 +160,33 @@ if_5:
 	read head
 	read foot
 	head < 0
-	BNZ if_6
+	BNZ if_10
 	print "head num can`t be less than zero"
-if_6:
+if_10:
 	foot < 0
-	BNZ if_7
+	BNZ if_11
 	print "foot num can`t be less than zero"
-if_7:
-	$tmp2 = 4 * head
-	$tmp3 = $tmp2 - foot
-	$tmp5 = $tmp3 / 2
-	chicken_num = $tmp5 
-	$tmp6 = head - chicken_num
-	rabbit_num = $tmp6 
+if_11:
+	$tmp3 = head * 4
+	foot <= $tmp3
+	BNZ if_12
+	$tmp5 = head * 2
+	foot >= $tmp5
+	BNZ if_13
+	$tmp6 = 4 * head
+	$tmp7 = $tmp6 - foot
+	$tmp9 = $tmp7 / 2
+	chicken_num = $tmp9 
+	$tmp10 = head - chicken_num
+	rabbit_num = $tmp10 
 	print "rabbit num"
 	print rabbit_num
 	print "chicken_num"
 	print chicken_num
+	ret
+if_13:
+if_12:
+	print "input is not solvable"
 	void main()
 	call test_hw
 	call test_condition

@@ -476,12 +476,19 @@ void parseExpression(int *r)
 	parseTerm(&first);
 	if (neg == 1)
 	{
-		int zero = genTemp(INTS,true,0);
-		emit(QMINUS,first,zero,first);
+		int zero = genTemp(INTS, true, 0);
+		tmpFlag = false;
+		store = genTemp(INTS);
 		if (ISCONST(first))
 		{
-			REF(first) = -REF(first);
+			OBJ(store) = OCONST;
+			REF(store) = -REF(first);
 		}
+		else
+		{
+			emit(QMINUS, store, zero, first);
+		}
+		first = store;
 	}
 	while ((neg = couldBe2(MINUS, PLUS)) != 0) {
 		parseTerm(&second);
@@ -489,10 +496,10 @@ void parseExpression(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		val1 = REF(first);
-		val2 = REF(second);
 		if (ISCONST(first)&&ISCONST(second))
 		{
+			val1 = REF(first);
+			val2 = REF(second);
 			OBJ(store) = OCONST;
 			if (neg == 1)
 			{
@@ -528,16 +535,17 @@ void parseTerm(int *r)
 	int val1, val2, vresult;
 	bool tmpFlag = true;
 	parseFactor(&first);
-	val1 = symTable[first]._ref;
 	while ((op = couldBe2(STAR, DIV)) != 0) {
 		parseFactor(&second);
-		val2 = symTable[second]._ref;
 		if (tmpFlag)
 		{
 			store = genTemp(INTS, false);
 		}
-		if (symTable[first]._obj == OCONST && symTable[second]._obj == OCONST)
+		if (ISCONST(first) && ISCONST(second))
 		{
+			OBJ(store) = OCONST;
+			val1 = REF(first);
+			val2 = REF(second);
 			if (op == 1)
 			{
 				vresult = val1*val2;
@@ -552,7 +560,7 @@ void parseTerm(int *r)
 					error(ERR_DIV_ZERO);
 				}
 			}
-			symTable[first]._ref = vresult;
+			REF(store) = vresult;
 		}
 		else
 		{
@@ -566,7 +574,6 @@ void parseTerm(int *r)
 			}
 		}
 		first = store;
-		val1 = symTable[first]._ref;
 	} 
 	*r = first;
 	outputSyntax(TERM,false);
@@ -947,11 +954,12 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "../x64/Debug/test/test_expression.txt";
+	buffer[1] = "../x64/Debug/test/test_equalsplit.txt";
 	if (syntaxAnalyze(2, (char**)buffer))
 	{
 		printf("Success!");
 	}
 	getchar();
+	return 0;
 	//parse();
 }

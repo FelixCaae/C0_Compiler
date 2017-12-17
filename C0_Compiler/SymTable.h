@@ -6,6 +6,7 @@
 #define ISGLOBAL(arg) symTable[arg]._adr==Global
 #define ADR(arg) symTable[arg]._adr
 #define OBJ(arg) symTable[arg]._obj
+#define TYP(arg) symTable[arg]._type
 #define ISVAR(arg) OBJ(arg)==OVAR
 #define ISARRAY(arg) OBJ(arg)==OARRAY
 #define ISCONST(arg) OBJ(arg)==OCONST

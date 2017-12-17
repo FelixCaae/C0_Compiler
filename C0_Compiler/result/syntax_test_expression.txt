@@ -328,7 +328,39 @@
             <expression>
               <term>
                 <factor>
-                <unsignedInt> 1 <\unsignedInt>
+                <unsignedInt> 18 <\unsignedInt>
+                <\factor>
+              <seperator> * <\seperator>
+                <factor>
+                <unsignedInt> 32 <\unsignedInt>
+                <\factor>
+              <\term>
+            <seperator> - <\seperator>
+              <term>
+                <factor>
+                <unsignedInt> 17 <\unsignedInt>
+                <\factor>
+              <seperator> * <\seperator>
+                <factor>
+                <seperator> ( <\seperator>
+                  <expression>
+                    <term>
+                      <factor>
+                      <unsignedInt> 55 <\unsignedInt>
+                      <\factor>
+                    <seperator> / <\seperator>
+                      <factor>
+                      <unsignedInt> 5 <\unsignedInt>
+                      <\factor>
+                    <\term>
+                  <\expression>
+                <seperator> ) <\seperator>
+                <\factor>
+              <\term>
+            <seperator> - <\seperator>
+              <term>
+                <factor>
+                <unsignedInt> 388 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -947,23 +979,15 @@
                       <\factor>
                     <seperator> / <\seperator>
                       <factor>
-                      <seperator> ( <\seperator>
-                        <expression>
-                          <term>
-                            <factor>
-                            <identifier> a1 <\identifier>
-                            <\factor>
-                          <seperator> * <\seperator>
-                            <factor>
-                            <identifier> a1 <\identifier>
-                            <\factor>
-                          <\term>
-                        <\expression>
-                      <seperator> ) <\seperator>
+                      <identifier> a1 <\identifier>
+                      <\factor>
+                    <seperator> * <\seperator>
+                      <factor>
+                      <identifier> a1 <\identifier>
                       <\factor>
                     <seperator> / <\seperator>
                       <factor>
-                      <identifier> a1 <\identifier>
+                      <identifier> c1 <\identifier>
                       <\factor>
                     <\term>
                   <\expression>
@@ -971,7 +995,19 @@
                 <\factor>
               <seperator> * <\seperator>
                 <factor>
-                <identifier> a1 <\identifier>
+                <seperator> ( <\seperator>
+                  <expression>
+                    <term>
+                      <factor>
+                      <identifier> a1 <\identifier>
+                      <\factor>
+                    <seperator> / <\seperator>
+                      <factor>
+                      <identifier> c1 <\identifier>
+                      <\factor>
+                    <\term>
+                  <\expression>
+                <seperator> ) <\seperator>
                 <\factor>
               <\term>
             <\expression>
@@ -1034,7 +1070,7 @@
                 <identifier> c4 <\identifier>
                 <\factor>
               <\term>
-            <seperator> - <\seperator>
+            <seperator> + <\seperator>
               <term>
                 <factor>
                 <unsignedInt> 7 <\unsignedInt>
@@ -1076,10 +1112,10 @@
                 <unsignedInt> 10 <\unsignedInt>
                 <\factor>
               <\term>
-            <seperator> - <\seperator>
+            <seperator> + <\seperator>
               <term>
                 <factor>
-                <unsignedInt> 6 <\unsignedInt>
+                <unsignedInt> 1 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -1219,42 +1255,6 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> ia <\identifier>
-          <assignStat>
-          <seperator> [ <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <unsignedInt> 1 <\unsignedInt>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ] <\seperator>
-          <seperator> = <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> ia <\identifier>
-                <seperator> [ <\seperator>
-                  <expression>
-                    <term>
-                      <factor>
-                      <unsignedInt> 0 <\unsignedInt>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <seperator> ] <\seperator>
-                <\factor>
-              <seperator> / <\seperator>
-                <factor>
-                <unsignedInt> 5 <\unsignedInt>
-                <\factor>
-              <\term>
-            <\expression>
-          <\assignStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
         <identifier> ca <\identifier>
           <assignStat>
           <seperator> [ <\seperator>
@@ -1285,16 +1285,7 @@
               <expression>
                 <term>
                   <factor>
-                  <identifier> ia <\identifier>
-                  <seperator> [ <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <unsignedInt> 1 <\unsignedInt>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <seperator> ] <\seperator>
+                  <identifier> a1 <\identifier>
                   <\factor>
                 <\term>
               <\expression>
@@ -1314,27 +1305,155 @@
             <seperator> { <\seperator>
               <statements>
                 <statement>
-                <identifier> ca <\identifier>
-                  <assignStat>
-                  <seperator> [ <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <unsignedInt> 0 <\unsignedInt>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <seperator> ] <\seperator>
-                  <seperator> = <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <char> 'a' <\char>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <\assignStat>
-                <seperator> ; <\seperator>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> a2 <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> == <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <char> 'a' <\char>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                          <constant>
+                          <keyword> if <\keyword>
+                          <seperator> ( <\seperator>
+                            <condition>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <identifier> a3 <\identifier>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                              <identifier>
+                              <seperator> == <\seperator>
+                              <\identifier>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <char> 'a' <\char>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                            <\condition>
+                          <seperator> ) <\seperator>
+                            <statement>
+                            <seperator> { <\seperator>
+                              <statements>
+                                <statement>
+                                  <constant>
+                                  <keyword> if <\keyword>
+                                  <seperator> ( <\seperator>
+                                    <condition>
+                                      <expression>
+                                        <term>
+                                          <factor>
+                                          <identifier> a4 <\identifier>
+                                          <\factor>
+                                        <\term>
+                                      <\expression>
+                                      <identifier>
+                                      <seperator> == <\seperator>
+                                      <\identifier>
+                                      <expression>
+                                        <term>
+                                          <factor>
+                                          <char> 'a' <\char>
+                                          <\factor>
+                                        <\term>
+                                      <\expression>
+                                    <\condition>
+                                  <seperator> ) <\seperator>
+                                    <statement>
+                                    <seperator> { <\seperator>
+                                      <statements>
+                                        <statement>
+                                          <constant>
+                                          <keyword> if <\keyword>
+                                          <seperator> ( <\seperator>
+                                            <condition>
+                                              <expression>
+                                                <term>
+                                                  <factor>
+                                                  <identifier> a5 <\identifier>
+                                                  <\factor>
+                                                <\term>
+                                              <\expression>
+                                              <identifier>
+                                              <seperator> == <\seperator>
+                                              <\identifier>
+                                              <expression>
+                                                <term>
+                                                  <factor>
+                                                  <char> 'a' <\char>
+                                                  <\factor>
+                                                <\term>
+                                              <\expression>
+                                            <\condition>
+                                          <seperator> ) <\seperator>
+                                            <statement>
+                                            <seperator> { <\seperator>
+                                              <statements>
+                                                <statement>
+                                                <identifier> ca <\identifier>
+                                                  <assignStat>
+                                                  <seperator> [ <\seperator>
+                                                    <expression>
+                                                      <term>
+                                                        <factor>
+                                                        <unsignedInt> 0 <\unsignedInt>
+                                                        <\factor>
+                                                      <\term>
+                                                    <\expression>
+                                                  <seperator> ] <\seperator>
+                                                  <seperator> = <\seperator>
+                                                    <expression>
+                                                      <term>
+                                                        <factor>
+                                                        <char> 'a' <\char>
+                                                        <\factor>
+                                                      <\term>
+                                                    <\expression>
+                                                  <\assignStat>
+                                                <seperator> ; <\seperator>
+                                                <\statement>
+                                              <\statements>
+                                            <seperator> } <\seperator>
+                                            <\statement>
+                                          <\constant>
+                                        <\statement>
+                                      <\statements>
+                                    <seperator> } <\seperator>
+                                    <\statement>
+                                  <\constant>
+                                <\statement>
+                              <\statements>
+                            <seperator> } <\seperator>
+                            <\statement>
+                          <\constant>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
                 <\statement>
               <\statements>
             <seperator> } <\seperator>
@@ -1355,7 +1474,7 @@
                   <expression>
                     <term>
                       <factor>
-                      <unsignedInt> 1 <\unsignedInt>
+                      <unsignedInt> 0 <\unsignedInt>
                       <\factor>
                     <\term>
                   <\expression>
@@ -1520,105 +1639,192 @@
           <\constant>
         <\statement>
         <statement>
-        <identifier> chicken_num <\identifier>
-          <assignStat>
-          <seperator> = <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <seperator> ( <\seperator>
-                  <expression>
-                    <term>
-                      <factor>
-                      <identifier> rabbit_feet <\identifier>
-                      <\factor>
-                    <seperator> * <\seperator>
-                      <factor>
-                      <identifier> head <\identifier>
-                      <\factor>
-                    <\term>
-                  <seperator> - <\seperator>
-                    <term>
-                      <factor>
-                      <identifier> foot <\identifier>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <seperator> ) <\seperator>
-                <\factor>
-              <seperator> / <\seperator>
-                <factor>
-                <seperator> ( <\seperator>
-                  <expression>
-                    <term>
-                      <factor>
-                      <identifier> rabbit_feet <\identifier>
-                      <\factor>
-                    <\term>
-                  <seperator> - <\seperator>
-                    <term>
-                      <factor>
-                      <identifier> chicken_feet <\identifier>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <seperator> ) <\seperator>
-                <\factor>
-              <\term>
-            <\expression>
-          <\assignStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-        <identifier> rabbit_num <\identifier>
-          <assignStat>
-          <seperator> = <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> head <\identifier>
-                <\factor>
-              <\term>
-            <seperator> - <\seperator>
-              <term>
-                <factor>
-                <identifier> chicken_num <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <\assignStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
+          <constant>
+          <keyword> if <\keyword>
           <seperator> ( <\seperator>
-          <string> "rabbit num" <\string>
-          <seperator> , <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> rabbit_num <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> foot <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> <= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> head <\identifier>
+                  <\factor>
+                <seperator> * <\seperator>
+                  <factor>
+                  <unsignedInt> 4 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
           <seperator> ) <\seperator>
-          <\writeStat>
-        <seperator> ; <\seperator>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> foot <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> >= <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> head <\identifier>
+                          <\factor>
+                        <seperator> * <\seperator>
+                          <factor>
+                          <unsignedInt> 2 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                        <identifier> chicken_num <\identifier>
+                          <assignStat>
+                          <seperator> = <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <seperator> ( <\seperator>
+                                  <expression>
+                                    <term>
+                                      <factor>
+                                      <identifier> rabbit_feet <\identifier>
+                                      <\factor>
+                                    <seperator> * <\seperator>
+                                      <factor>
+                                      <identifier> head <\identifier>
+                                      <\factor>
+                                    <\term>
+                                  <seperator> - <\seperator>
+                                    <term>
+                                      <factor>
+                                      <identifier> foot <\identifier>
+                                      <\factor>
+                                    <\term>
+                                  <\expression>
+                                <seperator> ) <\seperator>
+                                <\factor>
+                              <seperator> / <\seperator>
+                                <factor>
+                                <seperator> ( <\seperator>
+                                  <expression>
+                                    <term>
+                                      <factor>
+                                      <identifier> rabbit_feet <\identifier>
+                                      <\factor>
+                                    <\term>
+                                  <seperator> - <\seperator>
+                                    <term>
+                                      <factor>
+                                      <identifier> chicken_feet <\identifier>
+                                      <\factor>
+                                    <\term>
+                                  <\expression>
+                                <seperator> ) <\seperator>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <\assignStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                        <statement>
+                        <identifier> rabbit_num <\identifier>
+                          <assignStat>
+                          <seperator> = <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> head <\identifier>
+                                <\factor>
+                              <\term>
+                            <seperator> - <\seperator>
+                              <term>
+                                <factor>
+                                <identifier> chicken_num <\identifier>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <\assignStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                        <statement>
+                          <writeStat>
+                          <keyword> printf <\keyword>
+                          <seperator> ( <\seperator>
+                          <string> "rabbit num" <\string>
+                          <seperator> , <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> rabbit_num <\identifier>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <seperator> ) <\seperator>
+                          <\writeStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                        <statement>
+                          <writeStat>
+                          <keyword> printf <\keyword>
+                          <seperator> ( <\seperator>
+                          <string> "chicken_num" <\string>
+                          <seperator> , <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> chicken_num <\identifier>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <seperator> ) <\seperator>
+                          <\writeStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                        <statement>
+                          <returnStat>
+                          <keyword> return <\keyword>
+                          <\returnStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <\constant>
         <\statement>
         <statement>
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "chicken_num" <\string>
-          <seperator> , <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> chicken_num <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
+          <string> "input is not solvable" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>

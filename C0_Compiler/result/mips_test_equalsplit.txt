@@ -1,0 +1,254 @@
+	j main
+mod:
+	subi $sp,$sp,60
+	sw $ra,56($sp)
+	sw $a0,0($sp)
+	sw $a1,4($sp)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,0
+	slt $v1,$t0,$t1
+	beq $0,$v1,if_1
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $v0,$sp,8
+	lw $v0,0($v0)
+	j mod_end
+if_1:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sub $t0,$t0,$t1
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	addi $a0,$sp,12
+	lw $a0,0($a0)
+	addi $a1,$sp,4
+	lw $a1,0($a1)
+	jal mod
+	addi $t0,$sp,16
+	sw $v0,0($t0)
+	addi $v0,$sp,16
+	lw $v0,0($v0)
+	j mod_end
+mod_end:
+	lw $ra,56($sp)
+	addi $sp,$sp,60
+	jr $ra
+main:
+	subi $sp,$sp,92
+	li $v0,5
+	syscall
+	la $t0,n
+	sw $v0,0($t0)
+	la $t0,n
+	lw $t0,0($t0)
+	li $t1,0
+	slt $v1,$t0,$t1
+	beq $0,$v1,if_2
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_2:
+	la $t0,n
+	lw $t0,0($t0)
+	li $t1,100
+	sgt $v1,$t0,$t1
+	beq $0,$v1,if_3
+	li $v0,4
+	la $a0,Str_1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,100
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_3:
+	la $t0,n
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	la $t0,n
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	mul $t0,$t0,$t1
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	la $t1,s
+	sw $t0,0($t1)
+	la $a0,s
+	lw $a0,0($a0)
+	li $a1,4
+	jal mod
+	addi $t0,$sp,8
+	sw $v0,0($t0)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	li $t1,0
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_4
+	li $a0,0
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j main_end
+if_4:
+	la $t0,s
+	lw $t0,0($t0)
+	li $t1,4
+	div $t0,$t0,$t1
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	addi $t0,$sp,12
+	lw $t0,0($t0)
+	la $t1,s
+	sw $t0,0($t1)
+	li $t0,1
+	li $t1,1
+	la $t2,dyn
+	sll $t1,$t1,2
+	add $t2,$t2,$t1
+	sw $t0,0($t2)
+	li $t0,1
+	la $t1,i
+	sw $t0,0($t1)
+do_5:
+	la $t0,s
+	lw $t0,0($t0)
+	la $t1,j
+	sw $t0,0($t1)
+do_6:
+	la $t0,j
+	lw $t0,0($t0)
+	la $t1,i
+	lw $t1,0($t1)
+	sub $t0,$t0,$t1
+	addi $t1,$sp,16
+	sw $t0,0($t1)
+	addi $t0,$sp,16
+	lw $t0,0($t0)
+	li $t1,0
+	sgt $v1,$t0,$t1
+	beq $0,$v1,if_7
+	la $t1,j
+	lw $t1,0($t1)
+	la $t0,dyn
+	sll $t1,$t1,2
+	add $t0,$t0,$t1
+	lw $t0,0($t0)
+	addi $t1,$sp,20
+	sw $t0,0($t1)
+	la $t0,j
+	lw $t0,0($t0)
+	la $t1,i
+	lw $t1,0($t1)
+	sub $t0,$t0,$t1
+	addi $t1,$sp,24
+	sw $t0,0($t1)
+	addi $t1,$sp,24
+	lw $t1,0($t1)
+	la $t0,dyn
+	sll $t1,$t1,2
+	add $t0,$t0,$t1
+	lw $t0,0($t0)
+	addi $t1,$sp,28
+	sw $t0,0($t1)
+	addi $t0,$sp,20
+	lw $t0,0($t0)
+	addi $t1,$sp,28
+	lw $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,32
+	sw $t0,0($t1)
+	addi $t0,$sp,32
+	lw $t0,0($t0)
+	la $t1,j
+	lw $t1,0($t1)
+	la $t2,dyn
+	sll $t1,$t1,2
+	add $t2,$t2,$t1
+	sw $t0,0($t2)
+if_7:
+	la $t0,j
+	lw $t0,0($t0)
+	li $t1,1
+	sub $t0,$t0,$t1
+	addi $t1,$sp,36
+	sw $t0,0($t1)
+	addi $t0,$sp,36
+	lw $t0,0($t0)
+	la $t1,j
+	sw $t0,0($t1)
+	la $t0,j
+	lw $t0,0($t0)
+	la $t1,i
+	lw $t1,0($t1)
+	sge $v1,$t0,$t1
+	bne $0,$v1,do_6
+	la $t0,i
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,40
+	sw $t0,0($t1)
+	addi $t0,$sp,40
+	lw $t0,0($t0)
+	la $t1,i
+	sw $t0,0($t1)
+	la $t0,i
+	lw $t0,0($t0)
+	la $t1,n
+	lw $t1,0($t1)
+	sle $v1,$t0,$t1
+	bne $0,$v1,do_5
+	la $t1,s
+	lw $t1,0($t1)
+	la $t0,dyn
+	sll $t1,$t1,2
+	add $t0,$t0,$t1
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	sw $t0,0($t1)
+	addi $t0,$sp,44
+	lw $t0,0($t0)
+	li $t1,2
+	div $t0,$t0,$t1
+	addi $t1,$sp,48
+	sw $t0,0($t1)
+	addi $a0,$sp,48
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+main_end:
+	addi $sp,$sp,92
+	.data
+	n :.word 0
+	s :.word 0
+	i :.word 0
+	j :.word 0
+	dyn :.word 0
+	Str_0 :.asciiz "n should be bigger or equal to zero"
+	Str_1 :.asciiz "n should be less or equal than"
