@@ -521,11 +521,14 @@ void objGloblData()
 {
 	int entry = linkGlobal;
 	emitObj(TDATA,NotExist);
-	while (symTable[entry]._adr==Global&&
-		(symTable[entry]._obj==OVAR||symTable[entry]._obj==OARRAY))
+	while (EXIST(entry))
 	{
-		emitObj(TDATA, entry);
-		entry++;
+		if (ISGLOBAL(entry) &&
+			(ISVAR(entry) ||ISARRAY(entry)))
+		{
+			emitObj(TDATA, entry);
+		}
+		entry = NEXT(entry);
 	}
 	entry = 0;
 	while (entry < curStr)

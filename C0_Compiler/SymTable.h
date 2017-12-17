@@ -1,6 +1,14 @@
 #pragma once
 #include "Lexeme.h"
 #include "Syntax.h"
+#define EXIST(arg) arg!=NotExist
+#define NEXT(arg) symTable[arg]._next
+#define ISGLOBAL(arg) symTable[arg]._adr==Global
+#define ADR(arg) symTable[arg]._adr
+#define OBJ(arg) symTable[arg]._obj
+#define ISVAR(arg) OBJ(arg)==OVAR
+#define ISARRAY(arg) OBJ(arg)==OARRAY
+#define ISCONST(arg) OBJ(arg)==OCONST
 const unsigned int maxStrLength = 100;
 const unsigned int symTableSize=800;
 const unsigned int constTableSize = 800;
