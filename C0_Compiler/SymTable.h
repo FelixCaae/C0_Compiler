@@ -16,6 +16,8 @@ const unsigned int symTableSize=800;
 const unsigned int constTableSize = 800;
 const unsigned int strTableSize = 400;
 const unsigned int funcTableSize = 400;
+const unsigned int maxLabelStrLen = 15;
+const unsigned int maxLabelNum = 800;
 const unsigned int maxParmNum = 20;
 const unsigned int IntSize = 4;
 const unsigned int CharSize = 1;
@@ -48,10 +50,15 @@ struct funcTableEntry
 	IdenType _param[maxParmNum];
 	int _size;
 };
+enum lableType
+{
+	LFUNC, LFUNCEND, LIF, LWHILE, LSWITCH, LCASE, L
+};
 extern symTableEntry symTable[strTableSize];
 extern funcTableEntry funcTable[funcTableSize];
 //extern conTableEntry conTable[constTableSize];
 extern strTableEntry strTable[strTableSize];
+extern char labelTable[maxLabelNum][maxLabelStrLen];
 void cleanup();
 void link(int entry);
 void unlink();
@@ -69,3 +76,4 @@ int insertString(char *str);
 int insertFunc(IdenType ret,int paranum,IdenType paramtype[]);
 //int insertReal(int val);
 int genTemp(IdenType it,bool isConst=false,int val=0);
+int genLabel(lableType lt, char*name = 0);

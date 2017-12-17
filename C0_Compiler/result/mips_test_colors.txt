@@ -1,5 +1,5 @@
 	j main
-set123:
+	set123:
 	subi $sp,$sp,40
 	sw $ra,36($sp)
 	li $t0,1
@@ -11,11 +11,11 @@ set123:
 	li $t0,3
 	la $t1,_n3
 	sw $t0,0($t1)
-set123_end:
+	set123_end:
 	lw $ra,36($sp)
 	addi $sp,$sp,40
 	jr $ra
-count123:
+	count123:
 	subi $sp,$sp,40
 	sw $ra,36($sp)
 	la $a0,_n1
@@ -39,11 +39,11 @@ count123:
 	li $v0,11
 	li $a0,10
 	syscall
-count123_end:
+	count123_end:
 	lw $ra,36($sp)
 	addi $sp,$sp,40
 	jr $ra
-main:
+	main:
 	subi $sp,$sp,52
 	li $t0,3
 	addi $t1,$sp,0
@@ -107,7 +107,7 @@ main:
 	li $v0,11
 	li $a0,10
 	syscall
-main_end:
+	main_end:
 	addi $sp,$sp,52
 	.data
 	_n1 :.word 0

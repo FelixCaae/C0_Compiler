@@ -10,76 +10,13 @@
 extern const unsigned int IntSize, CharSize;
 using namespace std;
 //unsigned int qcPos;
-unsigned int labelCounter=0;
-unsigned int labelID = 0;
-unsigned int caseID=0;
 unsigned int line=0;
 unsigned int paramCounter = 0;
-char labelTable[maxLabelNum][maxLabelStrLen];
-int labelLine[maxLabelNum];
 int qCode[maxQCodeSize * 4];
 
-int genLabel(lableType lt,char *name)
-{
-	switch (lt)
-	{
-	case LIF:
-		sprintf(labelTable[labelCounter],"if_%d",++labelID);
-		break;
-	case LWHILE:
-		sprintf(labelTable[labelCounter], "do_%d", ++labelID);
-		break;
-	case LSWITCH:
-		sprintf(labelTable[labelCounter], "switch_%d", ++labelID);
-		caseID = 0;
-		break;
-	case LCASE:
-		sprintf(labelTable[labelCounter], "case_%d_%d",labelID,++caseID);
-		break;
-	case LFUNC:
-		sprintf(labelTable[labelCounter], name);
-		break;
-	case LFUNCEND:
-		sprintf(labelTable[labelCounter], name);
-		strcat(labelTable[labelCounter], "_end");
-		break;
-	case L:
-		sprintf(labelTable[labelCounter], name);
-		break;
-	}
-	return labelCounter++;
-}
-int findLabel(char * name)
-{
-	int i = 0;
-	for (; i < labelCounter; i++)
-	{
-		if (strcmp(name, labelTable[i]) == 0)
-		{
-			return i;
-		}
-	}
-	return -1;
-}
-void setLabel(int label,int pos)
-{
-	if (pos ==LPHEAD)
-	{
-		labelLine[label] = 0;
-	}
-	else if(pos==LPCUR)
-	{
-		labelLine[label] = line;
-		outputLabel(label);
-	}
-	else if (pos == LPNULL)
-	{
-		labelLine[label] = -1;
-	}
-}
+
 void clearQCode()
 {
-	labelCounter = 0;
 	line = 0;
 }
 void emit(qCType qc,int arg1,int arg2,int arg3)
@@ -204,6 +141,9 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 	case TSYSCALL:
 		sprintf(buffer, "syscall");
 		break;
+	case TLABEL:
+		sprintf(buffer, "%s:", LABEL(r1));
+		break;
 	default:
 		error(ERR_INSTR_NOT_DEFINE);
 	}
@@ -211,7 +151,8 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 }
 void objEntry()
 {
-	emitObj("j main");
+	int l=genLabel(L, "main");
+	emitObj(TJUMP,l);
 }
 void objFuncHead(bool main)
 {
@@ -259,30 +200,19 @@ void objFunc(bool main)
 	int lhead, ltail, lc;
 	lhead = genLabel(LFUNC, symTable[funcRef]._name);
 	ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
-	setLabel(lhead, LPHEAD);
-	setLabel(ltail, LPCUR);
-	objLabel(0);
+	lc = 0;
+	emitObj(TLABEL, lhead);
 	objFuncHead(main);
 	while (lc != line)
 	{
-		objLine(lc);
+		objLine(lc,ltail);
+		lc++;
 	}
-	objLabel(lc);
+	emitObj(TLABEL, ltail);
 	objFuncTail(main);
 	clearQCode();
 }
-void objLabel(int lc)
-{
-	for (int i = 0; i < labelCounter; i++)
-	{
-		if (labelLine[i] == lc)
-		{
-			outputLabel(i,true);
-		}
-
-	}
-}
-void objLine(int lc)
+void objLine(int lc,int ltail)
 {
 	qCType qt;
 	int arg1, arg2, arg3;
@@ -290,8 +220,6 @@ void objLine(int lc)
 	arg1 = qCode[lc * 4 + 1];
 	arg2 = qCode[lc * 4 + 2];
 	arg3 = qCode[lc * 4 + 3];
-	objLabel(lc);
-	lc++;
 	switch (qt)
 	{
 	case QARL:
@@ -323,6 +251,9 @@ void objLine(int lc)
 		break;
 	case QGOTO:
 		emitObj(TJUMP, arg1);
+		break;
+	case QLABEL:
+		emitObj(TLABEL, arg1);
 		break;
 	case QMINUS:
 		objArthOp(TSUB, arg1, arg2, arg3);

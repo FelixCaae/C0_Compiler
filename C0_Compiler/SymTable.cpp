@@ -14,13 +14,16 @@ unsigned int curSym=0;
 unsigned int curStr = 0;
 unsigned int curCon = 0;
 unsigned int curFunc = 0;
+unsigned int labelID = 0;
+unsigned int caseID = 0;
+unsigned int tempCounter = 0;
+unsigned int labelCounter = 0;
 unsigned const int linkGlobal = 0;
 unsigned int linkHead = NotExist;
 unsigned int linkTail = NotExist;
 unsigned int linkBak = NotExist;
-unsigned int tempCounter = 0;
+char labelTable[maxLabelNum][maxLabelStrLen];
 void locateAdr();
-void locateGlobl();
 int countSize(int iden);
 void cleanup()
 {
@@ -229,4 +232,46 @@ int countSize(int iden)
 		return 0;
 	}
 	return 0;
+}
+int genLabel(lableType lt, char *name)
+{
+	switch (lt)
+	{
+	case LIF:
+		sprintf(labelTable[labelCounter], "if_%d", ++labelID);
+		break;
+	case LWHILE:
+		sprintf(labelTable[labelCounter], "do_%d", ++labelID);
+		break;
+	case LSWITCH:
+		sprintf(labelTable[labelCounter], "switch_%d", ++labelID);
+		caseID = 0;
+		break;
+	case LCASE:
+		sprintf(labelTable[labelCounter], "case_%d_%d", labelID, ++caseID);
+		break;
+	case LFUNC:
+		sprintf(labelTable[labelCounter], name);
+		break;
+	case LFUNCEND:
+		sprintf(labelTable[labelCounter], name);
+		strcat(labelTable[labelCounter], "_end");
+		break;
+	case L:
+		sprintf(labelTable[labelCounter], name);
+		break;
+	}
+	return labelCounter++;
+}
+int findLabel(char * name)
+{
+	int i = 0;
+	for (; i < labelCounter; i++)
+	{
+		if (strcmp(name, labelTable[i]) == 0)
+		{
+			return i;
+		}
+	}
+	return -1;
 }

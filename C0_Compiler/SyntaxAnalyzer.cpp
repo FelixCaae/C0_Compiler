@@ -638,7 +638,7 @@ void parseConditionStat()
 	emit(QBNZ, label);
 	shouldBe(RPAR);
 	parseStat();
-	setLabel(label);
+	emit(QLABEL,label);
 	outputSyntax(CONDSTAT,false);
 }
 void parseCondition()
@@ -680,7 +680,7 @@ void parseLoopStat()
 	outputSyntax(LOOPSTAT);
 	int label = genLabel(LWHILE);
 	shouldBe(DOSY);
-	setLabel(label);
+	emit(QLABEL,label);
 	parseStat();
 	shouldBe(WHILESY);
 	shouldBe(LPAR);
@@ -700,7 +700,7 @@ void parseSwitchStat()
 	shouldBe(RPAR);
 	shouldBe(LCURB);
 	parseSwitchTab(val,label);
-	setLabel(label);
+	emit(QLABEL,label);
 	shouldBe(RCURB);
 	outputSyntax(SWITCHSTAT,false);
 }
@@ -732,7 +732,7 @@ void parseSubSwitchStat(int val, int switchend)
 	emit(QBNZ, casend);
 	parseStat();
 	emit(QGOTO, switchend);
-	setLabel(casend);
+	emit(QLABEL,casend);
 	outputSyntax(SUBSWITCHSTAT,false);
 }
 void parseConstant(int *r)

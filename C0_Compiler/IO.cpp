@@ -68,25 +68,19 @@ void outputSyntax(syntaxClass sc,bool isHead)
 			output(buffer, outSyntax);
 		}
 }
-void outputLabel(int l,bool isObj)
-{
-	char str[100];
-	strcpy(str, LABEL(l));
-	strcat(str, ":\n");
-	if (!isObj) {
-		output(str, outQCode, false);
-	}
-	else
-	{
-		output(str, outTCode, true);
-	}
-}
 void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 {
 	char numbuff1[20],numbuff2[20];
-	buffer[0] = '\0';
-	strcat(buffer, "\t");
-	char* str = buffer+1;
+	char* str;
+	if (qc != QLABEL)
+	{
+		buffer[0] = '\t';
+		str = buffer + 1;
+	}
+	else
+	{
+		str = buffer;
+	}
 	switch (qc)
 	{
 	case QVAR:
@@ -165,6 +159,9 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		break;
 	case QGOTO:
 		sprintf(str, "GOTO %s", LABEL(arg1));
+		break;
+	case QLABEL:
+		sprintf(str, "%s:", LABEL(arg1));
 		break;
 	case QGT:
 		sprintf(str, "%s > %s", OP(arg1),OP(arg2));
