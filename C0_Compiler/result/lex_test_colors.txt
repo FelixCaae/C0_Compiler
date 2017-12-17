@@ -92,11 +92,11 @@
 5	ASSIGN	=	row:23	colmn:1
 1	INT	1	row:23	colmn:2
 9	SEMI	;	row:23	colmn:3
-2	IDEN	set123	row:24	colmn:0
+2	IDEN	SET123	row:24	colmn:0
 11	LPAR	(	row:24	colmn:1
 12	RPAR	)	row:24	colmn:2
 9	SEMI	;	row:24	colmn:3
-2	IDEN	count123	row:25	colmn:0
+2	IDEN	COUNT123	row:25	colmn:0
 11	LPAR	(	row:25	colmn:1
 12	RPAR	)	row:25	colmn:2
 9	SEMI	;	row:25	colmn:3
@@ -117,27 +117,27 @@
 9	SEMI	;	row:28	colmn:4
 35	PRINTFUNC	printf	row:29	colmn:0
 11	LPAR	(	row:29	colmn:1
-4	STR	"*apple is red*"	row:29	colmn:2
+4	STR	"*Apple is red*"	row:29	colmn:2
 12	RPAR	)	row:29	colmn:3
 9	SEMI	;	row:29	colmn:4
 35	PRINTFUNC	printf	row:30	colmn:0
 11	LPAR	(	row:30	colmn:1
-4	STR	"[peach is pink]"	row:30	colmn:2
+4	STR	"[Peach is pink]"	row:30	colmn:2
 12	RPAR	)	row:30	colmn:3
 9	SEMI	;	row:30	colmn:4
 35	PRINTFUNC	printf	row:31	colmn:0
 11	LPAR	(	row:31	colmn:1
-4	STR	"<sky is blue>"	row:31	colmn:2
+4	STR	"<Sky is blue>"	row:31	colmn:2
 12	RPAR	)	row:31	colmn:3
 9	SEMI	;	row:31	colmn:4
 35	PRINTFUNC	printf	row:32	colmn:0
 11	LPAR	(	row:32	colmn:1
-4	STR	"\and grass is green/"	row:32	colmn:2
+4	STR	"\And grass is green/"	row:32	colmn:2
 12	RPAR	)	row:32	colmn:3
 9	SEMI	;	row:32	colmn:4
 35	PRINTFUNC	printf	row:33	colmn:0
 11	LPAR	(	row:33	colmn:1
-4	STR	"i can print string correctly!"	row:33	colmn:2
+4	STR	"I can print string correctly!"	row:33	colmn:2
 12	RPAR	)	row:33	colmn:3
 9	SEMI	;	row:33	colmn:4
 7	RCURB	}	row:34	colmn:0

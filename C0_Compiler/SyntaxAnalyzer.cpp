@@ -125,6 +125,11 @@ void parseIden(int *val,bool set)
 	strcpy(tokenbak, token);
 	char *p = tokenbak;
 	shouldBe(IDEN);
+	for(;*p!=0;p++)
+	{
+		if (*p <= 'Z'&&*p >= 'A')
+			*p = *p | 0x60;
+	}
 	if (set)
 	{
 		shouldNotExist(tokenbak);

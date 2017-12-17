@@ -132,14 +132,13 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		sprintf(buffer, "slr %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TDATA:
-		if (r1 == NotExist)
-		{
-			sprintf(buffer, ".data");
-		}
-		else
-		{
-			sprintf(buffer, "%s :.data %d", NAME(r1), countSize(r1));
-		}
+		sprintf(buffer, ".data");
+		break;
+	case TWORD:
+		sprintf(buffer, "%s :.word", NAME(r1));
+		break;
+	case TBYT:
+		sprintf(buffer, "%s :.byte", NAME(r1));
 		break;
 	case TASCIIZ:
 		sprintf(buffer, "%s :.asciiz \"%s\"", STRNAME(r1), STR(r1));
@@ -220,15 +219,8 @@ void objFunc(bool hasHead)
 	int ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
 	setLabel(lhead, LPHEAD);
 	setLabel(ltail, LPCUR);
-	if (hasHead)
-	{
-		objBody(ltail);
-		objFuncTail();
-	}
-	else
-	{
-		objBody(ltail);
-	}
+	objBody(ltail);
+	objFuncTail();
 }
 void objFuncHead()
 {
@@ -356,10 +348,7 @@ void objBody(int ltail)
 			objCondition(TSNE, arg1, arg2);
 			break;
 		case QFUNCDECL:
-			if (strcmp(NAME(arg1), "main") != 0)
-			{
-				objFuncHead();
-			}
+			objFuncHead();
 			break;
 		case QPUSH:
 			if (paramCounter < 4)
@@ -537,14 +526,24 @@ void objFuncTail()
 }
 void objGloblData()
 {
-	int entry = linkGlobal;
 	emitObj(TDATA,NotExist);
+	int entry = linkGlobal;
 	while (EXIST(entry))
 	{
-		if (ISGLOBAL(entry) &&
+		if (ISGLOBAL(entry)&&ISINT(entry)&&
 			(ISVAR(entry) ||ISARRAY(entry)))
 		{
-			emitObj(TDATA, entry);
+			emitObj(TWORD, entry);
+		}
+		entry = NEXT(entry);
+	}
+	entry = linkGlobal;
+	while (EXIST(entry))
+	{
+		if (ISGLOBAL(entry) &&ISCHAR(entry)&&
+			(ISVAR(entry) || ISARRAY(entry)))
+		{
+			emitObj(TBYT, entry);
 		}
 		entry = NEXT(entry);
 	}

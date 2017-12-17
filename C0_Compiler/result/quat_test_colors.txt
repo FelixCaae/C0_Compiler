@@ -27,9 +27,9 @@ count123_end:
 	print _n1
 	print _n2
 	print _n3
-	print "*apple is red*"
-	print "[peach is pink]"
-	print "<sky is blue>"
-	print "\and grass is green/"
-	print "i can print string correctly!"
+	print "*Apple is red*"
+	print "[Peach is pink]"
+	print "<Sky is blue>"
+	print "\And grass is green/"
+	print "I can print string correctly!"
 main_end:

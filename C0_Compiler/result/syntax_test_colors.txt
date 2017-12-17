@@ -235,7 +235,7 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> set123 <\identifier>
+        <identifier> SET123 <\identifier>
           <funCallStat>
           <seperator> ( <\seperator>
             <argumentList>
@@ -245,7 +245,7 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> count123 <\identifier>
+        <identifier> COUNT123 <\identifier>
           <funCallStat>
           <seperator> ( <\seperator>
             <argumentList>
@@ -303,7 +303,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "*apple is red*" <\string>
+          <string> "*Apple is red*" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>
@@ -312,7 +312,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "[peach is pink]" <\string>
+          <string> "[Peach is pink]" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>
@@ -321,7 +321,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "<sky is blue>" <\string>
+          <string> "<Sky is blue>" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>
@@ -330,7 +330,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "\and grass is green/" <\string>
+          <string> "\And grass is green/" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>
@@ -339,7 +339,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "i can print string correctly!" <\string>
+          <string> "I can print string correctly!" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>

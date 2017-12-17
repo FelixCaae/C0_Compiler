@@ -9,6 +9,8 @@
 #define ISVAR(arg) OBJ(arg)==OVAR
 #define ISARRAY(arg) OBJ(arg)==OARRAY
 #define ISCONST(arg) OBJ(arg)==OCONST
+#define ISINT(arg) symTable[arg]._type==INTS
+#define ISCHAR(arg) symTable[arg]._type==CHARS
 const unsigned int maxStrLength = 100;
 const unsigned int symTableSize=800;
 const unsigned int constTableSize = 800;

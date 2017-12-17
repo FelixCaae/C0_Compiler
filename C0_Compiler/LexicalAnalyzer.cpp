@@ -110,9 +110,7 @@ void readChar()
 		lineCounter += 1;
 		columnCounter = 0;
 	}
-    if (tokenidx == tokenStrLen)error(ERR_TOKEN_FLOW);
-	if (chr <= 'Z'&&chr >= 'A')
-			chr = chr | 0x60;//tolower
+	if (tokenidx == tokenStrLen)error(ERR_TOKEN_FLOW);
     token[tokenidx++] = chr;
     token[tokenidx] = '\0';
 }
