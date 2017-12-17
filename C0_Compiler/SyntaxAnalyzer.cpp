@@ -730,8 +730,9 @@ void parseSubSwitchStat(int val, int switchend)
 	}
 	shouldBe(COLON);
 	emit(QEQU, con, val);
-	emit(QBNZ, switchend);
+	emit(QBNZ, casend);
 	parseStat();
+	emit(QGOTO, switchend);
 	setLabel(casend);
 	outputSyntax(SUBSWITCHSTAT,false);
 }

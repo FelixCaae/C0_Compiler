@@ -1,16 +1,16 @@
 calculate:
-	subi $sp,$sp,73
-	sw $s0,37($sp)
-	sw $s1,41($sp)
-	sw $s2,45($sp)
-	sw $s3,49($sp)
-	sw $s4,53($sp)
-	sw $s5,57($sp)
-	sw $s6,61($sp)
-	sw $s7,65($sp)
-	sw $ra,32($sp)
+	subi $sp,$sp,76
+	sw $s0,40($sp)
+	sw $s1,44($sp)
+	sw $s2,48($sp)
+	sw $s3,52($sp)
+	sw $s4,56($sp)
+	sw $s5,60($sp)
+	sw $s6,64($sp)
+	sw $s7,68($sp)
+	sw $ra,72($sp)
 	li $t0,0
-	addi $t1,$sp,9
+	addi $t1,$sp,8
 	sw $t0,0($t1)
 	li $v0,5
 	syscall
@@ -22,10 +22,10 @@ calculate:
 	sw $v0,0($t0)
 	li $v0,12
 	syscall
-	addi $t0,$sp,8
-	sb $v0,0($t0)
+	addi $t0,$sp,36
+	lb $v0,0($t0)
 	li $t0,43
-	addi $t1,$sp,8
+	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,switch_1
@@ -34,9 +34,9 @@ calculate:
 	addi $t2,$sp,4
 	lw $t2,0($t2)
 	add $t0,$t1,$t2
-	addi $t1,$sp,13
+	addi $t1,$sp,12
 	sw $t0,0($t1)
-	addi $a0,$sp,13
+	addi $a0,$sp,12
 	lw $a0,0($a0)
 	li $v0,1
 	syscall
@@ -45,7 +45,7 @@ calculate:
 	syscall
 case_1_1:
 	li $t0,45
-	addi $t1,$sp,8
+	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,switch_1
@@ -54,9 +54,9 @@ case_1_1:
 	addi $t2,$sp,4
 	lw $t2,0($t2)
 	sub $t0,$t1,$t2
-	addi $t1,$sp,17
+	addi $t1,$sp,16
 	sw $t0,0($t1)
-	addi $a0,$sp,17
+	addi $a0,$sp,16
 	lw $a0,0($a0)
 	li $v0,1
 	syscall
@@ -65,7 +65,7 @@ case_1_1:
 	syscall
 case_1_2:
 	li $t0,42
-	addi $t1,$sp,8
+	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,switch_1
@@ -74,9 +74,9 @@ case_1_2:
 	addi $t2,$sp,4
 	lw $t2,0($t2)
 	mul $t0,$t1,$t2
-	addi $t1,$sp,21
+	addi $t1,$sp,20
 	sw $t0,0($t1)
-	addi $a0,$sp,21
+	addi $a0,$sp,20
 	lw $a0,0($a0)
 	li $v0,1
 	syscall
@@ -85,7 +85,7 @@ case_1_2:
 	syscall
 case_1_3:
 	li $t0,47
-	addi $t1,$sp,8
+	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,switch_1
@@ -94,9 +94,9 @@ case_1_3:
 	addi $t2,$sp,4
 	lw $t2,0($t2)
 	div $t0,$t1,$t2
-	addi $t1,$sp,25
+	addi $t1,$sp,24
 	sw $t0,0($t1)
-	addi $a0,$sp,25
+	addi $a0,$sp,24
 	lw $a0,0($a0)
 	li $v0,1
 	syscall
@@ -105,7 +105,7 @@ case_1_3:
 	syscall
 case_1_4:
 	li $t0,101
-	addi $t1,$sp,8
+	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,switch_1
@@ -114,9 +114,9 @@ do_2:
 	lw $t1,0($t1)
 	li $t2,10
 	mul $t0,$t1,$t2
-	addi $t1,$sp,29
+	addi $t1,$sp,28
 	sw $t0,0($t1)
-	addi $t0,$sp,29
+	addi $t0,$sp,28
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
@@ -124,9 +124,9 @@ do_2:
 	lw $t1,0($t1)
 	li $t2,1
 	sub $t0,$t1,$t2
-	addi $t1,$sp,33
+	addi $t1,$sp,32
 	sw $t0,0($t1)
-	addi $t0,$sp,33
+	addi $t0,$sp,32
 	lw $t0,0($t0)
 	addi $t1,$sp,4
 	sw $t0,0($t1)
@@ -138,16 +138,16 @@ do_2:
 switch_1:
 case_1_5:
 calculate_end:
-	lw $s0,37($sp)
-	lw $s1,41($sp)
-	lw $s2,45($sp)
-	lw $s3,49($sp)
-	lw $s4,53($sp)
-	lw $s5,57($sp)
-	lw $s6,61($sp)
-	lw $s7,65($sp)
-	lw $ra,69($sp)
-	addi $sp,$sp,73
+	lw $s0,40($sp)
+	lw $s1,44($sp)
+	lw $s2,48($sp)
+	lw $s3,52($sp)
+	lw $s4,56($sp)
+	lw $s5,60($sp)
+	lw $s6,64($sp)
+	lw $s7,68($sp)
+	lw $ra,72($sp)
+	addi $sp,$sp,76
 	jr $ra
 main:
 	jal calculate

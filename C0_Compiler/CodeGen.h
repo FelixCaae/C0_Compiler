@@ -13,7 +13,6 @@ const unsigned int ReserveSize = 36;//s0-s7 ra
 const unsigned int RAADR = 32;
 extern char labelTable[maxLabelNum][maxLabelStrLen];
 extern int labelLine[maxLabelNum];
-extern const unsigned int IntSize, CharSize;
 extern unsigned int curStr;
 enum qCType {
 	QFUNCDECL=1, QPARA, QPUSH,QPRINT,QREAD,QCALL,QRETX,QRET, QVAR, QCONST, QARRAY,QASSIGN, QPLUS, QMINUS,

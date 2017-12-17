@@ -7,6 +7,7 @@
 #include"IO.h"
 #include "SymTable.h"
 #define REG(arg) regName[arg]
+extern const unsigned int IntSize, CharSize;
 using namespace std;
 //unsigned int qcPos;
 unsigned int labelCounter=0;

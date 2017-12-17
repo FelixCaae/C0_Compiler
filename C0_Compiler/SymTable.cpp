@@ -188,10 +188,22 @@ void locateAdr()
 	int adr=0,size=0;
 	while (entry != NotExist)
 	{
-		symTable[entry]._adr = adr;
-		adr += countSize(entry);
+		if (symTable[entry]._type == INTS) {
+			symTable[entry]._adr = adr;
+			adr += countSize(entry);
+		}
 		entry = symTable[entry]._next;
 	}
+	entry=linkHead;
+	while (entry != NotExist)
+	{
+		if (symTable[entry]._type == CHARS) {
+			symTable[entry]._adr = adr;
+			adr += countSize(entry);
+		}
+		entry = symTable[entry]._next;
+	}
+	adr += (4 - adr % 4);//round up
 	if(funcRef!=NotExist)
 		funcTable[symTable[funcRef]._ref]._size = adr;
 }
