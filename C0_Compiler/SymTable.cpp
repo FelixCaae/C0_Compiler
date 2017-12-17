@@ -53,9 +53,9 @@ void enterFunc(unsigned int ref)
 void leaveFunc()
 {
 	funcRef = NotExist;
+	unlinkAll();
 	linkHead = linkGlobal;
 	linkTail = linkBak;
-	unlink();
 }
 void link(int entry)
 {
@@ -72,25 +72,19 @@ void link(int entry)
 }
 void unlink()
 {
-	curSym--;
-	int entry = curSym;
+	if (linkHead == NotExist)return;
+	int entry = curSym - 1;
 	if (linkHead == entry)
 	{
-		linkTail = NotExist;
 		linkHead = NotExist;
+		linkTail = NotExist;
+		curSym--;
 	}
-	else if (entry > 0)
+	else
 	{
-		if(symTable[entry-1]._next==entry)
-		{
-			linkTail = entry - 1;
-			symTable[entry - 1]._next = NotExist;
-		}
-		else
-		{
-			linkTail = NotExist;
-			linkHead = NotExist;
-		}
+		linkTail--;
+		curSym--;
+		symTable[curSym]._next = NotExist;
 	}
 }
 void unlinkAll()

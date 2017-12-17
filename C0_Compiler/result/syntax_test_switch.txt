@@ -82,27 +82,42 @@
                 <\constant>
               <seperator> : <\seperator>
                 <statement>
-                  <writeStat>
-                  <keyword> printf <\keyword>
-                  <seperator> ( <\seperator>
-                  <string> "a+b:" <\string>
-                  <seperator> , <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <identifier> a <\identifier>
-                        <\factor>
-                      <\term>
-                    <seperator> + <\seperator>
-                      <term>
-                        <factor>
-                        <identifier> b <\identifier>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <seperator> ) <\seperator>
-                  <\writeStat>
-                <seperator> ; <\seperator>
+                <seperator> { <\seperator>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "a+b:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <\term>
+                        <seperator> + <\seperator>
+                          <term>
+                            <factor>
+                            <identifier> b <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
                 <\statement>
               <\subSwitchStat>
               <subSwitchStat>
@@ -112,27 +127,42 @@
                 <\constant>
               <seperator> : <\seperator>
                 <statement>
-                  <writeStat>
-                  <keyword> printf <\keyword>
-                  <seperator> ( <\seperator>
-                  <string> "a-b:" <\string>
-                  <seperator> , <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <identifier> a <\identifier>
-                        <\factor>
-                      <\term>
-                    <seperator> - <\seperator>
-                      <term>
-                        <factor>
-                        <identifier> b <\identifier>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <seperator> ) <\seperator>
-                  <\writeStat>
-                <seperator> ; <\seperator>
+                <seperator> { <\seperator>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "a-b:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <\term>
+                        <seperator> - <\seperator>
+                          <term>
+                            <factor>
+                            <identifier> b <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
                 <\statement>
               <\subSwitchStat>
               <subSwitchStat>
@@ -142,25 +172,40 @@
                 <\constant>
               <seperator> : <\seperator>
                 <statement>
-                  <writeStat>
-                  <keyword> printf <\keyword>
-                  <seperator> ( <\seperator>
-                  <string> "a*b:" <\string>
-                  <seperator> , <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <identifier> a <\identifier>
-                        <\factor>
-                      <seperator> * <\seperator>
-                        <factor>
-                        <identifier> b <\identifier>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <seperator> ) <\seperator>
-                  <\writeStat>
-                <seperator> ; <\seperator>
+                <seperator> { <\seperator>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "a*b:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <seperator> * <\seperator>
+                            <factor>
+                            <identifier> b <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
                 <\statement>
               <\subSwitchStat>
               <subSwitchStat>
@@ -170,25 +215,40 @@
                 <\constant>
               <seperator> : <\seperator>
                 <statement>
-                  <writeStat>
-                  <keyword> printf <\keyword>
-                  <seperator> ( <\seperator>
-                  <string> "a/b:" <\string>
-                  <seperator> , <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <identifier> a <\identifier>
-                        <\factor>
-                      <seperator> / <\seperator>
-                        <factor>
-                        <identifier> b <\identifier>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <seperator> ) <\seperator>
-                  <\writeStat>
-                <seperator> ; <\seperator>
+                <seperator> { <\seperator>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "a/b:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <seperator> / <\seperator>
+                            <factor>
+                            <identifier> b <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
                 <\statement>
               <\subSwitchStat>
               <subSwitchStat>
