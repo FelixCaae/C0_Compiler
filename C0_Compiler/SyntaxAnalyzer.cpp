@@ -238,8 +238,8 @@ void parseConstDecl()
 		{
 			parseChar(&val);
 		}
-		emit(QCONST,iden);
 		modifyIdent(iden, varType, OCONST, val);
+		emit(QCONST, iden);
 		if (couldBe(COMMA))
 		{
 			continue;

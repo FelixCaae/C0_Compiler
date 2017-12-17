@@ -1,0 +1,52 @@
+# depslib dependency file v1.0
+1513320370 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\error.cpp
+	"stdafx.h"
+	<stdio.h>
+	<stdlib.h>
+	"Error.h"
+	"Lexeme.h"
+	"Syntax.h"
+	<exception>
+	"IO.h"
+
+1513320370 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\stdafx.h
+	"targetver.h"
+	<stdio.h>
+	<tchar.h>
+
+1513320370 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\targetver.h
+	<SDKDDKVer.h>
+
+1513413695 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\error.h
+	"Lexeme.h"
+
+1513320370 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\lexeme.h
+
+1513320370 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\syntax.h
+	"Lexeme.h"
+
+1513502959 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\io.h
+	"Syntax.h"
+	"CodeGen.h"
+	"stdio.h"
+	<string>
+
+1513499475 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\codegen.h
+
+1513320370 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\stdafx.cpp
+	"stdafx.h"
+
+1513499679 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\codegen.cpp
+	"stdafx.h"
+	<cstring>
+	<string>
+	<stdio.h>
+	"error.h"
+	"CodeGen.h"
+	"IO.h"
+	"SymTable.h"
+
+1513499426 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\symtable.h
+	"Lexeme.h"
+	"Syntax.h"
+

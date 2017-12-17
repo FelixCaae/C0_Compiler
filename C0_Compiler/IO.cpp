@@ -34,20 +34,20 @@ void output(char *ch,FILE* outFile,bool toConsole)
 void outputLexeme()
 {
 	sprintf(buffer, "%d\t%s\t%s\trow:%d\tcolmn:%d\n", lextype, lexClassName[lextype - 1], token, lineCounter, columnCounter);
-	output(buffer, outLex);
+	output(buffer, outLex,bOutLex);
 }
 void blank()
 {
 	for (int i = 0; i < 2 * (slevel - 1);i++)
 	{
-		output(" ", outSyntax);
+		output(" ", outSyntax,bOutSyntax);
 	}
 }
 void outputTerminalS(syntaxClass sc)
 {
 		blank();
 		sprintf(buffer, "<%s> %s <\\%s>\n", syntaxClassName[sc - 1], token, syntaxClassName[sc - 1]);
-		output(buffer, outSyntax);
+		output(buffer, outSyntax,bOutSyntax);
 }
 void outputSyntax(syntaxClass sc,bool isHead)
 { 
@@ -58,14 +58,14 @@ void outputSyntax(syntaxClass sc,bool isHead)
 			slevel += 1;
 			blank();
 			sprintf(buffer, hformat, syntaxClassName[sc - 1]);
-			output(buffer, outSyntax);
+			output(buffer, outSyntax, bOutSyntax);
 		}
 		else
 		{
 			blank();
 			slevel -= 1;
 			sprintf(buffer, tformat, syntaxClassName[sc - 1]);
-			output(buffer, outSyntax);
+			output(buffer, outSyntax, bOutSyntax);
 		}
 }
 void outputQCode(qCType qc, int arg1, int arg2, int arg3)
@@ -185,13 +185,13 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		break;
 	}
 	strcat(str, "\n");
-	output(buffer,outQCode,true);
+	output(buffer,outQCode,bOutQcode);
 }
 void outputOCode()
 {
 	strcat(buffer, "\n");
 	//output("\t", outTCode, true);
-	output(buffer, outTCode, true);
+	output(buffer, outTCode, bOutTCode);
 }
 char * getFileName(char *arg)
 {

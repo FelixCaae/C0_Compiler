@@ -2,6 +2,7 @@
 #include "Syntax.h"
 #include "CodeGen.h"
 #include "stdio.h"
+#include <string>
 #define NAME(arg) symTable[arg]._name
 #define STRNAME(arg) strTable[arg]._adr
 #define TYPE(arg) typeName[symTable[arg]._type]
@@ -18,6 +19,10 @@ extern FILE * outTCode;
 extern FILE * outErr;
 extern bool toConsole;
 extern char buffer[];
+const  bool bOutSyntax = false;
+const bool bOutQcode = false;
+const bool bOutLex = false;
+const bool bOutTCode = true;
 const unsigned int maxOutputLength = 88;
 const char * const syntaxClassName[] = {
 	"unsignedInt","identifier", "char", "string","seperator","keyword",
