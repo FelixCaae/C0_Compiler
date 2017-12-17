@@ -149,7 +149,7 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		sprintf(buffer, "%s:", LABEL(r1));
 		break;
 	default:
-		error(ERR_INSTR_NOT_DEFINE);
+		error(ERR_INSTR_NOT_DEFINE,tc);
 	}
 	outputOCode();
 }
@@ -323,7 +323,7 @@ void objLine(int lc,int ltail)
 	case QCONST:
 		break;
 	default:
-		error(ERR_QCODE_NOT_DEFINE);
+		error(ERR_QCODE_NOT_DEFINE,qt);
 		break;
 	}
 }

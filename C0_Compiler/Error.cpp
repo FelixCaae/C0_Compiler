@@ -112,6 +112,20 @@ void error(int err,int detail)
 		sprintf(buffer, "*****Error%d: Identifier:%s should be a variable line:%d\n", err, token, lineCounter);
 		break;
 	}
+	case ERR_DIV_ZERO:
+	{
+		sprintf(buffer, "*****Error%d:Div zero error", err);
+		break;
+	}
+	case ERR_INSTR_NOT_DEFINE:
+	{
+		sprintf(buffer, "*****Error%d:Instruction %d not defined", err, detail);
+		break;
+	}
+	case ERR_QCODE_NOT_DEFINE:
+	{
+		sprintf(buffer, "*****Error%d:QCode %d not defined", err, detail)
+	}
 	default:
 	{
 		sprintf(buffer, "****Error%d: Error not defined. line:%d\n", err, lineCounter);

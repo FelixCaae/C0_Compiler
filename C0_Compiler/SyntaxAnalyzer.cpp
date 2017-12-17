@@ -954,8 +954,8 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "../x64/Debug/test/test_equalsplit.txt";
-	if (syntaxAnalyze(2, (char**)buffer))
+	buffer[1] = "../x64/Debug/test/test_null.txt";
+	if (syntaxAnalyze(argc,argv))
 	{
 		printf("Success!");
 	}
