@@ -33,7 +33,7 @@ void cleanup()
 int genTemp(IdenType it, bool isConst, int val)
 {
 	char tempName[tokenStrLen];
-	sprintf(tempName, "%tmp%d", tempCounter++);
+	sprintf(tempName, "$tmp%d", tempCounter++);
 
 	IdenObj io = OVAR;
 	if (isConst)

@@ -10,7 +10,7 @@
 using namespace std;
 extern const unsigned int IntSize, CharSize;
 extern unsigned int curStr;
-unsigned int qcPos;
+//unsigned int qcPos;
 unsigned int labelCounter=0;
 unsigned int labelID = 0;
 unsigned int caseID=0;
@@ -90,11 +90,11 @@ void clearQCode()
 void emit(qCType qc,int arg1,int arg2,int arg3)
 {
 	outputQCode(qc, arg1, arg2, arg3);
-	qCode[qcPos] = qc;
-	qCode[qcPos + 1] = arg1;
-	qCode[qcPos + 2] = arg2;
-	qCode[qcPos + 3] = arg3;
-	qcPos += 4;
+	qCode[line*4] = qc;
+	qCode[line * 4 + 1] = arg1;
+	qCode[line * 4 + 2] = arg2;
+	qCode[line * 4 + 3] = arg3;
+	//qcPos += 4;
 	line += 1;
 }
 void emitObj(tCType tc, int r1, int r2, int r3)
@@ -182,7 +182,7 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		sprintf(buffer, "j %s", LABEL(r1));
 		break;
 	case TJR:
-		sprintf(buffer, "jr ");
+		sprintf(buffer, "jr %s",REG(ra));
 		break;
 	case TSEQ:
 		sprintf(buffer, "seq %s,%s,%s", REG(r1),REG(r2),REG(r3));
@@ -355,11 +355,12 @@ void objBody(int ltail)
 			objCondition(TSNE, arg1, arg2);
 			break;
 		case QFUNCDECL:
-			if (strcmp(NAME(arg2), "main") != 0)
+			if (strcmp(NAME(arg1), "main") != 0)
 			{
 				objFuncHead();
 			}
 			break;
+		case QPUSH:
 		case QPARA:
 		case QVAR:
 		case QARRAY:
