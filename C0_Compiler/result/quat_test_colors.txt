@@ -12,13 +12,11 @@
 	_n1 = n1 
 	_n2 = n2 
 	_n3 = n3 
-set:
 set_end:
 	int count123()
 	print _n1
 	print _n2
 	print _n3
-count123:
 count123_end:
 	void main()
 	var int _n1
@@ -40,5 +38,4 @@ count123_end:
 	print "<Sky is blue>"
 	print "\And grass is green/"
 	print "I can print string correctly!"
-main:
 main_end:

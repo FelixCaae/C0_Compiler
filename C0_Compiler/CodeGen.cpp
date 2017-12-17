@@ -14,6 +14,7 @@ unsigned int labelCounter=0;
 unsigned int labelID = 0;
 unsigned int caseID=0;
 unsigned int line=0;
+unsigned int paramCounter = 0;
 char labelTable[maxLabelNum][maxLabelStrLen];
 int labelLine[maxLabelNum];
 int qCode[maxQCodeSize * 4];
@@ -69,12 +70,12 @@ void setLabel(int label,int pos)
 	else if(pos==LPCUR)
 	{
 		labelLine[label] = line;
+		outputLabel(label);
 	}
 	else if (pos == LPNULL)
 	{
 		labelLine[label] = -1;
 	}
-	outputLabel(label);
 }
 void clearQCode()
 {
@@ -303,6 +304,7 @@ void objBody(int ltail)
 			break;
 		case QCALL:
 			emitObj(TJAL, arg1);
+			paramCounter = 0;
 			break;
 		case QDIV:
 			objArthOp(TDIV, arg1, arg2, arg3);
@@ -360,6 +362,17 @@ void objBody(int ltail)
 			}
 			break;
 		case QPUSH:
+			if (paramCounter < 4)
+			{
+				objLoad(a0 + paramCounter, arg1);
+			}
+			else
+			{
+				objLoad(t0, arg1);
+				emitObj(TSW, t0, sp, -4 * (1 + paramCounter - 4));
+			}
+			paramCounter++;
+			break;
 		case QPARA:
 		case QVAR:
 		case QARRAY:

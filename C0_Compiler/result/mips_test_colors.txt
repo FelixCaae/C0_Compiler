@@ -91,6 +91,9 @@ main:
 	li $t0,1
 	addi $t1,$sp,8
 	sw $t0,0($t1)
+	li $a0,1
+	li $a1,2
+	li $a2,3
 	jal set
 	jal count123
 	addi $a0,$sp,0
