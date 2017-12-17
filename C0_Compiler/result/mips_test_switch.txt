@@ -23,17 +23,17 @@ calculate:
 	li $v0,12
 	syscall
 	addi $t0,$sp,36
-	lb $v0,0($t0)
+	sb $v0,0($t0)
 	li $t0,43
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_1
-	addi $t1,$sp,0
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
 	lw $t1,0($t1)
-	addi $t2,$sp,4
-	lw $t2,0($t2)
-	add $t0,$t1,$t2
+	add $t0,$t0,$t1
 	addi $t1,$sp,12
 	sw $t0,0($t1)
 	addi $a0,$sp,12
@@ -50,11 +50,11 @@ case_1_1:
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_2
-	addi $t1,$sp,0
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
 	lw $t1,0($t1)
-	addi $t2,$sp,4
-	lw $t2,0($t2)
-	sub $t0,$t1,$t2
+	sub $t0,$t0,$t1
 	addi $t1,$sp,16
 	sw $t0,0($t1)
 	addi $a0,$sp,16
@@ -71,11 +71,11 @@ case_1_2:
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_3
-	addi $t1,$sp,0
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
 	lw $t1,0($t1)
-	addi $t2,$sp,4
-	lw $t2,0($t2)
-	mul $t0,$t1,$t2
+	mul $t0,$t0,$t1
 	addi $t1,$sp,20
 	sw $t0,0($t1)
 	addi $a0,$sp,20
@@ -92,11 +92,11 @@ case_1_3:
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_4
-	addi $t1,$sp,0
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
 	lw $t1,0($t1)
-	addi $t2,$sp,4
-	lw $t2,0($t2)
-	div $t0,$t1,$t2
+	div $t0,$t0,$t1
 	addi $t1,$sp,24
 	sw $t0,0($t1)
 	addi $a0,$sp,24
@@ -114,20 +114,20 @@ case_1_4:
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_5
 do_2:
-	addi $t1,$sp,0
-	lw $t1,0($t1)
-	li $t2,10
-	mul $t0,$t1,$t2
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,10
+	mul $t0,$t0,$t1
 	addi $t1,$sp,28
 	sw $t0,0($t1)
 	addi $t0,$sp,28
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-	addi $t1,$sp,4
-	lw $t1,0($t1)
-	li $t2,1
-	sub $t0,$t1,$t2
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	li $t1,1
+	sub $t0,$t0,$t1
 	addi $t1,$sp,32
 	sw $t0,0($t1)
 	addi $t0,$sp,32

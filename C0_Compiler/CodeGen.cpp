@@ -457,9 +457,9 @@ void objSave(int val,int adr,int iden,int offset)
 }
 void objArthOp(tCType tc, int iden1, int iden2, int iden3)
 {
-	objLoad(t1, iden2);
-	objLoad(t2, iden3);
-	emitObj(tc, t0, t1, t2);
+	objLoad(t0, iden2);
+	objLoad(t1, iden3);
+	emitObj(tc, t0, t0, t1);
 	objSave(t0, t1, iden1);
 }
 void objCondition(tCType tc,int iden1,int iden2)

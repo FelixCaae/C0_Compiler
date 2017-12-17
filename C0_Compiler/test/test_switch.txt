@@ -7,19 +7,20 @@ void calculate()
   scanf(a,b,op);
   switch(op){
 case '+':
-printf(a+b);
+printf("a+b:",a+b);
 case '-':
-printf(a-b);
+printf("a-b:",a-b);
 case '*':
-printf(a*b);
+printf("a*b:",a*b);
 case '/':
-printf(a/b);
+printf("a/b:",a/b);
 case 'e':{
 	do
 	{
 	a=a*10;
 	b=b-1;
 	}while(b!=0)
+	printf("aEb:",a);
 }
 }
 }
