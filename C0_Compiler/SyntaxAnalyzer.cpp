@@ -943,7 +943,7 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "../x64/Debug/test/test_colors.txt";
+	buffer[1] = "../x64/Debug/test/test_expression.txt";
 	if (syntaxAnalyze(2, (char**)buffer))
 	{
 		printf("Success!");

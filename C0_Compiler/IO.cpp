@@ -114,7 +114,7 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 	case QRET:
 		if (arg1 !=NotExist)
 		{
-			sprintf(str, "ret %s", OP(arg2));
+			sprintf(str, "ret %s", OP(arg1));
 		}
 		else
 		{
