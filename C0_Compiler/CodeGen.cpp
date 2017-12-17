@@ -8,8 +8,6 @@
 #include "SymTable.h"
 #define REG(arg) regName[arg]
 using namespace std;
-extern const unsigned int IntSize, CharSize;
-extern unsigned int curStr;
 //unsigned int qcPos;
 unsigned int labelCounter=0;
 unsigned int labelID = 0;
@@ -18,12 +16,7 @@ unsigned int line=0;
 char labelTable[maxLabelNum][maxLabelStrLen];
 int labelLine[maxLabelNum];
 int qCode[maxQCodeSize * 4];
-const unsigned int condR = v1;
-const unsigned int MIPS_PRINT_CHAR=11;
-const unsigned int MIPS_PRINT_INT=1;
-const unsigned int MIPS_PRINT_STR=4;
-const unsigned int MIPS_READ_INT=5;
-const unsigned int MIPS_READ_CHAR=12;
+
 int genLabel(lableType lt,char *name)
 {
 	switch (lt)
@@ -250,7 +243,7 @@ void objFuncHead()
 	{
 		emitObj(TSW, s0+i, sp, offset*i+entry._size);
 	}
-	emitObj(TSW, ra, sp, RAADR);
+	emitObj(TSW, ra, sp, RAADR+entry._size);
 	for (int i = 0; i < paraNum; i++)
 	{
 		if (i < 4)
@@ -492,20 +485,18 @@ void objWrite(int  pf,int iden)
 	if (pf == FSTRING)
 	{
 		emitObj(TLI, v0, MIPS_PRINT_STR);
-		objLoad(a0, iden);
+		emitObj(TLA, a0, iden, LASTR);
 	}
 	else if (pf == FEXPRESSION)
 	{
-		emitObj(TLA, a0, iden, LAIDEN);
+		objLoad(a0, iden);
 		if (symTable[iden]._type == CHARS)
 		{
 			emitObj(TLI, v0, MIPS_PRINT_CHAR);
-			emitObj(TLB, a0, a0, 0);
 		}
 		else if(symTable[iden]._type ==INTS)
 		{
 			emitObj(TLI, v0, MIPS_PRINT_INT);
-			emitObj(TLW, a0, a0, 0);
 		}
 	}
 	emitObj(TSYSCALL);

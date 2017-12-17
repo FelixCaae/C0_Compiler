@@ -2,10 +2,19 @@
 const unsigned int maxQCodeSize=5000;
 const unsigned int maxLabelStrLen = 15;
 const unsigned int maxLabelNum = 800;
-const unsigned int RAADR = 8* 4;
+const unsigned int LAIDEN = 0;
+const unsigned int LASTR = 1;
+const unsigned int MIPS_PRINT_CHAR = 11;
+const unsigned int MIPS_PRINT_INT = 1;
+const unsigned int MIPS_PRINT_STR = 4;
+const unsigned int MIPS_READ_INT = 5;
+const unsigned int MIPS_READ_CHAR = 12;
 const unsigned int ReserveSize = 36;//s0-s7 ra
+const unsigned int RAADR = 32;
 extern char labelTable[maxLabelNum][maxLabelStrLen];
 extern int labelLine[maxLabelNum];
+extern const unsigned int IntSize, CharSize;
+extern unsigned int curStr;
 enum qCType {
 	QFUNCDECL=1, QPARA, QPUSH,QPRINT,QREAD,QCALL,QRETX,QRET, QVAR, QCONST, QARRAY,QASSIGN, QPLUS, QMINUS,
 	QSTAR, QDIV, QEQU, QNEQU, QGT, QLS, QGTEQU, QLSEQU, QARL, QARR, QGOTO, QBZ, QBNZ
@@ -18,8 +27,6 @@ enum returnFormat
 {
 	RNOVAL, RVAL
 };
-const unsigned int LAIDEN = 0;
-const unsigned int LASTR = 1;
 enum tCType {
 	TDATA,TASCIIZ,TLA,TADD,TADDI,TSUB,TSUBI,TDIV,TDIVI,TMULT,TMULTI,
 	TLW,TLB,TLI,TSW,TSB,
@@ -40,8 +47,9 @@ enum linePos
 {
 	LPHEAD,LPTAIL,LPCUR,LPNULL=-1
 };
-extern char labelTable[maxLabelNum][maxLabelStrLen];
-extern int labelLine[maxLabelNum];
+
+const unsigned int condR = v1;
+
 int genLabel(lableType lt,char*name=0);
 int findLabel(char*name);
 void setLabel(int label,int _line=LPCUR);

@@ -1,5 +1,31 @@
+const char _a='a';
+const char _b='b';
+const char _c='c';
+const int _d=4;
+int _n1,_n2,_n3;
+void set(int n1,int n2,int n3)
+{
+_n1=n1;
+_n2=n2;
+_n3=n3;
+}
+void count123()
+{
+printf(_n1);
+printf(_n2);
+printf(_n3);
+}
 void main()
 {
+int _n1,_n2,_n3;
+_n1=3;
+_n2=2;
+_n3=1;
+set(1,2,3);
+count123();
+printf(_n1);
+printf(_n2);
+printf(_n3);
 printf("*Apple is red*");
 printf("[Peach is pink]");
 printf("<Sky is blue>");

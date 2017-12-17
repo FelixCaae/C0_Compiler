@@ -23,7 +23,7 @@ calculate:
 	li $v0,12
 	syscall
 	addi $t0,$sp,8
-	lb $v0,0($t0)
+	sb $v0,0($t0)
 	li $t0,43
 	addi $t1,$sp,8
 	lb $t1,0($t1)
@@ -36,9 +36,9 @@ calculate:
 	add $t0,$t1,$t2
 	addi $t1,$sp,13
 	sw $t0,0($t1)
-	la $a0,$tmp2
-	li $v0,1
+	addi $a0,$sp,13
 	lw $a0,0($a0)
+	li $v0,1
 	syscall
 	li $v0,11
 	li $a0,10
@@ -56,9 +56,9 @@ case_1_1:
 	sub $t0,$t1,$t2
 	addi $t1,$sp,17
 	sw $t0,0($t1)
-	la $a0,$tmp4
-	li $v0,1
+	addi $a0,$sp,17
 	lw $a0,0($a0)
+	li $v0,1
 	syscall
 	li $v0,11
 	li $a0,10
@@ -76,9 +76,9 @@ case_1_2:
 	mul $t0,$t1,$t2
 	addi $t1,$sp,21
 	sw $t0,0($t1)
-	la $a0,$tmp6
-	li $v0,1
+	addi $a0,$sp,21
 	lw $a0,0($a0)
+	li $v0,1
 	syscall
 	li $v0,11
 	li $a0,10
@@ -96,9 +96,9 @@ case_1_3:
 	div $t0,$t1,$t2
 	addi $t1,$sp,25
 	sw $t0,0($t1)
-	la $a0,$tmp8
-	li $v0,1
+	addi $a0,$sp,25
 	lw $a0,0($a0)
+	li $v0,1
 	syscall
 	li $v0,11
 	li $a0,10
