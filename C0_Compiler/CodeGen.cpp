@@ -450,7 +450,7 @@ void objSave(int val,int adr,int iden,int offset)
 		}
 		else if (entry._type == CHARS)
 		{
-			emitObj(TSB, val, adr, 0);
+			emitObj(TLB, val, adr, 0);
 		}
 	}
 }
