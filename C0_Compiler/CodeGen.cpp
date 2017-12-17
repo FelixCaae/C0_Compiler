@@ -213,16 +213,7 @@ void objEntry()
 {
 	emitObj("j main");
 }
-void objFunc(bool hasHead)
-{
-	int lhead=genLabel(LFUNC,symTable[funcRef]._name);
-	int ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
-	setLabel(lhead, LPHEAD);
-	setLabel(ltail, LPCUR);
-	objBody(ltail);
-	objFuncTail();
-}
-void objFuncHead()
+void objFuncHead(bool main)
 {
 	int offset = 4;
 
@@ -238,7 +229,11 @@ void objFuncHead()
 		}
 	}
 	emitObj(TSUBI, sp, sp, entry._size+ReserveSize);
-	for (int i = 0; i < 0; i++)
+	if (main)
+	{
+		return;
+	}
+	for (int i = 0;i < 0; i++)
 	{
 		emitObj(TSW, s0+i, sp, offset*i+entry._size);
 	}
@@ -259,120 +254,21 @@ void objFuncHead()
 		}
 	}
 }
-void objBody(int ltail)
+void objFunc(bool main)
 {
-	int lc = 0,lbc=0;
-	qCType qt;
-	int arg1, arg2, arg3;
+	int lhead, ltail, lc;
+	lhead = genLabel(LFUNC, symTable[funcRef]._name);
+	ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
+	setLabel(lhead, LPHEAD);
+	setLabel(ltail, LPCUR);
+	objLabel(0);
+	objFuncHead(main);
 	while (lc != line)
 	{
-		qt = (qCType)qCode[lc * 4];
-		arg1 = qCode[lc * 4 + 1];
-		arg2 = qCode[lc * 4 + 2];
-		arg3 = qCode[lc * 4 + 3];
-		objLabel(lc);
-		lc++;
-		switch (qt)
-		{
-		case QARL:
-			objLoad(t0, arg3); //load val
-			objLoad(t1, arg2);//load offset
-			objSave(t0, t2, arg1, t1);
-			break;
-		case QARR:
-			objLoad(t1, arg3);//load offset
-			objLoad(t0, arg2, t1);//load val
-			objSave(t0, t1, arg1);
-			break;
-		case QASSIGN:
-			objLoad(t0, arg2);
-			objSave(t0,t1,arg1);
-			break;
-		case QBNZ:
-			emitObj(TBEQ, _0, v1, arg1);
-			break;
-		case QBZ:
-			emitObj(TBNE, _0, v1, arg1);
-			break;
-		case QCALL:
-			emitObj(TJAL, arg1);
-			paramCounter = 0;
-			break;
-		case QDIV:
-			objArthOp(TDIV, arg1, arg2, arg3);
-			break;
-		case QGOTO:
-			emitObj(TJUMP, arg1);
-			break;
-		case QMINUS:
-			objArthOp(TSUB,arg1,arg2,arg3);
-			break;
-		case QPLUS:
-			objArthOp(TADD, arg1, arg2, arg3);
-			break;
-		case QPRINT:
-			objWrite(arg1, arg2);
-			break;
-		case QREAD:
-			objRead(arg1);
-			break;
-		case QRET:
-			if (arg1 != NotExist)
-			{
-				objLoad(v0, arg1);
-			}
-			emitObj(TJUMP,ltail);
-			break;
-		case QRETX:
-			objSave(v0, t0, arg1);
-			break;
-		case QSTAR:
-			objArthOp(TMULT, arg1, arg2, arg3);
-			break;
-		case QGT:
-			objCondition(TSGT, arg1, arg2);
-			break;
-		case QLS:
-			objCondition(TSLT, arg1, arg2);
-			break;
-		case QGTEQU:
-			objCondition(TSGE, arg1, arg2);
-			break;
-		case QLSEQU:
-			objCondition(TSLE, arg1, arg2);
-			break;
-		case QEQU:
-			objCondition(TSEQ, arg1, arg2);
-			break;
-		case QNEQU:
-			objCondition(TSNE, arg1, arg2);
-			break;
-		case QFUNCDECL:
-			objFuncHead();
-			break;
-		case QPUSH:
-			if (paramCounter < 4)
-			{
-				objLoad(a0 + paramCounter, arg1);
-			}
-			else
-			{
-				objLoad(t0, arg1);
-				emitObj(TSW, t0, sp, -4 * (1 + paramCounter - 4));
-			}
-			paramCounter++;
-			break;
-		case QPARA:
-		case QVAR:
-		case QARRAY:
-		case QCONST:
-			break;
-		default:
-			error(ERR_QCODE_NOT_DEFINE);
-			break;
-		}
+		objLine(lc);
 	}
 	objLabel(lc);
+	objFuncTail(main);
 	clearQCode();
 }
 void objLabel(int lc)
@@ -384,6 +280,116 @@ void objLabel(int lc)
 			outputLabel(i,true);
 		}
 
+	}
+}
+void objLine(int lc)
+{
+	qCType qt;
+	int arg1, arg2, arg3;
+	qt = (qCType)qCode[lc * 4];
+	arg1 = qCode[lc * 4 + 1];
+	arg2 = qCode[lc * 4 + 2];
+	arg3 = qCode[lc * 4 + 3];
+	objLabel(lc);
+	lc++;
+	switch (qt)
+	{
+	case QARL:
+		objLoad(t0, arg3); //load val
+		objLoad(t1, arg2);//load offset
+		objSave(t0, t2, arg1, t1);
+		break;
+	case QARR:
+		objLoad(t1, arg3);//load offset
+		objLoad(t0, arg2, t1);//load val
+		objSave(t0, t1, arg1);
+		break;
+	case QASSIGN:
+		objLoad(t0, arg2);
+		objSave(t0, t1, arg1);
+		break;
+	case QBNZ:
+		emitObj(TBEQ, _0, v1, arg1);
+		break;
+	case QBZ:
+		emitObj(TBNE, _0, v1, arg1);
+		break;
+	case QCALL:
+		emitObj(TJAL, arg1);
+		paramCounter = 0;
+		break;
+	case QDIV:
+		objArthOp(TDIV, arg1, arg2, arg3);
+		break;
+	case QGOTO:
+		emitObj(TJUMP, arg1);
+		break;
+	case QMINUS:
+		objArthOp(TSUB, arg1, arg2, arg3);
+		break;
+	case QPLUS:
+		objArthOp(TADD, arg1, arg2, arg3);
+		break;
+	case QPRINT:
+		objWrite(arg1, arg2);
+		break;
+	case QREAD:
+		objRead(arg1);
+		break;
+	case QRET:
+		if (arg1 != NotExist)
+		{
+			objLoad(v0, arg1);
+		}
+		emitObj(TJUMP, ltail);
+		break;
+	case QRETX:
+		objSave(v0, t0, arg1);
+		break;
+	case QSTAR:
+		objArthOp(TMULT, arg1, arg2, arg3);
+		break;
+	case QGT:
+		objCondition(TSGT, arg1, arg2);
+		break;
+	case QLS:
+		objCondition(TSLT, arg1, arg2);
+		break;
+	case QGTEQU:
+		objCondition(TSGE, arg1, arg2);
+		break;
+	case QLSEQU:
+		objCondition(TSLE, arg1, arg2);
+		break;
+	case QEQU:
+		objCondition(TSEQ, arg1, arg2);
+		break;
+	case QNEQU:
+		objCondition(TSNE, arg1, arg2);
+		break;
+	case QFUNCDECL:
+		//objFuncHead(main);
+		break;
+	case QPUSH:
+		if (paramCounter < 4)
+		{
+			objLoad(a0 + paramCounter, arg1);
+		}
+		else
+		{
+			objLoad(t0, arg1);
+			emitObj(TSW, t0, sp, -4 * (1 + paramCounter - 4));
+		}
+		paramCounter++;
+		break;
+	case QPARA:
+	case QVAR:
+	case QARRAY:
+	case QCONST:
+		break;
+	default:
+		error(ERR_QCODE_NOT_DEFINE);
+		break;
 	}
 }
 void objLoad(int reg, int iden,int offset)
@@ -512,17 +518,22 @@ void objWrite(int  pf,int iden)
 	emitObj(TLI, a0, '\n');
 	emitObj(TSYSCALL);
 }
-void objFuncTail()
+void objFuncTail(bool main)
 {
 	int offset = 4;
 	funcTableEntry entry = funcTable[symTable[funcRef]._ref];
-	for (int i = 0; i < 0; i++)
+	if (!main)
 	{
-		emitObj(TLW, s0 + i, sp, i * offset+entry._size);
+		for (int i = 0; i < 0; i++)
+		{
+			emitObj(TLW, s0 + i, sp, i * offset + entry._size);
+		}
+		emitObj(TLW, ra, sp, RAADR + entry._size);
 	}
-	emitObj(TLW, ra, sp,RAADR+entry._size);
 	emitObj(TADDI, sp, sp, entry._size + ReserveSize);
-	emitObj(TJR);
+	if (!main) {
+		emitObj(TJR);
+	}
 }
 void objGloblData()
 {

@@ -45,7 +45,6 @@ count123_end:
 	jr $ra
 main:
 	subi $sp,$sp,52
-	sw $ra,48($sp)
 	li $t0,3
 	addi $t1,$sp,0
 	sw $t0,0($t1)
@@ -109,9 +108,7 @@ main:
 	li $a0,10
 	syscall
 main_end:
-	lw $ra,48($sp)
 	addi $sp,$sp,52
-	jr $ra
 	.data
 	_n1 :.word 0
 	_n2 :.word 0

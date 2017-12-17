@@ -365,7 +365,7 @@ bool parseFuncDecl()
 	shouldBe(LCURB);
 	parseCompoundStat();
 	locateAdr();
-	objFunc(!mainFound);
+	objFunc(mainFound);
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL,false);
