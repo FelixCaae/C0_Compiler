@@ -249,6 +249,6 @@ main_end:
 	s :.word 0
 	i :.word 0
 	j :.word 0
-	dyn :.word 0
+	dyn :.space 20200
 	Str_0 :.asciiz "n should be bigger or equal to zero"
 	Str_1 :.asciiz "n should be less or equal than"

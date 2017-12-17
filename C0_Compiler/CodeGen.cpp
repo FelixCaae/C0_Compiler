@@ -78,6 +78,9 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 	case TBYT:
 		sprintf(buffer+1, "%s :.byte 0", NAME(r1));
 		break;
+	case TSPACE:
+		sprintf(buffer + 1, "%s :.space %d", NAME(r1), r2);
+		break;
 	case TASCIIZ:
 		sprintf(buffer+1, "%s :.asciiz \"%s\"", STRNAME(r1), STR(r1));
 		break;
@@ -473,20 +476,32 @@ void objGloblData()
 	int entry = linkGlobal;
 	while (EXIST(entry))
 	{
-		if (ISGLOBAL(entry)&&ISINT(entry)&&
-			(ISVAR(entry) ||ISARRAY(entry)))
+		if (ISGLOBAL(entry) && ISINT(entry))
 		{
-			emitObj(TWORD, entry);
+			if (ISVAR(entry))
+			{
+				emitObj(TWORD, entry);
+			}
+			else if (ISARRAY(entry))
+			{
+				emitObj(TSPACE, entry, REF(entry)*IntSize);
+			}
 		}
 		entry = NEXT(entry);
 	}
 	entry = linkGlobal;
 	while (EXIST(entry))
 	{
-		if (ISGLOBAL(entry) &&ISCHAR(entry)&&
-			(ISVAR(entry) || ISARRAY(entry)))
+		if (ISGLOBAL(entry) && ISCHAR(entry))
 		{
-			emitObj(TBYT, entry);
+			if (ISVAR(entry))
+			{
+				emitObj(TBYT, entry);
+			}
+			else if (ISARRAY(entry))
+			{
+				emitObj(TSPACE, entry, REF(entry)*CharSize);
+			}
 		}
 		entry = NEXT(entry);
 	}
