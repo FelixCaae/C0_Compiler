@@ -1,0 +1,6 @@
+	j main
+main:
+	subi $sp,$sp,40
+main_end:
+	addi $sp,$sp,40
+	.data

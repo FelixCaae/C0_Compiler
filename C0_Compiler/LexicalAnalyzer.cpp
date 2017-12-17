@@ -168,6 +168,7 @@ bool isAsciiChar()
 void scannIDEN()
 {
     lextype = IDEN;
+	char* p= token;
     while (!isBlank()&&!isInputEnd()&&!isSeperator())
     {
         if (!isAlpha() && !isNumber())
@@ -175,6 +176,11 @@ void scannIDEN()
             error(ERR_LEX);
         }
         readChar();
+		if (*p >= 'A'&&*p <= 'Z')
+		{
+			*p |= 0x60;
+		}
+		p++;
     }
     retractChar();
     int r = findReserveWord();

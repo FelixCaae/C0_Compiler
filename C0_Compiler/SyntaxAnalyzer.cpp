@@ -125,11 +125,6 @@ void parseIden(int *val,bool set)
 	strcpy(tokenbak, token);
 	char *p = tokenbak;
 	shouldBe(IDEN);
-	for(;*p!=0;p++)
-	{
-		if (*p <= 'Z'&&*p >= 'A')
-			*p = *p | 0x60;
-	}
 	if (set)
 	{
 		shouldNotExist(tokenbak);
@@ -955,7 +950,7 @@ int main(int argc, char**argv)
 {
 	char *buffer[2];
 	buffer[1] = "../x64/Debug/test/test_null.txt";
-	if (syntaxAnalyze(argc,argv))
+	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");
 	}

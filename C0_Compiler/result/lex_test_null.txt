@@ -1,0 +1,8 @@
+27	NOTYP	void	row:1	colmn:0
+37	MAINFUNC	main	row:1	colmn:1
+11	LPAR	(	row:1	colmn:2
+12	RPAR	)	row:1	colmn:3
+6	LCURB	{	row:2	colmn:0
+7	RCURB	}	row:3	colmn:0
+39	ENDOFINPUT	ÿ	row:3	colmn:1
+39	ENDOFINPUT	ÿ	row:3	colmn:2

@@ -124,7 +124,7 @@ void error(int err,int detail)
 	}
 	case ERR_QCODE_NOT_DEFINE:
 	{
-		sprintf(buffer, "*****Error%d:QCode %d not defined", err, detail)
+		sprintf(buffer, "*****Error%d:QCode %d not defined", err, detail);
 	}
 	default:
 	{
