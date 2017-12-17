@@ -85,6 +85,8 @@
                   <writeStat>
                   <keyword> printf <\keyword>
                   <seperator> ( <\seperator>
+                  <string> "a+b:" <\string>
+                  <seperator> , <\seperator>
                     <expression>
                       <term>
                         <factor>
@@ -113,6 +115,8 @@
                   <writeStat>
                   <keyword> printf <\keyword>
                   <seperator> ( <\seperator>
+                  <string> "a-b:" <\string>
+                  <seperator> , <\seperator>
                     <expression>
                       <term>
                         <factor>
@@ -141,6 +145,8 @@
                   <writeStat>
                   <keyword> printf <\keyword>
                   <seperator> ( <\seperator>
+                  <string> "a*b:" <\string>
+                  <seperator> , <\seperator>
                     <expression>
                       <term>
                         <factor>
@@ -167,6 +173,8 @@
                   <writeStat>
                   <keyword> printf <\keyword>
                   <seperator> ( <\seperator>
+                  <string> "a/b:" <\string>
+                  <seperator> , <\seperator>
                     <expression>
                       <term>
                         <factor>
@@ -262,6 +270,23 @@
                         <\condition>
                       <seperator> ) <\seperator>
                       <\loopStat>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "aEb:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
                     <\statement>
                   <\statements>
                 <seperator> } <\seperator>

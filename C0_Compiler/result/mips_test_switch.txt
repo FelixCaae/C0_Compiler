@@ -29,6 +29,12 @@ calculate:
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_1
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -50,6 +56,12 @@ case_1_1:
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_2
+	li $v0,4
+	la $a0,Str_1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -71,6 +83,12 @@ case_1_2:
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_3
+	li $v0,4
+	la $a0,Str_2
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -92,6 +110,12 @@ case_1_3:
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_1_4
+	li $v0,4
+	la $a0,Str_3
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -139,6 +163,19 @@ do_2:
 	li $t1,0
 	sne $v1,$t0,$t1
 	bne $0,$v1,do_2
+	li $v0,4
+	la $a0,Str_4
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 	j switch_1
 switch_1:
 case_1_5:
@@ -158,3 +195,8 @@ main:
 	jal calculate
 main_end:
 	.data
+	Str_0 :.asciiz "a+b:"
+	Str_1 :.asciiz "a-b:"
+	Str_2 :.asciiz "a*b:"
+	Str_3 :.asciiz "a/b:"
+	Str_4 :.asciiz "aEb:"

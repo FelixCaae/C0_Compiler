@@ -9,24 +9,28 @@
 	read op
 	43 == op
 	BNZ case_1_1
+	print "a+b:"
 	$tmp2 = a + b
 	print $tmp2
 	GOTO switch_1
 case_1_1:
 	45 == op
 	BNZ case_1_2
+	print "a-b:"
 	$tmp4 = a - b
 	print $tmp4
 	GOTO switch_1
 case_1_2:
 	42 == op
 	BNZ case_1_3
+	print "a*b:"
 	$tmp6 = a * b
 	print $tmp6
 	GOTO switch_1
 case_1_3:
 	47 == op
 	BNZ case_1_4
+	print "a/b:"
 	$tmp8 = a / b
 	print $tmp8
 	GOTO switch_1
@@ -40,6 +44,8 @@ do_2:
 	b = $tmp13 
 	b != 0
 	BZ do_2
+	print "aEb:"
+	print a
 	GOTO switch_1
 case_1_5:
 switch_1:

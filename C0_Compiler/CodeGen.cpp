@@ -531,5 +531,6 @@ void objGloblData()
 	while (entry < curStr)
 	{
 		emitObj(TASCIIZ, entry);
+		entry++;
 	}
 }
