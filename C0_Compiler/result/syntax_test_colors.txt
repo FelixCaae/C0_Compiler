@@ -303,4 +303,87 @@
               <\term>
             <\expression>
           <seperator> ) <\seperator>
-    
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _n2 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _n3 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "*Apple is red*" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "[Peach is pink]" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "<Sky is blue>" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "\And grass is green/" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "I can print string correctly!" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+<\program>
+<end> ÿ <\end>

@@ -91,6 +91,11 @@ void emit(qCType qc,int arg1,int arg2,int arg3)
 	//qcPos += 4;
 	line += 1;
 }
+void emitObj(const char* code)
+{
+	sprintf(buffer, code);
+	outputOCode();
+}
 void emitObj(tCType tc, int r1, int r2, int r3)
 {
 	switch (tc)
@@ -206,7 +211,7 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 }
 void objEntry()
 {
-	//
+	emitObj("j main");
 }
 void objFunc(bool hasHead)
 {

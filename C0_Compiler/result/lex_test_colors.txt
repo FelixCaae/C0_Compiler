@@ -152,4 +152,7 @@
 11	LPAR	(	row:33	colmn:1
 4	STR	"I can print string correctly!"	row:33	colmn:2
 12	RPAR	)	row:33	colmn:3
-9	SEMI	;	row:
+9	SEMI	;	row:33	colmn:4
+7	RCURB	}	row:34	colmn:0
+39	ENDOFINPUT	ÿ	row:34	colmn:1
+39	ENDOFINPUT	ÿ	row:34	colmn:2

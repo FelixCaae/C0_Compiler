@@ -923,7 +923,7 @@ void parseProgram()
 	{
 		parseVarGrup();
 	}
-	
+	objEntry();
 	while (!mainFound) {
 		mainFound = parseFuncDecl();
 	}
