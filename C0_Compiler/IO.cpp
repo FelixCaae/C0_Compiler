@@ -190,7 +190,7 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 void outputOCode()
 {
 	strcat(buffer, "\n");
-	output("\t", outTCode, true);
+	//output("\t", outTCode, true);
 	output(buffer, outTCode, true);
 }
 char * getFileName(char *arg)

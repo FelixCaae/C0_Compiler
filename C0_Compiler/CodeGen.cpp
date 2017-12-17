@@ -36,110 +36,111 @@ void emitObj(const char* code)
 }
 void emitObj(tCType tc, int r1, int r2, int r3)
 {
+	buffer[0] = '\t';
 	switch (tc)
 	{
 	case TADD:
-		sprintf(buffer, "add %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "add %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TADDI:
-		sprintf(buffer, "addi %s,%s,%d", REG(r1), REG(r2), r3);
+		sprintf(buffer+1, "addi %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TSUB:
-		sprintf(buffer, "sub %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "sub %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TSUBI:
-		sprintf(buffer, "subi %s,%s,%d", REG(r1), REG(r2), r3);
+		sprintf(buffer+1, "subi %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TMULT:
-		sprintf(buffer, "mul %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "mul %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TDIV:
-		sprintf(buffer, "div %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "div %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TMULTI:
-		sprintf(buffer, "mul %s,%s,%d", REG(r1), REG(r2), r3);
+		sprintf(buffer+1, "mul %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TDIVI:
-		sprintf(buffer, "div %s,%s,%d", REG(r1), REG(r2), r3);
+		sprintf(buffer+1, "div %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TSLL:
-		sprintf(buffer, "sll %s,%s,%d", REG(r1), REG(r2), r3);
+		sprintf(buffer+1, "sll %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TSLR:
-		sprintf(buffer, "slr %s,%s,%d", REG(r1), REG(r2), r3);
+		sprintf(buffer+1, "slr %s,%s,%d", REG(r1), REG(r2), r3);
 		break;
 	case TDATA:
-		sprintf(buffer, ".data");
+		sprintf(buffer+1, ".data");
 		break;
 	case TWORD:
-		sprintf(buffer, "%s :.word 0", NAME(r1));
+		sprintf(buffer+1, "%s :.word 0", NAME(r1));
 		break;
 	case TBYT:
-		sprintf(buffer, "%s :.byte 0", NAME(r1));
+		sprintf(buffer+1, "%s :.byte 0", NAME(r1));
 		break;
 	case TASCIIZ:
-		sprintf(buffer, "%s :.asciiz \"%s\"", STRNAME(r1), STR(r1));
+		sprintf(buffer+1, "%s :.asciiz \"%s\"", STRNAME(r1), STR(r1));
 		break;
 	case TLA:
 		if (r3 == LAIDEN)
 		{
-			sprintf(buffer, "la %s,%s", REG(r1), NAME(r2));
+			sprintf(buffer+1, "la %s,%s", REG(r1), NAME(r2));
 		}
 		else if(r3==LASTR)
 		{
-			sprintf(buffer, "la %s,%s", REG(r1), STRNAME(r2));
+			sprintf(buffer+1, "la %s,%s", REG(r1), STRNAME(r2));
 		}
 		break;
 	case TLI:
-		sprintf(buffer, "li %s,%d", REG(r1), r2);
+		sprintf(buffer+1, "li %s,%d", REG(r1), r2);
 		break;
 	case TLW:
-		sprintf(buffer, "lw %s,%d(%s)", REG(r1), r3,REG(r2));
+		sprintf(buffer+1, "lw %s,%d(%s)", REG(r1), r3,REG(r2));
 		break;
 	case TLB:
-		sprintf(buffer, "lb %s,%d(%s)",REG(r1), r3, REG(r2));
+		sprintf(buffer+1, "lb %s,%d(%s)",REG(r1), r3, REG(r2));
 		break;
 	case TSW:
-		sprintf(buffer, "sw %s,%d(%s)", REG(r1), r3, REG(r2));
+		sprintf(buffer+1, "sw %s,%d(%s)", REG(r1), r3, REG(r2));
 		break;
 	case TSB:
-		sprintf(buffer, "sb %s,%d(%s)", REG(r1), r3, REG(r2));
+		sprintf(buffer+1, "sb %s,%d(%s)", REG(r1), r3, REG(r2));
 		break;
 	case TBEQ:
-		sprintf(buffer, "beq %s,%s,%s",REG(r1),REG(r2),LABEL(r3));
+		sprintf(buffer+1, "beq %s,%s,%s",REG(r1),REG(r2),LABEL(r3));
 		break;
 	case TBNE:
-		sprintf(buffer, "bne %s,%s,%s", REG(r1), REG(r2), LABEL(r3));
+		sprintf(buffer+1, "bne %s,%s,%s", REG(r1), REG(r2), LABEL(r3));
 		break;
 	case TJAL:
-		sprintf(buffer, "jal %s",NAME(r1));
+		sprintf(buffer+1, "jal %s",NAME(r1));
 		break;
 	case TJUMP:
-		sprintf(buffer, "j %s", LABEL(r1));
+		sprintf(buffer+1, "j %s", LABEL(r1));
 		break;
 	case TJR:
-		sprintf(buffer, "jr %s",REG(ra));
+		sprintf(buffer+1, "jr %s",REG(ra));
 		break;
 	case TSEQ:
-		sprintf(buffer, "seq %s,%s,%s", REG(r1),REG(r2),REG(r3));
+		sprintf(buffer+1, "seq %s,%s,%s", REG(r1),REG(r2),REG(r3));
 		break;
 	case TSNE:
-		sprintf(buffer, "sne %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "sne %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TSGT:
-		sprintf(buffer, "sgt %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "sgt %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TSGE:
-		sprintf(buffer, "sge %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "sge %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TSLT:
-		sprintf(buffer, "slt %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "slt %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TSLE:
-		sprintf(buffer, "sle %s,%s,%s", REG(r1), REG(r2), REG(r3));
+		sprintf(buffer+1, "sle %s,%s,%s", REG(r1), REG(r2), REG(r3));
 		break;
 	case TSYSCALL:
-		sprintf(buffer, "syscall");
+		sprintf(buffer+1, "syscall");
 		break;
 	case TLABEL:
 		sprintf(buffer, "%s:", LABEL(r1));
