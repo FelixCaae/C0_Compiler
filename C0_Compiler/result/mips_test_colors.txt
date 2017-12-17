@@ -1,0 +1,120 @@
+	j main
+set123:
+	subi $sp,$sp,40
+	sw $ra,36($sp)
+	li $t0,1
+	la $t1,_n1
+	sw $t0,0($t1)
+	li $t0,2
+	la $t1,_n2
+	sw $t0,0($t1)
+	li $t0,3
+	la $t1,_n3
+	sw $t0,0($t1)
+set123_end:
+	lw $ra,36($sp)
+	addi $sp,$sp,40
+	jr $ra
+count123:
+	subi $sp,$sp,40
+	sw $ra,36($sp)
+	la $a0,_n1
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	la $a0,_n2
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	la $a0,_n3
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+count123_end:
+	lw $ra,36($sp)
+	addi $sp,$sp,40
+	jr $ra
+main:
+	subi $sp,$sp,52
+	li $t0,3
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	li $t0,2
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	li $t0,1
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	jal set123
+	jal count123
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,4
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,8
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_2
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_3
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_4
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+main_end:
+	addi $sp,$sp,52
+	.data
+	_n1 :.word 0
+	_n2 :.word 0
+	_n3 :.word 0
+	Str_0 :.asciiz "*Apple is red*"
+	Str_1 :.asciiz "[Peach is pink]"
+	Str_2 :.asciiz "<Sky is blue>"
+	Str_3 :.asciiz "\And grass is green/"
+	Str_4 :.asciiz "I can print string correctly!"

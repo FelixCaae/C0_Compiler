@@ -10,11 +10,6 @@
 #include "SymTable.h"
 #include "CodeGen.h"
 using namespace std;
-#define NAME(arg) symTable[arg]._name
-#define TYPE(arg) typeName[symTable[arg]._type]
-#define LABEL(arg) labelTable[arg]
-#define OP(arg) (symTable[arg]._obj==OCONST?to_string(symTable[arg]._ref).c_str():NAME(arg))
-#define STR(arg) strTable[arg]._buffer
 using namespace std;
 bool toConsole = true;
 FILE * inFile=NULL;
@@ -39,20 +34,20 @@ void output(char *ch,FILE* outFile,bool toConsole)
 void outputLexeme()
 {
 	sprintf(buffer, "%d\t%s\t%s\trow:%d\tcolmn:%d\n", lextype, lexClassName[lextype - 1], token, lineCounter, columnCounter);
-	output(buffer, outLex);
+	output(buffer, outLex,bOutLex);
 }
 void blank()
 {
 	for (int i = 0; i < 2 * (slevel - 1);i++)
 	{
-		output(" ", outSyntax);
+		output(" ", outSyntax,bOutSyntax);
 	}
 }
 void outputTerminalS(syntaxClass sc)
 {
 		blank();
 		sprintf(buffer, "<%s> %s <\\%s>\n", syntaxClassName[sc - 1], token, syntaxClassName[sc - 1]);
-		output(buffer, outSyntax);
+		output(buffer, outSyntax,bOutSyntax);
 }
 void outputSyntax(syntaxClass sc,bool isHead)
 { 
@@ -63,39 +58,39 @@ void outputSyntax(syntaxClass sc,bool isHead)
 			slevel += 1;
 			blank();
 			sprintf(buffer, hformat, syntaxClassName[sc - 1]);
-			output(buffer, outSyntax);
+			output(buffer, outSyntax, bOutSyntax);
 		}
 		else
 		{
 			blank();
 			slevel -= 1;
 			sprintf(buffer, tformat, syntaxClassName[sc - 1]);
-			output(buffer, outSyntax);
+			output(buffer, outSyntax, bOutSyntax);
 		}
-}
-void outputLabel(int l)
-{
-	char str[100];
-	strcpy(str, LABEL(l));
-	strcat(str, ":\n");
-	output(str,outQCode,true);
 }
 void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 {
 	char numbuff1[20],numbuff2[20];
-	buffer[0] = '\0';
-	strcat(buffer, "\t");
-	char* str = buffer+1;
+	char* str;
+	if (qc != QLABEL)
+	{
+		buffer[0] = '\t';
+		str = buffer + 1;
+	}
+	else
+	{
+		str = buffer;
+	}
 	switch (qc)
 	{
 	case QVAR:
-		sprintf(str, "var %s %s", typeName[symTable[arg1]._type], symTable[arg1]._name);
+		sprintf(str, "var %s %s", TYPE(arg1),NAME(arg1));
 		break;
 	case QCONST:
-		sprintf(str, "const %s %s = %d", typeName[symTable[arg1]._type], symTable[arg1]._name, symTable[arg1]._ref);
+		sprintf(str, "const %s %s = %d", TYPE(arg1), NAME(arg1),REF(arg1));
 		break;
 	case QARRAY:
-		sprintf(str, "array %s %s[%d]", typeName[symTable[arg1]._type], symTable[arg1]._name, symTable[arg1]._ref);
+		sprintf(str, "array %s %s[%d]", TYPE(arg1), NAME(arg2), REF(arg1));
 		break;
 	case QFUNCDECL:
 		sprintf(str, "%s %s()", typeName[symTable[arg1]._type], symTable[arg1]._name);
@@ -117,11 +112,11 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		sprintf(str, "read %s", NAME(arg1));
 		break;
 	case QRET:
-		if (arg1 == RVAL)
+		if (arg1 !=NotExist)
 		{
-			sprintf(str, "ret %s", OP(arg2));
+			sprintf(str, "ret %s", OP(arg1));
 		}
-		else if (arg1 == RNOVAL)
+		else
 		{
 			sprintf(str, "ret");
 		}
@@ -142,7 +137,7 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		sprintf(str, "%s = %s ", NAME(arg1), OP(arg2));
 		break;
 	case QPUSH:
-		sprintf(str, "push %s", NAME(arg1));
+		sprintf(str, "push %s", OP(arg1));
 		break;
 	case QCALL:
 		sprintf(str, "call %s",NAME(arg1));
@@ -165,6 +160,9 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 	case QGOTO:
 		sprintf(str, "GOTO %s", LABEL(arg1));
 		break;
+	case QLABEL:
+		sprintf(str, "%s:", LABEL(arg1));
+		break;
 	case QGT:
 		sprintf(str, "%s > %s", OP(arg1),OP(arg2));
 		break;
@@ -181,16 +179,19 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		sprintf(str, "%s == %s", OP(arg1), OP(arg2));
 		break;
 	case QNEQU:
-		
 		sprintf(str, "%s != %s", OP(arg1), OP(arg2));
+		break;
+	default:
 		break;
 	}
 	strcat(str, "\n");
-	output(buffer,outQCode,true);
+	output(buffer,outQCode,bOutQcode);
 }
-void outputTCode(tCType tc, reg r1, reg r2)
+void outputOCode()
 {
-
+	strcat(buffer, "\n");
+	//output("\t", outTCode, true);
+	output(buffer, outTCode, bOutTCode);
 }
 char * getFileName(char *arg)
 {
@@ -255,6 +256,14 @@ void init(int argc, char ** argv)
 		error(ERR_FILE);
 	}
 	outQCode = f;
+	strcpy(name, "result/mips_");
+	strcat(name, rawname);
+	f = fopen(name, "w+");
+	if (f == NULL)
+	{
+		error(ERR_FILE);
+	}
+	outTCode = f;
 }
 void close()
 {
@@ -263,4 +272,5 @@ void close()
 	if (outSyntax)fclose(outSyntax);
 	if (outErr)fclose(outErr);
 	if (outQCode)fclose(outQCode);
+	if (outTCode)fclose(outTCode);
 }

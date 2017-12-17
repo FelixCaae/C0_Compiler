@@ -8,20 +8,23 @@ symTableEntry symTable[strTableSize];
 //conTableEntry conTable[constTableSize];
 funcTableEntry funcTable[funcTableSize];
 strTableEntry strTable[strTableSize];
+unsigned int funcRef=NotExist;
 unsigned int curLevPos=0;
 unsigned int curSym=0;
 unsigned int curStr = 0;
 unsigned int curCon = 0;
 unsigned int curFunc = 0;
+unsigned int labelID = 0;
+unsigned int caseID = 0;
+unsigned int tempCounter = 0;
+unsigned int labelCounter = 0;
 unsigned const int linkGlobal = 0;
 unsigned int linkHead = NotExist;
 unsigned int linkTail = NotExist;
 unsigned int linkBak = NotExist;
-unsigned int tempCounter = 0;
-int countSize(int iden)
-{
-	return 0;
-}
+char labelTable[maxLabelNum][maxLabelStrLen];
+void locateAdr();
+int countSize(int iden);
 void cleanup()
 {
 	linkTail = NotExist;
@@ -33,9 +36,8 @@ void cleanup()
 int genTemp(IdenType it, bool isConst, int val)
 {
 	char tempName[tokenStrLen];
-	do {
-		sprintf(tempName, "tmp%d", tempCounter++);
-	} while (lookupIdent(tempName) != NotExist);
+	sprintf(tempName, "$tmp%d", tempCounter++);
+
 	IdenObj io = OVAR;
 	if (isConst)
 	{
@@ -43,8 +45,9 @@ int genTemp(IdenType it, bool isConst, int val)
 	}
 	return insertIdent(tempName, it, io, val);
 }
-void enterFunc()
+void enterFunc(unsigned int ref)
 {
+	funcRef = ref;
 	linkHead = NotExist;
 	linkBak = linkTail;
 	linkTail = NotExist;
@@ -52,6 +55,8 @@ void enterFunc()
 }
 void leaveFunc()
 {
+	funcRef = NotExist;
+	unlinkAll();
 	linkHead = linkGlobal;
 	linkTail = linkBak;
 }
@@ -70,23 +75,26 @@ void link(int entry)
 }
 void unlink()
 {
-	int entry = curSym;
-	curSym--;
+	if (linkHead == NotExist)return;
+	int entry = curSym - 1;
 	if (linkHead == entry)
 	{
 		linkHead = NotExist;
+		linkTail = NotExist;
+		curSym--;
 	}
-	if (entry > 0)
+	else
 	{
-		if(symTable[entry-1]._next==entry)
-		{
-			linkTail = entry - 1;
-			symTable[entry - 1]._next = NotExist;
-		}
-		else
-		{
-			linkTail = NotExist;
-		}
+		linkTail--;
+		curSym--;
+		symTable[curSym]._next = NotExist;
+	}
+}
+void unlinkAll()
+{
+	while (linkTail != NotExist)
+	{
+		unlink();
 	}
 }
 int insertIdent(char *name, IdenType type, IdenObj obj,int ref)
@@ -103,6 +111,10 @@ int insertIdent(char *name, IdenType type, IdenObj obj,int ref)
 		symTable[curSym]._obj = obj;
 		symTable[curSym]._type = type;
 		symTable[curSym]._ref = ref;
+		if (funcRef == NotExist)
+		{
+			symTable[curSym]._adr = Global;
+		}
 		return curSym++;
 	}
 	error(ERR_IDEN_DECLARED);
@@ -121,6 +133,7 @@ int insertString(char *str)
 	{
 		r = curStr;
 		strcpy(strTable[curStr]._buffer,str);
+		sprintf(strTable[curStr]._adr, "Str_%d", curStr);
 		curStr += 1;
 	}
 	return r;
@@ -165,4 +178,100 @@ int lookupIdent(char *name)
 	int id = lookupIdent(name, linkHead);
 	if (id == NotFound)id = lookupIdent(name, linkGlobal);
 	return id;
+}
+void locateAdr()
+{
+	int entry = linkHead;
+	int adr=0,size=0;
+	while (entry != NotExist)
+	{
+		if (symTable[entry]._type == INTS) {
+			symTable[entry]._adr = adr;
+			adr += countSize(entry);
+		}
+		entry = symTable[entry]._next;
+	}
+	entry=linkHead;
+	while (entry != NotExist)
+	{
+		if (symTable[entry]._type == CHARS) {
+			symTable[entry]._adr = adr;
+			adr += countSize(entry);
+		}
+		entry = symTable[entry]._next;
+	}
+	adr += (4 - adr % 4);//round up
+	if(funcRef!=NotExist)
+		funcTable[symTable[funcRef]._ref]._size = adr;
+}
+int countSize(int iden)
+{
+	int tsize;
+	if (symTable[iden]._type == INTS)
+	{
+		tsize = IntSize;
+	}
+	else if (symTable[iden]._type == CHARS)
+	{
+		tsize = CharSize;
+	}
+	if (symTable[iden]._obj == OVAR)
+	{
+		return tsize;
+	}
+	else if (symTable[iden]._obj == OCONST)
+	{
+		return 0;
+	}
+	else if (symTable[iden]._obj == OARRAY)
+	{
+		return tsize*symTable[iden]._ref;
+	}
+	else if (symTable[iden]._obj == OFUNC)
+	{
+		return 0;
+	}
+	return 0;
+}
+int genLabel(lableType lt, char *name)
+{
+	switch (lt)
+	{
+	case LIF:
+		sprintf(labelTable[labelCounter], "if_%d", ++labelID);
+		break;
+	case LWHILE:
+		sprintf(labelTable[labelCounter], "do_%d", ++labelID);
+		break;
+	case LSWITCH:
+		sprintf(labelTable[labelCounter], "switch_%d", ++labelID);
+		caseID = 0;
+		break;
+	case LCASE:
+		sprintf(labelTable[labelCounter], "case_%d_%d", labelID, ++caseID);
+		break;
+	case LFUNC:
+		sprintf(labelTable[labelCounter], name);
+		break;
+	case LFUNCEND:
+		sprintf(labelTable[labelCounter], name);
+		strcat(labelTable[labelCounter], "_end");
+		break;
+	case L:
+		sprintf(labelTable[labelCounter], name);
+		break;
+	}
+	return labelCounter++;
+}
+int findLabel(char * name)
+{
+	int i = 0;
+	for (; i < labelCounter; i++)
+	{
+		if (strcmp(name, labelTable[i]) == 0)
+		{
+			return i;
+		}
+	}
+	return -1;
 }

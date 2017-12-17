@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
-#include "../LexicalAnalyzer/SymTable.h"
-#include "../LexicalAnalyzer/CodeGen.h"
-#include "../LexicalAnalyzer/IO.h"
+#include "../C0_Compiler/SymTable.h"
+#include "../C0_Compiler/CodeGen.h"
+#include "../C0_Compiler/IO.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace C0_UnitTest
@@ -35,7 +35,7 @@ namespace C0_UnitTest
 			Assert::AreNotEqual(lookupIdent("gl",linkHead), NotFound);
 			Assert::AreNotEqual(lookupIdent("gl", linkGlobal), NotFound);
 			insertIdent("func1", INTS, OFUNC);
-			enterFunc();
+			enterFunc(0);
 			insertIdent("lc", CHARS, OVAR);
 			Assert::AreNotEqual(lookupIdent("gl",linkGlobal), NotFound);
 			Assert::AreEqual(lookupIdent("gl",linkHead), NotFound);
@@ -52,7 +52,42 @@ namespace C0_UnitTest
 			unlink();
 			Assert::AreEqual(lookupIdent("var1"), NotFound);
 			insertIdent("var1", INTS, OVAR);
-
+			insertIdent("var2", INTS, OVAR);
+			insertIdent("var3", INTS, OVAR);
+			unlinkAll();
+			Assert::AreEqual(lookupIdent("var1"),NotFound);
+			Assert::AreEqual(lookupIdent("var2"), NotFound);
+			Assert::AreEqual(lookupIdent("var3"), NotFound);
+			insertIdent("var1", INTS, OVAR);
+			enterFunc(0);
+			insertIdent("var1", INTS, OVAR);
+			genTemp(INTS);
+			genTemp(INTS);
+			genTemp(INTS);
+			unlinkAll();
+			Assert::AreEqual(lookupIdent("var1", linkHead),NotFound);
+			leaveFunc();
+			Assert::AreNotEqual(lookupIdent("var1", linkHead), NotFound);
+			unlink();
+			Assert::AreEqual(lookupIdent("var1", linkHead), NotFound);
+		}
+		TEST_METHOD(TEST_SYMTABLE_LOC_ADR)
+		{
+			insertIdent("var1", INTS, OVAR);
+			insertIdent("var2", CHARS, OVAR);
+			insertIdent("ar1", INTS, OARRAY, 10);
+			insertIdent("c1", INTS, OCONST, 10);
+			insertIdent("func1", INTS, OFUNC);
+			insertIdent("func2", INTS, OFUNC);
+			locateAdr();
+			Assert::AreEqual(symTable[4]._adr == 45, true);
+			enterFunc(0);
+			insertIdent("var1", INTS, OVAR);
+			insertIdent("var2", CHARS, OARRAY, 20);
+			insertIdent("var3", INTS, OVAR);
+			locateAdr();
+			int iden = lookupIdent("var3");
+			Assert::AreEqual(symTable[iden]._adr ==24,true);
 		}
 		TEST_METHOD(TEST_QCODEOUT)
 		{
@@ -75,6 +110,36 @@ namespace C0_UnitTest
 			emit(QPLUS, 1, 0, 2);
 			emit(QEQU, 1, 2);
 			emit(QBNZ, l);
+		}
+
+		TEST_METHOD(TEST_MIPSOUT)
+		{
+			char * buffer[3];
+			buffer[1] = "test/test_100.txt";
+			init(2, buffer);
+			int ch=insertIdent("ch", CHARS, OVAR);
+			int it=insertIdent("it", INTS, OVAR);
+			int car=insertIdent("car", CHARS, OARRAY, 3);
+			int ch2=insertIdent("ch2", CHARS, OCONST, 'a');
+			int mainfunc = insertFunc(NOTYPS, 0, NULL);
+			int main=insertIdent("main", NOTYPS, OFUNC,mainfunc);
+			int str=insertString("HelloWorld");
+			int lhead = genLabel(LFUNC, "main");
+			int ltail = genLabel(LFUNCEND, "main");
+			setLabel(lhead,LPHEAD);
+			emit(QVAR, ch);
+			emit(QVAR, it);
+			emit(QARRAY, car);
+			emit(QCONST, ch2);
+			emit(QFUNCDECL, main);
+			emit(QPLUS, ch, it, ch2);
+			emit(QEQU, ch, ch2);
+			emit(QRET);
+			setLabel(ltail);
+		//	outputLabel(lhead, true);
+			objBody(ltail);
+			//outputLabel(ltail, true);
+
 		}
 	};
 }

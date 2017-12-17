@@ -1,0 +1,227 @@
+calculate:
+	subi $sp,$sp,76
+	sw $s0,40($sp)
+	sw $s1,44($sp)
+	sw $s2,48($sp)
+	sw $s3,52($sp)
+	sw $s4,56($sp)
+	sw $s5,60($sp)
+	sw $s6,64($sp)
+	sw $s7,68($sp)
+	sw $ra,72($sp)
+	li $t0,0
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	li $v0,5
+	syscall
+	addi $t0,$sp,0
+	sw $v0,0($t0)
+	li $v0,5
+	syscall
+	addi $t0,$sp,4
+	sw $v0,0($t0)
+	li $v0,12
+	syscall
+	addi $t0,$sp,36
+	sb $v0,0($t0)
+	li $t0,43
+	addi $t1,$sp,36
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_1_1
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	addi $a0,$sp,12
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_1
+case_1_1:
+	li $t0,45
+	addi $t1,$sp,36
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_1_2
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_2
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sub $t0,$t0,$t1
+	addi $t1,$sp,16
+	sw $t0,0($t1)
+	addi $a0,$sp,16
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_1
+case_1_2:
+	li $t0,42
+	addi $t1,$sp,36
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_1_3
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_3
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	mul $t0,$t0,$t1
+	addi $t1,$sp,20
+	sw $t0,0($t1)
+	addi $a0,$sp,20
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_1
+case_1_3:
+	li $t0,47
+	addi $t1,$sp,36
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_1_4
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_4
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	div $t0,$t0,$t1
+	addi $t1,$sp,24
+	sw $t0,0($t1)
+	addi $a0,$sp,24
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_1
+case_1_4:
+	li $t0,101
+	addi $t1,$sp,36
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_1_5
+do_2:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,10
+	mul $t0,$t0,$t1
+	addi $t1,$sp,28
+	sw $t0,0($t1)
+	addi $t0,$sp,28
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	li $t1,1
+	sub $t0,$t0,$t1
+	addi $t1,$sp,32
+	sw $t0,0($t1)
+	addi $t0,$sp,32
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	li $t1,0
+	sne $v1,$t0,$t1
+	bne $0,$v1,do_2
+	li $v0,4
+	la $a0,Str_5
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_1
+switch_1:
+case_1_5:
+calculate_end:
+	lw $s0,40($sp)
+	lw $s1,44($sp)
+	lw $s2,48($sp)
+	lw $s3,52($sp)
+	lw $s4,56($sp)
+	lw $s5,60($sp)
+	lw $s6,64($sp)
+	lw $s7,68($sp)
+	lw $ra,72($sp)
+	addi $sp,$sp,76
+	jr $ra
+main:
+	jal calculate
+main_end:
+	.data
+	Str_0 :.asciiz ""
+	Str_1 :.asciiz "a+b:"
+	Str_2 :.asciiz "a-b:"
+	Str_3 :.asciiz "a*b:"
+	Str_4 :.asciiz "a/b:"
+	Str_5 :.asciiz "aEb:"

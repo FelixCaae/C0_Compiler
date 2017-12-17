@@ -2,11 +2,11 @@
 #include <exception>
 #include "CppUnitTest.h"
 #include "direct.h"
-#include "../LexicalAnalyzer/Lexeme.h"
-#include "../LexicalAnalyzer/IO.h"
-#include "../LexicalAnalyzer/Error.h"
-#include "../LexicalAnalyzer/Syntax.h"
-#include "../LexicalAnalyzer/Symtable.h"
+#include "../C0_Compiler/Lexeme.h"
+#include "../C0_Compiler/IO.h"
+#include "../C0_Compiler/Error.h"
+#include "../C0_Compiler/Syntax.h"
+#include "../C0_Compiler/Symtable.h"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace C0_UnitTest
@@ -40,7 +40,7 @@ namespace C0_UnitTest
 			try {
 				syntaxAnalyze(2, (char**)buffer);
 			}
-			catch (char*b)
+			catch (char*)
 			{
 				Assert::Fail();
 			}

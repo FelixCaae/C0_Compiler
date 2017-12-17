@@ -1,146 +1,275 @@
-            <program>
-              <funcDecl>
-              <keyword> void <\keyword>
-              <identifier> calculate <\identifier>
-                <paramList>
-                <seperator> ( <\seperator>
-                <seperator> ) <\seperator>
-                <\paramList>
-              <seperator> { <\seperator>
-                <compoundStatement>
-                  <varDeclGroup>
-                    <varDecl>
-                      <type>
-                      <keyword> int <\keyword>
-                      <\type>
-                    <identifier> a <\identifier>
-                    <seperator> , <\seperator>
-                    <identifier> b <\identifier>
-                    <\varDecl>
-                  <seperator> ; <\seperator>
-                    <varDecl>
-                      <type>
-                      <keyword> char <\keyword>
-                      <\type>
-                    <identifier> op <\identifier>
-                    <\varDecl>
-                  <seperator> ; <\seperator>
-                    <varDecl>
-                      <type>
-                      <keyword> int <\keyword>
-                      <\type>
-                    <identifier> i <\identifier>
-                    <\varDecl>
-                  <seperator> ; <\seperator>
-                  <\varDeclGroup>
+<program>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> calculate <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> , <\seperator>
+        <identifier> b <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> op <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> i <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> i <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 0 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <readStat>
+          <keyword> scanf <\keyword>
+          <seperator> ( <\seperator>
+          <identifier> a <\identifier>
+          <seperator> , <\seperator>
+          <identifier> b <\identifier>
+          <seperator> , <\seperator>
+          <identifier> op <\identifier>
+          <seperator> ) <\seperator>
+          <\readStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <switchStat>
+          <keyword> switch <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> op <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <seperator> { <\seperator>
+            <switchTable>
+              <subSwitchStat>
+              <keyword> case <\keyword>
+                <constant>
+                <char> '+' <\char>
+                <\constant>
+              <seperator> : <\seperator>
+                <statement>
+                <seperator> { <\seperator>
                   <statements>
                     <statement>
-                    <identifier> i <\identifier>
-                      <assignStat>
-                      <seperator> = <\seperator>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "a+b:" <\string>
+                      <seperator> , <\seperator>
                         <expression>
                           <term>
                             <factor>
-                            <unsignedInt> 0 <\unsignedInt>
+                            <identifier> a <\identifier>
                             <\factor>
                           <\term>
-                        <\expression>
-                      <\assignStat>
-                    <seperator> ; <\seperator>
-                    <\statement>
-                    <statement>
-                      <readStat>
-                      <keyword> scanf <\keyword>
-                      <seperator> ( <\seperator>
-                      <identifier> a <\identifier>
-                      <seperator> , <\seperator>
-                      <identifier> b <\identifier>
-                      <seperator> , <\seperator>
-                      <identifier> op <\identifier>
-                      <seperator> ) <\seperator>
-                      <\readStat>
-                    <seperator> ; <\seperator>
-                    <\statement>
-                    <statement>
-                      <switchStat>
-                      <keyword> switch <\keyword>
-                      <seperator> ( <\seperator>
-                        <expression>
+                        <seperator> + <\seperator>
                           <term>
                             <factor>
-                            <identifier> op <\identifier>
+                            <identifier> b <\identifier>
                             <\factor>
                           <\term>
                         <\expression>
                       <seperator> ) <\seperator>
-                      <seperator> { <\seperator>
-                        <switchTable>
-                          <subSwitchStat>
-                          <keyword> case <\keyword>
-                            <constant>
-                            <char> '+' <\char>
-                            <\constant>
-                          <seperator> : <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
+                <\statement>
+              <\subSwitchStat>
+              <subSwitchStat>
+              <keyword> case <\keyword>
+                <constant>
+                <char> '-' <\char>
+                <\constant>
+              <seperator> : <\seperator>
+                <statement>
+                <seperator> { <\seperator>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "a-b:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <\term>
+                        <seperator> - <\seperator>
+                          <term>
+                            <factor>
+                            <identifier> b <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
+                <\statement>
+              <\subSwitchStat>
+              <subSwitchStat>
+              <keyword> case <\keyword>
+                <constant>
+                <char> '*' <\char>
+                <\constant>
+              <seperator> : <\seperator>
+                <statement>
+                <seperator> { <\seperator>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "a*b:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <seperator> * <\seperator>
+                            <factor>
+                            <identifier> b <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
+                <\statement>
+              <\subSwitchStat>
+              <subSwitchStat>
+              <keyword> case <\keyword>
+                <constant>
+                <char> '/' <\char>
+                <\constant>
+              <seperator> : <\seperator>
+                <statement>
+                <seperator> { <\seperator>
+                  <statements>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "" <\string>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "a/b:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <seperator> / <\seperator>
+                            <factor>
+                            <identifier> b <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
+                    <seperator> ; <\seperator>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
+                <\statement>
+              <\subSwitchStat>
+              <subSwitchStat>
+              <keyword> case <\keyword>
+                <constant>
+                <char> 'e' <\char>
+                <\constant>
+              <seperator> : <\seperator>
+                <statement>
+                <seperator> { <\seperator>
+                  <statements>
+                    <statement>
+                      <loopStat>
+                      <keyword> do <\keyword>
+                        <statement>
+                        <seperator> { <\seperator>
+                          <statements>
                             <statement>
-                              <writeStat>
-                              <keyword> printf <\keyword>
-                              <seperator> ( <\seperator>
-                                <expression>
-                                  <term>
-                                    <factor>
-                                    <identifier> a <\identifier>
-                                    <\factor>
-                                  <\term>
-                                <seperator> + <\seperator>
-                                  <term>
-                                    <factor>
-                                    <identifier> b <\identifier>
-                                    <\factor>
-                                  <\term>
-                                <\expression>
-                              <seperator> ) <\seperator>
-                              <\writeStat>
-                            <seperator> ; <\seperator>
-                            <\statement>
-                          <\subSwitchStat>
-                          <subSwitchStat>
-                          <keyword> case <\keyword>
-                            <constant>
-                            <char> '-' <\char>
-                            <\constant>
-                          <seperator> : <\seperator>
-                            <statement>
-                              <writeStat>
-                              <keyword> printf <\keyword>
-                              <seperator> ( <\seperator>
-                                <expression>
-                                  <term>
-                                    <factor>
-                                    <identifier> a <\identifier>
-                                    <\factor>
-                                  <\term>
-                                <seperator> - <\seperator>
-                                  <term>
-                                    <factor>
-                                    <identifier> b <\identifier>
-                                    <\factor>
-                                  <\term>
-                                <\expression>
-                              <seperator> ) <\seperator>
-                              <\writeStat>
-                            <seperator> ; <\seperator>
-                            <\statement>
-                          <\subSwitchStat>
-                          <subSwitchStat>
-                          <keyword> case <\keyword>
-                            <constant>
-                            <char> '*' <\char>
-                            <\constant>
-                          <seperator> : <\seperator>
-                            <statement>
-                              <writeStat>
-                              <keyword> printf <\keyword>
-                              <seperator> ( <\seperator>
+                            <identifier> a <\identifier>
+                              <assignStat>
+                              <seperator> = <\seperator>
                                 <expression>
                                   <term>
                                     <factor>
@@ -148,156 +277,112 @@
                                     <\factor>
                                   <seperator> * <\seperator>
                                     <factor>
-                                    <identifier> b <\identifier>
+                                    <unsignedInt> 10 <\unsignedInt>
                                     <\factor>
                                   <\term>
                                 <\expression>
-                              <seperator> ) <\seperator>
-                              <\writeStat>
+                              <\assignStat>
                             <seperator> ; <\seperator>
                             <\statement>
-                          <\subSwitchStat>
-                          <subSwitchStat>
-                          <keyword> case <\keyword>
-                            <constant>
-                            <char> '/' <\char>
-                            <\constant>
-                          <seperator> : <\seperator>
                             <statement>
-                              <writeStat>
-                              <keyword> printf <\keyword>
-                              <seperator> ( <\seperator>
+                            <identifier> b <\identifier>
+                              <assignStat>
+                              <seperator> = <\seperator>
                                 <expression>
                                   <term>
                                     <factor>
-                                    <identifier> a <\identifier>
-                                    <\factor>
-                                  <seperator> / <\seperator>
-                                    <factor>
                                     <identifier> b <\identifier>
                                     <\factor>
                                   <\term>
+                                <seperator> - <\seperator>
+                                  <term>
+                                    <factor>
+                                    <unsignedInt> 1 <\unsignedInt>
+                                    <\factor>
+                                  <\term>
                                 <\expression>
-                              <seperator> ) <\seperator>
-                              <\writeStat>
+                              <\assignStat>
                             <seperator> ; <\seperator>
                             <\statement>
-                          <\subSwitchStat>
-                          <subSwitchStat>
-                          <keyword> case <\keyword>
-                            <constant>
-                            <char> 'e' <\char>
-                            <\constant>
-                          <seperator> : <\seperator>
-                            <statement>
-                            <seperator> { <\seperator>
-                              <statements>
-                                <statement>
-                                  <loopStat>
-                                  <keyword> do <\keyword>
-                                    <statement>
-                                    <seperator> { <\seperator>
-                                      <statements>
-                                        <statement>
-                                        <identifier> a <\identifier>
-                                          <assignStat>
-                                          <seperator> = <\seperator>
-                                            <expression>
-                                              <term>
-                                                <factor>
-                                                <identifier> a <\identifier>
-                                                <\factor>
-                                              <seperator> * <\seperator>
-                                                <factor>
-                                                <unsignedInt> 10 <\unsignedInt>
-                                                <\factor>
-                                              <\term>
-                                            <\expression>
-                                          <\assignStat>
-                                        <seperator> ; <\seperator>
-                                        <\statement>
-                                        <statement>
-                                        <identifier> b <\identifier>
-                                          <assignStat>
-                                          <seperator> = <\seperator>
-                                            <expression>
-                                              <term>
-                                                <factor>
-                                                <identifier> b <\identifier>
-                                                <\factor>
-                                              <\term>
-                                            <seperator> - <\seperator>
-                                              <term>
-                                                <factor>
-                                                <unsignedInt> 1 <\unsignedInt>
-                                                <\factor>
-                                              <\term>
-                                            <\expression>
-                                          <\assignStat>
-                                        <seperator> ; <\seperator>
-                                        <\statement>
-                                      <\statements>
-                                    <seperator> } <\seperator>
-                                    <\statement>
-                                  <keyword> while <\keyword>
-                                  <seperator> ( <\seperator>
-                                    <condition>
-                                      <expression>
-                                        <term>
-                                          <factor>
-                                          <identifier> b <\identifier>
-                                          <\factor>
-                                        <\term>
-                                      <\expression>
-                                      <identifier>
-                                      <seperator> != <\seperator>
-                                      <\identifier>
-                                      <expression>
-                                        <term>
-                                          <factor>
-                                          <unsignedInt> 0 <\unsignedInt>
-                                          <\factor>
-                                        <\term>
-                                      <\expression>
-                                    <\condition>
-                                  <seperator> ) <\seperator>
-                                  <\loopStat>
-                                <\statement>
-                              <\statements>
-                            <seperator> } <\seperator>
-                            <\statement>
-                          <\subSwitchStat>
-                        <\switchTable>
-                      <seperator> } <\seperator>
-                      <\switchStat>
-                    <\statement>
-                  <\statements>
-                <\compoundStatement>
-              <seperator> } <\seperator>
-              <\funcDecl>
-              <funcDecl>
-              <keyword> void <\keyword>
-              <keyword> main <\keyword>
-                <paramList>
-                <seperator> ( <\seperator>
-                <seperator> ) <\seperator>
-                <\paramList>
-              <seperator> { <\seperator>
-                <compoundStatement>
-                  <statements>
-                    <statement>
-                    <identifier> calculate <\identifier>
-                      <funCallStat>
+                          <\statements>
+                        <seperator> } <\seperator>
+                        <\statement>
+                      <keyword> while <\keyword>
                       <seperator> ( <\seperator>
-                        <argumentList>
-                        <\argumentList>
+                        <condition>
+                          <expression>
+                            <term>
+                              <factor>
+                              <identifier> b <\identifier>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                          <identifier>
+                          <seperator> != <\seperator>
+                          <\identifier>
+                          <expression>
+                            <term>
+                              <factor>
+                              <unsignedInt> 0 <\unsignedInt>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                        <\condition>
                       <seperator> ) <\seperator>
-                      <\funCallStat>
+                      <\loopStat>
+                    <\statement>
+                    <statement>
+                      <writeStat>
+                      <keyword> printf <\keyword>
+                      <seperator> ( <\seperator>
+                      <string> "aEb:" <\string>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\writeStat>
                     <seperator> ; <\seperator>
                     <\statement>
                   <\statements>
-                <\compoundStatement>
-              <seperator> } <\seperator>
-              <\funcDecl>
-            <\program>
-          <end> ÿ <\end>
+                <seperator> } <\seperator>
+                <\statement>
+              <\subSwitchStat>
+            <\switchTable>
+          <seperator> } <\seperator>
+          <\switchStat>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <keyword> main <\keyword>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> calculate <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+<\program>
+<end> ÿ <\end>

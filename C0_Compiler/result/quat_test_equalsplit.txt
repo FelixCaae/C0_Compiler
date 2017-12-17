@@ -1,67 +1,70 @@
+	const int maxn = 100
+	var int n
+	var int s
+	var int i
+	var int j
+	array int maxn[5050]
 	int mod()
 	para int a
 	para int b
 	a < 0
-	BNZ if_0
-	tmp1 = a + b
-	ret tmp1
-if_0:
-	tmp2 = a - b
-	push tmp2
+	BNZ if_1
+	$tmp1 = a + b
+	ret $tmp1
+if_1:
+	$tmp2 = a - b
+	push $tmp2
 	push b
 	call mod
-	tmp3 = RET
-	ret tmp3
+	$tmp3 = RET
+	ret $tmp3
 	void main()
 	read n
 	n < 0
-	BNZ if_1
-	print "n should be bigger or equal to zero"
-if_1:
-	n > 100
 	BNZ if_2
+	print "n should be bigger or equal to zero"
+if_2:
+	n > 100
+	BNZ if_3
 	print "n should be less or equal than"
 	print 100
-if_2:
-	tmp2 = n + 1
-	tmp3 = n * tmp2
-	s = tmp3 
+if_3:
+	$tmp2 = n + 1
+	$tmp3 = n * $tmp2
+	s = $tmp3 
 	push s
-	push tmp4
+	push 4
 	call mod
-	tmp5 = RET
-	tmp5 != 0
-	BNZ if_3
+	$tmp5 = RET
+	$tmp5 != 0
+	BNZ if_4
 	print 0
 	ret
-if_3:
-	tmp9 = s / 4
-	s = tmp9 
-	tmp10 = 0 - 0
-	tmp13 = 0 - 1
-	tmp15 = 4294967295 + 2
-	dyn[4294967293] = tmp16
+if_4:
+	$tmp9 = s / 4
+	s = $tmp9 
+	dyn[1] = $tmp15
 	i = 1 
-do_4:
-	j = s 
 do_5:
-	tmp18 = j - i
-	tmp18 > 0
-	BNZ if_6
-	tmp20 = dyn[j]
-	tmp21 = j - i
-	tmp22 = dyn[tmp21]
-	tmp23 = tmp20 + tmp22
-	dyn[j] = tmp23
-if_6:
-	tmp25 = j - 1
-	j = tmp25 
+	j = s 
+do_6:
+	$tmp17 = j - i
+	$tmp17 > 0
+	BNZ if_7
+	$tmp19 = dyn[j]
+	$tmp20 = j - i
+	$tmp21 = dyn[$tmp20]
+	$tmp22 = $tmp19 + $tmp21
+	dyn[j] = $tmp22
+if_7:
+	$tmp24 = j - 1
+	j = $tmp24 
 	j >= i
-	BZ do_5
-	tmp27 = i + 1
-	i = tmp27 
+	BZ do_6
+	$tmp26 = i + 1
+	i = $tmp26 
 	i <= n
-	BZ do_4
-	tmp28 = dyn[s]
-	tmp30 = tmp28 / 2
-	print tmp30
+	BZ do_5
+	$tmp27 = dyn[s]
+	$tmp29 = $tmp27 / 2
+	print $tmp29

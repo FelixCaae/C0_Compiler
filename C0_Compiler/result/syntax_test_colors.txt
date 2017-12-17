@@ -1,62 +1,352 @@
-            <program>
-              <funcDecl>
-              <keyword> void <\keyword>
-              <keyword> main <\keyword>
-                <paramList>
-                <seperator> ( <\seperator>
-                <seperator> ) <\seperator>
-                <\paramList>
-              <seperator> { <\seperator>
-                <compoundStatement>
-                  <statements>
-                    <statement>
-                      <writeStat>
-                      <keyword> printf <\keyword>
-                      <seperator> ( <\seperator>
-                      <string> "*Apple is red*" <\string>
-                      <seperator> ) <\seperator>
-                      <\writeStat>
-                    <seperator> ; <\seperator>
-                    <\statement>
-                    <statement>
-                      <writeStat>
-                      <keyword> printf <\keyword>
-                      <seperator> ( <\seperator>
-                      <string> "[Peach is pink]" <\string>
-                      <seperator> ) <\seperator>
-                      <\writeStat>
-                    <seperator> ; <\seperator>
-                    <\statement>
-                    <statement>
-                      <writeStat>
-                      <keyword> printf <\keyword>
-                      <seperator> ( <\seperator>
-                      <string> "<Sky is blue>" <\string>
-                      <seperator> ) <\seperator>
-                      <\writeStat>
-                    <seperator> ; <\seperator>
-                    <\statement>
-                    <statement>
-                      <writeStat>
-                      <keyword> printf <\keyword>
-                      <seperator> ( <\seperator>
-                      <string> "\And grass is green/" <\string>
-                      <seperator> ) <\seperator>
-                      <\writeStat>
-                    <seperator> ; <\seperator>
-                    <\statement>
-                    <statement>
-                      <writeStat>
-                      <keyword> printf <\keyword>
-                      <seperator> ( <\seperator>
-                      <string> "I can print string correctly!" <\string>
-                      <seperator> ) <\seperator>
-                      <\writeStat>
-                    <seperator> ; <\seperator>
-                    <\statement>
-                  <\statements>
-                <\compoundStatement>
-              <seperator> } <\seperator>
-              <\funcDecl>
-            <\program>
-          <end> ÿ <\end>
+<program>
+  <constDeclGroup>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> _a <\identifier>
+    <seperator> = <\seperator>
+    <char> 'a' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> _b <\identifier>
+    <seperator> = <\seperator>
+    <char> 'b' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> _c <\identifier>
+    <seperator> = <\seperator>
+    <char> 'c' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> _d <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 4 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <\constDeclGroup>
+  <varDeclGroup>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> _n1 <\identifier>
+    <seperator> , <\seperator>
+    <identifier> _n2 <\identifier>
+    <seperator> , <\seperator>
+    <identifier> _n3 <\identifier>
+    <\varDecl>
+  <seperator> ; <\seperator>
+  <\varDeclGroup>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> set123 <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> _n1 <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> _n2 <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 2 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> _n3 <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 3 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> count123 <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _n1 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _n2 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _n3 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <keyword> main <\keyword>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> _n1 <\identifier>
+        <seperator> , <\seperator>
+        <identifier> _n2 <\identifier>
+        <seperator> , <\seperator>
+        <identifier> _n3 <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> _n1 <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 3 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> _n2 <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 2 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> _n3 <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> SET123 <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> COUNT123 <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _n1 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _n2 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _n3 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "*Apple is red*" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "[Peach is pink]" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "<Sky is blue>" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "\And grass is green/" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "I can print string correctly!" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+<\program>
+<end> ÿ <\end>

@@ -125,10 +125,10 @@ void parseIden(int *val,bool set)
 	strcpy(tokenbak, token);
 	char *p = tokenbak;
 	shouldBe(IDEN);
-	for (; *p!='\0'; p++)
+	for(;*p!=0;p++)
 	{
-		if(*p<='Z'&&*p>='A')
-			*p = *p | 0x60;//tolower
+		if (*p <= 'Z'&&*p >= 'A')
+			*p = *p | 0x60;
 	}
 	if (set)
 	{
@@ -239,6 +239,7 @@ void parseConstDecl()
 			parseChar(&val);
 		}
 		modifyIdent(iden, varType, OCONST, val);
+		emit(QCONST, iden);
 		if (couldBe(COMMA))
 		{
 			continue;
@@ -264,6 +265,7 @@ bool parseVarDecl()
 		{
 			parseSubscript(true,&dimension);
 			modifyIdent(iden, it, OARRAY, dimension);
+			emit(QARRAY, iden);
 		}
 		else if (lextype == LPAR)
 		{
@@ -275,6 +277,7 @@ bool parseVarDecl()
 		else
 		{
 			modifyIdent(iden, it, OVAR);
+			emit(QVAR, iden);
 		}
 
 		if (couldBe(COMMA))
@@ -350,17 +353,19 @@ bool parseFuncDecl()
 	{
 		parseIden(&func,set);
 	}
-	emit(QFUNCDECL, func);
-	parseParamList(paramType, &paramNum);
+	emit(QFUNCDECL, func);	
+	enterFunc(func);		//params are in func
+	parseParamList(paramType, &paramNum);	
+	int ref = insertFunc(it, paramNum, paramType);
+	modifyIdent(func, it, OFUNC, ref);
 	if (mainFound && paramNum)
 	{
 		error(ERR_MAIN_PARAM);
 	}
-	int ref = insertFunc(it, paramNum, paramType);
-	modifyIdent(func, it, OFUNC, ref);
 	shouldBe(LCURB);
-	enterFunc();
 	parseCompoundStat();
+	locateAdr();
+	objFunc(mainFound);
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL,false);
@@ -469,10 +474,21 @@ void parseExpression(int *r)
 	bool tmpFlag=true;
 	neg=couldBe2(MINUS, PLUS);
 	parseTerm(&first);
-	if (neg == 2)
+	if (neg == 1)
 	{
-		int zero = genTemp(INTS,true,0);
-		emit(QMINUS,first,zero,first);
+		int zero = genTemp(INTS, true, 0);
+		tmpFlag = false;
+		store = genTemp(INTS);
+		if (ISCONST(first))
+		{
+			OBJ(store) = OCONST;
+			REF(store) = -REF(first);
+		}
+		else
+		{
+			emit(QMINUS, store, zero, first);
+		}
+		first = store;
 	}
 	while ((neg = couldBe2(MINUS, PLUS)) != 0) {
 		parseTerm(&second);
@@ -480,22 +496,31 @@ void parseExpression(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		val1 = symTable[first]._ref;
-		val2 = symTable[second]._ref;
-		if (neg == 1)
+		if (ISCONST(first)&&ISCONST(second))
 		{
-			emit(QMINUS, store, first, second);
-			vresult = val1 - val2;
+			val1 = REF(first);
+			val2 = REF(second);
+			OBJ(store) = OCONST;
+			if (neg == 1)
+			{
+				vresult = val1 - val2;
+			}
+			else if (neg == 2)
+			{
+				vresult = val1 + val2;
+			}
+			REF(store) = vresult;
 		}
-		else if (neg == 2)
+		else
 		{
-			emit(QPLUS, store, first, second);
-			vresult = val1 - val2;
-		}
-		if (symTable[first]._obj == OCONST&& symTable[second]._obj == OCONST)
-		{
-			symTable[store]._obj = OCONST;
-			symTable[store]._ref = vresult;
+			if (neg == 1)
+			{
+				emit(QMINUS, store, first, second);
+			}
+			else if (neg == 2)
+			{
+				emit(QPLUS, store, first, second);
+			}
 		}
 		first = store;
 	}
@@ -510,28 +535,45 @@ void parseTerm(int *r)
 	int val1, val2, vresult;
 	bool tmpFlag = true;
 	parseFactor(&first);
-	val1 = symTable[first]._ref;
 	while ((op = couldBe2(STAR, DIV)) != 0) {
 		parseFactor(&second);
-		val2 = symTable[second]._ref;
 		if (tmpFlag)
 		{
 			store = genTemp(INTS, false);
 		}
-		if(op==1)
+		if (ISCONST(first) && ISCONST(second))
 		{
-			vresult = val1*val2;
-			emit(QSTAR, store, first, second);
-		}
-		else if(op==2)
-		{
-			if (val2 != 0) {
-				vresult = val1 / val2;
+			OBJ(store) = OCONST;
+			val1 = REF(first);
+			val2 = REF(second);
+			if (op == 1)
+			{
+				vresult = val1*val2;
 			}
-			emit(QDIV, store,first,second);
+			else if (op == 2)
+			{
+				if (val2 != 0) {
+					vresult = val1 / val2;
+				}
+				else
+				{
+					error(ERR_DIV_ZERO);
+				}
+			}
+			REF(store) = vresult;
+		}
+		else
+		{
+			if (op == 1)
+			{
+				emit(QSTAR, store, first, second);
+			}
+			else if (op == 2)
+			{
+				emit(QDIV, store, first, second);
+			}
 		}
 		first = store;
-		val1 = symTable[first]._ref;
 	} 
 	*r = first;
 	outputSyntax(TERM,false);
@@ -607,7 +649,7 @@ void parseConditionStat()
 	emit(QBNZ, label);
 	shouldBe(RPAR);
 	parseStat();
-	setLabel(label);
+	emit(QLABEL,label);
 	outputSyntax(CONDSTAT,false);
 }
 void parseCondition()
@@ -649,7 +691,7 @@ void parseLoopStat()
 	outputSyntax(LOOPSTAT);
 	int label = genLabel(LWHILE);
 	shouldBe(DOSY);
-	setLabel(label);
+	emit(QLABEL,label);
 	parseStat();
 	shouldBe(WHILESY);
 	shouldBe(LPAR);
@@ -669,6 +711,7 @@ void parseSwitchStat()
 	shouldBe(RPAR);
 	shouldBe(LCURB);
 	parseSwitchTab(val,label);
+	emit(QLABEL,label);
 	shouldBe(RCURB);
 	outputSyntax(SWITCHSTAT,false);
 }
@@ -697,9 +740,10 @@ void parseSubSwitchStat(int val, int switchend)
 	}
 	shouldBe(COLON);
 	emit(QEQU, con, val);
-	emit(QBNZ, switchend);
+	emit(QBNZ, casend);
 	parseStat();
-	setLabel(casend);
+	emit(QGOTO, switchend);
+	emit(QLABEL,casend);
 	outputSyntax(SUBSWITCHSTAT,false);
 }
 void parseConstant(int *r)
@@ -825,12 +869,12 @@ void parseReturnStat()
 	{
 		int val;
 		parseExpression(&val);
-		emit(QRET, RVAL, val);
+		emit(QRET, val);
 		shouldBe(RPAR);
 	}
 	else
 	{
-		emit(QRET, RNOVAL);
+		emit(QRET, NotExist);
 	}
 	outputSyntax(RETURNSTAT, false);
 }
@@ -890,9 +934,11 @@ void parseProgram()
 	{
 		parseVarGrup();
 	}
+	objEntry();
 	while (!mainFound) {
-		mainFound=parseFuncDecl();
+		mainFound = parseFuncDecl();
 	}
+	objGloblData();
 	outputSyntax(PROGRAM, false);
 	shouldBe(END);
 }
@@ -908,11 +954,12 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "test/test_equalsplit.txt";
-	if (syntaxAnalyze(2, (char**)buffer))
+	buffer[1] = "../x64/Debug/test/test_null.txt";
+	if (syntaxAnalyze(argc,argv))
 	{
 		printf("Success!");
 	}
 	getchar();
+	return 0;
 	//parse();
 }
