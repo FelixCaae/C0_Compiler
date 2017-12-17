@@ -1,14 +1,6 @@
 	j main
 set123:
 	subi $sp,$sp,40
-	sw $s0,4($sp)
-	sw $s1,8($sp)
-	sw $s2,12($sp)
-	sw $s3,16($sp)
-	sw $s4,20($sp)
-	sw $s5,24($sp)
-	sw $s6,28($sp)
-	sw $s7,32($sp)
 	sw $ra,36($sp)
 	li $t0,1
 	la $t1,_n1
@@ -20,27 +12,11 @@ set123:
 	la $t1,_n3
 	sw $t0,0($t1)
 set123_end:
-	lw $s0,4($sp)
-	lw $s1,8($sp)
-	lw $s2,12($sp)
-	lw $s3,16($sp)
-	lw $s4,20($sp)
-	lw $s5,24($sp)
-	lw $s6,28($sp)
-	lw $s7,32($sp)
 	lw $ra,36($sp)
 	addi $sp,$sp,40
 	jr $ra
 count123:
 	subi $sp,$sp,40
-	sw $s0,4($sp)
-	sw $s1,8($sp)
-	sw $s2,12($sp)
-	sw $s3,16($sp)
-	sw $s4,20($sp)
-	sw $s5,24($sp)
-	sw $s6,28($sp)
-	sw $s7,32($sp)
 	sw $ra,36($sp)
 	la $a0,_n1
 	lw $a0,0($a0)
@@ -64,27 +40,11 @@ count123:
 	li $a0,10
 	syscall
 count123_end:
-	lw $s0,4($sp)
-	lw $s1,8($sp)
-	lw $s2,12($sp)
-	lw $s3,16($sp)
-	lw $s4,20($sp)
-	lw $s5,24($sp)
-	lw $s6,28($sp)
-	lw $s7,32($sp)
 	lw $ra,36($sp)
 	addi $sp,$sp,40
 	jr $ra
 main:
 	subi $sp,$sp,52
-	sw $s0,16($sp)
-	sw $s1,20($sp)
-	sw $s2,24($sp)
-	sw $s3,28($sp)
-	sw $s4,32($sp)
-	sw $s5,36($sp)
-	sw $s6,40($sp)
-	sw $s7,44($sp)
 	sw $ra,48($sp)
 	li $t0,3
 	addi $t1,$sp,0
@@ -149,21 +109,13 @@ main:
 	li $a0,10
 	syscall
 main_end:
-	lw $s0,16($sp)
-	lw $s1,20($sp)
-	lw $s2,24($sp)
-	lw $s3,28($sp)
-	lw $s4,32($sp)
-	lw $s5,36($sp)
-	lw $s6,40($sp)
-	lw $s7,44($sp)
 	lw $ra,48($sp)
 	addi $sp,$sp,52
 	jr $ra
 	.data
-	_n1 :.word
-	_n2 :.word
-	_n3 :.word
+	_n1 :.word 0
+	_n2 :.word 0
+	_n3 :.word 0
 	Str_0 :.asciiz "*Apple is red*"
 	Str_1 :.asciiz "[Peach is pink]"
 	Str_2 :.asciiz "<Sky is blue>"

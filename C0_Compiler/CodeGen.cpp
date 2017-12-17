@@ -135,10 +135,10 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		sprintf(buffer, ".data");
 		break;
 	case TWORD:
-		sprintf(buffer, "%s :.word", NAME(r1));
+		sprintf(buffer, "%s :.word 0", NAME(r1));
 		break;
 	case TBYT:
-		sprintf(buffer, "%s :.byte", NAME(r1));
+		sprintf(buffer, "%s :.byte 0", NAME(r1));
 		break;
 	case TASCIIZ:
 		sprintf(buffer, "%s :.asciiz \"%s\"", STRNAME(r1), STR(r1));
