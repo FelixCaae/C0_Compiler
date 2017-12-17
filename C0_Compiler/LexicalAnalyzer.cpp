@@ -111,6 +111,8 @@ void readChar()
 		columnCounter = 0;
 	}
     if (tokenidx == tokenStrLen)error(ERR_TOKEN_FLOW);
+	if (chr <= 'Z'&&chr >= 'A')
+			chr = chr | 0x60;//tolower
     token[tokenidx++] = chr;
     token[tokenidx] = '\0';
 }

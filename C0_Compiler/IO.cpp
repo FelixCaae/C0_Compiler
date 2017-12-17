@@ -143,7 +143,7 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		sprintf(str, "%s = %s ", NAME(arg1), OP(arg2));
 		break;
 	case QPUSH:
-		sprintf(str, "push %s", NAME(arg1));
+		sprintf(str, "push %s", OP(arg1));
 		break;
 	case QCALL:
 		sprintf(str, "call %s",NAME(arg1));

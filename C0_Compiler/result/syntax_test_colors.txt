@@ -56,23 +56,9 @@
   <\varDeclGroup>
   <funcDecl>
   <keyword> void <\keyword>
-  <identifier> set <\identifier>
+  <identifier> set123 <\identifier>
     <paramList>
     <seperator> ( <\seperator>
-      <type>
-      <keyword> int <\keyword>
-      <\type>
-    <identifier> n1 <\identifier>
-    <seperator> , <\seperator>
-      <type>
-      <keyword> int <\keyword>
-      <\type>
-    <identifier> n2 <\identifier>
-    <seperator> , <\seperator>
-      <type>
-      <keyword> int <\keyword>
-      <\type>
-    <identifier> n3 <\identifier>
     <seperator> ) <\seperator>
     <\paramList>
   <seperator> { <\seperator>
@@ -85,7 +71,7 @@
             <expression>
               <term>
                 <factor>
-                <identifier> n1 <\identifier>
+                <unsignedInt> 1 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -99,7 +85,7 @@
             <expression>
               <term>
                 <factor>
-                <identifier> n2 <\identifier>
+                <unsignedInt> 2 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -113,7 +99,7 @@
             <expression>
               <term>
                 <factor>
-                <identifier> n3 <\identifier>
+                <unsignedInt> 3 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -249,33 +235,10 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> set <\identifier>
+        <identifier> set123 <\identifier>
           <funCallStat>
           <seperator> ( <\seperator>
             <argumentList>
-              <expression>
-                <term>
-                  <factor>
-                  <unsignedInt> 1 <\unsignedInt>
-                  <\factor>
-                <\term>
-              <\expression>
-            <seperator> , <\seperator>
-              <expression>
-                <term>
-                  <factor>
-                  <unsignedInt> 2 <\unsignedInt>
-                  <\factor>
-                <\term>
-              <\expression>
-            <seperator> , <\seperator>
-              <expression>
-                <term>
-                  <factor>
-                  <unsignedInt> 3 <\unsignedInt>
-                  <\factor>
-                <\term>
-              <\expression>
             <\argumentList>
           <seperator> ) <\seperator>
           <\funCallStat>
@@ -340,7 +303,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "*Apple is red*" <\string>
+          <string> "*apple is red*" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>
@@ -349,7 +312,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "[Peach is pink]" <\string>
+          <string> "[peach is pink]" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>
@@ -358,7 +321,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "<Sky is blue>" <\string>
+          <string> "<sky is blue>" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>
@@ -367,7 +330,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "\And grass is green/" <\string>
+          <string> "\and grass is green/" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>
@@ -376,7 +339,7 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
-          <string> "I can print string correctly!" <\string>
+          <string> "i can print string correctly!" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
         <seperator> ; <\seperator>

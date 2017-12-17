@@ -1,41 +1,35 @@
 	j main
-set:
-	subi $sp,$sp,52
-	sw $s0,16($sp)
-	sw $s1,20($sp)
-	sw $s2,24($sp)
-	sw $s3,28($sp)
-	sw $s4,32($sp)
-	sw $s5,36($sp)
-	sw $s6,40($sp)
-	sw $s7,44($sp)
-	sw $ra,48($sp)
-	sw $a0,0($sp)
-	sw $a1,4($sp)
-	sw $a2,8($sp)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
+set123:
+	subi $sp,$sp,40
+	sw $s0,4($sp)
+	sw $s1,8($sp)
+	sw $s2,12($sp)
+	sw $s3,16($sp)
+	sw $s4,20($sp)
+	sw $s5,24($sp)
+	sw $s6,28($sp)
+	sw $s7,32($sp)
+	sw $ra,36($sp)
+	li $t0,1
 	la $t1,_n1
 	sw $t0,0($t1)
-	addi $t0,$sp,4
-	lw $t0,0($t0)
+	li $t0,2
 	la $t1,_n2
 	sw $t0,0($t1)
-	addi $t0,$sp,8
-	lw $t0,0($t0)
+	li $t0,3
 	la $t1,_n3
 	sw $t0,0($t1)
-set_end:
-	lw $s0,16($sp)
-	lw $s1,20($sp)
-	lw $s2,24($sp)
-	lw $s3,28($sp)
-	lw $s4,32($sp)
-	lw $s5,36($sp)
-	lw $s6,40($sp)
-	lw $s7,44($sp)
-	lw $ra,48($sp)
-	addi $sp,$sp,52
+set123_end:
+	lw $s0,4($sp)
+	lw $s1,8($sp)
+	lw $s2,12($sp)
+	lw $s3,16($sp)
+	lw $s4,20($sp)
+	lw $s5,24($sp)
+	lw $s6,28($sp)
+	lw $s7,32($sp)
+	lw $ra,36($sp)
+	addi $sp,$sp,40
 	jr $ra
 count123:
 	subi $sp,$sp,40
@@ -91,10 +85,7 @@ main:
 	li $t0,1
 	addi $t1,$sp,8
 	sw $t0,0($t1)
-	li $a0,1
-	li $a1,2
-	li $a2,3
-	jal set
+	jal set123
 	jal count123
 	addi $a0,$sp,0
 	lw $a0,0($a0)
@@ -152,8 +143,8 @@ main_end:
 	_n1 :.data 4
 	_n2 :.data 4
 	_n3 :.data 4
-	Str_0 :.asciiz "*Apple is red*"
-	Str_1 :.asciiz "[Peach is pink]"
-	Str_2 :.asciiz "<Sky is blue>"
-	Str_3 :.asciiz "\And grass is green/"
-	Str_4 :.asciiz "I can print string correctly!"
+	Str_0 :.asciiz "*apple is red*"
+	Str_1 :.asciiz "[peach is pink]"
+	Str_2 :.asciiz "<sky is blue>"
+	Str_3 :.asciiz "\and grass is green/"
+	Str_4 :.asciiz "i can print string correctly!"
