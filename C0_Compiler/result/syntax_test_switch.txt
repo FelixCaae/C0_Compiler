@@ -231,4 +231,73 @@
                                     <factor>
                                     <unsignedInt> 1 <\unsignedInt>
                                     <\factor>
-           
+                                  <\term>
+                                <\expression>
+                              <\assignStat>
+                            <seperator> ; <\seperator>
+                            <\statement>
+                          <\statements>
+                        <seperator> } <\seperator>
+                        <\statement>
+                      <keyword> while <\keyword>
+                      <seperator> ( <\seperator>
+                        <condition>
+                          <expression>
+                            <term>
+                              <factor>
+                              <identifier> b <\identifier>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                          <identifier>
+                          <seperator> != <\seperator>
+                          <\identifier>
+                          <expression>
+                            <term>
+                              <factor>
+                              <unsignedInt> 0 <\unsignedInt>
+                              <\factor>
+                            <\term>
+                          <\expression>
+                        <\condition>
+                      <seperator> ) <\seperator>
+                      <\loopStat>
+                    <\statement>
+                  <\statements>
+                <seperator> } <\seperator>
+                <\statement>
+              <\subSwitchStat>
+            <\switchTable>
+          <seperator> } <\seperator>
+          <\switchStat>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <keyword> main <\keyword>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> calculate <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+<\program>
+<end> ÿ <\end>

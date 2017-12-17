@@ -176,7 +176,7 @@ void emitObj(tCType tc, int r1, int r2, int r3)
 		sprintf(buffer, "bne %s,%s,%s", REG(r1), REG(r2), LABEL(r3));
 		break;
 	case TJAL:
-		sprintf(buffer, "jal %s",LABEL(r1));
+		sprintf(buffer, "jal %s",NAME(r1));
 		break;
 	case TJUMP:
 		sprintf(buffer, "j %s", LABEL(r1));
