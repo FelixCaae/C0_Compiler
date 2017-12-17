@@ -238,7 +238,7 @@ void objFuncHead()
 		}
 	}
 	emitObj(TSUBI, sp, sp, entry._size+ReserveSize);
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 0; i++)
 	{
 		emitObj(TSW, s0+i, sp, offset*i+entry._size);
 	}
@@ -516,7 +516,7 @@ void objFuncTail()
 {
 	int offset = 4;
 	funcTableEntry entry = funcTable[symTable[funcRef]._ref];
-	for (int i = 0; i < 8; i++)
+	for (int i = 0; i < 0; i++)
 	{
 		emitObj(TLW, s0 + i, sp, i * offset+entry._size);
 	}
