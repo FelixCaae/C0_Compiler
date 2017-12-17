@@ -28,7 +28,7 @@ calculate:
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,switch_1
+	beq $0,$v1,case_1_1
 	addi $t1,$sp,0
 	lw $t1,0($t1)
 	addi $t2,$sp,4
@@ -43,12 +43,13 @@ calculate:
 	li $v0,11
 	li $a0,10
 	syscall
+	j switch_1
 case_1_1:
 	li $t0,45
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,switch_1
+	beq $0,$v1,case_1_2
 	addi $t1,$sp,0
 	lw $t1,0($t1)
 	addi $t2,$sp,4
@@ -63,12 +64,13 @@ case_1_1:
 	li $v0,11
 	li $a0,10
 	syscall
+	j switch_1
 case_1_2:
 	li $t0,42
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,switch_1
+	beq $0,$v1,case_1_3
 	addi $t1,$sp,0
 	lw $t1,0($t1)
 	addi $t2,$sp,4
@@ -83,12 +85,13 @@ case_1_2:
 	li $v0,11
 	li $a0,10
 	syscall
+	j switch_1
 case_1_3:
 	li $t0,47
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,switch_1
+	beq $0,$v1,case_1_4
 	addi $t1,$sp,0
 	lw $t1,0($t1)
 	addi $t2,$sp,4
@@ -103,12 +106,13 @@ case_1_3:
 	li $v0,11
 	li $a0,10
 	syscall
+	j switch_1
 case_1_4:
 	li $t0,101
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,switch_1
+	beq $0,$v1,case_1_5
 do_2:
 	addi $t1,$sp,0
 	lw $t1,0($t1)
@@ -135,6 +139,7 @@ do_2:
 	li $t1,0
 	sne $v1,$t0,$t1
 	bne $0,$v1,do_2
+	j switch_1
 switch_1:
 case_1_5:
 calculate_end:

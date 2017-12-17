@@ -8,27 +8,31 @@
 	read b
 	read op
 	43 == op
-	BNZ switch_1
+	BNZ case_1_1
 	$tmp2 = a + b
 	print $tmp2
+	GOTO switch_1
 case_1_1:
 	45 == op
-	BNZ switch_1
+	BNZ case_1_2
 	$tmp4 = a - b
 	print $tmp4
+	GOTO switch_1
 case_1_2:
 	42 == op
-	BNZ switch_1
+	BNZ case_1_3
 	$tmp6 = a * b
 	print $tmp6
+	GOTO switch_1
 case_1_3:
 	47 == op
-	BNZ switch_1
+	BNZ case_1_4
 	$tmp8 = a / b
 	print $tmp8
+	GOTO switch_1
 case_1_4:
 	101 == op
-	BNZ switch_1
+	BNZ case_1_5
 do_2:
 	$tmp11 = a * 10
 	a = $tmp11 
@@ -36,6 +40,7 @@ do_2:
 	b = $tmp13 
 	b != 0
 	BZ do_2
+	GOTO switch_1
 case_1_5:
 switch_1:
 calculate:
