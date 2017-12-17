@@ -14,7 +14,7 @@ if_1:
 	BNZ if_2
 	print "a!=0"
 if_2:
-	0 > 0
+	2 > 0
 	BNZ if_3
 	print "a+b>a-b"
 if_3:
@@ -36,88 +36,113 @@ if_4:
 	var char c4
 	var char c5
 	a1 = 1 
-	$tmp1 = 0 - 1
-	$tmp1 = 0 - 1
+	$tmp2 = 0 - 1
 	a2 = 1 
-	$tmp8 = a2 * a2
-	$tmp9 = a2 / $tmp8
-	$tmp10 = $tmp9 / a1
-	$tmp11 = a1 * $tmp10
-	$tmp12 = $tmp11 * a2
-	a3 = $tmp12 
+	$tmp7 = a2 * a2
+	$tmp8 = a2 / $tmp7
+	$tmp9 = $tmp8 / a1
+	$tmp10 = a1 * $tmp9
+	$tmp11 = $tmp10 * a2
+	a3 = $tmp11 
+	$tmp12 = a2 + a3
 	$tmp13 = a2 + a3
-	$tmp14 = a2 + a3
-	$tmp15 = $tmp13 * $tmp14
-	$tmp17 = a3 * 6
-	$tmp18 = $tmp15 + $tmp17
+	$tmp14 = $tmp12 * $tmp13
+	$tmp16 = a3 * 6
+	$tmp17 = $tmp14 + $tmp16
 	call get10
-	$tmp19 = RET
-	$tmp20 = $tmp18 / $tmp19
-	a4 = $tmp20 
+	$tmp18 = RET
+	$tmp19 = $tmp17 / $tmp18
+	a4 = $tmp19 
+	$tmp29 = 2 - $tmp28
+	$tmp30 = 7 + $tmp29
+	$tmp31 = a4 * $tmp30
+	$tmp33 = $tmp31 + 2
 	call get10
-	$tmp21 = RET
-	$tmp22 = a4 - $tmp21
-	a5 = $tmp22 
-	$tmp24 = a1 + a2
-	$tmp25 = $tmp24 + a3
-	$tmp26 = $tmp25 + a4
-	$tmp27 = $tmp26 + a5
-	ia[0] = $tmp27
-	$tmp30 = ia[0]
-	$tmp32 = $tmp30 / 5
-	ia[1] = $tmp32
+	$tmp34 = RET
+	$tmp35 = $tmp33 - $tmp34
+	a5 = $tmp35 
+	$tmp37 = a1 + a2
+	$tmp38 = $tmp37 + a3
+	$tmp39 = $tmp38 + a4
+	$tmp40 = $tmp39 + a5
+	ia[0] = $tmp40
+	print "a1"
+	print a1
+	print "a2"
+	print a2
+	print "a3"
+	print a3
+	print "a4"
+	print a4
+	print "a5"
+	print a5
+	print "ia[0] is :"
+	$tmp42 = ia[0]
+	print $tmp42
+	$tmp45 = ia[0]
+	$tmp47 = $tmp45 / 5
+	ia[1] = $tmp47
 	print "result is 1:"
-	$tmp34 = ia[1]
-	print $tmp34
+	$tmp49 = ia[1]
+	print $tmp49
 	c1 = 97 
 	c2 = 95 
 	c3 = 43 
 	c4 = 90 
 	c5 = 101 
 	c1 = 0 - c1
-	c1 = 0 - c1
-	$tmp42 = c1 + c1
-	$tmp43 = c1 + $tmp42
-	a1 = $tmp43 
-	$tmp44 = a1 * a1
-	$tmp45 = c1 / $tmp44
-	$tmp46 = $tmp45 / a1
-	$tmp47 = a1 * $tmp46
-	$tmp48 = $tmp47 * a1
-	a2 = $tmp48 
-	$tmp50 = c1 * 2
-	$tmp52 = $tmp50 / 2
-	$tmp54 = $tmp52 + 1
-	$tmp56 = $tmp54 - 1
-	$tmp57 = $tmp56 + c2
-	$tmp58 = $tmp57 - c2
-	a3 = $tmp58 
-	$tmp60 = c4 - 7
-	a4 = $tmp60 
-	$tmp61 = c2 + c5
+	$tmp56 = c1 + c1
+	$tmp57 = c1 + $tmp56
+	a1 = $tmp57 
+	$tmp58 = a1 * a1
+	$tmp59 = c1 / $tmp58
+	$tmp60 = $tmp59 / a1
+	$tmp61 = a1 * $tmp60
+	$tmp62 = $tmp61 * a1
+	a2 = $tmp62 
+	$tmp64 = c1 * 2
+	$tmp66 = $tmp64 / 2
+	$tmp68 = $tmp66 + 1
+	$tmp70 = $tmp68 - 1
+	$tmp71 = $tmp70 + c2
+	$tmp72 = $tmp71 - c2
+	a3 = $tmp72 
+	$tmp74 = c4 - 7
+	a4 = $tmp74 
+	$tmp75 = c2 + c5
 	call get10
-	$tmp62 = RET
-	$tmp64 = $tmp62 * 10
-	$tmp65 = $tmp61 - $tmp64
-	$tmp67 = $tmp65 - 6
-	a5 = $tmp67 
-	$tmp69 = a1 + a2
-	$tmp70 = $tmp69 + a3
-	$tmp71 = $tmp70 + a4
-	$tmp73 = $tmp71 + 5
-	ia[0] = $tmp73
-	$tmp76 = ia[0]
-	$tmp78 = $tmp76 / 5
-	ia[1] = $tmp78
-	ca[0] = $tmp80
-	$tmp82 = ia[1]
-	$tmp82 == 97
+	$tmp76 = RET
+	$tmp78 = $tmp76 * 10
+	$tmp79 = $tmp75 - $tmp78
+	$tmp81 = $tmp79 - 6
+	a5 = $tmp81 
+	print "a1"
+	print a1
+	print "a2"
+	print a2
+	print "a3"
+	print a3
+	print "a4"
+	print a4
+	print "a5"
+	print a5
+	$tmp83 = a1 + a2
+	$tmp84 = $tmp83 + a3
+	$tmp85 = $tmp84 + a4
+	$tmp86 = $tmp85 + a5
+	ia[0] = $tmp86
+	$tmp89 = ia[0]
+	$tmp91 = $tmp89 / 5
+	ia[1] = $tmp91
+	ca[0] = $tmp93
+	$tmp95 = ia[1]
+	$tmp95 == 97
 	BNZ if_5
-	ca[0] = $tmp85
+	ca[0] = $tmp98
 if_5:
 	print "result is a"
-	$tmp87 = ca[1]
-	print $tmp87
+	$tmp100 = ca[1]
+	print $tmp100
 	int test_chicken_rabbit()
 	const int chicken_feet = 2
 	const int rabbit_feet = 4
@@ -142,8 +167,13 @@ if_7:
 	chicken_num = $tmp5 
 	$tmp6 = head - chicken_num
 	rabbit_num = $tmp6 
+	print "rabbit num"
+	print rabbit_num
+	print "chicken_num"
+	print chicken_num
 	void main()
 	call test_hw
 	call test_condition
 	call test_expression
+	call test_chicken_rabbit
 	ret

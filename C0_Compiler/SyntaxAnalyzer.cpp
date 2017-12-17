@@ -474,10 +474,14 @@ void parseExpression(int *r)
 	bool tmpFlag=true;
 	neg=couldBe2(MINUS, PLUS);
 	parseTerm(&first);
-	if (neg == 2)
+	if (neg == 1)
 	{
 		int zero = genTemp(INTS,true,0);
 		emit(QMINUS,first,zero,first);
+		if (ISCONST(first))
+		{
+			REF(first) = -REF(first);
+		}
 	}
 	while ((neg = couldBe2(MINUS, PLUS)) != 0) {
 		parseTerm(&second);
@@ -485,20 +489,20 @@ void parseExpression(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		val1 = symTable[first]._ref;
-		val2 = symTable[second]._ref;
-		if (symTable[first]._obj == OCONST&& symTable[second]._obj == OCONST)
+		val1 = REF(first);
+		val2 = REF(second);
+		if (ISCONST(first)&&ISCONST(second))
 		{
-			symTable[store]._obj = OCONST;
+			OBJ(store) = OCONST;
 			if (neg == 1)
 			{
 				vresult = val1 - val2;
 			}
 			else if (neg == 2)
 			{
-				vresult = val1 - val2;
+				vresult = val1 + val2;
 			}
-			symTable[store]._ref = vresult;
+			REF(store) = vresult;
 		}
 		else
 		{

@@ -16,7 +16,7 @@ const unsigned int symTableSize=800;
 const unsigned int constTableSize = 800;
 const unsigned int strTableSize = 400;
 const unsigned int funcTableSize = 400;
-const unsigned int maxLabelStrLen = 15;
+const unsigned int maxLabelStrLen = 100;
 const unsigned int maxLabelNum = 800;
 const unsigned int maxParmNum = 20;
 const unsigned int IntSize = 4;
@@ -34,7 +34,7 @@ struct symTableEntry
 	IdenType _type;
 	IdenObj _obj;
 	unsigned int _next;
-	unsigned int _ref;//维数 表引用 
+	int _ref;//维数 表引用 
 	unsigned int _adr;//地址分配
 
 };

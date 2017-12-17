@@ -20,7 +20,7 @@ extern FILE * outErr;
 extern bool toConsole;
 extern char buffer[];
 const  bool bOutSyntax = false;
-const bool bOutQcode = false;
+const bool bOutQcode = true;
 const bool bOutLex = false;
 const bool bOutTCode = true;
 const unsigned int maxOutputLength = 88;
