@@ -800,7 +800,7 @@ void parseAssignStat(int iden)
 	valIt = symTable[val]._type;
 	if (valIt == INTS && storeIt == CHARS)
 	{
-		error(ERR_INTOCHAR);
+		//error(ERR_INTOCHAR);
 	}
 	//do some type-transform or send warning if an int-type value is assigned to a char var
 	//be careful with the range a char-type var can hold
@@ -953,7 +953,7 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "../x64/Debug/test/test_funcall.txt";
+	buffer[1] = "../Test/Test/Test1.txt";
 	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");
