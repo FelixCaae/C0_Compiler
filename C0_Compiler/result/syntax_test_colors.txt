@@ -235,7 +235,7 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> SET123 <\identifier>
+        <identifier> set123 <\identifier>
           <funCallStat>
           <seperator> ( <\seperator>
             <argumentList>
@@ -245,7 +245,7 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> COUNT123 <\identifier>
+        <identifier> count123 <\identifier>
           <funCallStat>
           <seperator> ( <\seperator>
             <argumentList>

@@ -1,0 +1,54 @@
+int Mod(int a, int b)
+{
+	if (a<0)return (a + b);
+	return (Mod(a - b, b));
+}
+int ping(int a)
+{
+	printf(a);
+	if(a>100)
+	{
+	return pong(a-1);	
+	}
+	if(a<100)
+	{
+	return pong(a+1);
+	}
+	if(a==100)
+	{
+	return a;
+	}
+}
+int pong(int b)
+{
+	printf(b);
+	if(b>100)
+	{
+	return pong(b-1);	
+	}
+	if(b<100)
+	{
+	return pong(b+1);
+	}
+	if(b==100)
+	{
+	return b;
+	}
+}
+void testMod()
+{
+	int result;
+	printf("10 % 3 =",Mod(10,3));
+	printf("17 % 4 =",Mod(17,4));
+	printf("100 % 5 =",Mod(100,5));
+	printf("0 % 10 =",Mod(0,10));
+}
+void testPING()
+{
+	ping(1);
+}
+void main()
+{
+	TESTMOD();
+	TESTPING();	
+}

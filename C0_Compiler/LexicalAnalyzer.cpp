@@ -189,6 +189,7 @@ void scannIDEN()
         lextype = (lexClass)(NEQU + r);
     }
 }
+
 void scannCHR()
 {
     lextype = CHR;

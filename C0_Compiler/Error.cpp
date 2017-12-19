@@ -7,6 +7,14 @@
 #include <exception>
 #include "IO.h"
 extern char tokenbak[tokenStrLen];
+void skip()
+{
+
+	do {
+		readSym();
+	}
+	while (lextype != SEMI);
+}
 void error(int err,int detail)
 {
 	//printf("Error happended!");

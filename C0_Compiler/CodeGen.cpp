@@ -158,14 +158,19 @@ void objEntry()
 	int l=genLabel(L, "main");
 	emitObj(TJUMP,l);
 }
+void objSaveParam()
+{
+
+}
 void objFuncHead(bool main)
 {
 	int offset = 4;
 
-	funcTableEntry entry = funcTable[symTable[funcRef]._ref];
+	funcTableEntry entry = funcTable[REF(funcRef)];
 	int paraNum = entry._paraNum;
 	IdenType *para = entry._param;
-	if (paraNum > 4)
+
+	if (paraNum > 4)//È¡²ÎÊı
 	{
 		int extraPara = linkHead+4;
 		for (int i = 0; i < paraNum - 4; i++)
@@ -178,7 +183,7 @@ void objFuncHead(bool main)
 	{
 		return;
 	}
-	for (int i = 0;i < 0; i++)
+	for (int i = 0;i < 3; i++)
 	{
 		emitObj(TSW, s0+i, sp, offset*i+entry._size);
 	}
@@ -187,11 +192,13 @@ void objFuncHead(bool main)
 	{
 		if (i < 4)
 		{
-			emitObj(TSW, a0 + i, sp, symTable[linkHead + i]._adr);
+			//emitObj(TSW, a0 + i, sp, symTable[linkHead + i]._adr);
+			objSave(a0 + i, s0, linkHead + i);
 		}
 		else if(i<12)
 		{ 
-			emitObj(TSW, t0 + i, sp, symTable[linkHead + i]._adr);
+			//emitObj(TSW, t0 + i - 4, sp, symTable[linkHead + i]._adr);
+			objSave(t0 + i - 4, s0, linkHead + i);
 		}
 		else
 		{
@@ -459,7 +466,7 @@ void objFuncTail(bool main)
 	funcTableEntry entry = funcTable[symTable[funcRef]._ref];
 	if (!main)
 	{
-		for (int i = 0; i < 0; i++)
+		for (int i = 0; i < 3; i++)
 		{
 			emitObj(TLW, s0 + i, sp, i * offset + entry._size);
 		}

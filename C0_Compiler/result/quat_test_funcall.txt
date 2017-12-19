@@ -1,0 +1,145 @@
+	int mod()
+	para int a
+	para int b
+	a < 0
+	BNZ if_1
+	$tmp1 = a + b
+	ret $tmp1
+if_1:
+	$tmp2 = a - b
+	push $tmp2
+	push b
+	call mod
+	$tmp3 = RET
+	ret $tmp3
+	int ping()
+	para int a
+	var int target
+	target = 10 
+	a > target
+	BNZ if_2
+	$tmp1 = a - target
+	$tmp3 = $tmp1 - 1
+	$tmp4 = target - $tmp3
+	push $tmp4
+	call ping
+	$tmp5 = RET
+	ret $tmp5
+if_2:
+	a < target
+	BNZ if_3
+	$tmp6 = target - a
+	$tmp8 = $tmp6 - 1
+	$tmp9 = target + $tmp8
+	push $tmp9
+	call ping
+	$tmp10 = RET
+	ret $tmp10
+if_3:
+	a == target
+	BNZ if_4
+	ret a
+if_4:
+	int arg4()
+	para int a
+	para int b
+	para int c
+	para int d
+	$tmp0 = a + b
+	$tmp1 = $tmp0 + c
+	$tmp2 = $tmp1 + d
+	ret $tmp2
+	int arg12()
+	para int a
+	para int b
+	para int c
+	para int d
+	para char e
+	para char f
+	para int g
+	para int h
+	para char i
+	para int j
+	para int k
+	para int l
+	print e
+	$tmp0 = a + b
+	$tmp1 = $tmp0 + c
+	$tmp2 = $tmp1 + d
+	$tmp3 = $tmp2 + e
+	$tmp4 = $tmp3 + f
+	$tmp5 = $tmp4 + g
+	$tmp6 = $tmp5 + h
+	$tmp7 = $tmp6 + i
+	$tmp8 = $tmp7 + j
+	$tmp9 = $tmp8 + k
+	$tmp10 = $tmp9 + l
+	ret $tmp10
+	int testarg()
+	const int _1 = 1
+	const int _2 = 2
+	var int _3
+	var int _4
+	var char _e
+	_3 = 3 
+	_4 = 4 
+	_e = 101 
+	print "4argfunc call,result should be 6:"
+	push 1
+	push 1
+	push 2
+	push 2
+	call arg4
+	$tmp5 = RET
+	print $tmp5
+	print "12arg func call result should be 327"
+	push 1
+	push 2
+	push _3
+	push _4
+	push _e
+	push 102
+	push 1
+	push 2
+	push 105
+	push 1
+	push 2
+	push 3
+	call arg12
+	$tmp12 = RET
+	print $tmp12
+	int testmod()
+	var int result
+	print "10 mod 3 ="
+	push 10
+	push 3
+	call mod
+	$tmp2 = RET
+	print $tmp2
+	print "17 mod 4 ="
+	push 17
+	push 4
+	call mod
+	$tmp5 = RET
+	print $tmp5
+	print "100 mod 5 ="
+	push 100
+	push 5
+	call mod
+	$tmp8 = RET
+	print $tmp8
+	print "0 mod 10 ="
+	push 0
+	push 10
+	call mod
+	$tmp11 = RET
+	print $tmp11
+	int testping()
+	push 1
+	call ping
+	push 20
+	call ping
+	void main()
+	call testarg
+	call testmod
+	call testping
