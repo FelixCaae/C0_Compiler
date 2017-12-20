@@ -464,9 +464,7 @@ void parseStat()
 	}
 	outputSyntax(STAT,false);
 }
-int change(int iden)
-{
-}
+
 void parseExpression(int *r)
 {
 	outputSyntax(EXPRESSION);
@@ -481,15 +479,7 @@ void parseExpression(int *r)
 		int zero = genTemp(INTS, true, 0);
 		tmpFlag = false;
 		store = genTemp(INTS);
-		if (ISCONST(first))
-		{
-			OBJ(store) = OCONST;
-			REF(store) = -REF(first);
-		}
-		else
-		{
-			emit(QMINUS, store, zero, first);
-		}
+		emit(QMINUS, store, zero, first);
 		first = store;
 	}
 	while ((neg = couldBe2(MINUS, PLUS)) != 0) {
@@ -498,22 +488,7 @@ void parseExpression(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		if (ISCONST(first)&&ISCONST(second))
-		{
-			val1 = REF(first);
-			val2 = REF(second);
-			if (neg == 1)
-			{
-				vresult = val1 - val2;
-			}
-			else if (neg == 2)
-			{
-				vresult = val1 + val2;
-			}
-			REF(store) = vresult;
-		}
-		else
-		{
+		
 			if (neg == 1)
 			{
 				emit(QMINUS, store, first, second);
@@ -522,8 +497,7 @@ void parseExpression(int *r)
 			{
 				emit(QPLUS, store, first, second);
 			}
-			/OBJ(store) = OVAR;
-		}
+			
 		first = store;
 	}
 	*r = first;
@@ -543,30 +517,7 @@ void parseTerm(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		if (ISCONST(first) && ISCONST(second))
-		{
-			
-			val1 = REF(first);
-			val2 = REF(second);
-			if (op == 1)
-			{
-				vresult = val1*val2;
-			}
-			else if (op == 2)
-			{
-				if (val2 != 0) {
-					vresult = val1 / val2;
-				}
-				else
-				{
-					error(ERR_DIV_ZERO);
-				}
-			}
-			OBJ(store) = OCONST;
-			REF(store) = vresult;
-		}
-		else
-		{
+		
 			
 			if (op == 1)
 			{
@@ -576,8 +527,7 @@ void parseTerm(int *r)
 			{
 				emit(QDIV, store, first, second);
 			}
-			OBJ(store) = OVAR;
-		}
+		
 		first = store;
 	} 
 	*r = first;
