@@ -460,9 +460,12 @@ void parseStat()
 		shouldBe(SEMI);
 		break;
 	default:
-		error(ERR_SYNTAX,STAT);
+		error(ERR_SYNTAX,RCURB);
 	}
 	outputSyntax(STAT,false);
+}
+int change(int iden)
+{
 }
 void parseExpression(int *r)
 {
@@ -499,7 +502,6 @@ void parseExpression(int *r)
 		{
 			val1 = REF(first);
 			val2 = REF(second);
-			OBJ(store) = OCONST;
 			if (neg == 1)
 			{
 				vresult = val1 - val2;
@@ -520,6 +522,7 @@ void parseExpression(int *r)
 			{
 				emit(QPLUS, store, first, second);
 			}
+			/OBJ(store) = OVAR;
 		}
 		first = store;
 	}
@@ -542,7 +545,7 @@ void parseTerm(int *r)
 		}
 		if (ISCONST(first) && ISCONST(second))
 		{
-			OBJ(store) = OCONST;
+			
 			val1 = REF(first);
 			val2 = REF(second);
 			if (op == 1)
@@ -559,10 +562,12 @@ void parseTerm(int *r)
 					error(ERR_DIV_ZERO);
 				}
 			}
+			OBJ(store) = OCONST;
 			REF(store) = vresult;
 		}
 		else
 		{
+			
 			if (op == 1)
 			{
 				emit(QSTAR, store, first, second);
@@ -571,6 +576,7 @@ void parseTerm(int *r)
 			{
 				emit(QDIV, store, first, second);
 			}
+			OBJ(store) = OVAR;
 		}
 		first = store;
 	} 
@@ -953,7 +959,7 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "../Test/Test/Test1.txt";
+	buffer[1] = "../Test/Test/Test_2.txt";
 	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");

@@ -1,5 +1,21 @@
 	int test_hw()
 	print "HelloWorld!This is the first test program written with C0 grammar!\n"
+	int test_sp()
+	var int chi
+	var char ch
+	chi = 52 
+	ch = chi 
+	print ch
+	chi = 54 
+	ch = chi 
+	print ch
+do_1:
+	$tmp3 = chi + 1
+	chi = $tmp3 
+	ch = chi 
+	print chi
+	chi != 128
+	BZ do_1
 	int get10()
 	ret 10
 	int test_condition()
@@ -7,21 +23,21 @@
 	const int a = 1
 	const int b = 1
 	1 == 1
-	BNZ if_1
-	print "a==1"
-if_1:
-	1 != 0
 	BNZ if_2
-	print "a!=0"
+	print "a==1"
 if_2:
-	2 > 0
+	1 != 0
 	BNZ if_3
-	print "a+b>a-b"
+	print "a!=0"
 if_3:
-	97 > 1
+	2 > 0
 	BNZ if_4
-	print "'a' > 1"
+	print "a+b>a-b"
 if_4:
+	97 > 1
+	BNZ if_5
+	print "'a' > 1"
+if_5:
 	int test_expression()
 	array int test_hw[2]
 	array char test_hw[1]
@@ -36,160 +52,3 @@ if_4:
 	var char c4
 	var char c5
 	a1 = 1 
-	a2 = 1 
-	$tmp17 = a2 * a2
-	$tmp18 = a2 / $tmp17
-	$tmp19 = $tmp18 / a1
-	$tmp20 = a1 * $tmp19
-	$tmp21 = $tmp20 * a2
-	a3 = $tmp21 
-	$tmp22 = a2 + a3
-	$tmp23 = a2 + a3
-	$tmp24 = $tmp22 * $tmp23
-	$tmp26 = a3 * 6
-	$tmp27 = $tmp24 + $tmp26
-	call get10
-	$tmp28 = RET
-	$tmp29 = $tmp27 / $tmp28
-	a4 = $tmp29 
-	$tmp41 = a4 * 9
-	$tmp43 = $tmp41 + 2
-	call get10
-	$tmp44 = RET
-	$tmp45 = $tmp43 - $tmp44
-	a5 = $tmp45 
-	$tmp47 = a1 + a2
-	$tmp48 = $tmp47 + a3
-	$tmp49 = $tmp48 + a4
-	$tmp50 = $tmp49 + a5
-	ia[0] = $tmp50
-	print "a1"
-	print a1
-	print "a2"
-	print a2
-	print "a3"
-	print a3
-	print "a4"
-	print a4
-	print "a5"
-	print a5
-	print "ia[0] is :"
-	$tmp52 = ia[0]
-	print $tmp52
-	$tmp55 = ia[0]
-	$tmp57 = $tmp55 / 5
-	ia[1] = $tmp57
-	print "result is 1:"
-	$tmp59 = ia[1]
-	print $tmp59
-	c1 = 97 
-	c2 = 95 
-	c3 = 43 
-	c4 = 90 
-	c5 = 101 
-	$tmp66 = 0 - c1
-	$tmp66 = $tmp66 + c1
-	$tmp67 = c1 + $tmp66
-	a1 = $tmp67 
-	$tmp68 = c1 / a1
-	$tmp69 = $tmp68 * a1
-	$tmp70 = $tmp69 / c1
-	$tmp71 = a1 * $tmp70
-	$tmp72 = a1 / c1
-	$tmp73 = $tmp71 * $tmp72
-	a2 = $tmp73 
-	$tmp75 = c1 * 2
-	$tmp77 = $tmp75 / 2
-	$tmp79 = $tmp77 + 1
-	$tmp81 = $tmp79 - 1
-	$tmp82 = $tmp81 + c2
-	$tmp83 = $tmp82 - c2
-	a3 = $tmp83 
-	$tmp85 = c4 + 7
-	a4 = $tmp85 
-	$tmp86 = c2 + c5
-	call get10
-	$tmp87 = RET
-	$tmp89 = $tmp87 * 10
-	$tmp90 = $tmp86 - $tmp89
-	$tmp92 = $tmp90 + 1
-	a5 = $tmp92 
-	print "a1"
-	print a1
-	print "a2"
-	print a2
-	print "a3"
-	print a3
-	print "a4"
-	print a4
-	print "a5"
-	print a5
-	$tmp94 = a1 + a2
-	$tmp95 = $tmp94 + a3
-	$tmp96 = $tmp95 + a4
-	$tmp97 = $tmp96 + a5
-	ia[0] = $tmp97
-	ca[0] = $tmp99
-	a1 == 97
-	BNZ if_5
-	a2 == 97
-	BNZ if_6
-	a3 == 97
-	BNZ if_7
-	a4 == 97
-	BNZ if_8
-	a5 == 97
-	BNZ if_9
-	ca[0] = $tmp106
-if_9:
-if_8:
-if_7:
-if_6:
-if_5:
-	print "result is a"
-	$tmp108 = ca[0]
-	print $tmp108
-	int test_chicken_rabbit()
-	const int chicken_feet = 2
-	const int rabbit_feet = 4
-	var int rabbit_num
-	var int chicken_num
-	var int head
-	var int foot
-	print "Please input the number of heads and feet:"
-	read head
-	read foot
-	head < 0
-	BNZ if_10
-	print "head num can`t be less than zero"
-if_10:
-	foot < 0
-	BNZ if_11
-	print "foot num can`t be less than zero"
-if_11:
-	$tmp3 = head * 4
-	foot <= $tmp3
-	BNZ if_12
-	$tmp5 = head * 2
-	foot >= $tmp5
-	BNZ if_13
-	$tmp6 = 4 * head
-	$tmp7 = $tmp6 - foot
-	$tmp9 = $tmp7 / 2
-	chicken_num = $tmp9 
-	$tmp10 = head - chicken_num
-	rabbit_num = $tmp10 
-	print "rabbit num"
-	print rabbit_num
-	print "chicken_num"
-	print chicken_num
-	ret
-if_13:
-if_12:
-	print "input is not solvable"
-	void main()
-	call test_hw
-	call test_condition
-	call test_expression
-	call test_chicken_rabbit
-	ret

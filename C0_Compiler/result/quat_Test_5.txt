@@ -1,0 +1,67 @@
+	void main()
+	var int i
+	var int j
+	var int k
+	var int m
+	var char c
+	c = 97 
+	m = 97 
+	i = 1 
+	j = 2 
+	k = 3 
+	i > j
+	BNZ if_1
+	print "Test_1_Error"
+if_1:
+	j > i
+	BNZ if_2
+	print "Test_1_Correct"
+if_2:
+	k < j
+	BNZ if_3
+	print "Test_2_Error"
+if_3:
+	j < k
+	BNZ if_4
+	print "Test_2_Correct"
+if_4:
+	k <= j
+	BNZ if_5
+	print "Test_3_Error"
+if_5:
+	j <= k
+	BNZ if_6
+	print "Test_3_Correct"
+if_6:
+	j <= j
+	BNZ if_7
+	print "Test_3_Correct"
+if_7:
+	j >= k
+	BNZ if_8
+	print "Test_4_Error"
+if_8:
+	k >= j
+	BNZ if_9
+	print "Test_4_Correct"
+if_9:
+	k >= k
+	BNZ if_10
+	print "Test_4_Correct"
+if_10:
+	i == j
+	BNZ if_11
+	print "Test_5_Error"
+if_11:
+	c == m
+	BNZ if_12
+	print "Test_5_Correct"
+if_12:
+	c != m
+	BNZ if_13
+	print "Test_6_Error"
+if_13:
+	i != j
+	BNZ if_14
+	print "Test_6_Correct"
+if_14:

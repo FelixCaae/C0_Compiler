@@ -1,0 +1,599 @@
+<program>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <keyword> main <\keyword>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> i <\identifier>
+        <seperator> , <\seperator>
+        <identifier> j <\identifier>
+        <seperator> , <\seperator>
+        <identifier> k <\identifier>
+        <seperator> , <\seperator>
+        <identifier> m <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> c <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> c <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <char> 'a' <\char>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> m <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 97 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> i <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> j <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 2 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> k <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 3 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> i <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> > <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_1_Error" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> > <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> i <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_1_Correct" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> k <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> < <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_2_Error" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> < <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> k <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_2_Correct" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> k <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> <= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_3_Error" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> <= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> k <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_3_Correct" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> <= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_3_Correct" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> >= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> k <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_4_Error" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> k <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> >= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_4_Correct" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> k <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> >= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> k <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_4_Correct" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> i <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_5_Error" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> c <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> m <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_5_Correct" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> c <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> != <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> m <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_6_Error" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> i <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> != <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> j <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <writeStat>
+              <keyword> printf <\keyword>
+              <seperator> ( <\seperator>
+              <string> "Test_6_Correct" <\string>
+              <seperator> ) <\seperator>
+              <\writeStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+<\program>
+<end> ÿ <\end>

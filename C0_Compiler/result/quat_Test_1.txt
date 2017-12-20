@@ -1,0 +1,246 @@
+	const int con_i_1 = 1
+	const int con_i_2 = 1
+	const int con_i_3 = 2
+	const char con_c_1 = 43
+	const char con_c_2 = 45
+	const char con_c_3 = 42
+	var int i_1
+	var int i_2
+	var int i_3
+	array int con_i_1[10]
+	var char c_1
+	var char c_2
+	var char c_3
+	array char con_i_1[10]
+	int fun0()
+	para int a
+	ret a
+	int fun1()
+	para int a
+	para int b
+	var int fun
+	$tmp0 = a + b
+	fun = $tmp0 
+	ret fun
+	int fun2()
+	ret 65
+	int fun3()
+	para int a
+	ret
+	int fun4()
+	para int a
+	para char b
+	print a
+	print b
+	int fun5()
+	print "Funtion_5"
+	int fun6()
+	para int n
+	n == 1
+	BNZ if_1
+	ret 1
+if_1:
+	$tmp3 = n - 1
+	push $tmp3
+	call fun6
+	$tmp4 = RET
+	$tmp5 = n * $tmp4
+	ret $tmp5
+	void main()
+	const int m_con_i_1 = 1
+	const int mm_con_i_1 = 100
+	const int m_con_i_2 = 1
+	const int m_con_i_3 = 2
+	const char m_con_c_1 = 43
+	const char m_con_c_2 = 45
+	const char m_con_c_3 = 42
+	var int m_i_1
+	var int mm_i_1
+	var int m_i_2
+	var int m_i_3
+	array int con_i_1[10]
+	var char m_c_1
+	var char m_c_2
+	var char m_c_3
+	array char con_i_1[10]
+	m_i_1 = 1 
+	mm_i_1 = 100 
+	m_i_2 = 1 
+	m_i_3 = 2 
+	m_c_1 = 43 
+	m_c_2 = 45 
+	m_c_3 = 42 
+	m_i_1 == 100
+	BNZ if_2
+	print "Error!"
+if_2:
+	0 != 0
+	BNZ if_3
+	print "Error!"
+if_3:
+	m_i_3 > 1
+	BNZ if_4
+	$tmp12 = 0 - m_i_3
+	$tmp12 = $tmp12 + 1
+	m_i_3 = $tmp12 
+	print m_i_3
+if_4:
+	m_i_3 != 1
+	BNZ if_5
+	print "Test_1"
+if_5:
+	m_i_3 == 1
+	BNZ if_6
+	print "Test_2"
+if_6:
+	m_i_1 = 97 
+do_7:
+	m_c_4[m_i_1] = m_i_1
+	$tmp15 = m_c_4[m_i_1]
+	print $tmp15
+	$tmp17 = m_i_1 + 1
+	m_i_1 = $tmp17 
+	m_i_1 < 107
+	BZ do_7
+	print "Test_3"
+	m_i_1 = 0 
+do_8:
+	m_i_2 = 0 
+do_9:
+	$tmp23 = m_i_1 + m_i_2
+	print $tmp23
+	$tmp25 = m_i_2 + 1
+	m_i_2 = $tmp25 
+	m_i_2 < 3
+	BZ do_9
+	$tmp28 = m_i_1 + 2
+	m_i_1 = $tmp28 
+	m_i_1 < 5
+	BZ do_8
+	$tmp31 = m_i_4[9]
+	print $tmp31
+	print "Test_4"
+	m_i_1 = 0 
+do_10:
+	print "Test_5"
+	$tmp34 = m_i_1 + 1
+	m_i_1 = $tmp34 
+	m_i_1 == 1
+	BZ do_10
+	$tmp37 = m_i_4[8]
+	print $tmp37
+	push m_i_1
+	push m_i_1
+	call fun1
+	$tmp38 = RET
+	print $tmp38
+	call fun5
+	1 == m_i_1
+	BNZ case_11_1
+	push m_i_1
+	call fun6
+	$tmp40 = RET
+	1 == $tmp40
+	BNZ case_12_1
+	print "Test_6"
+	GOTO switch_12
+case_12_1:
+switch_12:
+	43 == m_c_1
+	BNZ case_13_1
+do_14:
+	push m_i_1
+	call fun6
+	$tmp43 = RET
+	print $tmp43
+	$tmp45 = m_i_1 + 1
+	m_i_1 = $tmp45 
+	m_i_1 < 4
+	BZ do_14
+	GOTO switch_13
+case_13_1:
+	45 == m_c_1
+	BNZ case_14_2
+	print "Error!"
+	GOTO switch_13
+case_14_2:
+switch_13:
+	GOTO switch_11
+case_11_1:
+	2 == m_i_1
+	BNZ case_14_3
+	push 9
+	call fun6
+	$tmp50 = RET
+	print $tmp50
+	GOTO switch_11
+case_14_3:
+	3 == m_i_1
+	BNZ case_14_4
+	m_i_1 = 0 
+do_15:
+	push 9
+	call fun6
+	$tmp54 = RET
+	print $tmp54
+	$tmp56 = m_i_1 + 1
+	m_i_1 = $tmp56 
+	m_i_1 == 1
+	BZ do_15
+	GOTO switch_11
+case_14_4:
+switch_11:
+	$tmp59 = 0 - m_c_1
+	m_i_1 = $tmp59 
+	m_i_1 == -43
+	BNZ if_16
+	print "Test_7"
+if_16:
+	$tmp64 = m_i_1 + 43
+	$tmp64 != 0
+	BNZ if_17
+	print "Test_7_ERROR"
+if_17:
+	-43 == m_i_1
+	BNZ case_18_1
+	print "Test_7_1"
+	GOTO switch_18
+case_18_1:
+switch_18:
+	43 == m_c_1
+	BNZ case_19_1
+	print "Test_7_2"
+	GOTO switch_19
+case_19_1:
+switch_19:
+	m_c_2 = 43 
+	print m_c_2
+	m_c_2 = 45 
+	print m_c_2
+	m_c_2 = 42 
+	print m_c_2
+	m_c_2 = 47 
+	print m_c_2
+	m_c_2 = 95 
+	print m_c_2
+	m_i_1 = 97 
+do_20:
+	m_c_2 = m_i_1 
+	print m_c_2
+	$tmp75 = m_i_1 + 1
+	m_i_1 = $tmp75 
+	m_i_1 <= 122
+	BZ do_20
+	m_i_1 = 65 
+do_21:
+	m_c_2 = m_i_1 
+	print m_c_2
+	$tmp79 = m_i_1 + 1
+	m_i_1 = $tmp79 
+	m_i_1 <= 90
+	BZ do_21
+	read m_i_1
+	print m_i_1
+	read m_c_1
+	print m_c_1
+	print "DONE!"

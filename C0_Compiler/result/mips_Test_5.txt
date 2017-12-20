@@ -1,0 +1,215 @@
+	j main
+main:
+	subi $sp,$sp,56
+	li $t0,97
+	addi $t1,$sp,16
+	sb $t0,0($t1)
+	li $t0,97
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	li $t0,1
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	li $t0,2
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	li $t0,3
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sgt $v1,$t0,$t1
+	beq $0,$v1,if_1
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_1:
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	sgt $v1,$t0,$t1
+	beq $0,$v1,if_2
+	li $v0,4
+	la $a0,Str_1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_2:
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	slt $v1,$t0,$t1
+	beq $0,$v1,if_3
+	li $v0,4
+	la $a0,Str_2
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_3:
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	lw $t1,0($t1)
+	slt $v1,$t0,$t1
+	beq $0,$v1,if_4
+	li $v0,4
+	la $a0,Str_3
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_4:
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sle $v1,$t0,$t1
+	beq $0,$v1,if_5
+	li $v0,4
+	la $a0,Str_4
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_5:
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	lw $t1,0($t1)
+	sle $v1,$t0,$t1
+	beq $0,$v1,if_6
+	li $v0,4
+	la $a0,Str_5
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_6:
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sle $v1,$t0,$t1
+	beq $0,$v1,if_7
+	li $v0,4
+	la $a0,Str_5
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_7:
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	lw $t1,0($t1)
+	sge $v1,$t0,$t1
+	beq $0,$v1,if_8
+	li $v0,4
+	la $a0,Str_6
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_8:
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sge $v1,$t0,$t1
+	beq $0,$v1,if_9
+	li $v0,4
+	la $a0,Str_7
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_9:
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	lw $t1,0($t1)
+	sge $v1,$t0,$t1
+	beq $0,$v1,if_10
+	li $v0,4
+	la $a0,Str_7
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_10:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_11
+	li $v0,4
+	la $a0,Str_8
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_11:
+	addi $t0,$sp,16
+	lb $t0,0($t0)
+	addi $t1,$sp,12
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_12
+	li $v0,4
+	la $a0,Str_9
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_12:
+	addi $t0,$sp,16
+	lb $t0,0($t0)
+	addi $t1,$sp,12
+	lw $t1,0($t1)
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_13
+	li $v0,4
+	la $a0,Str_10
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_13:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_14
+	li $v0,4
+	la $a0,Str_11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_14:
+main_end:
+	addi $sp,$sp,56
+	.data
+	Str_0 :.asciiz "Test_1_Error"
+	Str_1 :.asciiz "Test_1_Correct"
+	Str_2 :.asciiz "Test_2_Error"
+	Str_3 :.asciiz "Test_2_Correct"
+	Str_4 :.asciiz "Test_3_Error"
+	Str_5 :.asciiz "Test_3_Correct"
+	Str_6 :.asciiz "Test_4_Error"
+	Str_7 :.asciiz "Test_4_Correct"
+	Str_8 :.asciiz "Test_5_Error"
+	Str_9 :.asciiz "Test_5_Correct"
+	Str_10 :.asciiz "Test_6_Error"
+	Str_11 :.asciiz "Test_6_Correct"

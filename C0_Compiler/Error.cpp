@@ -55,7 +55,7 @@ void error(int err,int detail)
 		break; }
 	case ERR_SYNTAX:
 	{
-		sprintf(buffer, "*****Error%d: Should be %s but found %s line:%d\n",err, syntaxClassName[detail - 1], lexClassName[lextype - 1], lineCounter);
+		sprintf(buffer, "*****Error%d: Should be %s but found %s line:%d\n",err, lexClassName[detail - 1], lexClassName[lextype - 1], lineCounter);
 		break; }
 	case ERR_SYM_RETRACT:
 	{
@@ -68,6 +68,11 @@ void error(int err,int detail)
 	case ERR_CONST:
 	{
 		sprintf(buffer, "*****Error%d: Can`t assign to a const identifier:%s line:%d\n", err,token,lineCounter);
+		break;
+	}
+	case ERR_CASE_MATCH:
+	{
+		sprintf(buffer, "*****Error%d: Case constant`s type doesn`t match switch expression line:%d\n", err,lineCounter);
 		break;
 	}
 	case ERR_IDEN_DECLARED:

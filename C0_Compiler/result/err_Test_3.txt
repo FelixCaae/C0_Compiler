@@ -1,0 +1,1 @@
+*****Error6: Identifier:cmaxint can`t be declared twice line:4
