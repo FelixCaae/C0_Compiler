@@ -1,21 +1,23 @@
 const int cInt1=+10,cInt2=-1;
 const int cInt3=0;
 const int cMaxInt=2147483647,cMinInt=-2147483648;
-const int cmaxint=2147483647;
 const char cChar0='_',cChar1='a',cChar2='A',cChar3='+',cChar4='*';
 const char cChar5='0';
 int _,_9,__,_a;
 int a1;
-char _A;
+char ___A;
 int a2,a3[10],a4[1],a5;
-char A2[1],A3[20],A4;
+char AA2[1],AA3[20],AA4;
 void PrintHelloWorld(){
     int cInt2;
     cInt2=233;
     printf(" !#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~");
     printf("");
     printf("helloworld!");
+	printf('+');
+	printf('-');
     printf('*');
+	printf('/');
     printf(cChar0);
     printf(cInt1);
     printf(cInt2);
@@ -38,12 +40,12 @@ void _myStop(){
 }
 int NsquareSum(int temp,int times){
     int noneUse[10];
-    int Temp;
-    Temp=temp;
+    int TTemp;
+    TTemp=temp;
     if(times==1)
         return (temp);
-    Temp=Temp*NsquareSum(temp,times-1);
-    return (((Temp)));
+    TTemp=TTemp*NsquareSum(temp,times-1);
+    return (((TTemp)));
 }
 char NextAlphabet(char x){
     return (x+1);
@@ -54,6 +56,8 @@ void main(){
     char abc[3];
     int intArray[1];
     int i,j,k;
+	printf("MaxInt", cMaxInt);
+	printf("MinInt", cMinInt);
     PrintHelloWorld();
     printf("please input number counts:");
     scanf(num);
@@ -94,16 +98,6 @@ void main(){
         case 0:printf("result:0");
         case +1:{scanf(temp1);printf("result:",temp1+10-10);}
         case +2:{scanf(temp1,temp2);printf("result:",SquareSum(temp1+0,temp2-2+2));}
-        default:
-            {if(num>0){
-            temp2=0;
-            for(i=0;i<num;i=i+1){
-                scanf(temp1);
-                temp2=temp2+NsquareSum(temp1,num);
-            }
-            a3[0]=temp2;
-            printf("result:",a3[0]);}
-        }
     }
     _myStop();
     i=(NsquareSum(1,1));

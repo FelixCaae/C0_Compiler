@@ -7,6 +7,8 @@
 #define ADR(arg) symTable[arg]._adr
 #define OBJ(arg) symTable[arg]._obj
 #define TYP(arg) symTable[arg]._type
+#define PARANUM(arg) funcTable[REF(arg)]._paraNum
+#define PARATYPE(arg,arg2) funcTable[REF(arg)]._param[arg2]
 #define ISVAR(arg) OBJ(arg)==OVAR
 #define ISARRAY(arg) OBJ(arg)==OARRAY
 #define ISCONST(arg) OBJ(arg)==OCONST

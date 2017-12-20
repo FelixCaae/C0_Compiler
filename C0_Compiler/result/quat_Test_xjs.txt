@@ -1,0 +1,389 @@
+	const int cona = 10
+	const char conb = 97
+	const char conc = 54
+	var int _cha
+	array int cona[6]
+	var char chc
+	var char chd
+	int f()
+	para int x
+	para int y
+	const int z = 1
+	x > 1
+	BNZ if_1
+	$tmp1 = x + 1
+	ret $tmp1
+if_1:
+	$tmp3 = x + 1
+	x = $tmp3 
+	push x
+	push y
+	call f
+	$tmp4 = x + y
+	ret $tmp4
+	int compare()
+	para int a
+	para int b
+	a > b
+	BNZ if_2
+	ret 1
+if_2:
+	a <= b
+	BNZ if_3
+	$tmp3 = 0 - 1
+	ret $tmp3
+if_3:
+	int line()
+	para int n
+	para int m
+	var int i
+	var int j
+	array int cona[100]
+	array int cona[100]
+	var int p
+	var int q
+	var int move
+	var int end
+	var int po1
+	var int po2
+	var int st2
+	i = 1 
+	j = 1 
+do_4:
+	stpos[i] = i
+	posst[i] = i
+	$tmp3 = i + 1
+	i = $tmp3 
+	i <= n
+	BZ do_4
+	i = 1 
+do_5:
+	i == 1
+	BNZ if_6
+	p = 3 
+	q = 2 
+if_6:
+	i == 2
+	BNZ if_7
+	p = 8 
+	$tmp12 = 0 - 3
+	q = $tmp12 
+if_7:
+	i == 3
+	BNZ if_8
+	p = 3 
+	$tmp17 = 0 - 2
+	q = $tmp17 
+if_8:
+	q != 0
+	BNZ if_9
+	push q
+	push 0
+	call compare
+	$tmp20 = RET
+	move = $tmp20 
+	$tmp21 = move * q
+	end = $tmp21 
+	$tmp22 = stpos[p]
+	po1 = $tmp22 
+do_10:
+	$tmp23 = po1 + move
+	$tmp24 = posst[$tmp23]
+	st2 = $tmp24 
+	$tmp25 = stpos[st2]
+	po2 = $tmp25 
+	posst[po1] = st2
+	stpos[st2] = po1
+	po1 = po2 
+	$tmp27 = j + 1
+	j = $tmp27 
+	j <= end
+	BZ do_10
+	posst[po2] = p
+	$tmp28 = stpos[p]
+	$tmp29 = $tmp28 + q
+	stpos[p] = $tmp29
+if_9:
+	$tmp31 = i + 1
+	i = $tmp31 
+	i <= m
+	BZ do_5
+	$tmp33 = posst[1]
+	print $tmp33
+	i = 2 
+do_11:
+	$tmp35 = posst[i]
+	print $tmp35
+	$tmp37 = i + 1
+	i = $tmp37 
+	i <= n
+	BZ do_11
+	ret
+	int f2()
+	para char x
+	var int z2
+	z2 = 1 
+	$tmp1 = x + z2
+	x = $tmp1 
+	ret x
+	int fib()
+	para int n
+	var int result
+	n == 0
+	BNZ if_12
+	ret 0
+if_12:
+	n == 1
+	BNZ if_13
+	ret 1
+if_13:
+	$tmp5 = n - 1
+	push $tmp5
+	call fib
+	$tmp6 = RET
+	$tmp8 = n - 2
+	push $tmp8
+	call fib
+	$tmp9 = RET
+	$tmp10 = $tmp6 + $tmp9
+	result = $tmp10 
+	ret result
+	int nest()
+	array int cona[15]
+	array int cona[15]
+	a[0] = 1
+	b[1] = 3
+	a[3] = 4
+	b[4] = 6
+	a[6] = 8
+	$tmp11 = a[0]
+	$tmp12 = b[$tmp11]
+	$tmp13 = a[$tmp12]
+	$tmp14 = b[$tmp13]
+	$tmp15 = a[$tmp14]
+	b[$tmp15] = 2333
+	$tmp18 = a[0]
+	$tmp20 = b[8]
+	$tmp21 = $tmp18 + $tmp20
+	print $tmp21
+	ret
+	int t()
+	para char x
+	x > 99
+	BNZ if_14
+	ret
+if_14:
+	$tmp2 = x + 1
+	x = $tmp2 
+	print x
+	push x
+	call t
+	ret
+	void main()
+	const int coz = 3
+	var int a
+	var int b
+	var int c
+	var int d
+	var int key
+	var int i
+	array int cona[5]
+	var int cho
+	array char cona[5]
+	var char e
+	chc = 43 
+	chd = 45 
+	b = 3 
+	i = 0 
+	$tmp6 = 0 - 2
+	c = $tmp6 
+	key = 1 
+	read cho
+	0 == cho
+	BNZ case_15_1
+	print "test line:"
+	push 8
+	push 3
+	call line
+	GOTO switch_15
+case_15_1:
+	1 == cho
+	BNZ case_15_2
+	print "test fib:"
+	push 3
+	call fib
+	$tmp12 = RET
+	d = $tmp12 
+	print "fib="
+	print d
+	GOTO switch_15
+case_15_2:
+	2 == cho
+	BNZ case_15_3
+do_16:
+	sz[i] = 97
+	sz2[i] = i
+	$tmp16 = i + 1
+	i = $tmp16 
+	i < 5
+	BZ do_16
+	read key
+	read a
+	key < 3
+	BNZ if_17
+	$tmp19 = a + b
+	a = $tmp19 
+	print a
+if_17:
+	key <= 3
+	BNZ if_18
+	$tmp21 = b - a
+	b = $tmp21 
+	$tmp24 = sz2[0]
+	$tmp25 = $tmp24 + b
+	sz2[0] = $tmp25
+	$tmp28 = sz[0]
+	$tmp30 = $tmp28 + 1
+	sz[0] = $tmp30
+	print b
+	$tmp32 = sz[0]
+	print $tmp32
+	$tmp34 = sz2[0]
+	print $tmp34
+if_18:
+	key > 6
+	BNZ if_19
+	$tmp36 = a * b
+	c = $tmp36 
+	$tmp39 = sz2[1]
+	$tmp40 = $tmp39 + c
+	sz2[1] = $tmp40
+	$tmp43 = sz[1]
+	$tmp45 = $tmp43 + 1
+	sz[1] = $tmp45
+	print c
+	$tmp47 = sz[1]
+	print $tmp47
+	$tmp49 = sz2[1]
+	print $tmp49
+if_19:
+	key >= 6
+	BNZ if_20
+	$tmp51 = a / b
+	d = $tmp51 
+	$tmp54 = sz2[2]
+	$tmp55 = $tmp54 + d
+	sz2[2] = $tmp55
+	$tmp58 = sz[2]
+	$tmp60 = $tmp58 + 1
+	sz[2] = $tmp60
+	print d
+	$tmp62 = sz[2]
+	print $tmp62
+	$tmp64 = sz2[2]
+	print $tmp64
+if_20:
+	key != 4
+	BNZ if_21
+	$tmp67 = 1 / 3
+	$tmp68 = a - $tmp67
+	a = $tmp68 
+	$tmp71 = sz2[3]
+	$tmp72 = $tmp71 + a
+	$tmp74 = $tmp72 + 99
+	sz2[3] = $tmp74
+	$tmp77 = sz[3]
+	$tmp79 = $tmp77 + 1
+	sz[3] = $tmp79
+	print a
+	$tmp81 = sz[3]
+	print $tmp81
+	$tmp83 = sz2[3]
+	print $tmp83
+if_21:
+	key == 4
+	BNZ if_22
+	$tmp86 = 0 - a
+	$tmp88 = 2 * 3
+	$tmp86 = $tmp86 + $tmp88
+	a = $tmp86 
+	$tmp91 = sz[4]
+	$tmp93 = $tmp91 + 1
+	sz[4] = $tmp93
+	print a
+	$tmp95 = sz[4]
+	print $tmp95
+	$tmp97 = sz2[4]
+	print $tmp97
+if_22:
+	key != 0
+	BNZ if_23
+	print a
+if_23:
+	GOTO switch_15
+case_15_3:
+	3 == cho
+	BNZ case_23_4
+	print "test function:"
+	key != 0
+	BNZ if_24
+	$tmp104 = 0 - 2
+	push $tmp104
+	push 3
+	call f
+	$tmp106 = RET
+	$tmp109 = 5 + 1
+	$tmp110 = $tmp109 * 3
+	$tmp111 = $tmp106 + $tmp110
+	sz2[4] = $tmp111
+if_24:
+	push 97
+	call t
+	push 97
+	call f2
+	$tmp113 = RET
+	print $tmp113
+	$tmp115 = sz2[4]
+	print $tmp115
+	GOTO switch_15
+case_23_4:
+	4 == cho
+	BNZ case_24_5
+	print "test switch:"
+	read key
+	$tmp118 = key * 1
+	0 == $tmp118
+	BNZ case_25_1
+	print "key is 0"
+	GOTO switch_25
+case_25_1:
+	1 == $tmp118
+	BNZ case_25_2
+	print "key is "
+	print key
+	GOTO switch_25
+case_25_2:
+	2 == $tmp118
+	BNZ case_25_3
+	print "key is 2"
+	GOTO switch_25
+case_25_3:
+switch_25:
+	read e
+	97 == e
+	BNZ case_26_1
+	print 2
+	GOTO switch_26
+case_26_1:
+	98 == e
+	BNZ case_26_2
+	$tmp127 = 2 + -2
+	print $tmp127
+	GOTO switch_26
+case_26_2:
+switch_26:
+	GOTO switch_15
+case_24_5:
+switch_15:
+	call nest
+	ret

@@ -147,6 +147,409 @@ ping_end:
 	lw $ra,76($sp)
 	addi $sp,$sp,80
 	jr $ra
+ischar:
+	subi $sp,$sp,44
+	sw $s0,8($sp)
+	sw $s1,12($sp)
+	sw $s2,16($sp)
+	sw $ra,40($sp)
+	addi $s0,$sp,0
+	sw $a0,0($s0)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,95
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_5
+	li $v0,1
+	j ischar_end
+if_5:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,65
+	sge $v1,$t0,$t1
+	beq $0,$v1,if_6
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,90
+	sle $v1,$t0,$t1
+	beq $0,$v1,if_7
+	li $v0,1
+	j ischar_end
+if_7:
+if_6:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,97
+	sge $v1,$t0,$t1
+	beq $0,$v1,if_8
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,122
+	sle $v1,$t0,$t1
+	beq $0,$v1,if_9
+	li $v0,1
+	j ischar_end
+if_9:
+if_8:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,95
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_10
+	li $v0,1
+	j ischar_end
+if_10:
+	li $v0,0
+	j ischar_end
+ischar_end:
+	lw $s0,8($sp)
+	lw $s1,12($sp)
+	lw $s2,16($sp)
+	lw $ra,40($sp)
+	addi $sp,$sp,44
+	jr $ra
+tochar:
+	subi $sp,$sp,48
+	sw $s0,12($sp)
+	sw $s1,16($sp)
+	sw $s2,20($sp)
+	sw $ra,44($sp)
+	addi $s0,$sp,0
+	sw $a0,0($s0)
+	li $t0,95
+	addi $t1,$sp,8
+	sb $t0,0($t1)
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	jal ischar
+	addi $t0,$sp,4
+	sw $v0,0($t0)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	li $t1,0
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_11
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	sb $t0,0($t1)
+if_11:
+	addi $v0,$sp,8
+	lb $v0,0($v0)
+	j tochar_end
+tochar_end:
+	lw $s0,12($sp)
+	lw $s1,16($sp)
+	lw $s2,20($sp)
+	lw $ra,44($sp)
+	addi $sp,$sp,48
+	jr $ra
+itself:
+	subi $sp,$sp,44
+	sw $s0,8($sp)
+	sw $s1,12($sp)
+	sw $s2,16($sp)
+	sw $ra,40($sp)
+	addi $s0,$sp,0
+	sw $a0,0($s0)
+	addi $v0,$sp,0
+	lw $v0,0($v0)
+	j itself_end
+itself_end:
+	lw $s0,8($sp)
+	lw $s1,12($sp)
+	lw $s2,16($sp)
+	lw $ra,40($sp)
+	addi $sp,$sp,44
+	jr $ra
+max:
+	subi $sp,$sp,48
+	sw $s0,12($sp)
+	sw $s1,16($sp)
+	sw $s2,20($sp)
+	sw $ra,44($sp)
+	addi $s0,$sp,0
+	sw $a0,0($s0)
+	addi $s0,$sp,4
+	sw $a1,0($s0)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sge $v1,$t0,$t1
+	beq $0,$v1,if_12
+	addi $v0,$sp,0
+	lw $v0,0($v0)
+	j max_end
+if_12:
+	addi $v0,$sp,4
+	lw $v0,0($v0)
+	j max_end
+max_end:
+	lw $s0,12($sp)
+	lw $s1,16($sp)
+	lw $s2,20($sp)
+	lw $ra,44($sp)
+	addi $sp,$sp,48
+	jr $ra
+min:
+	subi $sp,$sp,48
+	sw $s0,12($sp)
+	sw $s1,16($sp)
+	sw $s2,20($sp)
+	sw $ra,44($sp)
+	addi $s0,$sp,0
+	sw $a0,0($s0)
+	addi $s0,$sp,4
+	sw $a1,0($s0)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	sle $v1,$t0,$t1
+	beq $0,$v1,if_13
+	addi $v0,$sp,0
+	lw $v0,0($v0)
+	j min_end
+if_13:
+	addi $v0,$sp,4
+	lw $v0,0($v0)
+	j min_end
+min_end:
+	lw $s0,12($sp)
+	lw $s1,16($sp)
+	lw $s2,20($sp)
+	lw $ra,44($sp)
+	addi $sp,$sp,48
+	jr $ra
+power:
+	subi $sp,$sp,64
+	sw $s0,28($sp)
+	sw $s1,32($sp)
+	sw $s2,36($sp)
+	sw $ra,60($sp)
+	addi $s0,$sp,0
+	sw $a0,0($s0)
+	addi $s0,$sp,4
+	sw $a1,0($s0)
+	li $t0,0
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+do_14:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,12
+	lw $t1,0($t1)
+	mul $t0,$t0,$t1
+	addi $t1,$sp,16
+	sw $t0,0($t1)
+	addi $t0,$sp,16
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,20
+	sw $t0,0($t1)
+	addi $t0,$sp,20
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	slt $v1,$t0,$t1
+	bne $0,$v1,do_14
+	addi $v0,$sp,0
+	lw $v0,0($v0)
+	j power_end
+power_end:
+	lw $s0,28($sp)
+	lw $s1,32($sp)
+	lw $s2,36($sp)
+	lw $ra,60($sp)
+	addi $sp,$sp,64
+	jr $ra
+alphabet:
+	subi $sp,$sp,52
+	sw $s0,16($sp)
+	sw $s1,20($sp)
+	sw $s2,24($sp)
+	sw $ra,48($sp)
+	li $t0,50
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+do_15:
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	jal ischar
+	addi $t0,$sp,4
+	sw $v0,0($t0)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	li $t1,0
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_16
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,12
+	sb $t0,0($t1)
+	addi $a0,$sp,12
+	lb $a0,0($a0)
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_16:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,128
+	sne $v1,$t0,$t1
+	bne $0,$v1,do_15
+alphabet_end:
+	lw $s0,16($sp)
+	lw $s1,20($sp)
+	lw $s2,24($sp)
+	lw $ra,48($sp)
+	addi $sp,$sp,52
+	jr $ra
+f3:
+	subi $sp,$sp,40
+	sw $s0,4($sp)
+	sw $s1,8($sp)
+	sw $s2,12($sp)
+	sw $ra,36($sp)
+	li $v0,10
+	j f3_end
+f3_end:
+	lw $s0,4($sp)
+	lw $s1,8($sp)
+	lw $s2,12($sp)
+	lw $ra,36($sp)
+	addi $sp,$sp,40
+	jr $ra
+fun_def_test:
+	subi $sp,$sp,76
+	sw $s0,40($sp)
+	sw $s1,44($sp)
+	sw $s2,48($sp)
+	sw $ra,72($sp)
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,5
+	syscall
+	addi $t0,$sp,0
+	sw $v0,0($t0)
+	li $v0,4
+	la $a0,Str_1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	jal itself
+	addi $t0,$sp,8
+	sw $v0,0($t0)
+	addi $a0,$sp,8
+	lw $a0,0($a0)
+	jal f3
+	addi $t0,$sp,12
+	sw $v0,0($t0)
+	addi $a0,$sp,12
+	lw $a0,0($a0)
+	jal max
+	addi $t0,$sp,16
+	sw $v0,0($t0)
+	addi $a0,$sp,16
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_2
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,5
+	syscall
+	addi $t0,$sp,0
+	sw $v0,0($t0)
+	li $v0,5
+	syscall
+	addi $t0,$sp,4
+	sw $v0,0($t0)
+	li $v0,4
+	la $a0,Str_3
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	addi $a1,$sp,4
+	lw $a1,0($a1)
+	jal itself
+	addi $t0,$sp,20
+	sw $v0,0($t0)
+	addi $a0,$sp,20
+	lw $a0,0($a0)
+	jal min
+	addi $t0,$sp,24
+	sw $v0,0($t0)
+	addi $a0,$sp,24
+	lw $a0,0($a0)
+	addi $a1,$sp,0
+	lw $a1,0($a1)
+	addi $a2,$sp,4
+	lw $a2,0($a2)
+	jal max
+	addi $t0,$sp,28
+	sw $v0,0($t0)
+	addi $a0,$sp,28
+	lw $a0,0($a0)
+	jal power
+	addi $t0,$sp,32
+	sw $v0,0($t0)
+	addi $a0,$sp,32
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+fun_def_test_end:
+	lw $s0,40($sp)
+	lw $s1,44($sp)
+	lw $s2,48($sp)
+	lw $ra,72($sp)
+	addi $sp,$sp,76
+	jr $ra
 arg4:
 	subi $sp,$sp,68
 	sw $s0,32($sp)
@@ -340,7 +743,7 @@ testarg:
 	addi $t1,$sp,16
 	sb $t0,0($t1)
 	li $v0,4
-	la $a0,Str_0
+	la $a0,Str_4
 	syscall
 	li $v0,11
 	li $a0,10
@@ -360,7 +763,7 @@ testarg:
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_1
+	la $a0,Str_5
 	syscall
 	li $v0,11
 	li $a0,10
@@ -412,7 +815,7 @@ testmod:
 	sw $s2,32($sp)
 	sw $ra,56($sp)
 	li $v0,4
-	la $a0,Str_2
+	la $a0,Str_6
 	syscall
 	li $v0,11
 	li $a0,10
@@ -430,7 +833,7 @@ testmod:
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_3
+	la $a0,Str_7
 	syscall
 	li $v0,11
 	li $a0,10
@@ -448,7 +851,7 @@ testmod:
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_4
+	la $a0,Str_8
 	syscall
 	li $v0,11
 	li $a0,10
@@ -466,7 +869,7 @@ testmod:
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_5
+	la $a0,Str_9
 	syscall
 	li $v0,11
 	li $a0,10
@@ -509,15 +912,21 @@ testping_end:
 	jr $ra
 main:
 	subi $sp,$sp,40
+	jal fun_def_test
+	jal alphabet
 	jal testarg
 	jal testmod
 	jal testping
 main_end:
 	addi $sp,$sp,40
 	.data
-	Str_0 :.asciiz "4argfunc call,result should be 6:"
-	Str_1 :.asciiz "12arg func call result should be 327"
-	Str_2 :.asciiz "10 mod 3 ="
-	Str_3 :.asciiz "17 mod 4 ="
-	Str_4 :.asciiz "100 mod 5 ="
-	Str_5 :.asciiz "0 mod 10 ="
+	Str_0 :.asciiz "Please input a number (1-100): "
+	Str_1 :.asciiz "the max number is:"
+	Str_2 :.asciiz "Please input two numbers (1-100): "
+	Str_3 :.asciiz "the power is"
+	Str_4 :.asciiz "4argfunc call,result should be 6:"
+	Str_5 :.asciiz "12arg func call result should be 327"
+	Str_6 :.asciiz "10 mod 3 ="
+	Str_7 :.asciiz "17 mod 4 ="
+	Str_8 :.asciiz "100 mod 5 ="
+	Str_9 :.asciiz "0 mod 10 ="

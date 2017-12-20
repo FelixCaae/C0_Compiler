@@ -1,0 +1,812 @@
+	j main
+fib:
+	subi $sp,$sp,72
+	sw $s0,36($sp)
+	sw $s1,40($sp)
+	sw $s2,44($sp)
+	sw $ra,68($sp)
+	addi $s0,$sp,0
+	sw $a0,0($s0)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,1
+	sgt $v1,$t0,$t1
+	beq $0,$v1,if_1
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,1
+	sub $t0,$t0,$t1
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	addi $a0,$sp,4
+	lw $a0,0($a0)
+	jal fib
+	addi $t0,$sp,8
+	sw $v0,0($t0)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,2
+	sub $t0,$t0,$t1
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	addi $a0,$sp,12
+	lw $a0,0($a0)
+	jal fib
+	addi $t0,$sp,16
+	sw $v0,0($t0)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,16
+	lw $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,20
+	sw $t0,0($t1)
+	li $t0,-1
+	li $t1,0
+	mul $t0,$t0,$t1
+	addi $t1,$sp,24
+	sw $t0,0($t1)
+	addi $t0,$sp,20
+	lw $t0,0($t0)
+	addi $t1,$sp,24
+	lw $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,28
+	sw $t0,0($t1)
+	addi $v0,$sp,28
+	lw $v0,0($v0)
+	j fib_end
+if_1:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,0
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_2
+	li $v0,1
+	j fib_end
+if_2:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,1
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_3
+	li $v0,1
+	j fib_end
+if_3:
+fib_end:
+	lw $s0,36($sp)
+	lw $s1,40($sp)
+	lw $s2,44($sp)
+	lw $ra,68($sp)
+	addi $sp,$sp,72
+	jr $ra
+if_test:
+	subi $sp,$sp,52
+	sw $s0,16($sp)
+	sw $s1,20($sp)
+	sw $s2,24($sp)
+	sw $ra,48($sp)
+	li $t0,1
+	li $t1,0
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_4
+if_4:
+	li $t0,0
+	li $t1,0
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_5
+if_5:
+	li $t0,1
+	li $t1,0
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_6
+if_6:
+	li $a0,2
+	jal fib
+	addi $t0,$sp,0
+	sw $v0,0($t0)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,0
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_7
+	li $a0,3
+	jal fib
+	addi $t0,$sp,4
+	sw $v0,0($t0)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	li $t1,0
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_8
+	li $v0,4
+	la $a0,Str_0
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_8:
+if_7:
+if_test_end:
+	lw $s0,16($sp)
+	lw $s1,20($sp)
+	lw $s2,24($sp)
+	lw $ra,48($sp)
+	addi $sp,$sp,52
+	jr $ra
+loop_test:
+	subi $sp,$sp,84
+	sw $s0,48($sp)
+	sw $s1,52($sp)
+	sw $s2,56($sp)
+	sw $ra,80($sp)
+	addi $s0,$sp,0
+	sw $a0,0($s0)
+	addi $s0,$sp,4
+	sw $a1,0($s0)
+	addi $s0,$sp,8
+	sw $a2,0($s0)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,20
+	sw $t0,0($t1)
+	addi $t0,$sp,12
+	lw $t0,0($t0)
+	addi $t1,$sp,16
+	sw $t0,0($t1)
+do_9:
+	addi $t0,$sp,12
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	lw $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,24
+	sw $t0,0($t1)
+	addi $t0,$sp,24
+	lw $t0,0($t0)
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	li $t1,1
+	sub $t0,$t0,$t1
+	addi $t1,$sp,28
+	sw $t0,0($t1)
+	addi $t0,$sp,28
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	li $t1,0
+	sgt $v1,$t0,$t1
+	bne $0,$v1,do_9
+do_10:
+	addi $t0,$sp,16
+	lw $t0,0($t0)
+	li $t1,1
+	sub $t0,$t0,$t1
+	addi $t1,$sp,32
+	sw $t0,0($t1)
+	addi $t0,$sp,32
+	lw $t0,0($t0)
+	addi $t1,$sp,16
+	sw $t0,0($t1)
+	addi $t0,$sp,16
+	lw $t0,0($t0)
+	li $t1,0
+	sgt $v1,$t0,$t1
+	bne $0,$v1,do_10
+	addi $t0,$sp,16
+	lw $t0,0($t0)
+	li $t1,0
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_11
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	addi $t1,$sp,20
+	lw $t1,0($t1)
+	mul $t0,$t0,$t1
+	addi $t1,$sp,36
+	sw $t0,0($t1)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,36
+	lw $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,40
+	sw $t0,0($t1)
+	addi $t0,$sp,12
+	lw $t0,0($t0)
+	addi $t1,$sp,40
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_12
+	li $v0,4
+	la $a0,Str_1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_12:
+if_11:
+	addi $v0,$sp,12
+	lw $v0,0($v0)
+	j loop_test_end
+loop_test_end:
+	lw $s0,48($sp)
+	lw $s1,52($sp)
+	lw $s2,56($sp)
+	lw $ra,80($sp)
+	addi $sp,$sp,84
+	jr $ra
+mytoupper:
+	subi $sp,$sp,40
+	sw $s0,4($sp)
+	sw $s1,8($sp)
+	sw $s2,12($sp)
+	sw $ra,36($sp)
+	addi $s0,$sp,0
+	sb $a0,0($s0)
+	addi $t0,$sp,0
+	lb $t0,0($t0)
+	li $t1,97
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_13
+	li $v0,65
+	j mytoupper_end
+if_13:
+	addi $t0,$sp,0
+	lb $t0,0($t0)
+	li $t1,98
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_14
+	li $v0,66
+	j mytoupper_end
+if_14:
+	addi $t0,$sp,0
+	lb $t0,0($t0)
+	li $t1,99
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_15
+	li $v0,67
+	j mytoupper_end
+if_15:
+	addi $t0,$sp,0
+	lb $t0,0($t0)
+	li $t1,100
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_16
+	li $v0,68
+	j mytoupper_end
+if_16:
+	addi $t0,$sp,0
+	lb $t0,0($t0)
+	li $t1,101
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_17
+	li $v0,69
+	j mytoupper_end
+if_17:
+mytoupper_end:
+	lw $s0,4($sp)
+	lw $s1,8($sp)
+	lw $s2,12($sp)
+	lw $ra,36($sp)
+	addi $sp,$sp,40
+	jr $ra
+case_test:
+	subi $sp,$sp,88
+	sw $s0,52($sp)
+	sw $s1,56($sp)
+	sw $s2,60($sp)
+	sw $ra,84($sp)
+	li $v0,4
+	la $a0,Str_2
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,5
+	syscall
+	addi $t0,$sp,0
+	sw $v0,0($t0)
+	li $v0,12
+	syscall
+	addi $t0,$sp,44
+	sb $v0,0($t0)
+	li $t0,0
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_1
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	addi $a0,$sp,4
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_1:
+	li $t0,1
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_2
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $a0,$sp,8
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_2:
+	li $t0,2
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_3
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	addi $a0,$sp,12
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_3:
+	li $t0,3
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_4
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,16
+	sw $t0,0($t1)
+	addi $a0,$sp,16
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_4:
+	li $t0,4
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_5
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,20
+	sw $t0,0($t1)
+	addi $a0,$sp,20
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_5:
+	li $t0,5
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_6
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,24
+	sw $t0,0($t1)
+	addi $a0,$sp,24
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_6:
+	li $t0,6
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_7
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,28
+	sw $t0,0($t1)
+	addi $a0,$sp,28
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_7:
+	li $t0,7
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_8
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,32
+	sw $t0,0($t1)
+	addi $a0,$sp,32
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_8:
+	li $t0,8
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_9
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,36
+	sw $t0,0($t1)
+	addi $a0,$sp,36
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_9:
+	li $t0,9
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_18_10
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,40
+	sw $t0,0($t1)
+	addi $a0,$sp,40
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_18
+case_18_10:
+switch_18:
+	li $t0,97
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_19_1
+	addi $a0,$sp,44
+	lb $a0,0($a0)
+	jal mytoupper
+	addi $t0,$sp,45
+	sb $v0,0($t0)
+	addi $a0,$sp,45
+	lb $a0,0($a0)
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_19
+case_19_1:
+	li $t0,98
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_19_2
+	addi $a0,$sp,44
+	lb $a0,0($a0)
+	jal mytoupper
+	addi $t0,$sp,46
+	sb $v0,0($t0)
+	addi $a0,$sp,46
+	lb $a0,0($a0)
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_19
+case_19_2:
+	li $t0,99
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_19_3
+	addi $a0,$sp,44
+	lb $a0,0($a0)
+	jal mytoupper
+	addi $t0,$sp,47
+	sb $v0,0($t0)
+	addi $a0,$sp,47
+	lb $a0,0($a0)
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_19
+case_19_3:
+	li $t0,100
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_19_4
+	addi $a0,$sp,44
+	lb $a0,0($a0)
+	jal mytoupper
+	addi $t0,$sp,48
+	sb $v0,0($t0)
+	addi $a0,$sp,48
+	lb $a0,0($a0)
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_19
+case_19_4:
+	li $t0,101
+	addi $t1,$sp,44
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_19_5
+	addi $a0,$sp,44
+	lb $a0,0($a0)
+	jal mytoupper
+	addi $t0,$sp,49
+	sb $v0,0($t0)
+	addi $a0,$sp,49
+	lb $a0,0($a0)
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_19
+case_19_5:
+switch_19:
+case_test_end:
+	lw $s0,52($sp)
+	lw $s1,56($sp)
+	lw $s2,60($sp)
+	lw $ra,84($sp)
+	addi $sp,$sp,88
+	jr $ra
+setaverage:
+	subi $sp,$sp,64
+	sw $s0,28($sp)
+	sw $s1,32($sp)
+	sw $s2,36($sp)
+	sw $ra,60($sp)
+	li $t0,0
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	li $t0,0
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+do_20:
+	addi $t1,$sp,8
+	lw $t1,0($t1)
+	la $t0,_global_char_arr
+	sll $t1,$t1,0
+	add $t0,$t0,$t1
+	lb $t0,0($t0)
+	addi $t1,$sp,24
+	sb $t0,0($t1)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,24
+	lb $t1,0($t1)
+	add $t0,$t0,$t1
+	addi $t1,$sp,12
+	sw $t0,0($t1)
+	addi $t0,$sp,12
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,16
+	sw $t0,0($t1)
+	addi $t0,$sp,16
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	li $t1,10
+	slt $v1,$t0,$t1
+	bne $0,$v1,do_20
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,10
+	div $t0,$t0,$t1
+	addi $t1,$sp,20
+	sw $t0,0($t1)
+	addi $t0,$sp,20
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	li $t0,0
+	addi $t1,$sp,8
+	sw $t0,0($t1)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	la $t1,_global_int
+	sw $t0,0($t1)
+setaverage_end:
+	lw $s0,28($sp)
+	lw $s1,32($sp)
+	lw $s2,36($sp)
+	lw $ra,60($sp)
+	addi $sp,$sp,64
+	jr $ra
+array_test:
+	subi $sp,$sp,48
+	sw $s0,12($sp)
+	sw $s1,16($sp)
+	sw $s2,20($sp)
+	sw $ra,44($sp)
+	li $t0,0
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+do_21:
+	li $t0,97
+	addi $t1,$sp,0
+	lw $t1,0($t1)
+	la $t2,_global_char_arr
+	sll $t1,$t1,0
+	add $t2,$t2,$t1
+	sb $t0,0($t2)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,4
+	sw $t0,0($t1)
+	addi $t0,$sp,4
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,10
+	slt $v1,$t0,$t1
+	bne $0,$v1,do_21
+	jal setaverage
+array_test_end:
+	lw $s0,12($sp)
+	lw $s1,16($sp)
+	lw $s2,20($sp)
+	lw $ra,44($sp)
+	addi $sp,$sp,48
+	jr $ra
+main:
+	subi $sp,$sp,56
+	jal if_test
+	li $v0,4
+	la $a0,Str_3
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,5
+	syscall
+	addi $t0,$sp,0
+	sw $v0,0($t0)
+	li $v0,5
+	syscall
+	addi $t0,$sp,4
+	sw $v0,0($t0)
+	li $v0,5
+	syscall
+	addi $t0,$sp,8
+	sw $v0,0($t0)
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	addi $a1,$sp,4
+	lw $a1,0($a1)
+	addi $a2,$sp,8
+	lw $a2,0($a2)
+	jal loop_test
+	addi $t0,$sp,12
+	sw $v0,0($t0)
+	addi $t0,$sp,12
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	jal case_test
+	jal array_test
+	la $t0,_global_int
+	lw $t0,0($t0)
+	li $t1,97
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_22
+	li $v0,4
+	la $a0,Str_4
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+if_22:
+main_end:
+	addi $sp,$sp,56
+	.data
+	_global_int_arr :.space 40
+	_global_int :.word 0
+	_global_char_arr :.space 10
+	_global_char :.byte 0
+	Str_0 :.asciiz "if test  ok"
+	Str_1 :.asciiz "loop test ok"
+	Str_2 :.asciiz "please input int(0-9) & char values(a-e):"
+	Str_3 :.asciiz "please input 3 int(the 3rd int must >0):"
+	Str_4 :.asciiz "passed"

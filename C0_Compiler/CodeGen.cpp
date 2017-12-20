@@ -7,13 +7,15 @@
 #include"IO.h"
 #include "SymTable.h"
 #define REG(arg) regName[arg]
+const unsigned int argStackSize = 100;
 extern const unsigned int IntSize, CharSize;
 using namespace std;
 //unsigned int qcPos;
 unsigned int line=0;
 unsigned int paramCounter = 0;
+unsigned int argPos = 0;
 int qCode[maxQCodeSize * 4];
-
+int argStack[argStackSize];
 
 void clearQCode()
 {
@@ -158,10 +160,6 @@ void objEntry()
 	int l=genLabel(L, "main");
 	emitObj(TJUMP,l);
 }
-void objSaveParam()
-{
-
-}
 void objFuncHead(bool main)
 {
 	int offset = 4;
@@ -254,8 +252,7 @@ void objLine(int lc,int ltail)
 		emitObj(TBNE, _0, v1, arg1);
 		break;
 	case QCALL:
-		emitObj(TJAL, arg1);
-		paramCounter = 0;
+		objCall(arg1);
 		break;
 	case QDIV:
 		objArthOp(TDIV, arg1, arg2, arg3);
@@ -313,16 +310,7 @@ void objLine(int lc,int ltail)
 		//objFuncHead(main);
 		break;
 	case QPUSH:
-		if (paramCounter < 4)
-		{
-			objLoad(a0 + paramCounter, arg1);
-		}
-		else
-		{
-			objLoad(t0, arg1);
-			emitObj(TSW, t0, sp, -4 * (1 + paramCounter - 4));
-		}
-		paramCounter++;
+		objPush(arg1);
 		break;
 	case QPARA:
 	case QVAR:
@@ -409,6 +397,28 @@ void objSave(int val,int adr,int iden,int offset)
 			emitObj(TSB, val, adr, 0);
 		}
 	}
+}
+void objPush(int iden)
+{
+	argStack[argPos++] = iden;
+	if (argPos == argStackSize)error(ERR_ARGSTACK_FLOW);
+}
+void objCall(int func)
+{
+	int paramCounter = 0;
+	int paramNum = PARANUM(func);
+	for (; paramCounter < paramNum; paramCounter++) {
+		if (paramCounter < 4)
+		{
+			objLoad(a0 + paramCounter, argStack[--argPos]);
+		}
+		else
+		{
+			objLoad(t0, argStack[--argPos]);
+			emitObj(TSW, t0, sp, -4 * (1 + paramCounter - 4));
+		}
+	}
+	emitObj(TJAL, func);
 }
 void objArthOp(tCType tc, int iden1, int iden2, int iden3)
 {

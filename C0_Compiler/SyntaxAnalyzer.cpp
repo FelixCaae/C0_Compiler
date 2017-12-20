@@ -488,7 +488,6 @@ void parseExpression(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		
 			if (neg == 1)
 			{
 				emit(QMINUS, store, first, second);
@@ -797,7 +796,7 @@ void parseArgList(IdenType paramType[], int paramNum)
 		it = symTable[param]._type;
 		if (acParamNum<paramNum&&paramType[acParamNum] != it)
 		{
-			error(ERR_PARAMTYPE_NOT_MATCH);
+			error(ERR_PARAMTYPE_NOT_MATCH,acParamNum);
 		}
 		else
 		{
@@ -909,7 +908,7 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "../Test/Test/Test_2.txt";
+	buffer[1] = "../X64/Debug/test/test_funcall.txt";
 	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");

@@ -29,6 +29,10 @@ void error(int err,int detail)
 	{
 		sprintf(buffer, "Error%d:Word is too long!",err);
 		break; }
+	case ERR_ARGSTACK_FLOW:
+	{
+		sprintf(buffer, "*****Error%d:Argstack overflow line:%d", err,lineCounter);
+	}
 /*	case 2:
 	{
 		sprintf(buffer, "Error2:in parsing ident: %s", token);
@@ -51,7 +55,7 @@ void error(int err,int detail)
 		break; }*/
 	case ERR_LEX:
 	{
-		sprintf(buffer, "Error%d:Unexpected character: '%c' line:%d\n",err,detail,lineCounter);
+		sprintf(buffer, "Error%d:Unexpected character: '%c' line:%d\n",err,chr,lineCounter);
 		break; }
 	case ERR_SYNTAX:
 	{
@@ -102,7 +106,7 @@ void error(int err,int detail)
 	}
 	case ERR_PARAMTYPE_NOT_MATCH:
 	{
-		sprintf(buffer, "*****Error%d: Parmeter:%s type is not matched line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Parmeter(%d) type not matched  line:%d\n", err,detail,lineCounter);
 		break;
 	}
 	case ERR_REQUIRE_ARRAY:
@@ -169,7 +173,7 @@ void error(int err,int detail)
 	*/
 	output(buffer,outErr,true);
 	close();
-	throw buffer;
+	throw new  _exception();
 }
 void error(int err)
 {

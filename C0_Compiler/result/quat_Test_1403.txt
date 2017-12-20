@@ -1,0 +1,266 @@
+	const int _global_constint = 7
+	const char _message_to_the_world = 42
+	array int _global_constint[10]
+	var int _global_int
+	array char _global_constint[10]
+	var char _global_char
+	int fib()
+	para int k
+	k > 1
+	BNZ if_1
+	$tmp2 = k - 1
+	push $tmp2
+	call fib
+	$tmp3 = RET
+	$tmp5 = k - 2
+	push $tmp5
+	call fib
+	$tmp6 = RET
+	$tmp7 = $tmp3 + $tmp6
+	$tmp10 = -1 * 0
+	$tmp11 = $tmp7 + $tmp10
+	ret $tmp11
+if_1:
+	k == 0
+	BNZ if_2
+	ret 1
+if_2:
+	k == 1
+	BNZ if_3
+	ret 1
+if_3:
+	int if_test()
+	1 != 0
+	BNZ if_4
+if_4:
+	0 != 0
+	BNZ if_5
+if_5:
+	1 != 0
+	BNZ if_6
+if_6:
+	push 2
+	call fib
+	$tmp7 = RET
+	$tmp7 != 0
+	BNZ if_7
+	push 3
+	call fib
+	$tmp10 = RET
+	$tmp12 = $tmp10 + 1
+	$tmp12 != 0
+	BNZ if_8
+	print "if test  ok"
+if_8:
+if_7:
+	int loop_test()
+	para int loop_initvar
+	para int loop_step
+	para int loop_cnt
+	var int i
+	var int j
+	var int mark_cnt
+	i = loop_initvar 
+	mark_cnt = loop_cnt 
+	j = i 
+do_9:
+	$tmp0 = i + loop_step
+	i = $tmp0 
+	$tmp2 = loop_cnt - 1
+	loop_cnt = $tmp2 
+	loop_cnt > 0
+	BZ do_9
+do_10:
+	$tmp5 = j - 1
+	j = $tmp5 
+	j > 0
+	BZ do_10
+	j == 0
+	BNZ if_11
+	$tmp8 = loop_step * mark_cnt
+	$tmp9 = loop_initvar + $tmp8
+	i == $tmp9
+	BNZ if_12
+	print "loop test ok"
+if_12:
+if_11:
+	ret i
+	int mytoupper()
+	para char inputchar
+	inputchar == 97
+	BNZ if_13
+	ret 65
+if_13:
+	inputchar == 98
+	BNZ if_14
+	ret 66
+if_14:
+	inputchar == 99
+	BNZ if_15
+	ret 67
+if_15:
+	inputchar == 100
+	BNZ if_16
+	ret 68
+if_16:
+	inputchar == 101
+	BNZ if_17
+	ret 69
+if_17:
+	int case_test()
+	var int test_num
+	var char test_char
+	print "please input int(0-9) & char values(a-e):"
+	read test_num
+	read test_char
+	0 == test_num
+	BNZ case_18_1
+	$tmp1 = test_num + test_char
+	print $tmp1
+	GOTO switch_18
+case_18_1:
+	1 == test_num
+	BNZ case_18_2
+	$tmp3 = test_num + test_char
+	print $tmp3
+	GOTO switch_18
+case_18_2:
+	2 == test_num
+	BNZ case_18_3
+	$tmp5 = test_num + test_char
+	print $tmp5
+	GOTO switch_18
+case_18_3:
+	3 == test_num
+	BNZ case_18_4
+	$tmp7 = test_num + test_char
+	print $tmp7
+	GOTO switch_18
+case_18_4:
+	4 == test_num
+	BNZ case_18_5
+	$tmp9 = test_num + test_char
+	print $tmp9
+	GOTO switch_18
+case_18_5:
+	5 == test_num
+	BNZ case_18_6
+	$tmp11 = test_num + test_char
+	print $tmp11
+	GOTO switch_18
+case_18_6:
+	6 == test_num
+	BNZ case_18_7
+	$tmp13 = test_num + test_char
+	print $tmp13
+	GOTO switch_18
+case_18_7:
+	7 == test_num
+	BNZ case_18_8
+	$tmp15 = test_num + test_char
+	print $tmp15
+	GOTO switch_18
+case_18_8:
+	8 == test_num
+	BNZ case_18_9
+	$tmp17 = test_num + test_char
+	print $tmp17
+	GOTO switch_18
+case_18_9:
+	9 == test_num
+	BNZ case_18_10
+	$tmp19 = test_num + test_char
+	print $tmp19
+	GOTO switch_18
+case_18_10:
+switch_18:
+	97 == test_char
+	BNZ case_19_1
+	push test_char
+	call mytoupper
+	$tmp21 = RET
+	print $tmp21
+	GOTO switch_19
+case_19_1:
+	98 == test_char
+	BNZ case_19_2
+	push test_char
+	call mytoupper
+	$tmp23 = RET
+	print $tmp23
+	GOTO switch_19
+case_19_2:
+	99 == test_char
+	BNZ case_19_3
+	push test_char
+	call mytoupper
+	$tmp25 = RET
+	print $tmp25
+	GOTO switch_19
+case_19_3:
+	100 == test_char
+	BNZ case_19_4
+	push test_char
+	call mytoupper
+	$tmp27 = RET
+	print $tmp27
+	GOTO switch_19
+case_19_4:
+	101 == test_char
+	BNZ case_19_5
+	push test_char
+	call mytoupper
+	$tmp29 = RET
+	print $tmp29
+	GOTO switch_19
+case_19_5:
+switch_19:
+	int setaverage()
+	var int sum
+	var int ret
+	var int i
+	sum = 0 
+	i = 0 
+do_20:
+	$tmp2 = _global_char_arr[i]
+	$tmp3 = sum + $tmp2
+	sum = $tmp3 
+	$tmp5 = i + 1
+	i = $tmp5 
+	i < 10
+	BZ do_20
+	$tmp8 = sum / 10
+	ret = $tmp8 
+	i = 0 
+	_global_int = ret 
+	int array_test()
+	var int i
+	i = 0 
+do_21:
+	_global_char_arr[i] = 97
+	$tmp3 = i + 1
+	i = $tmp3 
+	i < 10
+	BZ do_21
+	call setaverage
+	void main()
+	var int loop_initvar
+	var int loop_step
+	var int loop_cnt
+	call if_test
+	print "please input 3 int(the 3rd int must >0):"
+	read loop_initvar
+	read loop_step
+	read loop_cnt
+	push loop_initvar
+	push loop_step
+	push loop_cnt
+	call loop_test
+	$tmp0 = RET
+	loop_initvar = $tmp0 
+	call case_test
+	call array_test
+	_global_int == 97
+	BNZ if_22
+	print "passed"
+if_22:

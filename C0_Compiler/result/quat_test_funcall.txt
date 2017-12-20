@@ -40,6 +40,132 @@ if_3:
 	BNZ if_4
 	ret a
 if_4:
+	int ischar()
+	para int a
+	a == 95
+	BNZ if_5
+	ret 1
+if_5:
+	a >= 65
+	BNZ if_6
+	a <= 90
+	BNZ if_7
+	ret 1
+if_7:
+if_6:
+	a >= 97
+	BNZ if_8
+	a <= 122
+	BNZ if_9
+	ret 1
+if_9:
+if_8:
+	a == 95
+	BNZ if_10
+	ret 1
+if_10:
+	ret 0
+	int tochar()
+	para int a
+	var char c
+	c = 95 
+	push a
+	call ischar
+	$tmp1 = RET
+	$tmp1 != 0
+	BNZ if_11
+	c = a 
+if_11:
+	ret c
+	int itself()
+	para int a
+	ret a
+	int max()
+	para int a
+	para int b
+	a >= b
+	BNZ if_12
+	ret a
+if_12:
+	ret b
+	int min()
+	para int a
+	para int b
+	a <= b
+	BNZ if_13
+	ret a
+if_13:
+	ret b
+	int power()
+	para int a
+	para int b
+	var int i
+	var int c
+	i = 0 
+	c = a 
+do_14:
+	$tmp1 = a * c
+	a = $tmp1 
+	$tmp3 = i + 1
+	i = $tmp3 
+	i < b
+	BZ do_14
+	ret a
+	int alphabet()
+	var int i
+	var char ch
+	i = 50 
+do_15:
+	push i
+	call ischar
+	$tmp1 = RET
+	$tmp1 != 0
+	BNZ if_16
+	ch = i 
+	print ch
+if_16:
+	$tmp4 = i + 1
+	i = $tmp4 
+	i != 128
+	BZ do_15
+	int f3()
+	ret 10
+	int fun_def_test()
+	var int c
+	var int c2
+	print "Please input a number (1-100): "
+	read c
+	print "the max number is:"
+	push c
+	call itself
+	$tmp0 = RET
+	push $tmp0
+	call f3
+	$tmp1 = RET
+	push $tmp1
+	call max
+	$tmp2 = RET
+	print $tmp2
+	print "Please input two numbers (1-100): "
+	read c
+	read c2
+	print "the power is"
+	push c
+	push c2
+	call itself
+	$tmp3 = RET
+	push $tmp3
+	call min
+	$tmp4 = RET
+	push $tmp4
+	push c
+	push c2
+	call max
+	$tmp5 = RET
+	push $tmp5
+	call power
+	$tmp6 = RET
+	print $tmp6
 	int arg4()
 	para int a
 	para int b
@@ -140,6 +266,8 @@ if_4:
 	push 20
 	call ping
 	void main()
+	call fun_def_test
+	call alphabet
 	call testarg
 	call testmod
 	call testping

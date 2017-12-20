@@ -173,7 +173,7 @@ void scannIDEN()
     {
         if (!isAlpha() && !isNumber())
         {
-            error(ERR_LEX);
+            error(ERR_LEX,chr);
         }
         readChar();
 		if (*p >= 'A'&&*p <= 'Z')

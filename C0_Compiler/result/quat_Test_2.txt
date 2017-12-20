@@ -56,18 +56,41 @@
 	$tmp59 = $tmp57 / 2
 	$tmp61 = $tmp59 / 3
 	var1 = $tmp61 
+	var3 = 1 
+	$tmp64 = var1 + 1
+	$tmp66 = $tmp64 - 1
+	$tmp68 = 0 - $tmp66
+	$tmp71 = 0 - 1
+	$tmp73 = 0 - $tmp71
+	$tmp75 = 0 - $tmp73
+	$tmp77 = 0 - $tmp75
+	$tmp78 = $tmp68 * $tmp77
+	$tmp80 = var3 * 2
+	$tmp81 = $tmp78 + $tmp80
+	$tmp83 = 1 - var3
+	$tmp85 = $tmp83 * 1999
+	$tmp86 = $tmp81 + $tmp85
+	$tmp88 = $tmp86 + 1
+	$tmp90 = $tmp88 + 1
+	$tmp92 = $tmp90 + 1
+	$tmp93 = var1 * $tmp92
+	$tmp95 = 0 - $tmp93
+	var2 = $tmp95 
+	print var2
 	print "result is 3"
 	print var1
-	$tmp63 = str[0]
-	$tmp64 = abc[var1]
-	$tmp65 = $tmp63 * $tmp64
-	$tmp66 = str[$tmp65]
-	$tmp67 = 4 + $tmp66
-	$tmp69 = str[2]
-	$tmp70 = abc[$tmp69]
-	$tmp71 = $tmp67 - $tmp70
-	$tmp72 = abc[$tmp71]
-	$tmp73 = str[$tmp72]
-	$tmp74 = abc[$tmp73]
-	print $tmp74
+	print "result is -3"
+	print var2
+	$tmp97 = str[0]
+	$tmp98 = abc[var1]
+	$tmp99 = $tmp97 * $tmp98
+	$tmp100 = str[$tmp99]
+	$tmp101 = 4 + $tmp100
+	$tmp103 = str[2]
+	$tmp104 = abc[$tmp103]
+	$tmp105 = $tmp101 - $tmp104
+	$tmp106 = abc[$tmp105]
+	$tmp107 = str[$tmp106]
+	$tmp108 = abc[$tmp107]
+	print $tmp108
 	ret

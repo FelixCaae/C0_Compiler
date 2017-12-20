@@ -18,8 +18,7 @@ int fibonacci (int n){
 void move(char a, char b){        
     const int testcon1 = 1;        
     const char testcon2 = '1';
-    printf('M');    
-    printf("OVE ");
+    printf("MOVE");
     printf(a);
     printf(" TO ",b);
     printf(" ");
@@ -48,8 +47,12 @@ int getpower (int n, int le){
 }
 int getsqr(int n){
     int _i;
-    
-    for(_i = 1;_i < n / _i;_i =  _i+1) ;
+	_i = 1;
+	do
+	{
+		_i = _i + 1;
+	} while (_i < n / _i);
+ 
     if(-n+_i*_i < n-(-1+_i)*(_i-1)) return (_i);    
     return (_i-1);
 }
@@ -57,7 +60,7 @@ void main(){
     const char cond = 'A', cone = 'B', conf = 'C';    
     const char con1 = '+', con2 = '-';    
     const char con3 = '*';
-    const char Con3 = '/';    
+    const char CCon3 = '/';    
     const int testcon = 100;    
     int tmp;
     int c;    
@@ -79,14 +82,15 @@ void main(){
     switch(c){    
         case 1:{
             getpower(num, 10); 
-            for(i=0; i<10; i=i+1){    
+			i = 0;
+            do{    
                 printf("NO",i+1);
                 printf(":", a[i]); 
                 printf(" ");
                 printf("");
-            }
+				i = i + 1;
+            }while(i<10)
 		}
-        default:;
     }
     switch(c){    
         case +2: hanoi(num, cond, cone, conf); 
@@ -94,12 +98,13 @@ void main(){
             fib = fibonacci(num);
             printf(fib);
         }
-        default:;
+       
     }
     switch(c){
         case 4: {
             sqr = getsqr(num);
             printf(sqr);
+
         }
         case 5:{ 
             printf(testchar());
@@ -109,10 +114,12 @@ void main(){
             if(testai[0]){         
                 printf("IFCORRECT");
             }
-            for(tmp=0;testai[0];tmp=tmp+1){    
+			tmp = 0;
+            do{    
                 printf(testai[0]);
                 testai[0] = testai[0] - 1;
-            }
+				tmp = tmp + 1;
+            }while(testai[0])
         }
         case -7: {   
             scanf(testai1);        
@@ -130,10 +137,10 @@ void main(){
             switch(c1){   
                 case 'a' : printf(1);    
                 case 'b' : printf(2);
-                default: printf(">=",3);
+
             }
         }
-        default: printf("ERROR");
+       
     }
     return;
 }
