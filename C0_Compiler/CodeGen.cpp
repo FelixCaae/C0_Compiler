@@ -407,14 +407,15 @@ void objCall(int func)
 {
 	int paramCounter = 0;
 	int paramNum = PARANUM(func);
+	argPos -= paramNum;
 	for (; paramCounter < paramNum; paramCounter++) {
 		if (paramCounter < 4)
 		{
-			objLoad(a0 + paramCounter, argStack[--argPos]);
+			objLoad(a0 + paramCounter, argStack[argPos+paramCounter]);
 		}
 		else
 		{
-			objLoad(t0, argStack[--argPos]);
+			objLoad(t0, argStack[argPos+paramCounter]);
 			emitObj(TSW, t0, sp, -4 * (1 + paramCounter - 4));
 		}
 	}

@@ -108,26 +108,34 @@ do_14:
 	a = $tmp1 
 	$tmp3 = i + 1
 	i = $tmp3 
-	i < b
+	$tmp5 = i + 1
+	$tmp5 < b
 	BZ do_14
 	ret a
+	int get0()
+	var int i
+	i = 0 
+do_15:
+	i != 0
+	BZ do_15
+	ret i
 	int alphabet()
 	var int i
 	var char ch
 	i = 50 
-do_15:
+do_16:
 	push i
 	call ischar
 	$tmp1 = RET
 	$tmp1 != 0
-	BNZ if_16
+	BNZ if_17
 	ch = i 
 	print ch
-if_16:
+if_17:
 	$tmp4 = i + 1
 	i = $tmp4 
 	i != 128
-	BZ do_15
+	BZ do_16
 	int f3()
 	ret 10
 	int fun_def_test()
@@ -266,6 +274,18 @@ if_16:
 	push 20
 	call ping
 	void main()
+	var int var1
+	var int var2
+	push 5
+	push 2
+	call min
+	$tmp2 = RET
+	var1 = $tmp2 
+	push 5
+	push 2
+	call max
+	$tmp5 = RET
+	var2 = $tmp5 
 	call fun_def_test
 	call alphabet
 	call testarg

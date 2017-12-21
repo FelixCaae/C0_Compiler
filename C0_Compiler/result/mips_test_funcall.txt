@@ -323,11 +323,11 @@ min_end:
 	addi $sp,$sp,48
 	jr $ra
 power:
-	subi $sp,$sp,64
-	sw $s0,28($sp)
-	sw $s1,32($sp)
-	sw $s2,36($sp)
-	sw $ra,60($sp)
+	subi $sp,$sp,68
+	sw $s0,32($sp)
+	sw $s1,36($sp)
+	sw $s2,40($sp)
+	sw $ra,64($sp)
 	addi $s0,$sp,0
 	sw $a0,0($s0)
 	addi $s0,$sp,4
@@ -363,6 +363,12 @@ do_14:
 	sw $t0,0($t1)
 	addi $t0,$sp,8
 	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,24
+	sw $t0,0($t1)
+	addi $t0,$sp,24
+	lw $t0,0($t0)
 	addi $t1,$sp,4
 	lw $t1,0($t1)
 	slt $v1,$t0,$t1
@@ -371,11 +377,36 @@ do_14:
 	lw $v0,0($v0)
 	j power_end
 power_end:
-	lw $s0,28($sp)
-	lw $s1,32($sp)
-	lw $s2,36($sp)
-	lw $ra,60($sp)
-	addi $sp,$sp,64
+	lw $s0,32($sp)
+	lw $s1,36($sp)
+	lw $s2,40($sp)
+	lw $ra,64($sp)
+	addi $sp,$sp,68
+	jr $ra
+get0:
+	subi $sp,$sp,44
+	sw $s0,8($sp)
+	sw $s1,12($sp)
+	sw $s2,16($sp)
+	sw $ra,40($sp)
+	li $t0,0
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+do_15:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,0
+	sne $v1,$t0,$t1
+	bne $0,$v1,do_15
+	addi $v0,$sp,0
+	lw $v0,0($v0)
+	j get0_end
+get0_end:
+	lw $s0,8($sp)
+	lw $s1,12($sp)
+	lw $s2,16($sp)
+	lw $ra,40($sp)
+	addi $sp,$sp,44
 	jr $ra
 alphabet:
 	subi $sp,$sp,52
@@ -386,7 +417,7 @@ alphabet:
 	li $t0,50
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-do_15:
+do_16:
 	addi $a0,$sp,0
 	lw $a0,0($a0)
 	jal ischar
@@ -396,7 +427,7 @@ do_15:
 	lw $t0,0($t0)
 	li $t1,0
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_16
+	beq $0,$v1,if_17
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,12
@@ -408,7 +439,7 @@ do_15:
 	li $v0,11
 	li $a0,10
 	syscall
-if_16:
+if_17:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -423,7 +454,7 @@ if_16:
 	lw $t0,0($t0)
 	li $t1,128
 	sne $v1,$t0,$t1
-	bne $0,$v1,do_15
+	bne $0,$v1,do_16
 alphabet_end:
 	lw $s0,16($sp)
 	lw $s1,20($sp)
@@ -473,13 +504,13 @@ fun_def_test:
 	jal itself
 	addi $t0,$sp,8
 	sw $v0,0($t0)
-	addi $a0,$sp,8
-	lw $a0,0($a0)
 	jal f3
 	addi $t0,$sp,12
 	sw $v0,0($t0)
-	addi $a0,$sp,12
+	addi $a0,$sp,8
 	lw $a0,0($a0)
+	addi $a1,$sp,12
+	lw $a1,0($a1)
 	jal max
 	addi $t0,$sp,16
 	sw $v0,0($t0)
@@ -510,29 +541,29 @@ fun_def_test:
 	li $v0,11
 	li $a0,10
 	syscall
+	addi $a0,$sp,4
+	lw $a0,0($a0)
+	jal itself
+	addi $t0,$sp,20
+	sw $v0,0($t0)
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	addi $a1,$sp,20
+	lw $a1,0($a1)
+	jal min
+	addi $t0,$sp,24
+	sw $v0,0($t0)
 	addi $a0,$sp,0
 	lw $a0,0($a0)
 	addi $a1,$sp,4
 	lw $a1,0($a1)
-	jal itself
-	addi $t0,$sp,20
-	sw $v0,0($t0)
-	addi $a0,$sp,20
-	lw $a0,0($a0)
-	jal min
-	addi $t0,$sp,24
-	sw $v0,0($t0)
-	addi $a0,$sp,24
-	lw $a0,0($a0)
-	addi $a1,$sp,0
-	lw $a1,0($a1)
-	addi $a2,$sp,4
-	lw $a2,0($a2)
 	jal max
 	addi $t0,$sp,28
 	sw $v0,0($t0)
-	addi $a0,$sp,28
+	addi $a0,$sp,24
 	lw $a0,0($a0)
+	addi $a1,$sp,28
+	lw $a1,0($a1)
 	jal power
 	addi $t0,$sp,32
 	sw $v0,0($t0)
@@ -911,14 +942,32 @@ testping_end:
 	addi $sp,$sp,40
 	jr $ra
 main:
-	subi $sp,$sp,40
+	subi $sp,$sp,56
+	li $a0,5
+	li $a1,2
+	jal min
+	addi $t0,$sp,8
+	sw $v0,0($t0)
+	addi $t0,$sp,8
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+	li $a0,5
+	li $a1,2
+	jal max
+	addi $t0,$sp,12
+	sw $v0,0($t0)
+	addi $t0,$sp,12
+	lw $t0,0($t0)
+	addi $t1,$sp,4
+	sw $t0,0($t1)
 	jal fun_def_test
 	jal alphabet
 	jal testarg
 	jal testmod
 	jal testping
 main_end:
-	addi $sp,$sp,40
+	addi $sp,$sp,56
 	.data
 	Str_0 :.asciiz "Please input a number (1-100): "
 	Str_1 :.asciiz "the max number is:"

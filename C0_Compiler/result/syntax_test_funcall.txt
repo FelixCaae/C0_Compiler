@@ -1054,6 +1054,12 @@
                   <identifier> i <\identifier>
                   <\factor>
                 <\term>
+              <seperator> + <\seperator>
+                <term>
+                  <factor>
+                  <unsignedInt> 1 <\unsignedInt>
+                  <\factor>
+                <\term>
               <\expression>
               <identifier>
               <seperator> < <\seperator>
@@ -1080,6 +1086,83 @@
               <term>
                 <factor>
                 <identifier> a <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> get0 <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> i <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> i <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 0 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <loopStat>
+          <keyword> do <\keyword>
+            <statement>
+            <seperator> ; <\seperator>
+            <\statement>
+          <keyword> while <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> i <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+          <\loopStat>
+        <\statement>
+        <statement>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> i <\identifier>
                 <\factor>
               <\term>
             <\expression>
@@ -2238,7 +2321,88 @@
     <\paramList>
   <seperator> { <\seperator>
     <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> var1 <\identifier>
+        <seperator> , <\seperator>
+        <identifier> var2 <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
       <statements>
+        <statement>
+        <identifier> var1 <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> min <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 5 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 2 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> var2 <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> max <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 5 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 2 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
         <statement>
         <identifier> fun_def_test <\identifier>
           <funCallStat>
