@@ -1,0 +1,1097 @@
+	const char _a = 97
+	const char _b = 98
+	const char _c = 99
+	const int _d = 4
+	const int imax = 2147483647
+	const int imin = -2147483647
+	const char cmin = 43
+	const char cmax = 122
+	const char _ = 95
+	const char _a_ = 95
+	const char _b_a_b_ = 95
+	var int _randomseed
+	var int _n1
+	var char _n2
+	array int _a[10]
+	int test_hw()
+	print "Test 1:hello world begin!"
+	print "HelloWorld!"
+	print "*Apple is red*"
+	print "[Peach is pink]"
+	print "<Sky is blue>"
+	print "\And grass is green/"
+	print "I can print string correctly!"
+	print "Test 1 is ok"
+	int ischar()
+	para int a
+	a == 95
+	BNZ if_1
+	ret 1
+if_1:
+	a >= 65
+	BNZ if_2
+	a <= 90
+	BNZ if_3
+	ret 1
+if_3:
+if_2:
+	a >= 97
+	BNZ if_4
+	a <= 122
+	BNZ if_5
+	ret 1
+if_5:
+if_4:
+	a >= 43
+	BNZ if_6
+	a <= 47
+	BNZ if_7
+	ret 1
+if_7:
+if_6:
+	ret 0
+	int tochar()
+	para int a
+	var char c
+	c = 95 
+	push a
+	call ischar
+	$tmp1 = RET
+	$tmp1 != 0
+	BNZ if_8
+	c = a 
+if_8:
+	ret c
+	int alphabet()
+	var int i
+	var char ch
+	print "Test 2:print alphabet begin!"
+	i = 65 
+do_9:
+	push i
+	call ischar
+	$tmp1 = RET
+	$tmp1 != 0
+	BNZ if_10
+	ch = i 
+	print ch
+if_10:
+	$tmp4 = i + 1
+	i = $tmp4 
+	i != 128
+	BZ do_9
+	print "Test 2 is ok"
+	int set()
+	_n1 = 1 
+	_n2 = 97 
+	_n3[1] = 1
+	_n3[9] = 9
+	int verify()
+	_n1 != 1
+	BNZ if_11
+	ret 0
+if_11:
+	_n2 != 97
+	BNZ if_12
+	ret 0
+if_12:
+	$tmp5 = _n3[1]
+	$tmp5 != 1
+	BNZ if_13
+	ret 0
+if_13:
+	$tmp9 = _n3[9]
+	$tmp9 != 9
+	BNZ if_14
+	ret 0
+if_14:
+	ret 1
+	int set2()
+	para int _n1
+	para char _n2
+	para int _n3
+	_n1 = 0 
+	_n2 = 0 
+	_n3 = 0 
+	ret
+	int set3()
+	_n1 = 0 
+	_n2 = 0 
+	_n3 = 0 
+	int testscope()
+	var int _n1
+	print "Test 3:variable scope begin!"
+	_n1 = 1999 
+	call set
+	_n1 != 1999
+	BNZ if_15
+	print "failed!"
+	ret
+if_15:
+	_n1 = 2000 
+	call verify
+	$tmp3 = RET
+	$tmp3 == 0
+	BNZ if_16
+	print "failed!"
+	ret
+if_16:
+	push _n1
+	push _n2
+	$tmp6 = _n3[9]
+	push $tmp6
+	call set2
+	call verify
+	$tmp8 = RET
+	0 >= $tmp8
+	BNZ if_17
+	print "failed!"
+	ret
+if_17:
+	call set3
+	call verify
+	$tmp10 = RET
+	0 != $tmp10
+	BNZ if_18
+	print "failed"
+	ret
+if_18:
+	print "Test 3 is ok"
+	int get0()
+	var int i
+	i = 0 
+do_19:
+	i != 0
+	BZ do_19
+	ret i
+	int get10()
+	ret 10
+	int mod()
+	para int a
+	para int b
+	$tmp0 = a / b
+	$tmp1 = $tmp0 * b
+	$tmp2 = a - $tmp1
+	ret $tmp2
+	int ping()
+	para int a
+	para int target
+	print a
+	a > target
+	BNZ if_20
+	$tmp0 = a - target
+	$tmp2 = $tmp0 - 1
+	$tmp3 = target - $tmp2
+	push $tmp3
+	push target
+	call ping
+	$tmp4 = RET
+	ret $tmp4
+if_20:
+	a < target
+	BNZ if_21
+	$tmp5 = target - a
+	$tmp7 = $tmp5 - 1
+	$tmp8 = target + $tmp7
+	push $tmp8
+	push target
+	call ping
+	$tmp9 = RET
+	ret $tmp9
+if_21:
+	a == target
+	BNZ if_22
+	ret a
+if_22:
+	int itself()
+	para int a
+	ret a
+	int max()
+	para int a
+	para int b
+	a >= b
+	BNZ if_23
+	ret a
+if_23:
+	ret b
+	int min()
+	para int a
+	para int b
+	a <= b
+	BNZ if_24
+	ret a
+if_24:
+	ret b
+	int power()
+	para int a
+	para int b
+	var int i
+	var int c
+	i = 0 
+	c = a 
+do_25:
+	$tmp1 = a * c
+	a = $tmp1 
+	$tmp3 = i + 1
+	i = $tmp3 
+	$tmp5 = i + 1
+	$tmp5 < b
+	BZ do_25
+	ret a
+	int between()
+	para int num
+	para int lower
+	para int upper
+	var int result
+	result = 1 
+	num > upper
+	BNZ if_26
+	result = 0 
+if_26:
+	num < lower
+	BNZ if_27
+	result = 0 
+if_27:
+	ret result
+	int seed()
+	para int r
+	_randomseed = r 
+	int random()
+	para int m
+	$tmp1 = _randomseed * 17
+	$tmp3 = $tmp1 + 139
+	push $tmp3
+	push 256
+	call mod
+	$tmp5 = RET
+	_randomseed = $tmp5 
+	$tmp6 = _randomseed * m
+	$tmp8 = $tmp6 / 256
+	ret $tmp8
+	int calculate()
+	para int a
+	para int b
+	para char op
+	var int i
+	i = 0 
+	43 == op
+	BNZ case_28_1
+	$tmp2 = a + b
+	a = $tmp2 
+	GOTO switch_28
+case_28_1:
+	45 == op
+	BNZ case_28_2
+	$tmp4 = a - b
+	a = $tmp4 
+	GOTO switch_28
+case_28_2:
+	42 == op
+	BNZ case_28_3
+	$tmp6 = a * b
+	a = $tmp6 
+	GOTO switch_28
+case_28_3:
+	47 == op
+	BNZ case_28_4
+	$tmp8 = a / b
+	a = $tmp8 
+	GOTO switch_28
+case_28_4:
+	101 == op
+	BNZ case_28_5
+do_29:
+	$tmp11 = a * 10
+	a = $tmp11 
+	$tmp13 = b - 1
+	b = $tmp13 
+	b != 0
+	BZ do_29
+	print "aEb:"
+	print a
+	GOTO switch_28
+case_28_5:
+switch_28:
+	ret a
+	int test_condition()
+	const char ch = 97
+	const int a = 1
+	const int b = 1
+	const int c = 2
+	var int test
+	var int tset
+	test = 0 
+	tset = 0 
+	print "Test 4:condition begin"
+	1 != 1
+	BNZ if_30
+	$tmp4 = test + 1
+	test = $tmp4 
+if_30:
+	1 > 2
+	BNZ if_31
+	$tmp6 = test + 1
+	test = $tmp6 
+if_31:
+	1 > 2147483647
+	BNZ if_32
+	$tmp8 = test + 1
+	test = $tmp8 
+if_32:
+	2 < 1
+	BNZ if_33
+	$tmp10 = test + 1
+	test = $tmp10 
+if_33:
+	1 >= 2
+	BNZ if_34
+	$tmp12 = test + 1
+	test = $tmp12 
+if_34:
+	2 <= 1
+	BNZ if_35
+	$tmp14 = test + 1
+	test = $tmp14 
+if_35:
+	1 != 1
+	BNZ if_36
+	$tmp16 = test + 1
+	test = $tmp16 
+if_36:
+	1 == 2
+	BNZ if_37
+	$tmp18 = test + 1
+	test = $tmp18 
+if_37:
+	1 != 1
+	BNZ if_38
+	$tmp21 = test + 1
+	test = $tmp21 
+if_38:
+	$tmp22 = 1 + 1
+	$tmp23 = 1 - 1
+	$tmp22 < $tmp23
+	BNZ if_39
+	$tmp25 = test + 1
+	test = $tmp25 
+if_39:
+	$tmp26 = 1 + 1
+	$tmp27 = 1 - 1
+	$tmp26 != $tmp27
+	BNZ if_40
+	$tmp29 = tset + 1
+	tset = $tmp29 
+if_40:
+	97 > 1
+	BNZ if_41
+	$tmp33 = tset + 1
+	tset = $tmp33 
+if_41:
+	2147483647 == 2147483647
+	BNZ if_42
+	$tmp36 = tset + 1
+	tset = $tmp36 
+if_42:
+	$tmp39 = 0 - 2147483647
+	-2147483647 == $tmp39
+	BNZ if_43
+	$tmp41 = tset + 1
+	tset = $tmp41 
+if_43:
+	43 >= 43
+	BNZ if_44
+	$tmp44 = tset + 1
+	tset = $tmp44 
+if_44:
+	push 2147483647
+	call ischar
+	$tmp45 = RET
+	$tmp45 != 0
+	BNZ if_45
+	$tmp48 = test + 1
+	test = $tmp48 
+if_45:
+	push -2147483647
+	call ischar
+	$tmp49 = RET
+	$tmp49 != 0
+	BNZ if_46
+	$tmp52 = test + 1
+	test = $tmp52 
+if_46:
+	push 1
+	call ischar
+	$tmp53 = RET
+	$tmp53 != 0
+	BNZ if_47
+	$tmp56 = test + 1
+	test = $tmp56 
+if_47:
+	test > 0
+	BNZ if_48
+	print "fail"
+	ret
+if_48:
+	tset != 5
+	BNZ if_49
+	print "fail"
+	ret
+if_49:
+	print "Test 4 is ok"
+	int test_expression()
+	array int _a[2]
+	array char _a[1]
+	var int a1
+	var int a2
+	var int a3
+	var int a4
+	var int a5
+	var char c1
+	var char c2
+	var char c3
+	var char c4
+	var char c5
+	print "Test5:expression begin"
+	$tmp2 = 18 * 32
+	$tmp6 = 55 / 5
+	$tmp7 = 17 * $tmp6
+	$tmp8 = $tmp2 - $tmp7
+	$tmp10 = $tmp8 - 388
+	a1 = $tmp10 
+	$tmp14 = 0 - 1
+	$tmp14 = $tmp14 + 1
+	$tmp16 = 1 + $tmp14
+	a2 = $tmp16 
+	$tmp17 = a2 * a2
+	$tmp18 = a2 / $tmp17
+	$tmp19 = $tmp18 / a1
+	$tmp20 = a1 * $tmp19
+	$tmp21 = $tmp20 * a2
+	a3 = $tmp21 
+	$tmp22 = a2 + a3
+	$tmp23 = a2 + a3
+	$tmp24 = $tmp22 * $tmp23
+	$tmp26 = a3 * 6
+	$tmp27 = $tmp24 + $tmp26
+	call get10
+	$tmp28 = RET
+	$tmp29 = $tmp27 / $tmp28
+	a4 = $tmp29 
+	$tmp32 = 3 + 4
+	$tmp35 = 1 + 1
+	$tmp38 = 3 / 10
+	$tmp39 = $tmp35 - $tmp38
+	$tmp40 = $tmp32 + $tmp39
+	$tmp41 = a4 * $tmp40
+	$tmp43 = $tmp41 + 2
+	call get10
+	$tmp44 = RET
+	$tmp45 = $tmp43 - $tmp44
+	a5 = $tmp45 
+	$tmp47 = a1 + a2
+	$tmp48 = $tmp47 + a3
+	$tmp49 = $tmp48 + a4
+	$tmp50 = $tmp49 + a5
+	ia[0] = $tmp50
+	$tmp53 = ia[0]
+	$tmp55 = $tmp53 / 5
+	ia[1] = $tmp55
+	$tmp57 = ia[1]
+	$tmp57 != 1
+	BNZ if_50
+	print "failed"
+	ret
+if_50:
+	c1 = 97 
+	c2 = 95 
+	c3 = 43 
+	c4 = 90 
+	c5 = 101 
+	$tmp65 = 0 - c1
+	$tmp65 = $tmp65 + c1
+	$tmp66 = c1 + $tmp65
+	a1 = $tmp66 
+	$tmp67 = c1 / a1
+	$tmp68 = $tmp67 * a1
+	$tmp69 = $tmp68 / c1
+	$tmp70 = a1 * $tmp69
+	$tmp71 = a1 / c1
+	$tmp72 = $tmp70 * $tmp71
+	a2 = $tmp72 
+	$tmp74 = c1 * 2
+	$tmp76 = $tmp74 / 2
+	$tmp78 = $tmp76 + 1
+	$tmp80 = $tmp78 - 1
+	$tmp81 = $tmp80 + c2
+	$tmp82 = $tmp81 - c2
+	a3 = $tmp82 
+	$tmp84 = c4 + 7
+	a4 = $tmp84 
+	$tmp85 = c2 + c5
+	call get10
+	$tmp86 = RET
+	$tmp88 = $tmp86 * 10
+	$tmp89 = $tmp85 - $tmp88
+	$tmp91 = $tmp89 + 1
+	a5 = $tmp91 
+	$tmp93 = a1 + a2
+	$tmp94 = $tmp93 + a3
+	$tmp95 = $tmp94 + a4
+	$tmp96 = $tmp95 + a5
+	ia[0] = $tmp96
+	ca[0] = 98
+	a1 == 97
+	BNZ if_51
+	a2 == 97
+	BNZ if_52
+	a3 == 97
+	BNZ if_53
+	a4 == 97
+	BNZ if_54
+	a5 == 97
+	BNZ if_55
+	ca[0] = 97
+if_55:
+if_54:
+if_53:
+if_52:
+if_51:
+	$tmp107 = ca[0]
+	$tmp107 != 97
+	BNZ if_56
+	print "failed"
+	ret
+if_56:
+	print "Test 5 is ok!"
+	int arg4()
+	para int a
+	para int b
+	para int c
+	para int d
+	$tmp0 = a + b
+	$tmp1 = $tmp0 + c
+	$tmp2 = $tmp1 + d
+	ret $tmp2
+	int arg12()
+	para int a
+	para int b
+	para int c
+	para int d
+	para char e
+	para char f
+	para int g
+	para int h
+	para char i
+	para int j
+	para int k
+	para int l
+	$tmp0 = a + b
+	$tmp1 = $tmp0 + c
+	$tmp2 = $tmp1 + d
+	$tmp3 = $tmp2 + e
+	$tmp4 = $tmp3 + f
+	$tmp5 = $tmp4 + g
+	$tmp6 = $tmp5 + h
+	$tmp7 = $tmp6 + i
+	$tmp8 = $tmp7 + j
+	$tmp9 = $tmp8 + k
+	$tmp10 = $tmp9 + l
+	ret $tmp10
+	int test_chicken_rabbit()
+	const int chicken_feet = 2
+	const int rabbit_feet = 4
+	var int rabbit_num
+	var int chicken_num
+	var int head
+	var int foot
+	print "chicken and rabbit test begin!"
+	print "Please input the number of heads and feet:"
+	read head
+	read foot
+	head < 0
+	BNZ if_57
+	print "head num can`t be less than zero"
+if_57:
+	foot < 0
+	BNZ if_58
+	print "foot num can`t be less than zero"
+if_58:
+	$tmp3 = head * 4
+	foot <= $tmp3
+	BNZ if_59
+	$tmp5 = head * 2
+	foot >= $tmp5
+	BNZ if_60
+	$tmp6 = 4 * head
+	$tmp7 = $tmp6 - foot
+	$tmp8 = 4 - 2
+	$tmp9 = $tmp7 / $tmp8
+	chicken_num = $tmp9 
+	$tmp10 = head - chicken_num
+	rabbit_num = $tmp10 
+	print "rabbit num"
+	print rabbit_num
+	print "chicken_num"
+	print chicken_num
+	ret
+if_60:
+if_59:
+	print "input is not solvable"
+	int testrandom()
+	var int i
+	i = 0 
+do_61:
+	push 100
+	call random
+	$tmp2 = RET
+	print $tmp2
+	$tmp4 = i + 1
+	i = $tmp4 
+	i < 20
+	BZ do_61
+	int functest()
+	const int _1 = 1
+	const int _2 = 2
+	var int c
+	var int c2
+	var int _3
+	var int _4
+	var char _e
+	print "Test 6:function ability begin"
+	print "  Test 6-0:bounce 1 to 50"
+	push 1
+	push 50
+	call ping
+	print "  Test 6-0 is ok"
+	print "  Test 6-1:multi argument function"
+	_3 = 3 
+	_4 = 4 
+	_e = 101 
+	push 1
+	push 1
+	push 2
+	push 2
+	call arg4
+	$tmp7 = RET
+	$tmp7 != 6
+	BNZ if_62
+	print "failed"
+	ret
+if_62:
+	push 1
+	push 2
+	push _3
+	push _4
+	push _e
+	push 102
+	push 1
+	push 2
+	push 105
+	push 1
+	push 2
+	push 3
+	call arg12
+	$tmp16 = RET
+	327 != $tmp16
+	BNZ if_63
+	print "failed"
+	ret
+if_63:
+	print "  Test 6-1 is ok"
+	print "  Test 6-2:mod"
+	push 10
+	push 3
+	call mod
+	$tmp19 = RET
+	push 5
+	push 2
+	call mod
+	$tmp22 = RET
+	$tmp23 = $tmp19 + $tmp22
+	push 2147483647
+	push 128
+	call mod
+	$tmp25 = RET
+	$tmp27 = $tmp25 + 1
+	push $tmp27
+	push 128
+	call mod
+	$tmp29 = RET
+	$tmp30 = $tmp23 + $tmp29
+	push 10
+	push 1
+	call mod
+	$tmp33 = RET
+	$tmp34 = $tmp30 + $tmp33
+	push 199
+	push 7
+	call mod
+	$tmp37 = RET
+	$tmp38 = $tmp34 + $tmp37
+	$tmp38 != 5
+	BNZ if_64
+	print "failed"
+	ret
+if_64:
+	print "  Test 6-2 is ok"
+	print "  Test 6-3:max(input,10)"
+	print "Please input a number (1-100): "
+	read c
+	print "the max number is:"
+	push c
+	call itself
+	$tmp40 = RET
+	push $tmp40
+	call get10
+	$tmp41 = RET
+	push $tmp41
+	call max
+	$tmp42 = RET
+	print $tmp42
+	print "  Test 6-4:Simple arthmetic operation"
+	print "Please input two numbers (1-100): "
+	read c
+	read c2
+	print "the power is"
+	push c
+	push c2
+	call itself
+	$tmp43 = RET
+	push $tmp43
+	call min
+	$tmp44 = RET
+	push $tmp44
+	push c
+	push c2
+	call max
+	$tmp45 = RET
+	push $tmp45
+	call power
+	$tmp46 = RET
+	print $tmp46
+	print "a + b"
+	push c
+	push c2
+	push 43
+	call calculate
+	$tmp48 = RET
+	print $tmp48
+	print "a - b"
+	push c
+	push c2
+	push 45
+	call calculate
+	$tmp50 = RET
+	print $tmp50
+	print "a * b"
+	push c
+	push c2
+	push 42
+	call calculate
+	$tmp52 = RET
+	print $tmp52
+	print "a / b"
+	push c
+	push c2
+	push 47
+	call calculate
+	$tmp54 = RET
+	print $tmp54
+	print "  Test 6-5:Ji Tu Tong Long"
+	call test_chicken_rabbit
+	print "  Test 6-6:Random numbers"
+	print "Please enter a number seed(1-100)"
+	read c
+	push c
+	call seed
+	call testrandom
+	print "Test 6 is ok"
+	int damage()
+	para int atk
+	para int def
+	const int a = 8
+	const int f = 6
+	const int m = 10
+	const int c = 15
+	push 15
+	call random
+	$tmp0 = RET
+	$tmp0 == 0
+	BNZ if_65
+	$tmp3 = atk * 4
+	atk = $tmp3 
+	print "critical attack!"
+if_65:
+	push 10
+	call random
+	$tmp4 = RET
+	$tmp4 == 0
+	BNZ if_66
+	atk = 0 
+	print "miss"
+if_66:
+	$tmp7 = atk / 8
+	push $tmp7
+	call random
+	$tmp8 = RET
+	$tmp9 = atk + $tmp8
+	atk = $tmp9 
+	$tmp11 = atk * 100
+	$tmp13 = def * 6
+	$tmp14 = 100 + $tmp13
+	$tmp15 = $tmp11 / $tmp14
+	ret $tmp15
+	int notend()
+	para int hp1
+	para int hp2
+	hp1 <= 0
+	BNZ if_67
+	ret 0
+if_67:
+	hp2 <= 0
+	BNZ if_68
+	ret 0
+if_68:
+	int battle()
+	para int hero_pick
+	para int hero_hp
+	para int hero_atk
+	para int hero_def
+	para int enemy_hp
+	para int enemy_atk
+	para int enemy_def
+	var int showhelp
+	var int action_pick
+	var int enemy_dmg
+	var int dmg
+	var int stun
+	stun = 0 
+	showhelp = 1 
+do_69:
+	print "Your Status:"
+	print "Hp"
+	print hero_hp
+	print "Enemy Status:"
+	print "Hp"
+	print enemy_hp
+do_70:
+	print "Action(input a number between 1-3):"
+	showhelp != 0
+	BNZ if_71
+	print "Help:"
+	print "Attack with weapon  - 1"
+	print "Use powerful skills -2 "
+	print "Use helpful item    -3"
+	showhelp = 0 
+if_71:
+	read action_pick
+	push action_pick
+	push 1
+	push 3
+	call between
+	$tmp6 = RET
+	$tmp6 != 1
+	BZ do_70
+	stun == 0
+	BNZ if_72
+	push enemy_atk
+	push hero_def
+	call damage
+	$tmp9 = RET
+	$tmp10 = hero_hp - $tmp9
+	hero_hp = $tmp10 
+if_72:
+	stun > 0
+	BNZ if_73
+	$tmp13 = stun - 1
+	stun = $tmp13 
+if_73:
+	action_pick == 1
+	BNZ if_74
+	push hero_atk
+	push enemy_def
+	call damage
+	$tmp15 = RET
+	$tmp16 = enemy_hp - $tmp15
+	enemy_hp = $tmp16 
+if_74:
+	action_pick == 2
+	BNZ if_75
+	2 == hero_pick
+	BNZ case_76_1
+	print "Skill - STUN!!"
+	stun = 2 
+	GOTO switch_76
+case_76_1:
+	1 == hero_pick
+	BNZ case_76_2
+	print "Skill - KillMaster"
+	$tmp22 = hero_atk * 3
+	$tmp23 = enemy_hp - $tmp22
+	enemy_hp = $tmp23 
+	GOTO switch_76
+case_76_2:
+	3 == hero_pick
+	BNZ case_76_3
+	print "Skill - Lightening bolt"
+	$tmp26 = enemy_hp - 120
+	enemy_hp = $tmp26 
+	GOTO switch_76
+case_76_3:
+switch_76:
+if_75:
+	action_pick == 3
+	BNZ if_77
+	push 4
+	call random
+	$tmp29 = RET
+	1 == $tmp29
+	BNZ case_78_1
+	print "Item - 1"
+	$tmp32 = hero_hp + 119
+	hero_hp = $tmp32 
+	GOTO switch_78
+case_78_1:
+	2 == $tmp29
+	BNZ case_78_2
+	print "Item - 2"
+	$tmp35 = hero_atk + 10
+	hero_atk = $tmp35 
+	GOTO switch_78
+case_78_2:
+	3 == $tmp29
+	BNZ case_78_3
+	print "Item - 3"
+	$tmp38 = enemy_def - 4
+	enemy_def = $tmp38 
+	GOTO switch_78
+case_78_3:
+	4 == $tmp29
+	BNZ case_78_4
+	print "Item failed"
+	GOTO switch_78
+case_78_4:
+switch_78:
+if_77:
+	push hero_hp
+	push enemy_hp
+	call notend
+	$tmp40 = RET
+	$tmp40 != 0
+	BZ do_69
+	hero_hp != 0
+	BNZ if_79
+	ret 1
+if_79:
+	ret 0
+	int test7()
+	var int hero_hp
+	var int hero_atk
+	var int hero_def
+	var int enemy_hp
+	var int enemy_atk
+	var int enemy_def
+	var int hero_pick
+	var int result
+	call testrandom
+	print "Test 7:Complete Dota begin"
+	print "Good luck!Have fun"
+	enemy_hp = 600 
+	enemy_atk = 45 
+	enemy_def = 2 
+do_80:
+	print "Action(input a number between 1-3):"
+	print "Phantom Assasin - 1"
+	print "Dragon Knight -2"
+	print "Blue Panda -3"
+	read hero_pick
+	push hero_pick
+	push 1
+	push 3
+	call between
+	$tmp5 = RET
+	print $tmp5
+	push hero_pick
+	push 1
+	push 3
+	call between
+	$tmp8 = RET
+	$tmp8 != 1
+	BZ do_80
+	hero_pick == 1
+	BNZ if_81
+	hero_hp = 530 
+	hero_atk = 50 
+	hero_def = 4 
+if_81:
+	hero_pick == 2
+	BNZ if_82
+	hero_hp = 580 
+	hero_atk = 53 
+	hero_def = 4 
+if_82:
+	hero_pick == 3
+	BNZ if_83
+	hero_hp = 580 
+	hero_atk = 51 
+	hero_def = 5 
+if_83:
+	push hero_pick
+	push hero_hp
+	push hero_atk
+	push hero_def
+	push enemy_hp
+	push enemy_atk
+	push enemy_def
+	call battle
+	$tmp22 = RET
+	result = $tmp22 
+	result != 1
+	BNZ if_84
+	print "fail"
+	ret
+if_84:
+	print "Test 7 is ok"
+	int test_switch()
+	var char a
+	var char b
+	a = 97 
+	b = 98 
+	98 == a
+	BNZ case_85_1
+	print "failed"
+	GOTO switch_85
+case_85_1:
+	101 == a
+	BNZ case_85_2
+	print "failed"
+	GOTO switch_85
+case_85_2:
+switch_85:
+	97 == a
+	BNZ case_86_1
+	100 == b
+	BNZ case_87_1
+	print "failed"
+	GOTO switch_87
+case_87_1:
+	98 == b
+	BNZ case_87_2
+	print "pass through"
+	GOTO switch_87
+case_87_2:
+switch_87:
+	GOTO switch_86
+case_86_1:
+switch_86:
+	void main()
+	call test_switch
+	print "This is a test program written with DO-WHILE grammar!"
+	call test_hw
+	call alphabet
+	call testscope
+	call test_condition
+	call test_expression
+	call functest
+	call test7
+	ret

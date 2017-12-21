@@ -4,6 +4,7 @@
 #include "Error.h"
 #include "Lexeme.h"
 #include "Syntax.h"
+#include "SymTable.h"
 #include <exception>
 #include "IO.h"
 extern char tokenbak[tokenStrLen];
@@ -121,7 +122,7 @@ void error(int err,int detail)
 	}
 	case ERR_REQUIRE_RET:
 	{
-		sprintf(buffer, "*****Error%d: Function:%s doesn`t has a return value line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Function:%s doesn`t has a return value line:%d\n", err, NAME(detail), lineCounter);
 		break;
 	}
 	case ERR_REQUIRE_VAR:

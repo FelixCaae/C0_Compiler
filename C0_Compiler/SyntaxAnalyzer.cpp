@@ -543,7 +543,7 @@ void parseFactor(int *r)
 		IdenType it = symTable[iden]._type;
 		if (symTable[iden]._type == NOTYPS)
 		{
-			error(ERR_REQUIRE_RET);
+			error(ERR_REQUIRE_RET,iden);
 		}
 
 		if (lextype == LBRAK)
@@ -907,8 +907,9 @@ bool syntaxAnalyze(int argc, char** argv)
 }
 int main(int argc, char**argv)
 {
+	
 	char *buffer[2];
-	buffer[1] = "test/test_expression.txt";
+	buffer[1] = "../x64/Debug/test/test_assemble.txt";
 	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");
