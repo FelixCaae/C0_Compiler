@@ -3,13 +3,7 @@
 #include "CodeGen.h"
 #include "stdio.h"
 #include <string>
-#define NAME(arg) symTable[arg]._name
-#define STRNAME(arg) strTable[arg]._adr
 #define TYPE(arg) typeName[symTable[arg]._type]
-#define REF(arg) symTable[arg]._ref
-#define LABEL(arg) labelTable[arg]
-#define OP(arg) (symTable[arg]._obj==OCONST?to_string(symTable[arg]._ref).c_str():NAME(arg))
-#define STR(arg) strTable[arg]._buffer
 #define REG(arg) regName[arg]
 extern FILE * inFile;
 extern FILE * outLex;

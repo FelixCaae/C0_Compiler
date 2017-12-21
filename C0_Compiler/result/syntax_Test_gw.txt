@@ -1,0 +1,832 @@
+<program>
+  <constDeclGroup>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> cst1 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 1 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> cst2 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 2 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> cst3 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 3 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> csta <\identifier>
+    <seperator> = <\seperator>
+    <char> 'a' <\char>
+    <seperator> , <\seperator>
+    <identifier> cstb <\identifier>
+    <seperator> = <\seperator>
+    <char> 'b' <\char>
+    <seperator> , <\seperator>
+    <identifier> cstc <\identifier>
+    <seperator> = <\seperator>
+    <char> 'c' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <\constDeclGroup>
+  <varDeclGroup>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> g_a <\identifier>
+    <seperator> , <\seperator>
+    <identifier> g_b <\identifier>
+    <seperator> , <\seperator>
+    <identifier> g_arr <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 2048 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> g_stra <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 1024 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <seperator> , <\seperator>
+    <identifier> g_strb <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 2048 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <\varDecl>
+  <seperator> ; <\seperator>
+  <\varDeclGroup>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> const_define <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <constDeclGroup>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> b <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 0 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> c <\identifier>
+        <seperator> = <\seperator>
+        <seperator> - <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> cst23 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'x' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> cst24 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'y' <\char>
+        <seperator> , <\seperator>
+        <identifier> cst25 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'z' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> csta0 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'A' <\char>
+        <seperator> , <\seperator>
+        <identifier> csta1 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'B' <\char>
+        <seperator> , <\seperator>
+        <identifier> csta2 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'C' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> numcst0 <\identifier>
+        <seperator> = <\seperator>
+        <char> '0' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst1 <\identifier>
+        <seperator> = <\seperator>
+        <char> '1' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst2 <\identifier>
+        <seperator> = <\seperator>
+        <char> '2' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst3 <\identifier>
+        <seperator> = <\seperator>
+        <char> '3' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst4 <\identifier>
+        <seperator> = <\seperator>
+        <char> '4' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst5 <\identifier>
+        <seperator> = <\seperator>
+        <char> '5' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst6 <\identifier>
+        <seperator> = <\seperator>
+        <char> '6' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst7 <\identifier>
+        <seperator> = <\seperator>
+        <char> '7' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst8 <\identifier>
+        <seperator> = <\seperator>
+        <char> '8' <\char>
+        <seperator> , <\seperator>
+        <identifier> numcst9 <\identifier>
+        <seperator> = <\seperator>
+        <char> '9' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> cst_plus <\identifier>
+        <seperator> = <\seperator>
+        <char> '+' <\char>
+        <seperator> , <\seperator>
+        <identifier> cst_minus <\identifier>
+        <seperator> = <\seperator>
+        <char> '-' <\char>
+        <seperator> , <\seperator>
+        <identifier> cst_mul <\identifier>
+        <seperator> = <\seperator>
+        <char> '*' <\char>
+        <seperator> , <\seperator>
+        <identifier> cst_div <\identifier>
+        <seperator> = <\seperator>
+        <char> '/' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <\constDeclGroup>
+      <statements>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> a <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> b <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> c <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst0 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst1 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst2 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst3 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst4 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst5 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst6 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst7 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst8 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> numcst9 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> cst23 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> cst24 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> cst25 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> csta0 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> csta1 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> csta2 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> cst_plus <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> cst_minus <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> cst_mul <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> cst_div <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> const_define_test <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> const_define <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> var_define <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> , <\seperator>
+        <identifier> arr <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> _a <\identifier>
+        <seperator> , <\seperator>
+        <identifier> _arr <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 2 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> a1 <\identifier>
+        <seperator> , <\seperator>
+        <identifier> arr1 <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 3 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> _ab_2 <\identifier>
+        <seperator> , <\seperator>
+        <identifier> _arrb_2 <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 4 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> b <\identifier>
+        <seperator> , <\seperator>
+        <identifier> strb <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> _b <\identifier>
+        <seperator> , <\seperator>
+        <identifier> _bstr <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 2 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> _b_ <\identifier>
+        <seperator> , <\seperator>
+        <identifier> _bstr_ <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 3 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> b2_ <\identifier>
+        <seperator> , <\seperator>
+        <identifier> bstr2_ <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 4 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> c <\identifier>
+        <seperator> , <\seperator>
+        <identifier> d <\identifier>
+        <seperator> , <\seperator>
+        <identifier> e <\identifier>
+        <seperator> , <\seperator>
+        <identifier> f <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 1000 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> g <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> z <\identifier>
+        <seperator> , <\seperator>
+        <identifier> y <\identifier>
+        <seperator> , <\seperator>
+        <identifier> ____ <\identifier>
+        <seperator> , <\seperator>
+        <identifier> _______ <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 100000 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> var_define_test <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> var_define <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> define <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <constDeclGroup>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a1 <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> b1 <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 0 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> c1 <\identifier>
+        <seperator> = <\seperator>
+        <seperator> - <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> cst0 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'a' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> cst1 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'b' <\char>
+        <seperator> , <\seperator>
+        <identifier> cst2 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'c' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> cst_plus <\identifier>
+        <seperator> = <\seperator>
+        <char> '+' <\char>
+        <seperator> , <\seperator>
+        <identifier> cst_mninus <\identifier>
+        <seperator> = <\seperator>
+        <char> '-' <\char>
+        <seperator> , <\seperator>
+        <identifier> cst_mul <\identifier>
+        <seperator> = <\seperator>
+        <char> '*' <\char>
+        <seperator> , <\seperator>
+        <identifier> cst_div <\identifier>
+        <seperator> = <\seperator>
+        <char> '/' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <\constDeclGroup>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> , <\seperator>
+        <identifier> arr <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> _a <\identifier>
+        <seperator> , <\seperator>
+        <identifier> _arr <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 2 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> a1 <\identifier>

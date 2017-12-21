@@ -24,35 +24,14 @@ test_sp:
 	sw $s1,16($sp)
 	sw $s2,20($sp)
 	sw $ra,44($sp)
-	li $t0,52
+	li $t0,55
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	addi $t1,$sp,8
-	sb $t0,0($t1)
-	addi $a0,$sp,8
-	lb $a0,0($a0)
-	li $v0,11
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $t0,54
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	addi $t1,$sp,8
-	sb $t0,0($t1)
-	addi $a0,$sp,8
-	lb $a0,0($a0)
-	li $v0,11
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
 do_1:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	addi $t1,$sp,8
+	sb $t0,0($t1)
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -63,13 +42,9 @@ do_1:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	addi $t1,$sp,8
-	sb $t0,0($t1)
-	addi $a0,$sp,0
-	lw $a0,0($a0)
-	li $v0,1
+	addi $a0,$sp,8
+	lb $a0,0($a0)
+	li $v0,11
 	syscall
 	li $v0,11
 	li $a0,10
@@ -95,63 +70,6 @@ get10:
 	li $v0,10
 	j get10_end
 get10_end:
-	lw $s0,4($sp)
-	lw $s1,8($sp)
-	lw $s2,12($sp)
-	lw $ra,36($sp)
-	addi $sp,$sp,40
-	jr $ra
-test_condition:
-	subi $sp,$sp,40
-	sw $s0,4($sp)
-	sw $s1,8($sp)
-	sw $s2,12($sp)
-	sw $ra,36($sp)
-	li $t0,1
-	li $t1,1
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_2
-	li $v0,4
-	la $a0,Str_1
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-if_2:
-	li $t0,1
-	li $t1,0
-	sne $v1,$t0,$t1
-	beq $0,$v1,if_3
-	li $v0,4
-	la $a0,Str_2
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-if_3:
-	li $t0,2
-	li $t1,0
-	sgt $v1,$t0,$t1
-	beq $0,$v1,if_4
-	li $v0,4
-	la $a0,Str_3
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-if_4:
-	li $t0,97
-	li $t1,1
-	sgt $v1,$t0,$t1
-	beq $0,$v1,if_5
-	li $v0,4
-	la $a0,Str_4
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-if_5:
-test_condition_end:
 	lw $s0,4($sp)
 	lw $s1,8($sp)
 	lw $s2,12($sp)

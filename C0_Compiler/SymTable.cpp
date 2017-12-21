@@ -202,7 +202,7 @@ void locateAdr()
 	}
 	adr += (4 - adr % 4);//round up
 	if(funcRef!=NotExist)
-		funcTable[symTable[funcRef]._ref]._size = adr;
+		FUNCSIZE(funcRef) = adr;
 }
 int countSize(int iden)
 {

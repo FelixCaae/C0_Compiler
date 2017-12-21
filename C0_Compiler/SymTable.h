@@ -7,6 +7,14 @@
 #define ADR(arg) symTable[arg]._adr
 #define OBJ(arg) symTable[arg]._obj
 #define TYP(arg) symTable[arg]._type
+#define REF(arg) symTable[arg]._ref
+#define NAME(arg) symTable[arg]._name
+#define REF(arg) symTable[arg]._ref
+#define OP(arg) (symTable[arg]._obj==OCONST?(to_string(REF(arg)).c_str()):NAME(arg))
+#define STR(arg) strTable[arg]._buffer
+#define STRNAME(arg) strTable[arg]._adr
+#define LABEL(arg) labelTable[arg]
+#define FUNCSIZE(arg) funcTable[REF(arg)]._size
 #define PARANUM(arg) funcTable[REF(arg)]._paraNum
 #define PARATYPE(arg,arg2) funcTable[REF(arg)]._param[arg2]
 #define ISVAR(arg) OBJ(arg)==OVAR

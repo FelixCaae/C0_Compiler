@@ -1,54 +1,23 @@
 	int test_hw()
 	print "HelloWorld!This is the first test program written with C0 grammar!\n"
 	int test_sp()
-	var int chi
-	var char ch
-	chi = 52 
-	ch = chi 
-	print ch
-	chi = 54 
-	ch = chi 
-	print ch
+	var int i
+	var char c
+	i = 55 
 do_1:
-	$tmp3 = chi + 1
-	chi = $tmp3 
-	ch = chi 
-	print chi
-	chi != 128
+	c = i 
+	$tmp2 = i + 1
+	i = $tmp2 
+	print c
+	i != 128
 	BZ do_1
 	int get10()
 	ret 10
 	int test_condition()
 	const char ch = 97
 	const int a = 1
-	const int b = 1
-	1 == 1
-	BNZ if_2
-	print "a==1"
-if_2:
-	1 != 0
-	BNZ if_3
-	print "a!=0"
-if_3:
-	2 > 0
-	BNZ if_4
-	print "a+b>a-b"
-if_4:
-	97 > 1
-	BNZ if_5
-	print "'a' > 1"
-if_5:
-	int test_expression()
-	array int test_hw[2]
-	array char test_hw[1]
-	var int a1
-	var int a2
-	var int a3
-	var int a4
-	var int a5
-	var char c1
-	var char c2
-	var char c3
-	var char c4
-	var char c5
-	a1 = 1 
+	const int b = 0
+	var int num
+	var char ch2
+	$tmp2 = 0 - 1
+	num = $tmp2 

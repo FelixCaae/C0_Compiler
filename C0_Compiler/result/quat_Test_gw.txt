@@ -1,0 +1,103 @@
+	const int cst1 = 1
+	const int cst2 = 2
+	const int cst3 = 3
+	const char csta = 97
+	const char cstb = 98
+	const char cstc = 99
+	var int g_a
+	var int g_b
+	array int cst1[2048]
+	array char cst1[1024]
+	array char cst1[2048]
+	int const_define()
+	const int a = 1
+	const int b = 0
+	const int c = -1
+	const char cst23 = 120
+	const char cst24 = 121
+	const char cst25 = 122
+	const char csta0 = 65
+	const char csta1 = 66
+	const char csta2 = 67
+	const char numcst0 = 48
+	const char numcst1 = 49
+	const char numcst2 = 50
+	const char numcst3 = 51
+	const char numcst4 = 52
+	const char numcst5 = 53
+	const char numcst6 = 54
+	const char numcst7 = 55
+	const char numcst8 = 56
+	const char numcst9 = 57
+	const char cst_plus = 43
+	const char cst_minus = 45
+	const char cst_mul = 42
+	const char cst_div = 47
+	print 1
+	print 0
+	print -1
+	print 48
+	print 49
+	print 50
+	print 51
+	print 52
+	print 53
+	print 54
+	print 55
+	print 56
+	print 57
+	print 120
+	print 121
+	print 122
+	print 65
+	print 66
+	print 67
+	print 43
+	print 45
+	print 42
+	print 47
+	int const_define_test()
+	call const_define
+	int var_define()
+	var int a
+	array int cst1[1]
+	var int _a
+	array int cst1[2]
+	var int a1
+	array int cst1[3]
+	var int _ab_2
+	array int cst1[4]
+	var char b
+	array char cst1[1]
+	var char _b
+	array char cst1[2]
+	var char _b_
+	array char cst1[3]
+	var char b2_
+	array char cst1[4]
+	var int c
+	var int d
+	var int e
+	array int cst1[1000]
+	var int g
+	var char z
+	var char y
+	var char ____
+	array char cst1[100000]
+	int var_define_test()
+	call var_define
+	int define()
+	const int a1 = 1
+	const int b1 = 0
+	const int c1 = -1
+	const char cst0 = 97
+	const char cst1 = 98
+	const char cst2 = 99
+	const char cst_plus = 43
+	const char cst_mninus = 45
+	const char cst_mul = 42
+	const char cst_div = 47
+	var int a
+	array int cst1[1]
+	var int _a
+	array int cst1[2]

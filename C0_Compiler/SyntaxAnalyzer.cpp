@@ -908,7 +908,7 @@ bool syntaxAnalyze(int argc, char** argv)
 int main(int argc, char**argv)
 {
 	char *buffer[2];
-	buffer[1] = "../X64/Debug/test/test_funcall.txt";
+	buffer[1] = "test/test_expression.txt";
 	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");

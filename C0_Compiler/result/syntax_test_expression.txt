@@ -36,102 +36,30 @@
           <type>
           <keyword> int <\keyword>
           <\type>
-        <identifier> chi <\identifier>
+        <identifier> i <\identifier>
         <\varDecl>
       <seperator> ; <\seperator>
         <varDecl>
           <type>
           <keyword> char <\keyword>
           <\type>
-        <identifier> ch <\identifier>
+        <identifier> c <\identifier>
         <\varDecl>
       <seperator> ; <\seperator>
       <\varDeclGroup>
       <statements>
         <statement>
-        <identifier> chi <\identifier>
+        <identifier> i <\identifier>
           <assignStat>
           <seperator> = <\seperator>
             <expression>
               <term>
                 <factor>
-                <unsignedInt> 52 <\unsignedInt>
+                <unsignedInt> 55 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
           <\assignStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-        <identifier> ch <\identifier>
-          <assignStat>
-          <seperator> = <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> chi <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <\assignStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> ch <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\writeStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-        <identifier> chi <\identifier>
-          <assignStat>
-          <seperator> = <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <unsignedInt> 54 <\unsignedInt>
-                <\factor>
-              <\term>
-            <\expression>
-          <\assignStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-        <identifier> ch <\identifier>
-          <assignStat>
-          <seperator> = <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> chi <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <\assignStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> ch <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\writeStat>
         <seperator> ; <\seperator>
         <\statement>
         <statement>
@@ -141,13 +69,27 @@
             <seperator> { <\seperator>
               <statements>
                 <statement>
-                <identifier> chi <\identifier>
+                <identifier> c <\identifier>
                   <assignStat>
                   <seperator> = <\seperator>
                     <expression>
                       <term>
                         <factor>
-                        <identifier> chi <\identifier>
+                        <identifier> i <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> i <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> i <\identifier>
                         <\factor>
                       <\term>
                     <seperator> + <\seperator>
@@ -161,27 +103,13 @@
                 <seperator> ; <\seperator>
                 <\statement>
                 <statement>
-                <identifier> ch <\identifier>
-                  <assignStat>
-                  <seperator> = <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <identifier> chi <\identifier>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <\assignStat>
-                <seperator> ; <\seperator>
-                <\statement>
-                <statement>
                   <writeStat>
                   <keyword> printf <\keyword>
                   <seperator> ( <\seperator>
                     <expression>
                       <term>
                         <factor>
-                        <identifier> chi <\identifier>
+                        <identifier> c <\identifier>
                         <\factor>
                       <\term>
                     <\expression>
@@ -198,7 +126,7 @@
               <expression>
                 <term>
                   <factor>
-                  <identifier> chi <\identifier>
+                  <identifier> i <\identifier>
                   <\factor>
                 <\term>
               <\expression>
@@ -215,9 +143,6 @@
             <\condition>
           <seperator> ) <\seperator>
           <\loopStat>
-        <\statement>
-        <statement>
-        <seperator> ; <\seperator>
         <\statement>
       <\statements>
     <\compoundStatement>
@@ -285,283 +210,36 @@
         <seperator> , <\seperator>
         <identifier> b <\identifier>
         <seperator> = <\seperator>
-        <unsignedInt> 1 <\unsignedInt>
+        <unsignedInt> 0 <\unsignedInt>
         <\constDecl>
       <seperator> ; <\seperator>
       <\constDeclGroup>
-      <statements>
-        <statement>
-          <constant>
-          <keyword> if <\keyword>
-          <seperator> ( <\seperator>
-            <condition>
-              <expression>
-                <term>
-                  <factor>
-                  <identifier> a <\identifier>
-                  <\factor>
-                <\term>
-              <\expression>
-              <identifier>
-              <seperator> == <\seperator>
-              <\identifier>
-              <expression>
-                <term>
-                  <factor>
-                  <unsignedInt> 1 <\unsignedInt>
-                  <\factor>
-                <\term>
-              <\expression>
-            <\condition>
-          <seperator> ) <\seperator>
-            <statement>
-            <seperator> { <\seperator>
-              <statements>
-                <statement>
-                  <writeStat>
-                  <keyword> printf <\keyword>
-                  <seperator> ( <\seperator>
-                  <string> "a==1" <\string>
-                  <seperator> ) <\seperator>
-                  <\writeStat>
-                <seperator> ; <\seperator>
-                <\statement>
-              <\statements>
-            <seperator> } <\seperator>
-            <\statement>
-          <\constant>
-        <\statement>
-        <statement>
-          <constant>
-          <keyword> if <\keyword>
-          <seperator> ( <\seperator>
-            <condition>
-              <expression>
-                <term>
-                  <factor>
-                  <identifier> a <\identifier>
-                  <\factor>
-                <\term>
-              <\expression>
-            <\condition>
-          <seperator> ) <\seperator>
-            <statement>
-            <seperator> { <\seperator>
-              <statements>
-                <statement>
-                  <writeStat>
-                  <keyword> printf <\keyword>
-                  <seperator> ( <\seperator>
-                  <string> "a!=0" <\string>
-                  <seperator> ) <\seperator>
-                  <\writeStat>
-                <seperator> ; <\seperator>
-                <\statement>
-              <\statements>
-            <seperator> } <\seperator>
-            <\statement>
-          <\constant>
-        <\statement>
-        <statement>
-          <constant>
-          <keyword> if <\keyword>
-          <seperator> ( <\seperator>
-            <condition>
-              <expression>
-                <term>
-                  <factor>
-                  <identifier> a <\identifier>
-                  <\factor>
-                <\term>
-              <seperator> + <\seperator>
-                <term>
-                  <factor>
-                  <identifier> b <\identifier>
-                  <\factor>
-                <\term>
-              <\expression>
-              <identifier>
-              <seperator> > <\seperator>
-              <\identifier>
-              <expression>
-                <term>
-                  <factor>
-                  <identifier> a <\identifier>
-                  <\factor>
-                <\term>
-              <seperator> - <\seperator>
-                <term>
-                  <factor>
-                  <identifier> b <\identifier>
-                  <\factor>
-                <\term>
-              <\expression>
-            <\condition>
-          <seperator> ) <\seperator>
-            <statement>
-            <seperator> { <\seperator>
-              <statements>
-                <statement>
-                  <writeStat>
-                  <keyword> printf <\keyword>
-                  <seperator> ( <\seperator>
-                  <string> "a+b>a-b" <\string>
-                  <seperator> ) <\seperator>
-                  <\writeStat>
-                <seperator> ; <\seperator>
-                <\statement>
-              <\statements>
-            <seperator> } <\seperator>
-            <\statement>
-          <\constant>
-        <\statement>
-        <statement>
-          <constant>
-          <keyword> if <\keyword>
-          <seperator> ( <\seperator>
-            <condition>
-              <expression>
-                <term>
-                  <factor>
-                  <char> 'a' <\char>
-                  <\factor>
-                <\term>
-              <\expression>
-              <identifier>
-              <seperator> > <\seperator>
-              <\identifier>
-              <expression>
-                <term>
-                  <factor>
-                  <unsignedInt> 1 <\unsignedInt>
-                  <\factor>
-                <\term>
-              <\expression>
-            <\condition>
-          <seperator> ) <\seperator>
-            <statement>
-            <seperator> { <\seperator>
-              <statements>
-                <statement>
-                  <writeStat>
-                  <keyword> printf <\keyword>
-                  <seperator> ( <\seperator>
-                  <string> "'a' > 1" <\string>
-                  <seperator> ) <\seperator>
-                  <\writeStat>
-                <seperator> ; <\seperator>
-                <\statement>
-              <\statements>
-            <seperator> } <\seperator>
-            <\statement>
-          <\constant>
-        <\statement>
-      <\statements>
-    <\compoundStatement>
-  <seperator> } <\seperator>
-  <\funcDecl>
-  <funcDecl>
-  <keyword> void <\keyword>
-  <identifier> test_expression <\identifier>
-    <paramList>
-    <seperator> ( <\seperator>
-    <seperator> ) <\seperator>
-    <\paramList>
-  <seperator> { <\seperator>
-    <compoundStatement>
       <varDeclGroup>
         <varDecl>
           <type>
           <keyword> int <\keyword>
           <\type>
-        <identifier> ia <\identifier>
-        <seperator> [ <\seperator>
-        <unsignedInt> 2 <\unsignedInt>
-        <seperator> ] <\seperator>
+        <identifier> num <\identifier>
         <\varDecl>
       <seperator> ; <\seperator>
         <varDecl>
           <type>
           <keyword> char <\keyword>
           <\type>
-        <identifier> ca <\identifier>
-        <seperator> [ <\seperator>
-        <unsignedInt> 1 <\unsignedInt>
-        <seperator> ] <\seperator>
-        <\varDecl>
-      <seperator> ; <\seperator>
-        <varDecl>
-          <type>
-          <keyword> int <\keyword>
-          <\type>
-        <identifier> a1 <\identifier>
-        <seperator> , <\seperator>
-        <identifier> a2 <\identifier>
-        <seperator> , <\seperator>
-        <identifier> a3 <\identifier>
-        <seperator> , <\seperator>
-        <identifier> a4 <\identifier>
-        <seperator> , <\seperator>
-        <identifier> a5 <\identifier>
-        <\varDecl>
-      <seperator> ; <\seperator>
-        <varDecl>
-          <type>
-          <keyword> char <\keyword>
-          <\type>
-        <identifier> c1 <\identifier>
-        <seperator> , <\seperator>
-        <identifier> c2 <\identifier>
-        <seperator> , <\seperator>
-        <identifier> c3 <\identifier>
-        <seperator> , <\seperator>
-        <identifier> c4 <\identifier>
-        <seperator> , <\seperator>
-        <identifier> c5 <\identifier>
+        <identifier> ch2 <\identifier>
         <\varDecl>
       <seperator> ; <\seperator>
       <\varDeclGroup>
       <statements>
         <statement>
-        <identifier> a1 <\identifier>
+        <identifier> num <\identifier>
           <assignStat>
           <seperator> = <\seperator>
             <expression>
-              <term>
-                <factor>
-                <unsignedInt> 18 <\unsignedInt>
-                <\factor>
-              <seperator> * <\seperator>
-                <factor>
-                <unsignedInt> 32 <\unsignedInt>
-                <\factor>
-              <\term>
             <seperator> - <\seperator>
               <term>
                 <factor>
-                <unsignedInt> 17 <\unsignedInt>
-                <\factor>
-              <seperator> * <\seperator>
-                <factor>
-                <seperator> ( <\seperator>
-                  <expression>
-                    <term>
-                      <factor>
-                      <unsignedInt> 55 <\unsignedInt>
-                      <\factor>
-                    <seperator> / <\seperator>
-                      <factor>
-                      <unsignedInt> 5 <\unsignedInt>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <seperator> ) <\seperator>
-                <\factor>
-              <\term>
-            <seperator> - <\seperator>
-              <term>
-                <factor>
-                <unsignedInt> 388 <\unsignedInt>
+                <unsignedInt> 1 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -569,31 +247,5 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> a2 <\identifier>
+        <identifier> ch <\identifier>
           <assignStat>
-          <seperator> = <\seperator>
-            <expression>
-            <seperator> + <\seperator>
-              <term>
-                <factor>
-                <seperator> ( <\seperator>
-                  <expression>
-                  <seperator> + <\seperator>
-                    <term>
-                      <factor>
-                      <unsignedInt> 1 <\unsignedInt>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <seperator> ) <\seperator>
-                <\factor>
-              <\term>
-            <seperator> + <\seperator>
-              <term>
-                <factor>
-                <seperator> ( <\seperator>
-                  <expression>
-                  <seperator> - <\seperator>
-                    <term>
-                      <factor>
-                      <seperator> + <\seperator>
