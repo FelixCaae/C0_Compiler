@@ -66,10 +66,18 @@ void error(int err,int detail)
 	{
 		sprintf(buffer, "Error in parsing seperator: %s", token);
 		break; }*/
-	case ERR_LEX:
+	case ERR_LEX_UNEX:
 	{
+		lextype = ERROR;
 		sprintf(buffer, "Error%d:Unexpected character: '%c' line:%d\n",err,chr,lineCounter);
-		break; }
+		break; 
+	}
+	case ERR_LEX_EX:
+	{
+		lextype = ERROR;
+		sprintf(buffer, "Error%d:Expected character: '%c' but found '%c' line:%d\n", err,detail, chr, lineCounter);
+		break;
+	}
 	case ERR_SYNTAX:
 	{
 		sprintf(buffer, "*****Error%d: Should be %s but found %s line:%d\n",err, lexClassName[detail - 1], lexClassName[lextype - 1], lineCounter);

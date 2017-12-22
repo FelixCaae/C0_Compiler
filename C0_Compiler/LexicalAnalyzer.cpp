@@ -15,6 +15,34 @@ int lineCounter = 1, columnCounter = 0;
 int tokenidx = 0;
 int nodesNum = 0;
 lexClass lextype;
+void newNode();
+void initNode(lexNode*p);
+void openNode(lexNode*p);
+void replaceTailNode();
+bool belong(char chr, const char set[], int size);
+int findReserveWord();
+int findSeperator();
+void readChar();
+void retractChar();
+void clearToken();
+bool isInputEnd();
+bool isBlank();
+bool isNumber();
+bool isSeperator();
+bool isSingleQuote();
+bool isDoubleQuote();
+bool isAlpha();
+bool isChar();
+bool isAsciiChar();
+void skipBlank();
+void scannIDEN();
+void scannCHR();
+void scannSTR();
+void scannSEP();
+void scannINT();
+void scann();
+void readSym();
+void retractSym(int num);
 struct lexNode
 {
 	lexClass _lextype;
@@ -173,7 +201,9 @@ void scannIDEN()
     {
         if (!isAlpha() && !isNumber())
         {
-            error(ERR_LEX,chr);
+            error(ERR_LEX_UNEX,chr);
+			skip(blankSet, blankNum);
+			return;
         }
         readChar();
 		if (*p >= 'A'&&*p <= 'Z')
@@ -193,26 +223,31 @@ void scannIDEN()
 void scannCHR()
 {
     lextype = CHR;
+	const char endChar[] = { '\n','\'' };
     readChar();
     if (!isChar())
     {
-        error(ERR_LEX);
+        error(ERR_LEX_UNEX);
+		return;
     }
     readChar();
     if (!isSingleQuote())
     {
-        error(ERR_LEX);
+        error(ERR_LEX_UNEX);
+		skip(endChar, 2);
     }
 }
 void scannSTR()
 {
     lextype = STR;
+	const char endStr[] = { '\n','\"' };
     readChar();
     while (!isDoubleQuote())
     {
         if (!isAsciiChar())
         {
-            error(ERR_LEX);
+            error(ERR_LEX_UNEX);
+			skip(endStr, 2);
         }
         readChar();
     }
@@ -255,13 +290,36 @@ void scannSEP()
         readChar();
         if (chr != '=')
         {
-            error(ERR_LEX);
+            error(ERR_LEX_EX,'=');
         }
         else
         {
             lextype = NEQU;
         }
     }
+	else if (chr == '\\')
+	{
+		const char cmntLine[] = { '\n' };
+		const char cmntBlock[] = { '*' };
+		readChar();
+		if (chr == '\\')
+		{
+			skip(cmntLine, 1);
+			scann();
+		}
+		else if(chr=='*' )
+		{
+			do {
+				skip(cmntBlock, 1);
+				readChar();
+			}while (chr != '\\' && !isInputEnd());
+			scann();
+		}
+		else 
+		{
+			error(ERR_LEX_UNEX, '\\');
+		}
+	}
     else if (chr == '=')
     {
         readChar();
@@ -280,7 +338,7 @@ void scannSEP()
         int r = findSeperator();
         if (r == 0)
         {
-            error(ERR_LEX);
+            error(ERR_LEX_UNEX);
         }
         lextype = (lexClass)(STR + r);
     }
@@ -288,17 +346,17 @@ void scannSEP()
 }
 void scannINT()
 {
-    lextype = INT;
-    while (!isBlank() && !isInputEnd()&& !isSeperator())
-    {
-        if (!isNumber())
-        {
-            error(ERR_LEX);
-        }
-        readChar();
-    }
-    retractChar();
-
+	lextype = INT;
+	while (!isBlank() && !isInputEnd() && !isSeperator())
+	{
+		if (!isNumber())
+		{
+			error(ERR_LEX_UNEX);
+			skip(blankSet, blankNum);
+		}
+		readChar();
+	}
+	retractChar();
 }
 void skipBlank()
 {
@@ -342,7 +400,7 @@ void scann()
 	}
     else
     {
-        error(ERR_LEX);
+        error(ERR_LEX_UNEX);
     }
 	outputLexeme();
 }
@@ -371,7 +429,7 @@ void retractSym(int num)
 	while (num-- > 0) {
 		if (currentNode == NULL || currentNode->_back == NULL)
 		{
-			error(ERR_LEX);
+			error(ERR_LEX_UNEX);
 		}
 		else
 		{
@@ -379,16 +437,5 @@ void retractSym(int num)
 			openNode(currentNode);
 		}
 	}
-}
-void LexemeAnalyze(int argc,char** argv)
-{
-
-	init(argc, argv);
-    while (!isInputEnd())
-    {
-        scann();
-        outputLexeme();
-    }
-	close();
 }
 
