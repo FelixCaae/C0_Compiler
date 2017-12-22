@@ -210,6 +210,7 @@ void objFunc(bool main)
 	lhead = genLabel(LFUNC, symTable[funcRef]._name);
 	ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
 	lc = 0;
+	locateAdr();
 	emitObj(TLABEL, lhead);
 	objFuncHead(main);
 	while (lc != line)

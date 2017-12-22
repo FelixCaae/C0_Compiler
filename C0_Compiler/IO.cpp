@@ -19,7 +19,7 @@ FILE * outQCode=NULL;
 FILE * outTCode = NULL;
 FILE * outErr=NULL;
 char buffer[maxOutputLength];
-
+int slevel = 0;//syntax level
 void output(char *ch,FILE* outFile,bool toConsole)
 {
 	if(toConsole)

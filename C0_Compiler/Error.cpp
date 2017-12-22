@@ -7,17 +7,29 @@
 #include "SymTable.h"
 #include <exception>
 #include "IO.h"
+extern bool hasError = false;
 extern char tokenbak[tokenStrLen];
-void skip()
+void skip(lexClass lexSet[],int num)
 {
+	bool found = false;
+	while (true)
+	{
 
-	do {
+		for (int i = 0; i < num; i++)
+		{
+			if (lexSet[i] == lextype)
+			{
+				found = true;
+				break;
+			}
+		}
+		if (found)break;
 		readSym();
 	}
-	while (lextype != SEMI);
 }
 void error(int err,int detail)
 {
+	hasError = true;
 	//printf("Error happended!");
 	char buffer[100];
 	switch (err) {
@@ -72,7 +84,7 @@ void error(int err,int detail)
 		break; }
 	case ERR_CONST:
 	{
-		sprintf(buffer, "*****Error%d: Can`t assign to a const identifier:%s line:%d\n", err,token,lineCounter);
+		sprintf(buffer, "*****Error%d: Can`t assign to a const identifier:%s line:%d\n", err,NAME(detail),lineCounter);
 		break;
 	}
 	case ERR_CASE_MATCH:
@@ -110,14 +122,18 @@ void error(int err,int detail)
 		sprintf(buffer, "*****Error%d: Parmeter(%d) type not matched  line:%d\n", err,detail,lineCounter);
 		break;
 	}
+	case ERR_PARAM_FLOW:
+	{
+		sprintf(buffer, "*****Error%d:Functon:%s has too many arguments(more than %d)  line:%d\n", err, NAME(detail), maxParmNum, lineCounter);
+	}
 	case ERR_REQUIRE_ARRAY:
 	{
-		sprintf(buffer, "*****Error%d: Identifier:%s should be an array line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Identifier:%s should be an array line:%d\n", err, NAME(detail), lineCounter);
 		break;
 	}
 	case ERR_REQUIRE_FUNC:
 	{
-		sprintf(buffer, "*****Error%d: Identifier:%s should be an function line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Identifier:%s should be an function line:%d\n", err, NAME(detail), lineCounter);
 		break;
 	}
 	case ERR_REQUIRE_RET:
@@ -127,7 +143,7 @@ void error(int err,int detail)
 	}
 	case ERR_REQUIRE_VAR:
 	{
-		sprintf(buffer, "*****Error%d: Identifier:%s should be a variable line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Identifier:%s should be a variable line:%d\n", err, NAME(detail), lineCounter);
 		break;
 	}
 	case ERR_DIV_ZERO:
@@ -173,8 +189,6 @@ void error(int err,int detail)
 	}
 	*/
 	output(buffer,outErr,true);
-	close();
-	throw buffer;
 }
 void error(int err)
 {

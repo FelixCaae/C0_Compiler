@@ -27,9 +27,7 @@ enum lexClass
 	ERROR,END,RELATION//
 };
 extern lexClass lextype;
-unsigned int catToNum();
 int findReserveWord();
 int findSeperator();
-void catToString(char*);
 void readSym();
 void retractSym(int num=1);

@@ -8,5 +8,7 @@ enum Err{ERR_FILE,ERR_INPUT_ARGUMENT_NUM,ERR_LEX,ERR_SYNTAX,ERR_SYM_RETRACT,ERR_
 	ERR_MAIN_RET_TYPE,ERR_MAIN_PARAM, ERR_PARAM_FLOW,
 	ERR_DIV_ZERO,ERR_INSTR_NOT_DEFINE, ERR_QCODE_NOT_DEFINE, ERR_ARGSTACK_FLOW
 };
+extern bool hasError;
+void skip(lexClass[]);
 void error(int err );
 void error(int err, int detail);

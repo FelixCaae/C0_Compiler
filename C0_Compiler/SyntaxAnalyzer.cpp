@@ -41,7 +41,6 @@ void parseConstant(int *val);
 void parseReadStat();
 void parseWriteStat();
 void parseReturnStat();
-int slevel = 0;
 char tokenbak[tokenStrLen];
 const bool set = true;
 const bool get = false;
@@ -359,12 +358,12 @@ bool parseFuncDecl()
 	}
 	if (paramNum > maxParmNum)
 	{
-		error(ERR_PARAM_FLOW);
+		error(ERR_PARAM_FLOW,func);
 	}
 	shouldBe(LCURB);
 	parseCompoundStat();
-	locateAdr();
-	objFunc(mainFound);
+	
+	if (!hasError)objFunc(mainFound);
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL,false);
@@ -589,7 +588,7 @@ void parseFactor(int *r)
 		break;
 	}
 	default:
-		error(ERR_SYNTAX,FACTOR);
+		error(ERR_SYNTAX,SEMI);
 	}
 	outputSyntax(FACTOR,false);
 }
@@ -739,13 +738,13 @@ void parseAssignStat(int iden)
 	storeIt=symTable[iden]._type;
 	if (symTable[iden]._obj == OCONST)
 	{
-		error(ERR_CONST);
+		error(ERR_CONST,iden);
 	}
 	if(lextype==LBRAK)
 	{
 		if (symTable[iden]._obj != OARRAY)
 		{
-			error(ERR_REQUIRE_ARRAY);
+			error(ERR_REQUIRE_ARRAY,iden);
 		}
 		isAR = true;
 		parseSubscript(false, &sub);
@@ -775,7 +774,7 @@ void parseFuncCallStat(int iden)
 	int ref = symTable[iden]._ref;
 	if (symTable[iden]._obj != OFUNC)
 	{
-		error(ERR_REQUIRE_FUNC);
+		error(ERR_REQUIRE_FUNC,iden);
 	}
 	shouldBe(LPAR);
 	parseArgList( funcTable[ref]._param, funcTable[ref]._paraNum);
@@ -868,7 +867,7 @@ void parseReadStat()
 		parseIden(&iden,get);
 		if (symTable[iden]._obj !=OVAR)
 		{
-			error(ERR_REQUIRE_VAR);
+			error(ERR_REQUIRE_VAR,iden);
 		}
 		emit(QREAD, iden);
 	} while (couldBe(COMMA));
@@ -888,11 +887,11 @@ void parseProgram()
 	{
 		parseVarGrup();
 	}
-	objEntry();
+	if (!hasError)objEntry();
 	while (!mainFound) {
 		mainFound = parseFuncDecl();
 	}
-	objGloblData();
+	if(!hasError)objGloblData();
 	outputSyntax(PROGRAM, false);
 	shouldBe(END);
 }
