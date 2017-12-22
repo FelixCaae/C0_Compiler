@@ -37,13 +37,7 @@ namespace C0_UnitTest
 		TEST_METHOD(TestMethod3)
 		{
 			buffer[1] = "test/test_alpha.txt";
-			try {
 				syntaxAnalyze(2, (char**)buffer);
-			}
-			catch (char*)
-			{
-				Assert::Fail();
-			}
 		}
 		TEST_METHOD(TestMethod4)
 		{

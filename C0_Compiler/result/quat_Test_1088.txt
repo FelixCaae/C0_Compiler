@@ -1,0 +1,25 @@
+	const int stepmask = -1
+	const char plus = 43
+	const char times = 42
+	const char minus = 45
+	const char div = 47
+	const char udl = 95
+	array int stepmask[10]
+	var char op
+	int fact()
+	para int n
+	n == 0
+	BNZ if_1
+	$tmp2 = 45 / 1000
+	$tmp4 = $tmp2 - 1
+	$tmp5 = 47 * $tmp4
+	$tmp6 = $tmp5 + 43
+	$tmp7 = $tmp6 - 42
+	$tmp9 = -1 / 42
+	$tmp10 = $tmp7 - $tmp9
+	$tmp14 = 0 - 1
+	$tmp14 = $tmp14 + 2
+	$tmp16 = 47 * $tmp14
+	$tmp17 = $tmp10 + $tmp16
+	ret $tmp17
+if_1:

@@ -125,11 +125,6 @@ void parseIden(int *val,bool set)
 	strcpy(tokenbak, token);
 	char *p = tokenbak;
 	shouldBe(IDEN);
-	for(;*p!=0;p++)
-	{
-		if (*p <= 'Z'&&*p >= 'A')
-			*p = *p | 0x60;
-	}
 	if (set)
 	{
 		shouldNotExist(tokenbak);
@@ -362,6 +357,10 @@ bool parseFuncDecl()
 	{
 		error(ERR_MAIN_PARAM);
 	}
+	if (paramNum > maxParmNum)
+	{
+		error(ERR_PARAM_FLOW);
+	}
 	shouldBe(LCURB);
 	parseCompoundStat();
 	locateAdr();
@@ -461,10 +460,11 @@ void parseStat()
 		shouldBe(SEMI);
 		break;
 	default:
-		error(ERR_SYNTAX,STAT);
+		error(ERR_SYNTAX,RCURB);
 	}
 	outputSyntax(STAT,false);
 }
+
 void parseExpression(int *r)
 {
 	outputSyntax(EXPRESSION);
@@ -479,15 +479,7 @@ void parseExpression(int *r)
 		int zero = genTemp(INTS, true, 0);
 		tmpFlag = false;
 		store = genTemp(INTS);
-		if (ISCONST(first))
-		{
-			OBJ(store) = OCONST;
-			REF(store) = -REF(first);
-		}
-		else
-		{
-			emit(QMINUS, store, zero, first);
-		}
+		emit(QMINUS, store, zero, first);
 		first = store;
 	}
 	while ((neg = couldBe2(MINUS, PLUS)) != 0) {
@@ -496,23 +488,6 @@ void parseExpression(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		if (ISCONST(first)&&ISCONST(second))
-		{
-			val1 = REF(first);
-			val2 = REF(second);
-			OBJ(store) = OCONST;
-			if (neg == 1)
-			{
-				vresult = val1 - val2;
-			}
-			else if (neg == 2)
-			{
-				vresult = val1 + val2;
-			}
-			REF(store) = vresult;
-		}
-		else
-		{
 			if (neg == 1)
 			{
 				emit(QMINUS, store, first, second);
@@ -521,7 +496,7 @@ void parseExpression(int *r)
 			{
 				emit(QPLUS, store, first, second);
 			}
-		}
+			
 		first = store;
 	}
 	*r = first;
@@ -541,29 +516,8 @@ void parseTerm(int *r)
 		{
 			store = genTemp(INTS, false);
 		}
-		if (ISCONST(first) && ISCONST(second))
-		{
-			OBJ(store) = OCONST;
-			val1 = REF(first);
-			val2 = REF(second);
-			if (op == 1)
-			{
-				vresult = val1*val2;
-			}
-			else if (op == 2)
-			{
-				if (val2 != 0) {
-					vresult = val1 / val2;
-				}
-				else
-				{
-					error(ERR_DIV_ZERO);
-				}
-			}
-			REF(store) = vresult;
-		}
-		else
-		{
+		
+			
 			if (op == 1)
 			{
 				emit(QSTAR, store, first, second);
@@ -572,7 +526,7 @@ void parseTerm(int *r)
 			{
 				emit(QDIV, store, first, second);
 			}
-		}
+		
 		first = store;
 	} 
 	*r = first;
@@ -589,7 +543,7 @@ void parseFactor(int *r)
 		IdenType it = symTable[iden]._type;
 		if (symTable[iden]._type == NOTYPS)
 		{
-			error(ERR_REQUIRE_RET);
+			error(ERR_REQUIRE_RET,iden);
 		}
 
 		if (lextype == LBRAK)
@@ -801,7 +755,7 @@ void parseAssignStat(int iden)
 	valIt = symTable[val]._type;
 	if (valIt == INTS && storeIt == CHARS)
 	{
-		error(ERR_INTOCHAR);
+		//error(ERR_INTOCHAR);
 	}
 	//do some type-transform or send warning if an int-type value is assigned to a char var
 	//be careful with the range a char-type var can hold
@@ -842,7 +796,7 @@ void parseArgList(IdenType paramType[], int paramNum)
 		it = symTable[param]._type;
 		if (acParamNum<paramNum&&paramType[acParamNum] != it)
 		{
-			error(ERR_PARAMTYPE_NOT_MATCH);
+			error(ERR_PARAMTYPE_NOT_MATCH,acParamNum);
 		}
 		else
 		{
@@ -953,9 +907,10 @@ bool syntaxAnalyze(int argc, char** argv)
 }
 int main(int argc, char**argv)
 {
+	
 	char *buffer[2];
-	buffer[1] = "../x64/Debug/test/test_null.txt";
-	if (syntaxAnalyze(argc,argv))
+	buffer[1] = "../x64/Debug/test/test_assemble.txt";
+	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");
 	}

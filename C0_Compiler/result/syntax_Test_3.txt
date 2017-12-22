@@ -1,0 +1,49 @@
+<program>
+  <constDeclGroup>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> cint1 <\identifier>
+    <seperator> = <\seperator>
+    <seperator> + <\seperator>
+    <unsignedInt> 10 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> cint2 <\identifier>
+    <seperator> = <\seperator>
+    <seperator> - <\seperator>
+    <unsignedInt> 1 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> cint3 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 0 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> cmaxint <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 2147483647 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> cminint <\identifier>
+    <seperator> = <\seperator>
+    <seperator> - <\seperator>
+    <unsignedInt> 2147483648 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> cmaxint <\identifier>

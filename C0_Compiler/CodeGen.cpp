@@ -7,13 +7,15 @@
 #include"IO.h"
 #include "SymTable.h"
 #define REG(arg) regName[arg]
+const unsigned int argStackSize = 100;
 extern const unsigned int IntSize, CharSize;
 using namespace std;
 //unsigned int qcPos;
 unsigned int line=0;
 unsigned int paramCounter = 0;
+unsigned int argPos = 0;
 int qCode[maxQCodeSize * 4];
-
+int argStack[argStackSize];
 
 void clearQCode()
 {
@@ -162,10 +164,11 @@ void objFuncHead(bool main)
 {
 	int offset = 4;
 
-	funcTableEntry entry = funcTable[symTable[funcRef]._ref];
+	funcTableEntry entry = funcTable[REF(funcRef)];
 	int paraNum = entry._paraNum;
 	IdenType *para = entry._param;
-	if (paraNum > 4)
+
+	if (paraNum > 4)//È¡²ÎÊı
 	{
 		int extraPara = linkHead+4;
 		for (int i = 0; i < paraNum - 4; i++)
@@ -178,7 +181,7 @@ void objFuncHead(bool main)
 	{
 		return;
 	}
-	for (int i = 0;i < 0; i++)
+	for (int i = 0;i < 3; i++)
 	{
 		emitObj(TSW, s0+i, sp, offset*i+entry._size);
 	}
@@ -187,11 +190,13 @@ void objFuncHead(bool main)
 	{
 		if (i < 4)
 		{
-			emitObj(TSW, a0 + i, sp, symTable[linkHead + i]._adr);
+			//emitObj(TSW, a0 + i, sp, symTable[linkHead + i]._adr);
+			objSave(a0 + i, s0, linkHead + i);
 		}
 		else if(i<12)
 		{ 
-			emitObj(TSW, t0 + i, sp, symTable[linkHead + i]._adr);
+			//emitObj(TSW, t0 + i - 4, sp, symTable[linkHead + i]._adr);
+			objSave(t0 + i - 4, s0, linkHead + i);
 		}
 		else
 		{
@@ -247,8 +252,7 @@ void objLine(int lc,int ltail)
 		emitObj(TBNE, _0, v1, arg1);
 		break;
 	case QCALL:
-		emitObj(TJAL, arg1);
-		paramCounter = 0;
+		objCall(arg1);
 		break;
 	case QDIV:
 		objArthOp(TDIV, arg1, arg2, arg3);
@@ -306,16 +310,7 @@ void objLine(int lc,int ltail)
 		//objFuncHead(main);
 		break;
 	case QPUSH:
-		if (paramCounter < 4)
-		{
-			objLoad(a0 + paramCounter, arg1);
-		}
-		else
-		{
-			objLoad(t0, arg1);
-			emitObj(TSW, t0, sp, -4 * (1 + paramCounter - 4));
-		}
-		paramCounter++;
+		objPush(arg1);
 		break;
 	case QPARA:
 	case QVAR:
@@ -403,6 +398,29 @@ void objSave(int val,int adr,int iden,int offset)
 		}
 	}
 }
+void objPush(int iden)
+{
+	argStack[argPos++] = iden;
+	if (argPos == argStackSize)error(ERR_ARGSTACK_FLOW);
+}
+void objCall(int func)
+{
+	int paramCounter = 0;
+	int paramNum = PARANUM(func);
+	argPos -= paramNum;
+	for (; paramCounter < paramNum; paramCounter++) {
+		if (paramCounter < 4)
+		{
+			objLoad(a0 + paramCounter, argStack[argPos+paramCounter]);
+		}
+		else
+		{
+			objLoad(t0, argStack[argPos+paramCounter]);
+			emitObj(TSW, t0, sp, -4 * (1 + paramCounter - 4));
+		}
+	}
+	emitObj(TJAL, func);
+}
 void objArthOp(tCType tc, int iden1, int iden2, int iden3)
 {
 	objLoad(t0, iden2);
@@ -459,7 +477,7 @@ void objFuncTail(bool main)
 	funcTableEntry entry = funcTable[symTable[funcRef]._ref];
 	if (!main)
 	{
-		for (int i = 0; i < 0; i++)
+		for (int i = 0; i < 3; i++)
 		{
 			emitObj(TLW, s0 + i, sp, i * offset + entry._size);
 		}

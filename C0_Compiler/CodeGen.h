@@ -49,6 +49,8 @@ void objFuncTail(bool main);
 void objLine(int lc, int ltail);
 void objSave(int val, int adr, int iden, int offset = _0);
 void objLoad(int reg, int iden, int offset = _0);
+void objPush(int iden);
+void objCall(int func);
 void objCondition(tCType tc,int iden1,int iden2);
 void objArthOp(tCType tc, int iden1, int iden2, int iden3);
 void objRead(int iden);

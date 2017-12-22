@@ -79,15 +79,29 @@ namespace C0_UnitTest
 			insertIdent("c1", INTS, OCONST, 10);
 			insertIdent("func1", INTS, OFUNC);
 			insertIdent("func2", INTS, OFUNC);
+			Assert::AreEqual(ADR(0) == Global, true);
+			Assert::AreEqual(ADR(1) == Global, true);
+			Assert::AreEqual(ADR(2) == Global, true);
+			Assert::AreEqual(ADR(3) == Global, true);
+			Assert::AreEqual(ADR(4) == Global, true);
+			Assert::AreEqual(ADR(5) == Global, true);
 			locateAdr();
-			Assert::AreEqual(symTable[4]._adr == 45, true);
-			enterFunc(0);
+			Assert::AreEqual(ADR(0) == 0, true);
+			Assert::AreEqual(ADR(1) == 44, true);
+			Assert::AreEqual(ADR(2) == 4, true);
+			enterFunc(5);
 			insertIdent("var1", INTS, OVAR);
-			insertIdent("var2", CHARS, OARRAY, 20);
+			insertIdent("var2", CHARS, OARRAY, 21);
 			insertIdent("var3", INTS, OVAR);
+			Assert::AreEqual(ADR(6) == 0, true);
+			Assert::AreEqual(ADR(7) == 0, true);
+			Assert::AreEqual(ADR(8) == 0, true);
 			locateAdr();
-			int iden = lookupIdent("var3");
-			Assert::AreEqual(symTable[iden]._adr ==24,true);
+			Assert::AreEqual(ADR(6) == 0, true);
+			Assert::AreEqual(ADR(7) == 8, true);
+			Assert::AreEqual(ADR(8) == 4, true);
+			Assert::AreEqual(FUNCSIZE(5) == 32, true);
+			
 		}
 		TEST_METHOD(TEST_QCODEOUT)
 		{
@@ -106,7 +120,7 @@ namespace C0_UnitTest
 			emit(QCONST, 3);
 			emit(QFUNCDECL,4);
 			int l=genLabel(LIF);
-			setLabel(l);
+			emit(QLABEL, l);
 			emit(QPLUS, 1, 0, 2);
 			emit(QEQU, 1, 2);
 			emit(QBNZ, l);
@@ -126,7 +140,7 @@ namespace C0_UnitTest
 			int str=insertString("HelloWorld");
 			int lhead = genLabel(LFUNC, "main");
 			int ltail = genLabel(LFUNCEND, "main");
-			setLabel(lhead,LPHEAD);
+			emit(QLABEL, lhead);
 			emit(QVAR, ch);
 			emit(QVAR, it);
 			emit(QARRAY, car);
@@ -135,9 +149,10 @@ namespace C0_UnitTest
 			emit(QPLUS, ch, it, ch2);
 			emit(QEQU, ch, ch2);
 			emit(QRET);
-			setLabel(ltail);
+			emit(QLABEL, ltail);
+			enterFunc(main);
 		//	outputLabel(lhead, true);
-			objBody(ltail);
+			objFunc();
 			//outputLabel(ltail, true);
 
 		}

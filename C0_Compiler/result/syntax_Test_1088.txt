@@ -1,0 +1,203 @@
+<program>
+  <constDeclGroup>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> stepmask <\identifier>
+    <seperator> = <\seperator>
+    <seperator> - <\seperator>
+    <unsignedInt> 1 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> plus <\identifier>
+    <seperator> = <\seperator>
+    <char> '+' <\char>
+    <seperator> , <\seperator>
+    <identifier> times <\identifier>
+    <seperator> = <\seperator>
+    <char> '*' <\char>
+    <seperator> , <\seperator>
+    <identifier> minus <\identifier>
+    <seperator> = <\seperator>
+    <char> '-' <\char>
+    <seperator> , <\seperator>
+    <identifier> div <\identifier>
+    <seperator> = <\seperator>
+    <char> '/' <\char>
+    <seperator> , <\seperator>
+    <identifier> udl <\identifier>
+    <seperator> = <\seperator>
+    <char> '_' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <\constDeclGroup>
+  <varDeclGroup>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> list <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 10 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> op <\identifier>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> fact <\identifier>
+    <\retract>
+  <\varDeclGroup>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <seperator> fact <\seperator>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> n <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> n <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 0 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                <seperator> + <\seperator>
+                  <term>
+                    <factor>
+                    <identifier> div <\identifier>
+                    <\factor>
+                  <seperator> * <\seperator>
+                    <factor>
+                    <seperator> ( <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> minus <\identifier>
+                          <\factor>
+                        <seperator> / <\seperator>
+                          <factor>
+                          <unsignedInt> 1000 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <seperator> - <\seperator>
+                        <term>
+                          <factor>
+                          <unsignedInt> 1 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> ) <\seperator>
+                    <\factor>
+                  <\term>
+                <seperator> + <\seperator>
+                  <term>
+                    <factor>
+                    <identifier> plus <\identifier>
+                    <\factor>
+                  <\term>
+                <seperator> - <\seperator>
+                  <term>
+                    <factor>
+                    <identifier> times <\identifier>
+                    <\factor>
+                  <\term>
+                <seperator> - <\seperator>
+                  <term>
+                    <factor>
+                    <seperator> - <\seperator>
+                    <unsignedInt> 1 <\unsignedInt>
+                    <\factor>
+                  <seperator> / <\seperator>
+                    <factor>
+                    <identifier> times <\identifier>
+                    <\factor>
+                  <\term>
+                <seperator> + <\seperator>
+                  <term>
+                    <factor>
+                    <seperator> ( <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <char> '/' <\char>
+                          <\factor>
+                        <seperator> * <\seperator>
+                          <factor>
+                          <seperator> ( <\seperator>
+                            <expression>
+                            <seperator> - <\seperator>
+                              <term>
+                                <factor>
+                                <unsignedInt> 1 <\unsignedInt>
+                                <\factor>
+                              <\term>
+                            <seperator> + <\seperator>
+                              <term>
+                                <factor>
+                                <unsignedInt> 2 <\unsignedInt>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <seperator> ) <\seperator>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> ) <\seperator>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+        <identifier> else <\identifier>

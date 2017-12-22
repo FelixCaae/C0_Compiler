@@ -23,6 +23,207 @@
   <seperator> } <\seperator>
   <\funcDecl>
   <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> test_sp <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> chi <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> ch <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> chi <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 52 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> ch <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> chi <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> ch <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> chi <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 54 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> ch <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> chi <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> ch <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <loopStat>
+          <keyword> do <\keyword>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                <identifier> chi <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> chi <\identifier>
+                        <\factor>
+                      <\term>
+                    <seperator> + <\seperator>
+                      <term>
+                        <factor>
+                        <unsignedInt> 1 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> ch <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> chi <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> chi <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <keyword> while <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> chi <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> != <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 128 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+          <\loopStat>
+        <\statement>
+        <statement>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
     <type>
     <keyword> int <\keyword>
     <\type>
@@ -1123,91 +1324,6 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-          <string> "a1" <\string>
-          <seperator> , <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> a1 <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\writeStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-          <string> "a2" <\string>
-          <seperator> , <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> a2 <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\writeStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-          <string> "a3" <\string>
-          <seperator> , <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> a3 <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\writeStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-          <string> "a4" <\string>
-          <seperator> , <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> a4 <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\writeStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-          <string> "a5" <\string>
-          <seperator> , <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> a5 <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\writeStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
         <identifier> ia <\identifier>
           <assignStat>
           <seperator> [ <\seperator>
@@ -1845,6 +1961,16 @@
       <statements>
         <statement>
         <identifier> test_hw <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> test_sp <\identifier>
           <funCallStat>
           <seperator> ( <\seperator>
             <argumentList>

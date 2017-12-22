@@ -1,0 +1,193 @@
+	j main
+const_define:
+	subi $sp,$sp,40
+	sw $s0,4($sp)
+	sw $s1,8($sp)
+	sw $s2,12($sp)
+	sw $ra,36($sp)
+	li $a0,1
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,0
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,-1
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,48
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,49
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,50
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,51
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,52
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,53
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,54
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,55
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,56
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,57
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,120
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,121
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,122
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,65
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,66
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,67
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,43
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,45
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,42
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $a0,47
+	li $v0,11
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+const_define_end:
+	lw $s0,4($sp)
+	lw $s1,8($sp)
+	lw $s2,12($sp)
+	lw $ra,36($sp)
+	addi $sp,$sp,40
+	jr $ra
+const_define_test:
+	subi $sp,$sp,40
+	sw $s0,4($sp)
+	sw $s1,8($sp)
+	sw $s2,12($sp)
+	sw $ra,36($sp)
+	jal const_define
+const_define_test_end:
+	lw $s0,4($sp)
+	lw $s1,8($sp)
+	lw $s2,12($sp)
+	lw $ra,36($sp)
+	addi $sp,$sp,40
+	jr $ra
+var_define:
+	subi $sp,$sp,104128
+	sw $s0,104092($sp)
+	sw $s1,104096($sp)
+	sw $s2,104100($sp)
+	sw $ra,104124($sp)
+var_define_end:
+	lw $s0,104092($sp)
+	lw $s1,104096($sp)
+	lw $s2,104100($sp)
+	lw $ra,104124($sp)
+	addi $sp,$sp,104128
+	jr $ra
+var_define_test:
+	subi $sp,$sp,40
+	sw $s0,4($sp)
+	sw $s1,8($sp)
+	sw $s2,12($sp)
+	sw $ra,36($sp)
+	jal var_define
+var_define_test_end:
+	lw $s0,4($sp)
+	lw $s1,8($sp)
+	lw $s2,12($sp)
+	lw $ra,36($sp)
+	addi $sp,$sp,40
+	jr $ra

@@ -1,0 +1,967 @@
+<program>
+  <constDeclGroup>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> a <\identifier>
+    <seperator> = <\seperator>
+    <seperator> + <\seperator>
+    <unsignedInt> 5 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> m <\identifier>
+    <seperator> = <\seperator>
+    <char> '3' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> z <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 6 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> b <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 10 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> q <\identifier>
+    <seperator> = <\seperator>
+    <char> 's' <\char>
+    <seperator> , <\seperator>
+    <identifier> p <\identifier>
+    <seperator> = <\seperator>
+    <char> 't' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <\constDeclGroup>
+  <varDeclGroup>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> aa <\identifier>
+    <seperator> , <\seperator>
+    <identifier> bb <\identifier>
+    <seperator> , <\seperator>
+    <identifier> cc <\identifier>
+    <seperator> , <\seperator>
+    <identifier> ss <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 1 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> mm <\identifier>
+    <seperator> , <\seperator>
+    <identifier> nn <\identifier>
+    <seperator> , <\seperator>
+    <identifier> zz <\identifier>
+    <seperator> , <\seperator>
+    <identifier> str_test <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 50 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> number <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 30 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> ra <\identifier>
+    <seperator> , <\seperator>
+    <identifier> rb <\identifier>
+    <seperator> , <\seperator>
+    <identifier> rc <\identifier>
+    <seperator> , <\seperator>
+    <identifier> rd <\identifier>
+    <\varDecl>
+  <seperator> ; <\seperator>
+  <\varDeclGroup>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> f5 <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> , <\seperator>
+        <identifier> b <\identifier>
+        <seperator> , <\seperator>
+        <identifier> c <\identifier>
+        <seperator> , <\seperator>
+        <identifier> d <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 10 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> e <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 4 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> f <\identifier>
+        <seperator> , <\seperator>
+        <identifier> g <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 5 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> k <\identifier>
+        <seperator> , <\seperator>
+        <identifier> l <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 6 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> m <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 7 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> n <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 8 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> p <\identifier>
+        <seperator> , <\seperator>
+        <identifier> q <\identifier>
+        <seperator> , <\seperator>
+        <identifier> h <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 9 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> i <\identifier>
+        <seperator> , <\seperator>
+        <identifier> o <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 4 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> r <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 5 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> s <\identifier>
+        <seperator> , <\seperator>
+        <identifier> t <\identifier>
+        <seperator> , <\seperator>
+        <identifier> u <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 65 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> v___ <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> w <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> x <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 5 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> y <\identifier>
+        <seperator> , <\seperator>
+        <identifier> z <\identifier>
+        <seperator> , <\seperator>
+        <identifier> __ <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "variable defination passed!" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> constf5 <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <constDeclGroup>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 10 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> b <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 2 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> c <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 3 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> d <\identifier>
+        <seperator> = <\seperator>
+        <char> 'd' <\char>
+        <seperator> , <\seperator>
+        <identifier> e <\identifier>
+        <seperator> = <\seperator>
+        <char> 'e' <\char>
+        <seperator> , <\seperator>
+        <identifier> f <\identifier>
+        <seperator> = <\seperator>
+        <char> 'f' <\char>
+        <seperator> , <\seperator>
+        <identifier> g <\identifier>
+        <seperator> = <\seperator>
+        <char> '+' <\char>
+        <seperator> , <\seperator>
+        <identifier> h <\identifier>
+        <seperator> = <\seperator>
+        <char> '-' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> i <\identifier>
+        <seperator> = <\seperator>
+        <char> '8' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <\constDeclGroup>
+      <statements>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "const defination passed!" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> defi <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> value <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <constDeclGroup>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a1 <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 10 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> b1 <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 2 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> c1 <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 3 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> d1 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'd' <\char>
+        <seperator> , <\seperator>
+        <identifier> e1 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'e' <\char>
+        <seperator> , <\seperator>
+        <identifier> f1 <\identifier>
+        <seperator> = <\seperator>
+        <char> 'f' <\char>
+        <seperator> , <\seperator>
+        <identifier> g1 <\identifier>
+        <seperator> = <\seperator>
+        <char> '+' <\char>
+        <seperator> , <\seperator>
+        <identifier> h1 <\identifier>
+        <seperator> = <\seperator>
+        <char> '-' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> i1 <\identifier>
+        <seperator> = <\seperator>
+        <char> '8' <\char>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <\constDeclGroup>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> , <\seperator>
+        <identifier> b <\identifier>
+        <seperator> , <\seperator>
+        <identifier> c <\identifier>
+        <seperator> , <\seperator>
+        <identifier> d <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 10 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> e <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 4 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> f <\identifier>
+        <seperator> , <\seperator>
+        <identifier> g <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 5 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> k <\identifier>
+        <seperator> , <\seperator>
+        <identifier> l <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 6 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> m <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 7 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> n <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 8 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> p <\identifier>
+        <seperator> , <\seperator>
+        <identifier> q <\identifier>
+        <seperator> , <\seperator>
+        <identifier> h <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 9 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> i <\identifier>
+        <seperator> , <\seperator>
+        <identifier> o <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 4 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> r <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 5 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> s <\identifier>
+        <seperator> , <\seperator>
+        <identifier> t <\identifier>
+        <seperator> , <\seperator>
+        <identifier> u <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 65 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> v___ <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> char <\keyword>
+          <\type>
+        <identifier> w <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 1 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> x <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 5 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <seperator> , <\seperator>
+        <identifier> y <\identifier>
+        <seperator> , <\seperator>
+        <identifier> z <\identifier>
+        <seperator> , <\seperator>
+        <identifier> __ <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> a <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> value <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> d <\identifier>
+          <assignStat>
+          <seperator> [ <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 5 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ] <\seperator>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> value <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> a <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> d1 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> __ <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> e1 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> v___ <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> g1 <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "variable and const defination passed!" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> defi_test <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> f5 <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> constf5 <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> defi <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 66 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> f1 <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> f2 <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> q <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> q <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> f3 <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <seperator> + <\seperator>
+              <term>
+                <factor>
+                <unsignedInt> 9 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> max <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> a <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> b <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> a <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> > <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> b <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <identifier> a <\identifier>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> b <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> > <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> a <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <identifier> b <\identifier>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "a and b are equal." <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <seperator> ( <\seperator>
+                  <expression>
+                    <term>
+                      <factor>
+                      <seperator> ( <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> a <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\factor>
+                    <\term>
+                  <seperator> - <\seperator>
+                    <term>
+                      <factor>
+                      <seperator> ( <\seperator>
+                        <expression>
+                        <seperator> - <\seperator>
+                          <term>
+                            <factor>
+                            <identifier> b <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> ) <\seperator>
+                      <\factor>
+                    <\term>
+                  <\expression>
+                <seperator> ) <\seperator>
+                <\factor>
+              <seperator> / <\seperator>
+                <factor>
+                <unsignedInt> 2 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> fun_def_test <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> c <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "Please input a number (1-100): " <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <readStat>
+          <keyword> scanf <\keyword>
+          <seperator> ( <\seperator>
+          <identifier> c <\identifier>
+          <seperator> ) <\seperator>
+          <\readStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "the max number is:" <\string>
+          <seperator> , <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> max <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> f2 <\identifier>
+                            <funCallStat>
+                            <seperator> ( <\seperator>
+                              <argumentList>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> c <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                         

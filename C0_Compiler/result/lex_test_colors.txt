@@ -92,11 +92,11 @@
 5	ASSIGN	=	row:23	colmn:1
 1	INT	1	row:23	colmn:2
 9	SEMI	;	row:23	colmn:3
-2	IDEN	SET123	row:24	colmn:0
+2	IDEN	set123	row:24	colmn:0
 11	LPAR	(	row:24	colmn:1
 12	RPAR	)	row:24	colmn:2
 9	SEMI	;	row:24	colmn:3
-2	IDEN	COUNT123	row:25	colmn:0
+2	IDEN	count123	row:25	colmn:0
 11	LPAR	(	row:25	colmn:1
 12	RPAR	)	row:25	colmn:2
 9	SEMI	;	row:25	colmn:3

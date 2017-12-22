@@ -1,0 +1,186 @@
+const int con_i_1=1;
+const int con_i_2=1, con_i_3=2;
+const char con_c_1='+';
+const char con_c_2='-', con_c_3='*';
+int i_1;
+int i_2, i_3;
+int i_4[10];
+char c_1;
+char c_2, c_3;
+char c_4[10];
+
+int fun0(int a){
+	return (a);
+}
+int fun1(int a, int b){
+	int fun;
+	fun = a + b;
+	return (fun);
+}
+char fun2(){
+	return ('A');
+}
+void fun3(int a){
+	return;
+}
+void fun4(int a, char b){
+	printf(a);
+	printf(b);
+}
+void fun5(){
+	printf("Funtion_5");
+}
+int fun6(int n){
+	if (n == 1)
+		return (1);
+	return (n * fun6(n-1));
+}
+void main(){
+	const int m_con_i_1=1;
+	const int MM_con_i_1=100;
+	const int m_con_i_2=1, m_con_i_3=2;
+	const char m_con_c_1='+';
+	const char m_con_c_2='-', m_con_c_3='*';
+	int m_i_1;
+	int MM_i_1;
+	int m_i_2, m_i_3;
+	int m_i_4[10];
+	char m_c_1;
+	char m_c_2, m_c_3;
+	char m_c_4[10];
+	m_i_1=1;
+	MM_i_1=100;
+	m_i_2=1;
+	m_i_3=2;
+	m_c_1='+';
+	m_c_2='-';
+	m_c_3='*';
+
+
+
+	if(m_i_1 == 100)
+		printf("Error!");
+
+	if(0)
+		printf("Error!");
+
+	if(m_i_3 > 1){
+		m_i_3 = -m_i_3 + 1;
+		printf(m_i_3);
+	}
+
+	if(m_i_3 != m_con_i_1)
+		printf("Test_1");
+	if(m_i_3 == m_con_i_1)
+		printf("Test_2");
+
+	m_i_1='a';
+	do{
+		m_c_4[m_i_1] = m_i_1;
+		printf(m_c_4[m_i_1]);
+		m_i_1=m_i_1+1;
+	}while(m_i_1<'a'+10);
+	printf("Test_3");
+	m_i_1=0;
+	do
+	{
+	m_i_2=0;
+	do
+	{
+	printf(m_i_1+m_i_2);
+	m_i_2=m_i_2+1;
+	}while(m_i_2<3)
+	m_i_1=m_i_1+2;
+	}while(m_i_1<5)
+	printf(m_i_4[9]);
+	printf("Test_4");
+	m_i_1=0;
+	do
+	{
+	printf("Test_5");
+	m_i_1=m_i_1+1;
+	}while(m_i_1==1)
+	printf(m_i_4[8]);
+	printf(fun1(m_i_1, m_i_1));
+
+	fun5();
+	switch (m_i_1){
+		case 1:
+		{
+			switch (fun6(m_i_1)){
+				case 1:
+				printf("Test_6");
+			}
+			switch (m_c_1){
+				case '+':
+				{
+				do
+				{
+				printf(fun6(m_i_1));
+				m_i_1=m_i_1+1;
+				}while(m_i_1<4)
+				}
+				case '-':
+					printf("Error!");
+
+			}
+		}
+		case 2:
+			printf(fun6(9));
+		case 3:
+		{
+			m_i_1=0;
+			do
+			{
+			printf(fun6(9));
+			m_i_1=m_i_1+1;
+			}while(m_i_1==1)
+		}
+	}
+
+
+	m_i_1 = -m_c_1;
+	if(m_i_1 == -43)
+		printf("Test_7");
+	if(m_i_1+43)
+		printf("Test_7_ERROR");
+	switch (m_i_1){
+		case -43:
+			printf("Test_7_1");
+	}
+	switch (m_c_1){
+		case '+':
+			printf("Test_7_2");
+	}
+
+
+	m_c_2 = '+';
+	printf(m_c_2);
+	m_c_2 = '-';
+	printf(m_c_2);
+	m_c_2 = '*';
+	printf(m_c_2);
+	m_c_2 = '/';
+	printf(m_c_2);
+	m_c_2 = '_';
+	printf(m_c_2);
+	m_i_1='a';
+	do
+	{
+	m_c_2=m_i_1;
+	printf(m_c_2);
+	m_i_1=m_i_1+1;
+	}while(m_i_1<='z')
+	m_i_1='A';
+	do
+	{
+	m_c_2=m_i_1;
+	printf(m_c_2);
+	m_i_1=m_i_1+1;
+	}while(m_i_1<='Z');
+	scanf(m_i_1);
+	printf(m_i_1);
+	scanf(m_c_1);
+	printf(m_c_1);
+	printf("DONE!");
+}

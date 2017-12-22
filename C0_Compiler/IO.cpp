@@ -149,7 +149,7 @@ void outputQCode(qCType qc, int arg1, int arg2, int arg3)
 		sprintf(str, "%s = %s[%s]", NAME(arg1), NAME(arg2), OP(arg3));
 		break;
 	case QARL:
-		sprintf(str, "%s[%s] = %s", NAME(arg1), OP(arg2), NAME(arg3));
+		sprintf(str, "%s[%s] = %s", NAME(arg1), OP(arg2), OP(arg3));
 		break;
 	case QBZ:
 		sprintf(str, "BZ %s", LABEL(arg1));

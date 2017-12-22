@@ -1,0 +1,96 @@
+	const int num_0 = 0
+	void main()
+	array int num_0[10]
+	array int num_0[10]
+	var int var1
+	var int var2
+	var int var3
+	str[0] = 1
+	abc[1] = 2
+	str[2] = 3
+	abc[3] = 4
+	str[4] = 5
+	abc[5] = 6
+	$tmp12 = str[0]
+	$tmp13 = abc[$tmp12]
+	$tmp14 = str[$tmp13]
+	$tmp15 = abc[$tmp14]
+	$tmp16 = str[$tmp15]
+	$tmp17 = abc[$tmp16]
+	str[$tmp17] = 7
+	$tmp20 = str[6]
+	print $tmp20
+	$tmp21 = str[0]
+	$tmp22 = abc[$tmp21]
+	$tmp23 = str[$tmp22]
+	$tmp24 = abc[$tmp23]
+	$tmp25 = str[$tmp24]
+	$tmp26 = abc[$tmp25]
+	$tmp27 = str[$tmp26]
+	$tmp28 = str[0]
+	$tmp29 = abc[$tmp28]
+	$tmp30 = str[$tmp29]
+	$tmp31 = abc[$tmp30]
+	$tmp32 = str[$tmp31]
+	$tmp33 = abc[$tmp32]
+	$tmp34 = str[$tmp33]
+	$tmp35 = str[0]
+	$tmp36 = abc[$tmp35]
+	$tmp37 = str[$tmp36]
+	$tmp38 = abc[$tmp37]
+	$tmp39 = str[$tmp38]
+	$tmp40 = abc[$tmp39]
+	$tmp41 = $tmp34 + $tmp40
+	abc[$tmp27] = $tmp41
+	$tmp43 = abc[7]
+	print $tmp43
+	$tmp48 = 0 - 1
+	$tmp50 = str[0]
+	$tmp48 = $tmp48 + $tmp50
+	$tmp48 = $tmp48 + 1
+	$tmp52 = abc[$tmp48]
+	$tmp53 = 5 + $tmp52
+	$tmp55 = $tmp53 - 5
+	$tmp56 = str[$tmp55]
+	$tmp57 = 6 * $tmp56
+	$tmp59 = $tmp57 / 2
+	$tmp61 = $tmp59 / 3
+	var1 = $tmp61 
+	var3 = 1 
+	$tmp64 = var1 + 1
+	$tmp66 = $tmp64 - 1
+	$tmp68 = 0 - $tmp66
+	$tmp71 = 0 - 1
+	$tmp73 = 0 - $tmp71
+	$tmp75 = 0 - $tmp73
+	$tmp77 = 0 - $tmp75
+	$tmp78 = $tmp68 * $tmp77
+	$tmp80 = var3 * 2
+	$tmp81 = $tmp78 + $tmp80
+	$tmp83 = 1 - var3
+	$tmp85 = $tmp83 * 1999
+	$tmp86 = $tmp81 + $tmp85
+	$tmp88 = $tmp86 + 1
+	$tmp90 = $tmp88 + 1
+	$tmp92 = $tmp90 + 1
+	$tmp93 = var1 * $tmp92
+	$tmp95 = 0 - $tmp93
+	var2 = $tmp95 
+	print var2
+	print "result is 3"
+	print var1
+	print "result is -3"
+	print var2
+	$tmp97 = str[0]
+	$tmp98 = abc[var1]
+	$tmp99 = $tmp97 * $tmp98
+	$tmp100 = str[$tmp99]
+	$tmp101 = 4 + $tmp100
+	$tmp103 = str[2]
+	$tmp104 = abc[$tmp103]
+	$tmp105 = $tmp101 - $tmp104
+	$tmp106 = abc[$tmp105]
+	$tmp107 = str[$tmp106]
+	$tmp108 = abc[$tmp107]
+	print $tmp108
+	ret

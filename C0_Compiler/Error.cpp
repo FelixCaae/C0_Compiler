@@ -4,9 +4,18 @@
 #include "Error.h"
 #include "Lexeme.h"
 #include "Syntax.h"
+#include "SymTable.h"
 #include <exception>
 #include "IO.h"
 extern char tokenbak[tokenStrLen];
+void skip()
+{
+
+	do {
+		readSym();
+	}
+	while (lextype != SEMI);
+}
 void error(int err,int detail)
 {
 	//printf("Error happended!");
@@ -21,6 +30,10 @@ void error(int err,int detail)
 	{
 		sprintf(buffer, "Error%d:Word is too long!",err);
 		break; }
+	case ERR_ARGSTACK_FLOW:
+	{
+		sprintf(buffer, "*****Error%d:Argstack overflow line:%d", err,lineCounter);
+	}
 /*	case 2:
 	{
 		sprintf(buffer, "Error2:in parsing ident: %s", token);
@@ -43,11 +56,11 @@ void error(int err,int detail)
 		break; }*/
 	case ERR_LEX:
 	{
-		sprintf(buffer, "Error%d:Unexpected character: '%c' line:%d\n",err,detail,lineCounter);
+		sprintf(buffer, "Error%d:Unexpected character: '%c' line:%d\n",err,chr,lineCounter);
 		break; }
 	case ERR_SYNTAX:
 	{
-		sprintf(buffer, "*****Error%d: Should be %s but found %s line:%d\n",err, syntaxClassName[detail - 1], lexClassName[lextype - 1], lineCounter);
+		sprintf(buffer, "*****Error%d: Should be %s but found %s line:%d\n",err, lexClassName[detail - 1], lexClassName[lextype - 1], lineCounter);
 		break; }
 	case ERR_SYM_RETRACT:
 	{
@@ -60,6 +73,11 @@ void error(int err,int detail)
 	case ERR_CONST:
 	{
 		sprintf(buffer, "*****Error%d: Can`t assign to a const identifier:%s line:%d\n", err,token,lineCounter);
+		break;
+	}
+	case ERR_CASE_MATCH:
+	{
+		sprintf(buffer, "*****Error%d: Case constant`s type doesn`t match switch expression line:%d\n", err,lineCounter);
 		break;
 	}
 	case ERR_IDEN_DECLARED:
@@ -89,7 +107,7 @@ void error(int err,int detail)
 	}
 	case ERR_PARAMTYPE_NOT_MATCH:
 	{
-		sprintf(buffer, "*****Error%d: Parmeter:%s type is not matched line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Parmeter(%d) type not matched  line:%d\n", err,detail,lineCounter);
 		break;
 	}
 	case ERR_REQUIRE_ARRAY:
@@ -104,7 +122,7 @@ void error(int err,int detail)
 	}
 	case ERR_REQUIRE_RET:
 	{
-		sprintf(buffer, "*****Error%d: Function:%s doesn`t has a return value line:%d\n", err, token, lineCounter);
+		sprintf(buffer, "*****Error%d: Function:%s doesn`t has a return value line:%d\n", err, NAME(detail), lineCounter);
 		break;
 	}
 	case ERR_REQUIRE_VAR:
@@ -124,7 +142,7 @@ void error(int err,int detail)
 	}
 	case ERR_QCODE_NOT_DEFINE:
 	{
-		sprintf(buffer, "*****Error%d:QCode %d not defined", err, detail)
+		sprintf(buffer, "*****Error%d:QCode %d not defined", err, detail);
 	}
 	default:
 	{
@@ -156,7 +174,7 @@ void error(int err,int detail)
 	*/
 	output(buffer,outErr,true);
 	close();
-	throw buffer;
+	throw new  _exception();
 }
 void error(int err)
 {

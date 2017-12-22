@@ -1,0 +1,5 @@
+	const int cint1 = 10
+	const int cint2 = -1
+	const int cint3 = 0
+	const int cmaxint = 2147483647
+	const int cminint = -2147483647
