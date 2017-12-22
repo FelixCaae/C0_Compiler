@@ -24,6 +24,16 @@ namespace C0_UnitTest
 		{
 			cleanup();//symTable
 		}
+		TEST_METHOD(LEX_ERROR)
+		{
+			buffer[1] = "test/wtest_lex";
+			init(2, buffer);
+			while (lextype != END)
+			{
+				readSym();
+				outputLexeme();
+			}
+		}
 		TEST_METHOD(TestMethod1)
 		{
 			buffer[1] = "test/test_100.txt";///"test/test_100.txt";

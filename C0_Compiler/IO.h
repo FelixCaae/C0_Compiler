@@ -14,9 +14,9 @@ extern FILE * outErr;
 extern bool toConsole;
 extern char buffer[];
 const  bool bOutSyntax = false;
-const bool bOutQcode = true;
-const bool bOutLex = false;
-const bool bOutTCode = true;
+const bool bOutQcode = false;
+const bool bOutLex = true;
+const bool bOutTCode = false;
 const unsigned int maxOutputLength = 88;
 const char * const syntaxClassName[] = {
 	"unsignedInt","identifier", "char", "string","seperator","keyword",
