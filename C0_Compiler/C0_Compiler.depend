@@ -1,11 +1,12 @@
 # depslib dependency file v1.0
-1513320370 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\error.cpp
+1513866383 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\error.cpp
 	"stdafx.h"
 	<stdio.h>
 	<stdlib.h>
 	"Error.h"
 	"Lexeme.h"
 	"Syntax.h"
+	"SymTable.h"
 	<exception>
 	"IO.h"
 
@@ -17,7 +18,7 @@
 1513320370 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\targetver.h
 	<SDKDDKVer.h>
 
-1513413695 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\error.h
+1513784061 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\error.h
 	"Lexeme.h"
 
 1513320370 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\lexeme.h
@@ -25,18 +26,18 @@
 1513320370 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\syntax.h
 	"Lexeme.h"
 
-1513513545 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\io.h
+1513838891 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\io.h
 	"Syntax.h"
 	"CodeGen.h"
 	"stdio.h"
 	<string>
 
-1513520075 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\codegen.h
+1513783380 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\codegen.h
 
 1513320370 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\stdafx.cpp
 	"stdafx.h"
 
-1513520287 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\codegen.cpp
+1513836488 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\codegen.cpp
 	"stdafx.h"
 	<cstring>
 	<string>
@@ -46,11 +47,11 @@
 	"IO.h"
 	"SymTable.h"
 
-1513516856 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\symtable.h
+1513839851 c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\symtable.h
 	"Lexeme.h"
 	"Syntax.h"
 
-1513513112 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\io.cpp
+1513839859 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\io.cpp
 	"stdafx.h"
 	"direct.h"
 	<stdio.h>
@@ -63,7 +64,7 @@
 	"SymTable.h"
 	"CodeGen.h"
 
-1513493791 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\lexicalanalyzer.cpp
+1513773799 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\lexicalanalyzer.cpp
 	"stdafx.h"
 	<stdio.h>
 	<exception>
@@ -72,7 +73,7 @@
 	"Lexeme.h"
 	"Error.h"
 
-1513499388 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\symtable.cpp
+1513837842 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\symtable.cpp
 	<cstring>
 	<stdio.h>
 	"stdafx.h"
@@ -80,7 +81,7 @@
 	"Error.h"
 	<string.h>
 
-1513519978 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\syntaxanalyzer.cpp
+1513864884 source:c:\users\felixfelicis\documents\visual studio 2017\projects\lexicalanalyzer\c0_compiler\syntaxanalyzer.cpp
 	"stdafx.h"
 	<stdio.h>
 	<stdlib.h>

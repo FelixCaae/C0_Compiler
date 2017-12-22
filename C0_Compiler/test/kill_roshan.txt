@@ -1,0 +1,232 @@
+int seed(int r)
+{
+	_randomseed = r;
+}
+int random(int m)
+{
+	_randomseed = mod(_randomseed * 17 + 139, 256);
+	return (_randomseed*m / 256);
+}
+int damage(int atk, int def)
+{
+	const int a = 8, f = 6, m = 10, c = 15;
+	if (random(c) == 0)
+	{
+		atk = atk * 2/3;
+		printf("critical attack!");
+	}
+	if (random(m) == 0)
+	{
+		atk = 0;
+		printf("miss");
+	}
+	atk = atk + random(atk / a);
+	return   (atk * 100 / (100 + def*f));
+}
+int notend(int hp1, int hp2)
+{
+	if (hp1 <= 0)return (0);
+	if (hp2 <= 0)return (0);
+	return (1);
+}
+int battle(int hero_pick, int hero_hp, int hero_atk, int hero_def,
+	int enemy_hp, int enemy_atk, int enemy_def)
+{
+    const int itemL=4;
+	const int stunL=3;
+	const int lightenL=80;
+	const int criticalAtk=9;
+	const int healPoints=180;
+	const int armorBonus=2;
+	const int shadowAtk=30;
+	int showhelp;
+	int action_pick;
+	int enemy_dmg, dmg;
+	int stun,itemC;
+	int p;
+	stun = 0;
+	showhelp = 1;
+	itemC=itemL;
+	do
+	{
+		printf("Your Hp", hero_hp);
+		printf("Enemy Hp", enemy_hp);
+		if(itemC>0)
+		{
+		itemC=itemC-1;
+		if(itemC==0)
+		{
+		printf("Get New Item!");
+		}
+		}
+		do
+		{
+
+			if (showhelp)
+			{
+				printf("Help:");
+				printf("Action(input a number between 1-3):");
+				printf("Attack with weapon  -1");
+				printf("Use powerful skills -2 ");
+				printf("Use helpful item    -3");
+				showhelp = 0;
+			}
+			scanf(action_pick);
+		} while (between(action_pick, 1, 3) != 1);
+		enemy_dmg=0;
+		dmg=0;
+		if (stun == 0)
+		{
+			enemy_dmg = damage(enemy_atk, hero_def);
+		}
+		if (stun>0)
+		{
+		    
+			stun = stun - 1;
+		}
+		if(action_pick==3)
+		{
+		if(itemC!=0)
+		{
+		printf("Have to item to use!");
+		action_pick=1;
+		}
+		}
+		if (action_pick == 1)
+		{
+			dmg = damage(hero_atk, enemy_def);
+		}
+		if (action_pick == 2)
+		{
+			switch (hero_pick)
+			{
+			case 2:
+			{
+				hero_def = hero_def + armorBonus;
+				printf("You get armor point:");
+				printf(armorBonus);
+			}
+			case 1:
+			{
+				printf("Skill - KillMaster");
+				p = random(6);
+				dmg=damage(hero_atk,enemy_def);
+				if (p == 0)
+				{
+					dmg = dmg*criticalAtk/2;
+					enemy_dmg=enemy_dmg-dmg/5;
+				}
+			}
+			case 3:
+			{
+				printf("Skill - Lightening bolt");
+				dmg = lightenL + random(lightenL);
+			}
+			}
+		}
+		if (action_pick == 3)
+		{
+			switch (random(8))
+			{
+			case 0:
+			{
+				enemy_dmg = enemy_dmg - healPoints;
+				printf("You get some hp points");
+			}
+			case 1:
+			{
+				printf("--- STUN!!");
+				dmg=25;
+				stun = stunL;
+			}
+			case 2: {
+				printf("You attack in shadow!");
+				if (enemy_dmg>0)enemy_dmg = 0;
+				dmg = damage(hero_atk+shadowAtk,enemy_def-2);
+			}
+			case 3:{
+				printf("You rebounce this attack");
+				dmg=enemy_dmg;
+				enemy_dmg=0;
+			}
+			case 4:{
+				printf("You attack twice quickly");
+				dmg=damage(hero_atk,enemy_def)+damage(hero_atk,enemy_def);
+			}
+			case 5:{
+				printf("Soul strike!");
+				dmg=650-hero_atk;
+				if(dmg<0)dmg=0;
+				if(dmg>350)dmg=350;
+			}
+			case 6:{
+				printf("Evil exchange");
+				enemy_atk=enemy_atk+10;
+				hero_hp=hero_hp+250;
+			}
+			case 7:{
+				printf("Grasp");
+				{
+				stun=2;
+				dmg=100;
+				}
+			}
+			}
+			itemC=itemL+random(itemL);
+		}
+		printf("You loses hp:", enemy_dmg);
+		printf("Roshan loses hp:", dmg);
+		hero_hp = hero_hp - enemy_dmg;
+		enemy_hp = enemy_hp - dmg;
+	} while (notend(hero_hp, enemy_hp));
+
+	if (hero_hp > 0)return (1);
+	return (0);
+}
+void test()
+{
+	int hero_hp, hero_atk, hero_def;
+	int enemy_hp, enemy_atk, enemy_def;
+	int hero_pick;
+	int result;
+	testRandom();
+	printf("Test 7:Kill Roshan ,the big Monster begin");
+	printf("Good luck!Have fun");
+	enemy_hp = 2000;
+	enemy_atk = 45;
+	enemy_def = 5;
+	do {
+		printf("Action(input a number between 1-3):");
+		printf("Phantom Assasin - 1");
+		printf("Dragon Knight -2");
+		printf("Blue Panda -3");
+		scanf(hero_pick);
+		printf(between(hero_pick, 1, 3));
+	} while (between(hero_pick, 1, 3) != 1)
+		if (hero_pick == 1)
+		{
+			hero_hp = 630;
+			hero_atk = 82;
+			hero_def = 4;
+		}
+	if (hero_pick == 2)
+	{
+		hero_hp = 750;
+		hero_atk = 73;
+		hero_def = 9;
+	}
+	if (hero_pick == 3)
+	{
+		hero_hp = 600;
+		hero_atk = 90;
+		hero_def = 6;
+	}
+	result = battle(hero_pick, hero_hp, hero_atk, hero_def, enemy_hp, enemy_atk, enemy_def);
+	if (result != 1) { printf("You lose in the battle with Roshan!"); }
+	if (result == 1) { printf("You won in the battle with Roshan!"); }
+	printf("Test 7 is ok");
+}
+void main()
+{
+test();
+}

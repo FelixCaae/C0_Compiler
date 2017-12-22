@@ -1,0 +1,3370 @@
+<program>
+  <varDeclGroup>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> _randomseed <\identifier>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> seed <\identifier>
+    <\retract>
+  <\varDeclGroup>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <seperator> seed <\seperator>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> r <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> _randomseed <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> r <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> mod <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> a <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> b <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> a <\identifier>
+                <\factor>
+              <\term>
+            <seperator> - <\seperator>
+              <term>
+                <factor>
+                <identifier> a <\identifier>
+                <\factor>
+              <seperator> / <\seperator>
+                <factor>
+                <identifier> b <\identifier>
+                <\factor>
+              <seperator> * <\seperator>
+                <factor>
+                <identifier> b <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> random <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> m <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> _randomseed <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> mod <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> _randomseed <\identifier>
+                          <\factor>
+                        <seperator> * <\seperator>
+                          <factor>
+                          <unsignedInt> 17 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <seperator> + <\seperator>
+                        <term>
+                          <factor>
+                          <unsignedInt> 139 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 256 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> _randomseed <\identifier>
+                <\factor>
+              <seperator> * <\seperator>
+                <factor>
+                <identifier> m <\identifier>
+                <\factor>
+              <seperator> / <\seperator>
+                <factor>
+                <unsignedInt> 256 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> between <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> num <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> lower <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> upper <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> result <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> result <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> num <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> > <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> upper <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <identifier> result <\identifier>
+              <assignStat>
+              <seperator> = <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 0 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <\assignStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> num <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> < <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> lower <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <identifier> result <\identifier>
+              <assignStat>
+              <seperator> = <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 0 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <\assignStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> result <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> damage <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> atk <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> def <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <constDeclGroup>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 8 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> f <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 6 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> m <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 10 <\unsignedInt>
+        <seperator> , <\seperator>
+        <identifier> c <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 15 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <\constDeclGroup>
+      <statements>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> random <\identifier>
+                    <funCallStat>
+                    <seperator> ( <\seperator>
+                      <argumentList>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> c <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <\argumentList>
+                    <seperator> ) <\seperator>
+                    <\funCallStat>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 0 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                <identifier> atk <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> atk <\identifier>
+                        <\factor>
+                      <seperator> * <\seperator>
+                        <factor>
+                        <unsignedInt> 2 <\unsignedInt>
+                        <\factor>
+                      <seperator> / <\seperator>
+                        <factor>
+                        <unsignedInt> 3 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "critical attack!" <\string>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> random <\identifier>
+                    <funCallStat>
+                    <seperator> ( <\seperator>
+                      <argumentList>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> m <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <\argumentList>
+                    <seperator> ) <\seperator>
+                    <\funCallStat>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 0 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                <identifier> atk <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 0 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "miss" <\string>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+        <identifier> atk <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> atk <\identifier>
+                <\factor>
+              <\term>
+            <seperator> + <\seperator>
+              <term>
+                <factor>
+                <identifier> random <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> atk <\identifier>
+                          <\factor>
+                        <seperator> / <\seperator>
+                          <factor>
+                          <identifier> a <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> atk <\identifier>
+                <\factor>
+              <seperator> * <\seperator>
+                <factor>
+                <unsignedInt> 100 <\unsignedInt>
+                <\factor>
+              <seperator> / <\seperator>
+                <factor>
+                <seperator> ( <\seperator>
+                  <expression>
+                    <term>
+                      <factor>
+                      <unsignedInt> 100 <\unsignedInt>
+                      <\factor>
+                    <\term>
+                  <seperator> + <\seperator>
+                    <term>
+                      <factor>
+                      <identifier> def <\identifier>
+                      <\factor>
+                    <seperator> * <\seperator>
+                      <factor>
+                      <identifier> f <\identifier>
+                      <\factor>
+                    <\term>
+                  <\expression>
+                <seperator> ) <\seperator>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> notend <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> hp1 <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> hp2 <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> hp1 <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> <= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 0 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 0 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> hp2 <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> <= <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 0 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 0 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+    <type>
+    <keyword> int <\keyword>
+    <\type>
+  <identifier> battle <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> hero_pick <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> hero_hp <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> hero_atk <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> hero_def <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> enemy_hp <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> enemy_atk <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> enemy_def <\identifier>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <constDeclGroup>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> iteml <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 4 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> stunl <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 3 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> lightenl <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 80 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> criticalatk <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 9 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> healpoints <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 180 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> armorbonus <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 2 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> shadowatk <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 30 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <\constDeclGroup>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> showhelp <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> action_pick <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> enemy_dmg <\identifier>
+        <seperator> , <\seperator>
+        <identifier> dmg <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> stun <\identifier>
+        <seperator> , <\seperator>
+        <identifier> itemc <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> p <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> stun <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 0 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> showhelp <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> itemc <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> iteml <\identifier>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <loopStat>
+          <keyword> do <\keyword>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "Your Hp" <\string>
+                  <seperator> , <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> hero_hp <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "Enemy Hp" <\string>
+                  <seperator> , <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> enemy_hp <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> itemc <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> > <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 0 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                        <identifier> itemc <\identifier>
+                          <assignStat>
+                          <seperator> = <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> itemc <\identifier>
+                                <\factor>
+                              <\term>
+                            <seperator> - <\seperator>
+                              <term>
+                                <factor>
+                                <unsignedInt> 1 <\unsignedInt>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <\assignStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                        <statement>
+                          <constant>
+                          <keyword> if <\keyword>
+                          <seperator> ( <\seperator>
+                            <condition>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <identifier> itemc <\identifier>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                              <identifier>
+                              <seperator> == <\seperator>
+                              <\identifier>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <unsignedInt> 0 <\unsignedInt>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                            <\condition>
+                          <seperator> ) <\seperator>
+                            <statement>
+                            <seperator> { <\seperator>
+                              <statements>
+                                <statement>
+                                  <writeStat>
+                                  <keyword> printf <\keyword>
+                                  <seperator> ( <\seperator>
+                                  <string> "Get New Item!" <\string>
+                                  <seperator> ) <\seperator>
+                                  <\writeStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                              <\statements>
+                            <seperator> } <\seperator>
+                            <\statement>
+                          <\constant>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
+                <\statement>
+                <statement>
+                  <loopStat>
+                  <keyword> do <\keyword>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                          <constant>
+                          <keyword> if <\keyword>
+                          <seperator> ( <\seperator>
+                            <condition>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <identifier> showhelp <\identifier>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                            <\condition>
+                          <seperator> ) <\seperator>
+                            <statement>
+                            <seperator> { <\seperator>
+                              <statements>
+                                <statement>
+                                  <writeStat>
+                                  <keyword> printf <\keyword>
+                                  <seperator> ( <\seperator>
+                                  <string> "Help:" <\string>
+                                  <seperator> ) <\seperator>
+                                  <\writeStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                                <statement>
+                                  <writeStat>
+                                  <keyword> printf <\keyword>
+                                  <seperator> ( <\seperator>
+                                  <string> "Action(input a number between 1-3):" <\string>
+                                  <seperator> ) <\seperator>
+                                  <\writeStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                                <statement>
+                                  <writeStat>
+                                  <keyword> printf <\keyword>
+                                  <seperator> ( <\seperator>
+                                  <string> "Attack with weapon  -1" <\string>
+                                  <seperator> ) <\seperator>
+                                  <\writeStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                                <statement>
+                                  <writeStat>
+                                  <keyword> printf <\keyword>
+                                  <seperator> ( <\seperator>
+                                  <string> "Use powerful skills -2 " <\string>
+                                  <seperator> ) <\seperator>
+                                  <\writeStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                                <statement>
+                                  <writeStat>
+                                  <keyword> printf <\keyword>
+                                  <seperator> ( <\seperator>
+                                  <string> "Use helpful item    -3" <\string>
+                                  <seperator> ) <\seperator>
+                                  <\writeStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                                <statement>
+                                <identifier> showhelp <\identifier>
+                                  <assignStat>
+                                  <seperator> = <\seperator>
+                                    <expression>
+                                      <term>
+                                        <factor>
+                                        <unsignedInt> 0 <\unsignedInt>
+                                        <\factor>
+                                      <\term>
+                                    <\expression>
+                                  <\assignStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                              <\statements>
+                            <seperator> } <\seperator>
+                            <\statement>
+                          <\constant>
+                        <\statement>
+                        <statement>
+                          <readStat>
+                          <keyword> scanf <\keyword>
+                          <seperator> ( <\seperator>
+                          <identifier> action_pick <\identifier>
+                          <seperator> ) <\seperator>
+                          <\readStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <keyword> while <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> between <\identifier>
+                            <funCallStat>
+                            <seperator> ( <\seperator>
+                              <argumentList>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> action_pick <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <seperator> , <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <unsignedInt> 1 <\unsignedInt>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <seperator> , <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <unsignedInt> 3 <\unsignedInt>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <\argumentList>
+                            <seperator> ) <\seperator>
+                            <\funCallStat>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> != <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 1 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                  <\loopStat>
+                <\statement>
+                <statement>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> enemy_dmg <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 0 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> dmg <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 0 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> stun <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> == <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 0 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                        <identifier> enemy_dmg <\identifier>
+                          <assignStat>
+                          <seperator> = <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> damage <\identifier>
+                                  <funCallStat>
+                                  <seperator> ( <\seperator>
+                                    <argumentList>
+                                      <expression>
+                                        <term>
+                                          <factor>
+                                          <identifier> enemy_atk <\identifier>
+                                          <\factor>
+                                        <\term>
+                                      <\expression>
+                                    <seperator> , <\seperator>
+                                      <expression>
+                                        <term>
+                                          <factor>
+                                          <identifier> hero_def <\identifier>
+                                          <\factor>
+                                        <\term>
+                                      <\expression>
+                                    <\argumentList>
+                                  <seperator> ) <\seperator>
+                                  <\funCallStat>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <\assignStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
+                <\statement>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> stun <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> > <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 0 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                        <identifier> stun <\identifier>
+                          <assignStat>
+                          <seperator> = <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> stun <\identifier>
+                                <\factor>
+                              <\term>
+                            <seperator> - <\seperator>
+                              <term>
+                                <factor>
+                                <unsignedInt> 1 <\unsignedInt>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <\assignStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
+                <\statement>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> action_pick <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> == <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 3 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                          <constant>
+                          <keyword> if <\keyword>
+                          <seperator> ( <\seperator>
+                            <condition>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <identifier> itemc <\identifier>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                              <identifier>
+                              <seperator> != <\seperator>
+                              <\identifier>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <unsignedInt> 0 <\unsignedInt>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                            <\condition>
+                          <seperator> ) <\seperator>
+                            <statement>
+                            <seperator> { <\seperator>
+                              <statements>
+                                <statement>
+                                  <writeStat>
+                                  <keyword> printf <\keyword>
+                                  <seperator> ( <\seperator>
+                                  <string> "Have to item to use!" <\string>
+                                  <seperator> ) <\seperator>
+                                  <\writeStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                                <statement>
+                                <identifier> action_pick <\identifier>
+                                  <assignStat>
+                                  <seperator> = <\seperator>
+                                    <expression>
+                                      <term>
+                                        <factor>
+                                        <unsignedInt> 1 <\unsignedInt>
+                                        <\factor>
+                                      <\term>
+                                    <\expression>
+                                  <\assignStat>
+                                <seperator> ; <\seperator>
+                                <\statement>
+                              <\statements>
+                            <seperator> } <\seperator>
+                            <\statement>
+                          <\constant>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
+                <\statement>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> action_pick <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> == <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 1 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                        <identifier> dmg <\identifier>
+                          <assignStat>
+                          <seperator> = <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> damage <\identifier>
+                                  <funCallStat>
+                                  <seperator> ( <\seperator>
+                                    <argumentList>
+                                      <expression>
+                                        <term>
+                                          <factor>
+                                          <identifier> hero_atk <\identifier>
+                                          <\factor>
+                                        <\term>
+                                      <\expression>
+                                    <seperator> , <\seperator>
+                                      <expression>
+                                        <term>
+                                          <factor>
+                                          <identifier> enemy_def <\identifier>
+                                          <\factor>
+                                        <\term>
+                                      <\expression>
+                                    <\argumentList>
+                                  <seperator> ) <\seperator>
+                                  <\funCallStat>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <\assignStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
+                <\statement>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> action_pick <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> == <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 2 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                          <switchStat>
+                          <keyword> switch <\keyword>
+                          <seperator> ( <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> hero_pick <\identifier>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <seperator> ) <\seperator>
+                          <seperator> { <\seperator>
+                            <switchTable>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 2 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                    <identifier> hero_def <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> hero_def <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <seperator> + <\seperator>
+                                          <term>
+                                            <factor>
+                                            <identifier> armorbonus <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "You get armor point:" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> armorbonus <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 1 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "Skill - KillMaster" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> p <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> random <\identifier>
+                                              <funCallStat>
+                                              <seperator> ( <\seperator>
+                                                <argumentList>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <unsignedInt> 6 <\unsignedInt>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <\argumentList>
+                                              <seperator> ) <\seperator>
+                                              <\funCallStat>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> damage <\identifier>
+                                              <funCallStat>
+                                              <seperator> ( <\seperator>
+                                                <argumentList>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> hero_atk <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <seperator> , <\seperator>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> enemy_def <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <\argumentList>
+                                              <seperator> ) <\seperator>
+                                              <\funCallStat>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                      <constant>
+                                      <keyword> if <\keyword>
+                                      <seperator> ( <\seperator>
+                                        <condition>
+                                          <expression>
+                                            <term>
+                                              <factor>
+                                              <identifier> p <\identifier>
+                                              <\factor>
+                                            <\term>
+                                          <\expression>
+                                          <identifier>
+                                          <seperator> == <\seperator>
+                                          <\identifier>
+                                          <expression>
+                                            <term>
+                                              <factor>
+                                              <unsignedInt> 0 <\unsignedInt>
+                                              <\factor>
+                                            <\term>
+                                          <\expression>
+                                        <\condition>
+                                      <seperator> ) <\seperator>
+                                        <statement>
+                                        <seperator> { <\seperator>
+                                          <statements>
+                                            <statement>
+                                            <identifier> dmg <\identifier>
+                                              <assignStat>
+                                              <seperator> = <\seperator>
+                                                <expression>
+                                                  <term>
+                                                    <factor>
+                                                    <identifier> dmg <\identifier>
+                                                    <\factor>
+                                                  <seperator> * <\seperator>
+                                                    <factor>
+                                                    <identifier> criticalatk <\identifier>
+                                                    <\factor>
+                                                  <seperator> / <\seperator>
+                                                    <factor>
+                                                    <unsignedInt> 2 <\unsignedInt>
+                                                    <\factor>
+                                                  <\term>
+                                                <\expression>
+                                              <\assignStat>
+                                            <seperator> ; <\seperator>
+                                            <\statement>
+                                            <statement>
+                                            <identifier> enemy_dmg <\identifier>
+                                              <assignStat>
+                                              <seperator> = <\seperator>
+                                                <expression>
+                                                  <term>
+                                                    <factor>
+                                                    <identifier> enemy_dmg <\identifier>
+                                                    <\factor>
+                                                  <\term>
+                                                <seperator> - <\seperator>
+                                                  <term>
+                                                    <factor>
+                                                    <identifier> dmg <\identifier>
+                                                    <\factor>
+                                                  <seperator> / <\seperator>
+                                                    <factor>
+                                                    <unsignedInt> 5 <\unsignedInt>
+                                                    <\factor>
+                                                  <\term>
+                                                <\expression>
+                                              <\assignStat>
+                                            <seperator> ; <\seperator>
+                                            <\statement>
+                                          <\statements>
+                                        <seperator> } <\seperator>
+                                        <\statement>
+                                      <\constant>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 3 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "Skill - Lightening bolt" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> lightenl <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <seperator> + <\seperator>
+                                          <term>
+                                            <factor>
+                                            <identifier> random <\identifier>
+                                              <funCallStat>
+                                              <seperator> ( <\seperator>
+                                                <argumentList>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> lightenl <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <\argumentList>
+                                              <seperator> ) <\seperator>
+                                              <\funCallStat>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                            <\switchTable>
+                          <seperator> } <\seperator>
+                          <\switchStat>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
+                <\statement>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> action_pick <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>
+                      <seperator> == <\seperator>
+                      <\identifier>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 3 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\condition>
+                  <seperator> ) <\seperator>
+                    <statement>
+                    <seperator> { <\seperator>
+                      <statements>
+                        <statement>
+                          <switchStat>
+                          <keyword> switch <\keyword>
+                          <seperator> ( <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> random <\identifier>
+                                  <funCallStat>
+                                  <seperator> ( <\seperator>
+                                    <argumentList>
+                                      <expression>
+                                        <term>
+                                          <factor>
+                                          <unsignedInt> 8 <\unsignedInt>
+                                          <\factor>
+                                        <\term>
+                                      <\expression>
+                                    <\argumentList>
+                                  <seperator> ) <\seperator>
+                                  <\funCallStat>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <seperator> ) <\seperator>
+                          <seperator> { <\seperator>
+                            <switchTable>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 0 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                    <identifier> enemy_dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> enemy_dmg <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <seperator> - <\seperator>
+                                          <term>
+                                            <factor>
+                                            <identifier> healpoints <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "You get some hp points" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 1 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "--- STUN!!" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <unsignedInt> 25 <\unsignedInt>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> stun <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> stunl <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 2 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "You attack in shadow!" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                      <constant>
+                                      <keyword> if <\keyword>
+                                      <seperator> ( <\seperator>
+                                        <condition>
+                                          <expression>
+                                            <term>
+                                              <factor>
+                                              <identifier> enemy_dmg <\identifier>
+                                              <\factor>
+                                            <\term>
+                                          <\expression>
+                                          <identifier>
+                                          <seperator> > <\seperator>
+                                          <\identifier>
+                                          <expression>
+                                            <term>
+                                              <factor>
+                                              <unsignedInt> 0 <\unsignedInt>
+                                              <\factor>
+                                            <\term>
+                                          <\expression>
+                                        <\condition>
+                                      <seperator> ) <\seperator>
+                                        <statement>
+                                        <identifier> enemy_dmg <\identifier>
+                                          <assignStat>
+                                          <seperator> = <\seperator>
+                                            <expression>
+                                              <term>
+                                                <factor>
+                                                <unsignedInt> 0 <\unsignedInt>
+                                                <\factor>
+                                              <\term>
+                                            <\expression>
+                                          <\assignStat>
+                                        <seperator> ; <\seperator>
+                                        <\statement>
+                                      <\constant>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> damage <\identifier>
+                                              <funCallStat>
+                                              <seperator> ( <\seperator>
+                                                <argumentList>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> hero_atk <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <seperator> + <\seperator>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> shadowatk <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <seperator> , <\seperator>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> enemy_def <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <seperator> - <\seperator>
+                                                    <term>
+                                                      <factor>
+                                                      <unsignedInt> 2 <\unsignedInt>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <\argumentList>
+                                              <seperator> ) <\seperator>
+                                              <\funCallStat>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 3 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "You rebounce this attack" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> enemy_dmg <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> enemy_dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <unsignedInt> 0 <\unsignedInt>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 4 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "You attack twice quickly" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> damage <\identifier>
+                                              <funCallStat>
+                                              <seperator> ( <\seperator>
+                                                <argumentList>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> hero_atk <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <seperator> , <\seperator>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> enemy_def <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <\argumentList>
+                                              <seperator> ) <\seperator>
+                                              <\funCallStat>
+                                            <\factor>
+                                          <\term>
+                                        <seperator> + <\seperator>
+                                          <term>
+                                            <factor>
+                                            <identifier> damage <\identifier>
+                                              <funCallStat>
+                                              <seperator> ( <\seperator>
+                                                <argumentList>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> hero_atk <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <seperator> , <\seperator>
+                                                  <expression>
+                                                    <term>
+                                                      <factor>
+                                                      <identifier> enemy_def <\identifier>
+                                                      <\factor>
+                                                    <\term>
+                                                  <\expression>
+                                                <\argumentList>
+                                              <seperator> ) <\seperator>
+                                              <\funCallStat>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 5 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "Soul strike!" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> dmg <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <unsignedInt> 650 <\unsignedInt>
+                                            <\factor>
+                                          <\term>
+                                        <seperator> - <\seperator>
+                                          <term>
+                                            <factor>
+                                            <identifier> hero_atk <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                      <constant>
+                                      <keyword> if <\keyword>
+                                      <seperator> ( <\seperator>
+                                        <condition>
+                                          <expression>
+                                            <term>
+                                              <factor>
+                                              <identifier> dmg <\identifier>
+                                              <\factor>
+                                            <\term>
+                                          <\expression>
+                                          <identifier>
+                                          <seperator> < <\seperator>
+                                          <\identifier>
+                                          <expression>
+                                            <term>
+                                              <factor>
+                                              <unsignedInt> 0 <\unsignedInt>
+                                              <\factor>
+                                            <\term>
+                                          <\expression>
+                                        <\condition>
+                                      <seperator> ) <\seperator>
+                                        <statement>
+                                        <identifier> dmg <\identifier>
+                                          <assignStat>
+                                          <seperator> = <\seperator>
+                                            <expression>
+                                              <term>
+                                                <factor>
+                                                <unsignedInt> 0 <\unsignedInt>
+                                                <\factor>
+                                              <\term>
+                                            <\expression>
+                                          <\assignStat>
+                                        <seperator> ; <\seperator>
+                                        <\statement>
+                                      <\constant>
+                                    <\statement>
+                                    <statement>
+                                      <constant>
+                                      <keyword> if <\keyword>
+                                      <seperator> ( <\seperator>
+                                        <condition>
+                                          <expression>
+                                            <term>
+                                              <factor>
+                                              <identifier> dmg <\identifier>
+                                              <\factor>
+                                            <\term>
+                                          <\expression>
+                                          <identifier>
+                                          <seperator> > <\seperator>
+                                          <\identifier>
+                                          <expression>
+                                            <term>
+                                              <factor>
+                                              <unsignedInt> 350 <\unsignedInt>
+                                              <\factor>
+                                            <\term>
+                                          <\expression>
+                                        <\condition>
+                                      <seperator> ) <\seperator>
+                                        <statement>
+                                        <identifier> dmg <\identifier>
+                                          <assignStat>
+                                          <seperator> = <\seperator>
+                                            <expression>
+                                              <term>
+                                                <factor>
+                                                <unsignedInt> 350 <\unsignedInt>
+                                                <\factor>
+                                              <\term>
+                                            <\expression>
+                                          <\assignStat>
+                                        <seperator> ; <\seperator>
+                                        <\statement>
+                                      <\constant>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 6 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "Evil exchange" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> enemy_atk <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> enemy_atk <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <seperator> + <\seperator>
+                                          <term>
+                                            <factor>
+                                            <unsignedInt> 10 <\unsignedInt>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <identifier> hero_hp <\identifier>
+                                      <assignStat>
+                                      <seperator> = <\seperator>
+                                        <expression>
+                                          <term>
+                                            <factor>
+                                            <identifier> hero_hp <\identifier>
+                                            <\factor>
+                                          <\term>
+                                        <seperator> + <\seperator>
+                                          <term>
+                                            <factor>
+                                            <unsignedInt> 250 <\unsignedInt>
+                                            <\factor>
+                                          <\term>
+                                        <\expression>
+                                      <\assignStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                              <subSwitchStat>
+                              <keyword> case <\keyword>
+                                <constant>
+                                <unsignedInt> 7 <\unsignedInt>
+                                <\constant>
+                              <seperator> : <\seperator>
+                                <statement>
+                                <seperator> { <\seperator>
+                                  <statements>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "Grasp" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                    <statement>
+                                    <seperator> { <\seperator>
+                                      <statements>
+                                        <statement>
+                                        <identifier> stun <\identifier>
+                                          <assignStat>
+                                          <seperator> = <\seperator>
+                                            <expression>
+                                              <term>
+                                                <factor>
+                                                <unsignedInt> 2 <\unsignedInt>
+                                                <\factor>
+                                              <\term>
+                                            <\expression>
+                                          <\assignStat>
+                                        <seperator> ; <\seperator>
+                                        <\statement>
+                                        <statement>
+                                        <identifier> dmg <\identifier>
+                                          <assignStat>
+                                          <seperator> = <\seperator>
+                                            <expression>
+                                              <term>
+                                                <factor>
+                                                <unsignedInt> 100 <\unsignedInt>
+                                                <\factor>
+                                              <\term>
+                                            <\expression>
+                                          <\assignStat>
+                                        <seperator> ; <\seperator>
+                                        <\statement>
+                                      <\statements>
+                                    <seperator> } <\seperator>
+                                    <\statement>
+                                  <\statements>
+                                <seperator> } <\seperator>
+                                <\statement>
+                              <\subSwitchStat>
+                            <\switchTable>
+                          <seperator> } <\seperator>
+                          <\switchStat>
+                        <\statement>
+                        <statement>
+                        <identifier> itemc <\identifier>
+                          <assignStat>
+                          <seperator> = <\seperator>
+                            <expression>
+                              <term>
+                                <factor>
+                                <identifier> iteml <\identifier>
+                                <\factor>
+                              <\term>
+                            <seperator> + <\seperator>
+                              <term>
+                                <factor>
+                                <identifier> random <\identifier>
+                                  <funCallStat>
+                                  <seperator> ( <\seperator>
+                                    <argumentList>
+                                      <expression>
+                                        <term>
+                                          <factor>
+                                          <identifier> iteml <\identifier>
+                                          <\factor>
+                                        <\term>
+                                      <\expression>
+                                    <\argumentList>
+                                  <seperator> ) <\seperator>
+                                  <\funCallStat>
+                                <\factor>
+                              <\term>
+                            <\expression>
+                          <\assignStat>
+                        <seperator> ; <\seperator>
+                        <\statement>
+                      <\statements>
+                    <seperator> } <\seperator>
+                    <\statement>
+                  <\constant>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "You loses hp:" <\string>
+                  <seperator> , <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> enemy_dmg <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "Roshan loses hp:" <\string>
+                  <seperator> , <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> dmg <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> hero_hp <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> hero_hp <\identifier>
+                        <\factor>
+                      <\term>
+                    <seperator> - <\seperator>
+                      <term>
+                        <factor>
+                        <identifier> enemy_dmg <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> enemy_hp <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> enemy_hp <\identifier>
+                        <\factor>
+                      <\term>
+                    <seperator> - <\seperator>
+                      <term>
+                        <factor>
+                        <identifier> dmg <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <keyword> while <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> notend <\identifier>
+                    <funCallStat>
+                    <seperator> ( <\seperator>
+                      <argumentList>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> hero_hp <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> enemy_hp <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <\argumentList>
+                    <seperator> ) <\seperator>
+                    <\funCallStat>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+          <\loopStat>
+        <\statement>
+        <statement>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> hero_hp <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> > <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 0 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 1 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <returnStat>
+          <keyword> return <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 0 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\returnStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> test <\identifier>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> hero_hp <\identifier>
+        <seperator> , <\seperator>
+        <identifier> hero_atk <\identifier>
+        <seperator> , <\seperator>
+        <identifier> hero_def <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> enemy_hp <\identifier>
+        <seperator> , <\seperator>
+        <identifier> enemy_atk <\identifier>
+        <seperator> , <\seperator>
+        <identifier> enemy_def <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> hero_pick <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> result <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "Test :Kill Roshan ,the big Monster begin" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "Good luck!Have fun" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> enemy_hp <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 2000 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> enemy_atk <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 45 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> enemy_def <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 5 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <loopStat>
+          <keyword> do <\keyword>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "Action(input a number between 1-3):" <\string>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "Phantom Assasin - 1" <\string>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "Dragon Knight -2" <\string>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "Blue Panda -3" <\string>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <readStat>
+                  <keyword> scanf <\keyword>
+                  <seperator> ( <\seperator>
+                  <identifier> hero_pick <\identifier>
+                  <seperator> ) <\seperator>
+                  <\readStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> between <\identifier>
+                          <funCallStat>
+                          <seperator> ( <\seperator>
+                            <argumentList>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <identifier> hero_pick <\identifier>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                            <seperator> , <\seperator>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <unsignedInt> 1 <\unsignedInt>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                            <seperator> , <\seperator>
+                              <expression>
+                                <term>
+                                  <factor>
+                                  <unsignedInt> 3 <\unsignedInt>
+                                  <\factor>
+                                <\term>
+                              <\expression>
+                            <\argumentList>
+                          <seperator> ) <\seperator>
+                          <\funCallStat>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <keyword> while <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> between <\identifier>
+                    <funCallStat>
+                    <seperator> ( <\seperator>
+                      <argumentList>
+                        <expression>
+                          <term>
+                            <factor>
+                            <identifier> hero_pick <\identifier>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <unsignedInt> 1 <\unsignedInt>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <seperator> , <\seperator>
+                        <expression>
+                          <term>
+                            <factor>
+                            <unsignedInt> 3 <\unsignedInt>
+                            <\factor>
+                          <\term>
+                        <\expression>
+                      <\argumentList>
+                    <seperator> ) <\seperator>
+                    <\funCallStat>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> != <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 1 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+          <\loopStat>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> hero_pick <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 1 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                <identifier> hero_hp <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 630 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> hero_atk <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 82 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> hero_def <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 4 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> hero_pick <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 2 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                <identifier> hero_hp <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 750 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> hero_atk <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 73 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> hero_def <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 9 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> hero_pick <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 3 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                <identifier> hero_hp <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 600 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> hero_atk <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 90 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> hero_def <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <unsignedInt> 6 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+        <identifier> result <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> battle <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> hero_pick <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> hero_hp <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> hero_atk <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> hero_def <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> enemy_hp <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> enemy_atk <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> enemy_def <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> result <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> != <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 1 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "You lose in the battle with Roshan!" <\string>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> result <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <unsignedInt> 1 <\unsignedInt>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                  <writeStat>
+                  <keyword> printf <\keyword>
+                  <seperator> ( <\seperator>
+                  <string> "You won in the battle with Roshan!" <\string>
+                  <seperator> ) <\seperator>
+                  <\writeStat>
+                <seperator> ; <\seperator>
+                <\statement>
+              <\statements>
+            <seperator> } <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "Test 7 is ok" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <keyword> main <\keyword>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <statements>
+        <statement>
+        <identifier> test <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+      <\statements>
+    <\compoundStatement>
+  <seperator> } <\seperator>
+  <\funcDecl>
+<\program>
+<end> ÿ <\end>

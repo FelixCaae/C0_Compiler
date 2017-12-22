@@ -806,284 +806,38 @@ if_64:
 	call seed
 	call testrandom
 	print "Test 6 is ok"
-	int damage()
-	para int atk
-	para int def
-	const int a = 8
-	const int f = 6
-	const int m = 10
-	const int c = 15
-	push 15
-	call random
-	$tmp0 = RET
-	$tmp0 == 0
-	BNZ if_65
-	$tmp3 = atk * 4
-	atk = $tmp3 
-	print "critical attack!"
-if_65:
-	push 10
-	call random
-	$tmp4 = RET
-	$tmp4 == 0
-	BNZ if_66
-	atk = 0 
-	print "miss"
-if_66:
-	$tmp7 = atk / 8
-	push $tmp7
-	call random
-	$tmp8 = RET
-	$tmp9 = atk + $tmp8
-	atk = $tmp9 
-	$tmp11 = atk * 100
-	$tmp13 = def * 6
-	$tmp14 = 100 + $tmp13
-	$tmp15 = $tmp11 / $tmp14
-	ret $tmp15
-	int notend()
-	para int hp1
-	para int hp2
-	hp1 <= 0
-	BNZ if_67
-	ret 0
-if_67:
-	hp2 <= 0
-	BNZ if_68
-	ret 0
-if_68:
-	int battle()
-	para int hero_pick
-	para int hero_hp
-	para int hero_atk
-	para int hero_def
-	para int enemy_hp
-	para int enemy_atk
-	para int enemy_def
-	var int showhelp
-	var int action_pick
-	var int enemy_dmg
-	var int dmg
-	var int stun
-	stun = 0 
-	showhelp = 1 
-do_69:
-	print "Your Status:"
-	print "Hp"
-	print hero_hp
-	print "Enemy Status:"
-	print "Hp"
-	print enemy_hp
-do_70:
-	print "Action(input a number between 1-3):"
-	showhelp != 0
-	BNZ if_71
-	print "Help:"
-	print "Attack with weapon  - 1"
-	print "Use powerful skills -2 "
-	print "Use helpful item    -3"
-	showhelp = 0 
-if_71:
-	read action_pick
-	push action_pick
-	push 1
-	push 3
-	call between
-	$tmp6 = RET
-	$tmp6 != 1
-	BZ do_70
-	stun == 0
-	BNZ if_72
-	push enemy_atk
-	push hero_def
-	call damage
-	$tmp9 = RET
-	$tmp10 = hero_hp - $tmp9
-	hero_hp = $tmp10 
-if_72:
-	stun > 0
-	BNZ if_73
-	$tmp13 = stun - 1
-	stun = $tmp13 
-if_73:
-	action_pick == 1
-	BNZ if_74
-	push hero_atk
-	push enemy_def
-	call damage
-	$tmp15 = RET
-	$tmp16 = enemy_hp - $tmp15
-	enemy_hp = $tmp16 
-if_74:
-	action_pick == 2
-	BNZ if_75
-	2 == hero_pick
-	BNZ case_76_1
-	print "Skill - STUN!!"
-	stun = 2 
-	GOTO switch_76
-case_76_1:
-	1 == hero_pick
-	BNZ case_76_2
-	print "Skill - KillMaster"
-	$tmp22 = hero_atk * 3
-	$tmp23 = enemy_hp - $tmp22
-	enemy_hp = $tmp23 
-	GOTO switch_76
-case_76_2:
-	3 == hero_pick
-	BNZ case_76_3
-	print "Skill - Lightening bolt"
-	$tmp26 = enemy_hp - 120
-	enemy_hp = $tmp26 
-	GOTO switch_76
-case_76_3:
-switch_76:
-if_75:
-	action_pick == 3
-	BNZ if_77
-	push 4
-	call random
-	$tmp29 = RET
-	1 == $tmp29
-	BNZ case_78_1
-	print "Item - 1"
-	$tmp32 = hero_hp + 119
-	hero_hp = $tmp32 
-	GOTO switch_78
-case_78_1:
-	2 == $tmp29
-	BNZ case_78_2
-	print "Item - 2"
-	$tmp35 = hero_atk + 10
-	hero_atk = $tmp35 
-	GOTO switch_78
-case_78_2:
-	3 == $tmp29
-	BNZ case_78_3
-	print "Item - 3"
-	$tmp38 = enemy_def - 4
-	enemy_def = $tmp38 
-	GOTO switch_78
-case_78_3:
-	4 == $tmp29
-	BNZ case_78_4
-	print "Item failed"
-	GOTO switch_78
-case_78_4:
-switch_78:
-if_77:
-	push hero_hp
-	push enemy_hp
-	call notend
-	$tmp40 = RET
-	$tmp40 != 0
-	BZ do_69
-	hero_hp != 0
-	BNZ if_79
-	ret 1
-if_79:
-	ret 0
-	int test7()
-	var int hero_hp
-	var int hero_atk
-	var int hero_def
-	var int enemy_hp
-	var int enemy_atk
-	var int enemy_def
-	var int hero_pick
-	var int result
-	call testrandom
-	print "Test 7:Complete Dota begin"
-	print "Good luck!Have fun"
-	enemy_hp = 600 
-	enemy_atk = 45 
-	enemy_def = 2 
-do_80:
-	print "Action(input a number between 1-3):"
-	print "Phantom Assasin - 1"
-	print "Dragon Knight -2"
-	print "Blue Panda -3"
-	read hero_pick
-	push hero_pick
-	push 1
-	push 3
-	call between
-	$tmp5 = RET
-	print $tmp5
-	push hero_pick
-	push 1
-	push 3
-	call between
-	$tmp8 = RET
-	$tmp8 != 1
-	BZ do_80
-	hero_pick == 1
-	BNZ if_81
-	hero_hp = 530 
-	hero_atk = 50 
-	hero_def = 4 
-if_81:
-	hero_pick == 2
-	BNZ if_82
-	hero_hp = 580 
-	hero_atk = 53 
-	hero_def = 4 
-if_82:
-	hero_pick == 3
-	BNZ if_83
-	hero_hp = 580 
-	hero_atk = 51 
-	hero_def = 5 
-if_83:
-	push hero_pick
-	push hero_hp
-	push hero_atk
-	push hero_def
-	push enemy_hp
-	push enemy_atk
-	push enemy_def
-	call battle
-	$tmp22 = RET
-	result = $tmp22 
-	result != 1
-	BNZ if_84
-	print "fail"
-	ret
-if_84:
-	print "Test 7 is ok"
 	int test_switch()
 	var char a
 	var char b
 	a = 97 
 	b = 98 
 	98 == a
-	BNZ case_85_1
+	BNZ case_65_1
 	print "failed"
-	GOTO switch_85
-case_85_1:
+	GOTO switch_65
+case_65_1:
 	101 == a
-	BNZ case_85_2
+	BNZ case_65_2
 	print "failed"
-	GOTO switch_85
-case_85_2:
-switch_85:
+	GOTO switch_65
+case_65_2:
+switch_65:
 	97 == a
-	BNZ case_86_1
+	BNZ case_66_1
 	100 == b
-	BNZ case_87_1
+	BNZ case_67_1
 	print "failed"
-	GOTO switch_87
-case_87_1:
+	GOTO switch_67
+case_67_1:
 	98 == b
-	BNZ case_87_2
+	BNZ case_67_2
 	print "pass through"
-	GOTO switch_87
-case_87_2:
-switch_87:
-	GOTO switch_86
-case_86_1:
-switch_86:
+	GOTO switch_67
+case_67_2:
+switch_67:
+	GOTO switch_66
+case_66_1:
+switch_66:
 	void main()
 	call test_switch
 	print "This is a test program written with DO-WHILE grammar!"
@@ -1093,5 +847,4 @@ switch_86:
 	call test_condition
 	call test_expression
 	call functest
-	call test7
 	ret

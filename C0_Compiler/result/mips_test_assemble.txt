@@ -2800,715 +2800,6 @@ functest_end:
 	lw $ra,148($sp)
 	addi $sp,$sp,152
 	jr $ra
-damage:
-	subi $sp,$sp,88
-	sw $s0,52($sp)
-	sw $s1,56($sp)
-	sw $s2,60($sp)
-	sw $ra,84($sp)
-	addi $s0,$sp,0
-	sw $a0,0($s0)
-	addi $s0,$sp,4
-	sw $a1,0($s0)
-	li $a0,15
-	jal random
-	addi $t0,$sp,8
-	sw $v0,0($t0)
-	addi $t0,$sp,8
-	lw $t0,0($t0)
-	li $t1,0
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_65
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	li $t1,4
-	mul $t0,$t0,$t1
-	addi $t1,$sp,12
-	sw $t0,0($t1)
-	addi $t0,$sp,12
-	lw $t0,0($t0)
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-	li $v0,4
-	la $a0,Str_48
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-if_65:
-	li $a0,10
-	jal random
-	addi $t0,$sp,16
-	sw $v0,0($t0)
-	addi $t0,$sp,16
-	lw $t0,0($t0)
-	li $t1,0
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_66
-	li $t0,0
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-	li $v0,4
-	la $a0,Str_49
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-if_66:
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	li $t1,8
-	div $t0,$t0,$t1
-	addi $t1,$sp,20
-	sw $t0,0($t1)
-	addi $a0,$sp,20
-	lw $a0,0($a0)
-	jal random
-	addi $t0,$sp,24
-	sw $v0,0($t0)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	addi $t1,$sp,24
-	lw $t1,0($t1)
-	add $t0,$t0,$t1
-	addi $t1,$sp,28
-	sw $t0,0($t1)
-	addi $t0,$sp,28
-	lw $t0,0($t0)
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	li $t1,100
-	mul $t0,$t0,$t1
-	addi $t1,$sp,32
-	sw $t0,0($t1)
-	addi $t0,$sp,4
-	lw $t0,0($t0)
-	li $t1,6
-	mul $t0,$t0,$t1
-	addi $t1,$sp,36
-	sw $t0,0($t1)
-	li $t0,100
-	addi $t1,$sp,36
-	lw $t1,0($t1)
-	add $t0,$t0,$t1
-	addi $t1,$sp,40
-	sw $t0,0($t1)
-	addi $t0,$sp,32
-	lw $t0,0($t0)
-	addi $t1,$sp,40
-	lw $t1,0($t1)
-	div $t0,$t0,$t1
-	addi $t1,$sp,44
-	sw $t0,0($t1)
-	addi $v0,$sp,44
-	lw $v0,0($v0)
-	j damage_end
-damage_end:
-	lw $s0,52($sp)
-	lw $s1,56($sp)
-	lw $s2,60($sp)
-	lw $ra,84($sp)
-	addi $sp,$sp,88
-	jr $ra
-notend:
-	subi $sp,$sp,48
-	sw $s0,12($sp)
-	sw $s1,16($sp)
-	sw $s2,20($sp)
-	sw $ra,44($sp)
-	addi $s0,$sp,0
-	sw $a0,0($s0)
-	addi $s0,$sp,4
-	sw $a1,0($s0)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	li $t1,0
-	sle $v1,$t0,$t1
-	beq $0,$v1,if_67
-	li $v0,0
-	j notend_end
-if_67:
-	addi $t0,$sp,4
-	lw $t0,0($t0)
-	li $t1,0
-	sle $v1,$t0,$t1
-	beq $0,$v1,if_68
-	li $v0,0
-	j notend_end
-if_68:
-notend_end:
-	lw $s0,12($sp)
-	lw $s1,16($sp)
-	lw $s2,20($sp)
-	lw $ra,44($sp)
-	addi $sp,$sp,48
-	jr $ra
-battle:
-	lw $t0,-4($sp)
-	lw $t1,-8($sp)
-	lw $t2,-12($sp)
-	subi $sp,$sp,144
-	sw $s0,108($sp)
-	sw $s1,112($sp)
-	sw $s2,116($sp)
-	sw $ra,140($sp)
-	addi $s0,$sp,0
-	sw $a0,0($s0)
-	addi $s0,$sp,4
-	sw $a1,0($s0)
-	addi $s0,$sp,8
-	sw $a2,0($s0)
-	addi $s0,$sp,12
-	sw $a3,0($s0)
-	addi $s0,$sp,16
-	sw $t0,0($s0)
-	addi $s0,$sp,20
-	sw $t1,0($s0)
-	addi $s0,$sp,24
-	sw $t2,0($s0)
-	li $t0,0
-	addi $t1,$sp,44
-	sw $t0,0($t1)
-	li $t0,1
-	addi $t1,$sp,28
-	sw $t0,0($t1)
-do_69:
-	li $v0,4
-	la $a0,Str_50
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_51
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $a0,$sp,4
-	lw $a0,0($a0)
-	li $v0,1
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_52
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_51
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $a0,$sp,16
-	lw $a0,0($a0)
-	li $v0,1
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-do_70:
-	li $v0,4
-	la $a0,Str_53
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $t0,$sp,28
-	lw $t0,0($t0)
-	li $t1,0
-	sne $v1,$t0,$t1
-	beq $0,$v1,if_71
-	li $v0,4
-	la $a0,Str_54
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_55
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_56
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_57
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $t0,0
-	addi $t1,$sp,28
-	sw $t0,0($t1)
-if_71:
-	li $v0,5
-	syscall
-	addi $t0,$sp,32
-	sw $v0,0($t0)
-	addi $a0,$sp,32
-	lw $a0,0($a0)
-	li $a1,1
-	li $a2,3
-	jal between
-	addi $t0,$sp,48
-	sw $v0,0($t0)
-	addi $t0,$sp,48
-	lw $t0,0($t0)
-	li $t1,1
-	sne $v1,$t0,$t1
-	bne $0,$v1,do_70
-	addi $t0,$sp,44
-	lw $t0,0($t0)
-	li $t1,0
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_72
-	addi $a0,$sp,20
-	lw $a0,0($a0)
-	addi $a1,$sp,12
-	lw $a1,0($a1)
-	jal damage
-	addi $t0,$sp,52
-	sw $v0,0($t0)
-	addi $t0,$sp,4
-	lw $t0,0($t0)
-	addi $t1,$sp,52
-	lw $t1,0($t1)
-	sub $t0,$t0,$t1
-	addi $t1,$sp,56
-	sw $t0,0($t1)
-	addi $t0,$sp,56
-	lw $t0,0($t0)
-	addi $t1,$sp,4
-	sw $t0,0($t1)
-if_72:
-	addi $t0,$sp,44
-	lw $t0,0($t0)
-	li $t1,0
-	sgt $v1,$t0,$t1
-	beq $0,$v1,if_73
-	addi $t0,$sp,44
-	lw $t0,0($t0)
-	li $t1,1
-	sub $t0,$t0,$t1
-	addi $t1,$sp,60
-	sw $t0,0($t1)
-	addi $t0,$sp,60
-	lw $t0,0($t0)
-	addi $t1,$sp,44
-	sw $t0,0($t1)
-if_73:
-	addi $t0,$sp,32
-	lw $t0,0($t0)
-	li $t1,1
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_74
-	addi $a0,$sp,8
-	lw $a0,0($a0)
-	addi $a1,$sp,24
-	lw $a1,0($a1)
-	jal damage
-	addi $t0,$sp,64
-	sw $v0,0($t0)
-	addi $t0,$sp,16
-	lw $t0,0($t0)
-	addi $t1,$sp,64
-	lw $t1,0($t1)
-	sub $t0,$t0,$t1
-	addi $t1,$sp,68
-	sw $t0,0($t1)
-	addi $t0,$sp,68
-	lw $t0,0($t0)
-	addi $t1,$sp,16
-	sw $t0,0($t1)
-if_74:
-	addi $t0,$sp,32
-	lw $t0,0($t0)
-	li $t1,2
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_75
-	li $t0,2
-	addi $t1,$sp,0
-	lw $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_76_1
-	li $v0,4
-	la $a0,Str_58
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $t0,2
-	addi $t1,$sp,44
-	sw $t0,0($t1)
-	j switch_76
-case_76_1:
-	li $t0,1
-	addi $t1,$sp,0
-	lw $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_76_2
-	li $v0,4
-	la $a0,Str_59
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $t0,$sp,8
-	lw $t0,0($t0)
-	li $t1,3
-	mul $t0,$t0,$t1
-	addi $t1,$sp,72
-	sw $t0,0($t1)
-	addi $t0,$sp,16
-	lw $t0,0($t0)
-	addi $t1,$sp,72
-	lw $t1,0($t1)
-	sub $t0,$t0,$t1
-	addi $t1,$sp,76
-	sw $t0,0($t1)
-	addi $t0,$sp,76
-	lw $t0,0($t0)
-	addi $t1,$sp,16
-	sw $t0,0($t1)
-	j switch_76
-case_76_2:
-	li $t0,3
-	addi $t1,$sp,0
-	lw $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_76_3
-	li $v0,4
-	la $a0,Str_60
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $t0,$sp,16
-	lw $t0,0($t0)
-	li $t1,120
-	sub $t0,$t0,$t1
-	addi $t1,$sp,80
-	sw $t0,0($t1)
-	addi $t0,$sp,80
-	lw $t0,0($t0)
-	addi $t1,$sp,16
-	sw $t0,0($t1)
-	j switch_76
-case_76_3:
-switch_76:
-if_75:
-	addi $t0,$sp,32
-	lw $t0,0($t0)
-	li $t1,3
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_77
-	li $a0,4
-	jal random
-	addi $t0,$sp,84
-	sw $v0,0($t0)
-	li $t0,1
-	addi $t1,$sp,84
-	lw $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_78_1
-	li $v0,4
-	la $a0,Str_61
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $t0,$sp,4
-	lw $t0,0($t0)
-	li $t1,119
-	add $t0,$t0,$t1
-	addi $t1,$sp,88
-	sw $t0,0($t1)
-	addi $t0,$sp,88
-	lw $t0,0($t0)
-	addi $t1,$sp,4
-	sw $t0,0($t1)
-	j switch_78
-case_78_1:
-	li $t0,2
-	addi $t1,$sp,84
-	lw $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_78_2
-	li $v0,4
-	la $a0,Str_62
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $t0,$sp,8
-	lw $t0,0($t0)
-	li $t1,10
-	add $t0,$t0,$t1
-	addi $t1,$sp,92
-	sw $t0,0($t1)
-	addi $t0,$sp,92
-	lw $t0,0($t0)
-	addi $t1,$sp,8
-	sw $t0,0($t1)
-	j switch_78
-case_78_2:
-	li $t0,3
-	addi $t1,$sp,84
-	lw $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_78_3
-	li $v0,4
-	la $a0,Str_63
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $t0,$sp,24
-	lw $t0,0($t0)
-	li $t1,4
-	sub $t0,$t0,$t1
-	addi $t1,$sp,96
-	sw $t0,0($t1)
-	addi $t0,$sp,96
-	lw $t0,0($t0)
-	addi $t1,$sp,24
-	sw $t0,0($t1)
-	j switch_78
-case_78_3:
-	li $t0,4
-	addi $t1,$sp,84
-	lw $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_78_4
-	li $v0,4
-	la $a0,Str_64
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	j switch_78
-case_78_4:
-switch_78:
-if_77:
-	addi $a0,$sp,4
-	lw $a0,0($a0)
-	addi $a1,$sp,16
-	lw $a1,0($a1)
-	jal notend
-	addi $t0,$sp,100
-	sw $v0,0($t0)
-	addi $t0,$sp,100
-	lw $t0,0($t0)
-	li $t1,0
-	sne $v1,$t0,$t1
-	bne $0,$v1,do_69
-	addi $t0,$sp,4
-	lw $t0,0($t0)
-	li $t1,0
-	sne $v1,$t0,$t1
-	beq $0,$v1,if_79
-	li $v0,1
-	j battle_end
-if_79:
-	li $v0,0
-	j battle_end
-battle_end:
-	lw $s0,108($sp)
-	lw $s1,112($sp)
-	lw $s2,116($sp)
-	lw $ra,140($sp)
-	addi $sp,$sp,144
-	jr $ra
-test7:
-	subi $sp,$sp,84
-	sw $s0,48($sp)
-	sw $s1,52($sp)
-	sw $s2,56($sp)
-	sw $ra,80($sp)
-	jal testrandom
-	li $v0,4
-	la $a0,Str_65
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_66
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $t0,600
-	addi $t1,$sp,12
-	sw $t0,0($t1)
-	li $t0,45
-	addi $t1,$sp,16
-	sw $t0,0($t1)
-	li $t0,2
-	addi $t1,$sp,20
-	sw $t0,0($t1)
-do_80:
-	li $v0,4
-	la $a0,Str_53
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_67
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_68
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,4
-	la $a0,Str_69
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	li $v0,5
-	syscall
-	addi $t0,$sp,24
-	sw $v0,0($t0)
-	addi $a0,$sp,24
-	lw $a0,0($a0)
-	li $a1,1
-	li $a2,3
-	jal between
-	addi $t0,$sp,32
-	sw $v0,0($t0)
-	addi $a0,$sp,32
-	lw $a0,0($a0)
-	li $v0,1
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $a0,$sp,24
-	lw $a0,0($a0)
-	li $a1,1
-	li $a2,3
-	jal between
-	addi $t0,$sp,36
-	sw $v0,0($t0)
-	addi $t0,$sp,36
-	lw $t0,0($t0)
-	li $t1,1
-	sne $v1,$t0,$t1
-	bne $0,$v1,do_80
-	addi $t0,$sp,24
-	lw $t0,0($t0)
-	li $t1,1
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_81
-	li $t0,530
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-	li $t0,50
-	addi $t1,$sp,4
-	sw $t0,0($t1)
-	li $t0,4
-	addi $t1,$sp,8
-	sw $t0,0($t1)
-if_81:
-	addi $t0,$sp,24
-	lw $t0,0($t0)
-	li $t1,2
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_82
-	li $t0,580
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-	li $t0,53
-	addi $t1,$sp,4
-	sw $t0,0($t1)
-	li $t0,4
-	addi $t1,$sp,8
-	sw $t0,0($t1)
-if_82:
-	addi $t0,$sp,24
-	lw $t0,0($t0)
-	li $t1,3
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_83
-	li $t0,580
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-	li $t0,51
-	addi $t1,$sp,4
-	sw $t0,0($t1)
-	li $t0,5
-	addi $t1,$sp,8
-	sw $t0,0($t1)
-if_83:
-	addi $a0,$sp,24
-	lw $a0,0($a0)
-	addi $a1,$sp,0
-	lw $a1,0($a1)
-	addi $a2,$sp,4
-	lw $a2,0($a2)
-	addi $a3,$sp,8
-	lw $a3,0($a3)
-	addi $t0,$sp,12
-	lw $t0,0($t0)
-	sw $t0,-4($sp)
-	addi $t0,$sp,16
-	lw $t0,0($t0)
-	sw $t0,-8($sp)
-	addi $t0,$sp,20
-	lw $t0,0($t0)
-	sw $t0,-12($sp)
-	jal battle
-	addi $t0,$sp,40
-	sw $v0,0($t0)
-	addi $t0,$sp,40
-	lw $t0,0($t0)
-	addi $t1,$sp,28
-	sw $t0,0($t1)
-	addi $t0,$sp,28
-	lw $t0,0($t0)
-	li $t1,1
-	sne $v1,$t0,$t1
-	beq $0,$v1,if_84
-	li $v0,4
-	la $a0,Str_16
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	j test7_end
-if_84:
-	li $v0,4
-	la $a0,Str_70
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-test7_end:
-	lw $s0,48($sp)
-	lw $s1,52($sp)
-	lw $s2,56($sp)
-	lw $ra,80($sp)
-	addi $sp,$sp,84
-	jr $ra
 test_switch:
 	subi $sp,$sp,40
 	sw $s0,4($sp)
@@ -3525,64 +2816,64 @@ test_switch:
 	addi $t1,$sp,0
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_85_1
+	beq $0,$v1,case_65_1
 	li $v0,4
 	la $a0,Str_12
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
-	j switch_85
-case_85_1:
+	j switch_65
+case_65_1:
 	li $t0,101
 	addi $t1,$sp,0
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_85_2
+	beq $0,$v1,case_65_2
 	li $v0,4
 	la $a0,Str_12
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
-	j switch_85
-case_85_2:
-switch_85:
+	j switch_65
+case_65_2:
+switch_65:
 	li $t0,97
 	addi $t1,$sp,0
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_86_1
+	beq $0,$v1,case_66_1
 	li $t0,100
 	addi $t1,$sp,1
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_87_1
+	beq $0,$v1,case_67_1
 	li $v0,4
 	la $a0,Str_12
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
-	j switch_87
-case_87_1:
+	j switch_67
+case_67_1:
 	li $t0,98
 	addi $t1,$sp,1
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_87_2
+	beq $0,$v1,case_67_2
 	li $v0,4
-	la $a0,Str_71
+	la $a0,Str_48
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
-	j switch_87
-case_87_2:
-switch_87:
-	j switch_86
-case_86_1:
-switch_86:
+	j switch_67
+case_67_2:
+switch_67:
+	j switch_66
+case_66_1:
+switch_66:
 test_switch_end:
 	lw $s0,4($sp)
 	lw $s1,8($sp)
@@ -3594,7 +2885,7 @@ main:
 	subi $sp,$sp,40
 	jal test_switch
 	li $v0,4
-	la $a0,Str_72
+	la $a0,Str_49
 	syscall
 	li $v0,11
 	li $a0,10
@@ -3605,7 +2896,6 @@ main:
 	jal test_condition
 	jal test_expression
 	jal functest
-	jal test7
 	j main_end
 main_end:
 	addi $sp,$sp,40
@@ -3662,28 +2952,5 @@ main_end:
 	Str_45 :.asciiz "  Test 6-6:Random numbers"
 	Str_46 :.asciiz "Please enter a number seed(1-100)"
 	Str_47 :.asciiz "Test 6 is ok"
-	Str_48 :.asciiz "critical attack!"
-	Str_49 :.asciiz "miss"
-	Str_50 :.asciiz "Your Status:"
-	Str_51 :.asciiz "Hp"
-	Str_52 :.asciiz "Enemy Status:"
-	Str_53 :.asciiz "Action(input a number between 1-3):"
-	Str_54 :.asciiz "Help:"
-	Str_55 :.asciiz "Attack with weapon  - 1"
-	Str_56 :.asciiz "Use powerful skills -2 "
-	Str_57 :.asciiz "Use helpful item    -3"
-	Str_58 :.asciiz "Skill - STUN!!"
-	Str_59 :.asciiz "Skill - KillMaster"
-	Str_60 :.asciiz "Skill - Lightening bolt"
-	Str_61 :.asciiz "Item - 1"
-	Str_62 :.asciiz "Item - 2"
-	Str_63 :.asciiz "Item - 3"
-	Str_64 :.asciiz "Item failed"
-	Str_65 :.asciiz "Test 7:Complete Dota begin"
-	Str_66 :.asciiz "Good luck!Have fun"
-	Str_67 :.asciiz "Phantom Assasin - 1"
-	Str_68 :.asciiz "Dragon Knight -2"
-	Str_69 :.asciiz "Blue Panda -3"
-	Str_70 :.asciiz "Test 7 is ok"
-	Str_71 :.asciiz "pass through"
-	Str_72 :.asciiz "This is a test program written with DO-WHILE grammar!"
+	Str_48 :.asciiz "pass through"
+	Str_49 :.asciiz "This is a test program written with DO-WHILE grammar!"

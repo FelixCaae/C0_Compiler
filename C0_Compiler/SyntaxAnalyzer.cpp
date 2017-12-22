@@ -909,7 +909,7 @@ int main(int argc, char**argv)
 {
 	
 	char *buffer[2];
-	buffer[1] = "../x64/Debug/test/test_assemble.txt";
+	buffer[1] = "../x64/Debug/test/kill_roshan.txt";
 	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");

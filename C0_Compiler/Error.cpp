@@ -174,7 +174,7 @@ void error(int err,int detail)
 	*/
 	output(buffer,outErr,true);
 	close();
-	throw new  _exception();
+	throw buffer;
 }
 void error(int err)
 {

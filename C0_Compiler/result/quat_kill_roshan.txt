@@ -1,0 +1,405 @@
+	var int _randomseed
+	int seed()
+	para int r
+	_randomseed = r 
+	int mod()
+	para int a
+	para int b
+	$tmp0 = a / b
+	$tmp1 = $tmp0 * b
+	$tmp2 = a - $tmp1
+	ret $tmp2
+	int random()
+	para int m
+	$tmp1 = _randomseed * 17
+	$tmp3 = $tmp1 + 139
+	push $tmp3
+	push 256
+	call mod
+	$tmp5 = RET
+	_randomseed = $tmp5 
+	$tmp6 = _randomseed * m
+	$tmp8 = $tmp6 / 256
+	ret $tmp8
+	int between()
+	para int num
+	para int lower
+	para int upper
+	var int result
+	result = 1 
+	num > upper
+	BNZ if_1
+	result = 0 
+if_1:
+	num < lower
+	BNZ if_2
+	result = 0 
+if_2:
+	ret result
+	int damage()
+	para int atk
+	para int def
+	const int a = 8
+	const int f = 6
+	const int m = 10
+	const int c = 15
+	push 15
+	call random
+	$tmp0 = RET
+	$tmp0 == 0
+	BNZ if_3
+	$tmp3 = atk * 2
+	$tmp5 = $tmp3 / 3
+	atk = $tmp5 
+	print "critical attack!"
+if_3:
+	push 10
+	call random
+	$tmp6 = RET
+	$tmp6 == 0
+	BNZ if_4
+	atk = 0 
+	print "miss"
+if_4:
+	$tmp9 = atk / 8
+	push $tmp9
+	call random
+	$tmp10 = RET
+	$tmp11 = atk + $tmp10
+	atk = $tmp11 
+	$tmp13 = atk * 100
+	$tmp15 = def * 6
+	$tmp16 = 100 + $tmp15
+	$tmp17 = $tmp13 / $tmp16
+	ret $tmp17
+	int notend()
+	para int hp1
+	para int hp2
+	hp1 <= 0
+	BNZ if_5
+	ret 0
+if_5:
+	hp2 <= 0
+	BNZ if_6
+	ret 0
+if_6:
+	ret 1
+	int battle()
+	para int hero_pick
+	para int hero_hp
+	para int hero_atk
+	para int hero_def
+	para int enemy_hp
+	para int enemy_atk
+	para int enemy_def
+	const int iteml = 4
+	const int stunl = 3
+	const int lightenl = 80
+	const int criticalatk = 9
+	const int healpoints = 180
+	const int armorbonus = 2
+	const int shadowatk = 30
+	var int showhelp
+	var int action_pick
+	var int enemy_dmg
+	var int dmg
+	var int stun
+	var int itemc
+	var int p
+	stun = 0 
+	showhelp = 1 
+	itemc = 4 
+do_7:
+	print "Your Hp"
+	print hero_hp
+	print "Enemy Hp"
+	print enemy_hp
+	itemc > 0
+	BNZ if_8
+	$tmp4 = itemc - 1
+	itemc = $tmp4 
+	itemc == 0
+	BNZ if_9
+	print "Get New Item!"
+if_9:
+if_8:
+do_10:
+	showhelp != 0
+	BNZ if_11
+	print "Help:"
+	print "Action(input a number between 1-3):"
+	print "Attack with weapon  -1"
+	print "Use powerful skills -2 "
+	print "Use helpful item    -3"
+	showhelp = 0 
+if_11:
+	read action_pick
+	push action_pick
+	push 1
+	push 3
+	call between
+	$tmp10 = RET
+	$tmp10 != 1
+	BZ do_10
+	enemy_dmg = 0 
+	dmg = 0 
+	stun == 0
+	BNZ if_12
+	push enemy_atk
+	push hero_def
+	call damage
+	$tmp15 = RET
+	enemy_dmg = $tmp15 
+if_12:
+	stun > 0
+	BNZ if_13
+	$tmp18 = stun - 1
+	stun = $tmp18 
+if_13:
+	action_pick == 3
+	BNZ if_14
+	itemc != 0
+	BNZ if_15
+	print "Have to item to use!"
+	action_pick = 1 
+if_15:
+if_14:
+	action_pick == 1
+	BNZ if_16
+	push hero_atk
+	push enemy_def
+	call damage
+	$tmp23 = RET
+	dmg = $tmp23 
+if_16:
+	action_pick == 2
+	BNZ if_17
+	2 == hero_pick
+	BNZ case_18_1
+	$tmp26 = hero_def + 2
+	hero_def = $tmp26 
+	print "You get armor point:"
+	print 2
+	GOTO switch_18
+case_18_1:
+	1 == hero_pick
+	BNZ case_18_2
+	print "Skill - KillMaster"
+	push 6
+	call random
+	$tmp29 = RET
+	p = $tmp29 
+	push hero_atk
+	push enemy_def
+	call damage
+	$tmp30 = RET
+	dmg = $tmp30 
+	p == 0
+	BNZ if_19
+	$tmp32 = dmg * 9
+	$tmp34 = $tmp32 / 2
+	dmg = $tmp34 
+	$tmp36 = dmg / 5
+	$tmp37 = enemy_dmg - $tmp36
+	enemy_dmg = $tmp37 
+if_19:
+	GOTO switch_18
+case_18_2:
+	3 == hero_pick
+	BNZ case_19_3
+	print "Skill - Lightening bolt"
+	push 80
+	call random
+	$tmp39 = RET
+	$tmp40 = 80 + $tmp39
+	dmg = $tmp40 
+	GOTO switch_18
+case_19_3:
+switch_18:
+if_17:
+	action_pick == 3
+	BNZ if_20
+	push 8
+	call random
+	$tmp43 = RET
+	0 == $tmp43
+	BNZ case_21_1
+	$tmp45 = enemy_dmg - 180
+	enemy_dmg = $tmp45 
+	print "You get some hp points"
+	GOTO switch_21
+case_21_1:
+	1 == $tmp43
+	BNZ case_21_2
+	print "--- STUN!!"
+	dmg = 25 
+	stun = 3 
+	GOTO switch_21
+case_21_2:
+	2 == $tmp43
+	BNZ case_21_3
+	print "You attack in shadow!"
+	enemy_dmg > 0
+	BNZ if_22
+	enemy_dmg = 0 
+if_22:
+	$tmp51 = hero_atk + 30
+	push $tmp51
+	$tmp53 = enemy_def - 2
+	push $tmp53
+	call damage
+	$tmp54 = RET
+	dmg = $tmp54 
+	GOTO switch_21
+case_21_3:
+	3 == $tmp43
+	BNZ case_22_4
+	print "You rebounce this attack"
+	dmg = enemy_dmg 
+	enemy_dmg = 0 
+	GOTO switch_21
+case_22_4:
+	4 == $tmp43
+	BNZ case_22_5
+	print "You attack twice quickly"
+	push hero_atk
+	push enemy_def
+	call damage
+	$tmp58 = RET
+	push hero_atk
+	push enemy_def
+	call damage
+	$tmp59 = RET
+	$tmp60 = $tmp58 + $tmp59
+	dmg = $tmp60 
+	GOTO switch_21
+case_22_5:
+	5 == $tmp43
+	BNZ case_22_6
+	print "Soul strike!"
+	$tmp63 = 650 - hero_atk
+	dmg = $tmp63 
+	dmg < 0
+	BNZ if_23
+	dmg = 0 
+if_23:
+	dmg > 350
+	BNZ if_24
+	dmg = 350 
+if_24:
+	GOTO switch_21
+case_22_6:
+	6 == $tmp43
+	BNZ case_24_7
+	print "Evil exchange"
+	$tmp70 = enemy_atk + 10
+	enemy_atk = $tmp70 
+	$tmp72 = hero_hp + 250
+	hero_hp = $tmp72 
+	GOTO switch_21
+case_24_7:
+	7 == $tmp43
+	BNZ case_24_8
+	print "Grasp"
+	stun = 2 
+	dmg = 100 
+	GOTO switch_21
+case_24_8:
+switch_21:
+	push 4
+	call random
+	$tmp76 = RET
+	$tmp77 = 4 + $tmp76
+	itemc = $tmp77 
+if_20:
+	print "You loses hp:"
+	print enemy_dmg
+	print "Roshan loses hp:"
+	print dmg
+	$tmp78 = hero_hp - enemy_dmg
+	hero_hp = $tmp78 
+	$tmp79 = enemy_hp - dmg
+	enemy_hp = $tmp79 
+	push hero_hp
+	push enemy_hp
+	call notend
+	$tmp80 = RET
+	$tmp80 != 0
+	BZ do_7
+	hero_hp > 0
+	BNZ if_25
+	ret 1
+if_25:
+	ret 0
+	int test()
+	var int hero_hp
+	var int hero_atk
+	var int hero_def
+	var int enemy_hp
+	var int enemy_atk
+	var int enemy_def
+	var int hero_pick
+	var int result
+	print "Test :Kill Roshan ,the big Monster begin"
+	print "Good luck!Have fun"
+	enemy_hp = 2000 
+	enemy_atk = 45 
+	enemy_def = 5 
+do_26:
+	print "Action(input a number between 1-3):"
+	print "Phantom Assasin - 1"
+	print "Dragon Knight -2"
+	print "Blue Panda -3"
+	read hero_pick
+	push hero_pick
+	push 1
+	push 3
+	call between
+	$tmp5 = RET
+	print $tmp5
+	push hero_pick
+	push 1
+	push 3
+	call between
+	$tmp8 = RET
+	$tmp8 != 1
+	BZ do_26
+	hero_pick == 1
+	BNZ if_27
+	hero_hp = 630 
+	hero_atk = 82 
+	hero_def = 4 
+if_27:
+	hero_pick == 2
+	BNZ if_28
+	hero_hp = 750 
+	hero_atk = 73 
+	hero_def = 9 
+if_28:
+	hero_pick == 3
+	BNZ if_29
+	hero_hp = 600 
+	hero_atk = 90 
+	hero_def = 6 
+if_29:
+	push hero_pick
+	push hero_hp
+	push hero_atk
+	push hero_def
+	push enemy_hp
+	push enemy_atk
+	push enemy_def
+	call battle
+	$tmp22 = RET
+	result = $tmp22 
+	result != 1
+	BNZ if_30
+	print "You lose in the battle with Roshan!"
+if_30:
+	result == 1
+	BNZ if_31
+	print "You won in the battle with Roshan!"
+if_31:
+	print "Test 7 is ok"
+	void main()
+	call test
