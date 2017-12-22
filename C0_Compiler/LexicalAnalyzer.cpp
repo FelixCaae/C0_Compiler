@@ -15,14 +15,17 @@ int lineCounter = 1, columnCounter = 0;
 int tokenidx = 0;
 int nodesNum = 0;
 lexClass lextype;
+struct lexNode;
 void newNode();
 void initNode(lexNode*p);
 void openNode(lexNode*p);
 void replaceTailNode();
 bool belong(char chr, const char set[], int size);
+void skip(const char[] , int num);
+void skipBlank();
 int findReserveWord();
 int findSeperator();
-void readChar();
+void readChar(bool log);
 void retractChar();
 void clearToken();
 bool isInputEnd();
@@ -34,7 +37,6 @@ bool isDoubleQuote();
 bool isAlpha();
 bool isChar();
 bool isAsciiChar();
-void skipBlank();
 void scannIDEN();
 void scannCHR();
 void scannSTR();
@@ -130,7 +132,7 @@ int findSeperator()
     }
     return 0;
 }
-void readChar()
+void readChar(bool log=true)
 {
     chr = fgetc(inFile);
 	if (chr == '\n')
@@ -139,8 +141,11 @@ void readChar()
 		columnCounter = 0;
 	}
 	if (tokenidx == tokenStrLen)error(ERR_TOKEN_FLOW);
-    token[tokenidx++] = chr;
-    token[tokenidx] = '\0';
+	if (log) {
+		token[tokenidx++] = chr;
+		token[tokenidx] = '\0';
+	}
+
 }
 void retractChar()
 {
@@ -191,8 +196,38 @@ bool isAsciiChar()
 {
     return chr == 32 || chr == 33 || (chr >= 35 && chr <= 126);
 }
-
-
+void skip(const char chrSet[], int num)
+{
+	bool found = false;
+	while (true)
+	{
+		readChar(false);
+		for (int i = 0; i < num; i++)
+		{
+			if (chrSet[i] == chr)
+			{
+				found = true;
+				break;
+			}
+		}
+		if (found||isInputEnd())break;
+	}
+}
+void scannINT()
+{
+	lextype = INT;
+	while (!isBlank() && !isInputEnd() && !isSeperator())
+	{
+		if (!isNumber())
+		{
+			error(ERR_LEX_UNEX);
+			skip(skipSet, skipNum);
+			return;
+		}
+		readChar();
+	}
+	retractChar();
+}
 void scannIDEN()
 {
     lextype = IDEN;
@@ -202,7 +237,7 @@ void scannIDEN()
         if (!isAlpha() && !isNumber())
         {
             error(ERR_LEX_UNEX,chr);
-			skip(blankSet, blankNum);
+			skip(skipSet,skipNum);
 			return;
         }
         readChar();
@@ -224,18 +259,20 @@ void scannCHR()
 {
     lextype = CHR;
 	const char endChar[] = { '\n','\'' };
-    readChar();
-    if (!isChar())
-    {
-        error(ERR_LEX_UNEX);
-		return;
-    }
-    readChar();
-    if (!isSingleQuote())
-    {
-        error(ERR_LEX_UNEX);
-		skip(endChar, 2);
-    }
+	int counter=0;
+	readChar();
+	while (!isSingleQuote())
+	{
+		if (!isChar())
+		{
+			error(ERR_LEX_UNEX);
+			skip(endChar, 2);
+			return;
+		}
+		readChar();
+		counter++;
+	}
+	if (counter > 1) { error(ERR_LEX_CHARSIZE); }
 }
 void scannSTR()
 {
@@ -248,6 +285,7 @@ void scannSTR()
         {
             error(ERR_LEX_UNEX);
 			skip(endStr, 2);
+			return;
         }
         readChar();
     }
@@ -299,25 +337,26 @@ void scannSEP()
     }
 	else if (chr == '\\')
 	{
-		const char cmntLine[] = { '\n' };
-		const char cmntBlock[] = { '*' };
+		const char lineCmnt[] = { '\n' };
+		const char blockCmnt[] = {'*'};
 		readChar();
 		if (chr == '\\')
 		{
-			skip(cmntLine, 1);
-			scann();
+			lextype = COMNT;
+			skip(lineCmnt,1);
 		}
 		else if(chr=='*' )
 		{
+			lextype = COMNT;
 			do {
-				skip(cmntBlock, 1);
+				skip(blockCmnt, 1);
 				readChar();
 			}while (chr != '\\' && !isInputEnd());
-			scann();
 		}
 		else 
 		{
 			error(ERR_LEX_UNEX, '\\');
+			return;
 		}
 	}
     else if (chr == '=')
@@ -338,25 +377,12 @@ void scannSEP()
         int r = findSeperator();
         if (r == 0)
         {
-            error(ERR_LEX_UNEX);
+            error(ERR_LEX_UNEX,'{');
+			return;
         }
         lextype = (lexClass)(STR + r);
     }
 
-}
-void scannINT()
-{
-	lextype = INT;
-	while (!isBlank() && !isInputEnd() && !isSeperator())
-	{
-		if (!isNumber())
-		{
-			error(ERR_LEX_UNEX);
-			skip(blankSet, blankNum);
-		}
-		readChar();
-	}
-	retractChar();
 }
 void skipBlank()
 {
@@ -412,7 +438,9 @@ void readSym()
 		openNode(currentNode);
 	}
 	else {
-		scann();
+		do {
+			scann();
+		} while (lextype == COMNT);
 		columnCounter += 1;
 		if (nodesNum < maxRetractNum)
 		{

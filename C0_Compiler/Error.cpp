@@ -36,6 +36,7 @@ void error(int err,int detail)
 	case ERR_FILE:
 	{
 		sprintf(buffer, "*****Error%d: File error!",err);
+		throw "Source file can`t open";
 		break;
 	}
 	case ERR_TOKEN_FLOW:

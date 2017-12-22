@@ -908,6 +908,14 @@ int main(int argc, char**argv)
 {
 	
 	char *buffer[2];
+	buffer[1] = "../x64/Debug/test/wtest_lex.txt";
+	init(2, buffer);
+	while (lextype != END)
+	{
+		readSym();
+	}
+	close();
+	getchar();
 	buffer[1] = "../x64/Debug/test/kill_roshan.txt";
 	if (syntaxAnalyze(2,buffer))
 	{

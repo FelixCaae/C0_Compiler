@@ -1,0 +1,23 @@
+Error2:Unexpected character: 'a' line:6
+Error2:Unexpected character: '&' line:12
+Error2:Unexpected character: ''' line:15
+Error2:Unexpected character: '[' line:17
+Error2:Unexpected character: '[' line:18
+Error2:Unexpected character: '
+' line:20
+Error2:Unexpected character: '^' line:20
+Error2:Unexpected character: '
+' line:21
+Error2:Unexpected character: '
+' line:22
+Error2:Unexpected character: '^' line:22
+Error2:Unexpected character: '
+' line:23
+Error2:Unexpected character: 'Ä' line:24
+Error2:Unexpected character: '¡' line:25
+Error2:Unexpected character: '°' line:25
+Error2:Unexpected character: '¡' line:25
+Error2:Unexpected character: '±' line:25
+Error2:Unexpected character: '
+' line:27
+Error2:Unexpected character: '"' line:27
