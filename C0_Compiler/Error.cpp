@@ -30,8 +30,9 @@ void skip(lexClass lexSet[],int num)
 void error(int err,int detail)
 {
 	hasError = true;
-	//printf("Error happended!");
-	char buffer[100];
+//	char errHead[20];
+//	char errTail[20];
+//	char errBody[80];
 	switch (err) {
 	case ERR_FILE:
 	{
@@ -41,7 +42,7 @@ void error(int err,int detail)
 	}
 	case ERR_TOKEN_FLOW:
 	{
-		sprintf(buffer, "Error%d:Word is too long!",err);
+		sprintf(buffer, "*****Error%d:Word is too long!",err);
 		break; }
 	case ERR_ARGSTACK_FLOW:
 	{
@@ -70,13 +71,44 @@ void error(int err,int detail)
 	case ERR_LEX_UNEX:
 	{
 		lextype = ERROR;
-		sprintf(buffer, "Error%d:Unexpected character: '%c' line:%d\n",err,chr,lineCounter);
+		sprintf(buffer, "*****Error%d:Unexpected character: '%c' line:%d\n",err,chr,lineCounter);
 		break; 
 	}
 	case ERR_LEX_EX:
 	{
 		lextype = ERROR;
-		sprintf(buffer, "Error%d:Expected character: '%c' but found '%c' line:%d\n", err,detail, chr, lineCounter);
+		sprintf(buffer, "*****Error%d:Expected character: '%c' but found '%c' line:%d\n", err,detail, chr, lineCounter);
+		break;
+	}
+	case ERR_CHAR:
+	{
+		lextype = ERROR;
+		switch (detail)
+		{
+		case 0:
+			sprintf(buffer, "*****Error%d:Not legal charachter found line:%d\n",err,lineCounter);	
+			break;
+		case 1:
+			sprintf(buffer, "*****Error%d:Can`t find matched single quote line:%d\n", err, lineCounter);
+			break;
+		case 2:
+			sprintf(buffer, "*****Error%d:More than one charachter is found line:%d\n", err, lineCounter);
+			break;
+		}
+		break;
+	}
+	case ERR_STR:
+	{
+		lextype = ERROR;
+		switch (detail)
+		{
+		case 0:
+			sprintf(buffer, "*****Error%d:Not legal ascii-charachter found line:%d\n", err, lineCounter);
+			break;
+		case 1:
+			sprintf(buffer, "*****Error%d:Can`t find matched double quote line:%d\n", err, lineCounter);
+			break;
+		}
 		break;
 	}
 	case ERR_SYNTAX:

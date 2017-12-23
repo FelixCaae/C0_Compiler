@@ -259,36 +259,41 @@ void scannCHR()
 {
     lextype = CHR;
 	const char endChar[] = { '\n','\'' };
+	int valid = 1;
 	int counter=0;
 	readChar();
-	while (!isSingleQuote())
+	while (!isSingleQuote()&&chr!='\n')
 	{
-		if (!isChar())
+		if (valid==1 && !isChar())
 		{
-			error(ERR_LEX_UNEX);
-			skip(endChar, 2);
-			return;
+			valid = 0;
 		}
 		readChar();
 		counter++;
 	}
-	if (counter > 1) { error(ERR_LEX_CHARSIZE); }
+	if (valid == 0) { error(ERR_CHAR, 0); }
+	if (chr == '\n') { error(ERR_CHAR,1); }
+	if (counter > 1) { error(ERR_CHAR,2); }
 }
 void scannSTR()
 {
-    lextype = STR;
+	lextype = STR;
 	const char endStr[] = { '\n','\"' };
-    readChar();
-    while (!isDoubleQuote())
-    {
-        if (!isAsciiChar())
-        {
-            error(ERR_LEX_UNEX);
-			skip(endStr, 2);
-			return;
-        }
-        readChar();
-    }
+	int valid = 1;
+	readChar();
+	while (!isDoubleQuote() && chr != '\n')
+	{
+		if (valid == 1 && !isAsciiChar())
+		{
+			valid = 0;
+			//error(ERR_LEX_UNEX);
+			//skip(endStr, 2);
+			//return;
+		}
+		readChar();
+	}
+	if (valid == 0) { error(ERR_STR, 0); }
+	if (chr == '\n') { error(ERR_STR,1); }
 }
 void scannSEP()
 {

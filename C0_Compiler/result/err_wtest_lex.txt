@@ -1,23 +1,17 @@
-Error2:Unexpected character: 'a' line:6
-Error2:Unexpected character: '&' line:12
-Error2:Unexpected character: ''' line:15
-Error2:Unexpected character: '[' line:17
-Error2:Unexpected character: '[' line:18
-Error2:Unexpected character: '
-' line:20
-Error2:Unexpected character: '^' line:20
-Error2:Unexpected character: '
-' line:21
-Error2:Unexpected character: '
-' line:22
-Error2:Unexpected character: '^' line:22
-Error2:Unexpected character: '
-' line:23
-Error2:Unexpected character: 'Ä' line:24
-Error2:Unexpected character: '¡' line:25
-Error2:Unexpected character: '°' line:25
-Error2:Unexpected character: '¡' line:25
-Error2:Unexpected character: '±' line:25
-Error2:Unexpected character: '
-' line:27
-Error2:Unexpected character: '"' line:27
+*****Error2:Unexpected character: 'a' line:6
+*****Error2:Unexpected character: '&' line:12
+*****Error2:Unexpected character: ''' line:15
+*****Error4:Not legal charachter found line:17
+*****Error4:Not legal charachter found line:18
+*****Error4:More than one charachter is found line:18
+*****Error4:Can`t find matched single quote line:20
+*****Error4:Not legal charachter found line:20
+*****Error4:Not legal charachter found line:21
+*****Error4:More than one charachter is found line:21
+*****Error4:Not legal charachter found line:22
+*****Error5:Not legal ascii-charachter found line:24
+*****Error2:Unexpected character: '¡' line:25
+*****Error2:Unexpected character: '°' line:25
+*****Error2:Unexpected character: '¡' line:25
+*****Error2:Unexpected character: '±' line:25
+*****Error5:Can`t find matched double quote line:27

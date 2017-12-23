@@ -16,26 +16,22 @@
 15	PLUS	+	row:14	colmn:1
 38	INVALIDSYM	aa'	row:16	colmn:0
 3	CHR	'a'	row:16	colmn:1
-38	INVALIDSYM	'[	row:17	colmn:0
-38	INVALIDSYM	'[	row:18	colmn:0
+38	INVALIDSYM	'['	row:17	colmn:0
+38	INVALIDSYM	'[[[[[[[   '	row:18	colmn:0
 38	INVALIDSYM	'a
 	row:20	colmn:0
-38	INVALIDSYM	^	row:20	colmn:1
-38	INVALIDSYM	'
-	row:21	colmn:0
-2	IDEN	a	row:21	colmn:1
-38	INVALIDSYM	'a2
-	row:22	colmn:0
-38	INVALIDSYM	^	row:22	colmn:1
-38	INVALIDSYM	'a2
-	row:24	colmn:0
-38	INVALIDSYM	"aaÄ	row:24	colmn:1
+38	INVALIDSYM	'^'	row:20	colmn:1
+38	INVALIDSYM	'a   '	row:21	colmn:0
+2	IDEN	a2	row:22	colmn:0
+38	INVALIDSYM	'^'	row:22	colmn:1
+2	IDEN	a2	row:23	colmn:0
+4	STR	"aa bb cc"	row:23	colmn:1
+38	INVALIDSYM	"aaÄãºÃ"	row:24	colmn:0
 38	INVALIDSYM	¡	row:25	colmn:0
 38	INVALIDSYM	°	row:25	colmn:1
 38	INVALIDSYM	¡	row:25	colmn:2
 38	INVALIDSYM	±	row:25	colmn:3
 38	INVALIDSYM	"blank
 	row:27	colmn:0
-2	IDEN	new	row:27	colmn:1
-38	INVALIDSYM	line"	row:28	colmn:0
+4	STR	"new line"	row:27	colmn:1
 40	ENDOFINPUT	ÿ	row:30	colmn:0
