@@ -32,8 +32,8 @@ const char * const lexClassName[] =
 {
 	"INT","IDEN","CHR","STR","ASSIGN","LCURB","RCURB","COMMA","SEMI","COLON","LPAR","RPAR","LBRAK","RBRAK","PLUS","MINUS",
 	"STAR","DIV","GT","LS","GTEQU","LSEQU","EQU","NEQU",
-	"INTYP","CHARTYP","NOTYP","CONSTYP","IFSY","DOSY","WHILESY","SWITCHSY","CASESY",
-	"RETURNSY","PRINTFUNC","SCANFUNC","MAINFUNC","INVALIDSYM","COMMENT","ENDOFINPUT"
+	"INTYP","CHARTYP","NOTYP","CONSTYP","IFSY","DOSY","WHILESY","SWICHSY","CASESY",
+	"RETSY","PRIFUN","SCANFUN","MAINFUN","ERRSY","COMNTSY","ENDF"
 };
 const char *const typeName[] =
 {
@@ -54,6 +54,6 @@ void outputSyntax(syntaxClass sc, bool isHead = true);
 void outputTerminalS(syntaxClass sc);
 void outputQCode(qCType qc, int arg1, int arg2, int arg3);
 void outputOCode();
-void output(char*ch,FILE* outFile,bool toConsole=false);
+void output(const char*ch,FILE* outFile,bool toConsole=false);
 void init(int argc, char**argv);
 void close();

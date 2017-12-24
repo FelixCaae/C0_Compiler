@@ -1,4 +1,6 @@
 #include"stdafx.h"
+#include <string>
+#include <vector>
 #include <stdio.h>
 #include <stdlib.h>
 #include "Error.h"
@@ -7,14 +9,15 @@
 #include "SymTable.h"
 #include <exception>
 #include "IO.h"
-extern bool hasError = false;
+using namespace std;
 extern char tokenbak[tokenStrLen];
+vector<string> msgStack;
+int hasError = 0;
 void skip(lexClass lexSet[],int num)
 {
 	bool found = false;
 	while (true)
 	{
-
 		for (int i = 0; i < num; i++)
 		{
 			if (lexSet[i] == lextype)
@@ -29,20 +32,16 @@ void skip(lexClass lexSet[],int num)
 }
 void error(int err,int detail)
 {
-	hasError = true;
+	hasError = hasError+1;
 //	char errHead[20];
 //	char errTail[20];
 //	char errBody[80];
 	switch (err) {
-	case ERR_FILE:
+	
+
+	case ERR_ARRAY_FLOW:
 	{
-		sprintf(buffer, "*****Error%d: File error!",err);
-		throw "Source file can`t open";
-		break;
-	}
-	case ERR_TOKEN_FLOW:
-	{
-		sprintf(buffer, "*****Error%d:Word is too long!",err);
+		sprintf(buffer, "*****Error%d: Array size can`t be %d line:%d\n", err, detail, lineCounter);
 		break; }
 	case ERR_ARGSTACK_FLOW:
 	{
@@ -68,18 +67,6 @@ void error(int err,int detail)
 	{
 		sprintf(buffer, "Error in parsing seperator: %s", token);
 		break; }*/
-	case ERR_LEX_UNEX:
-	{
-		lextype = ERROR;
-		sprintf(buffer, "*****Error%d:Unexpected character: '%c' line:%d\n",err,chr,lineCounter);
-		break; 
-	}
-	case ERR_LEX_EX:
-	{
-		lextype = ERROR;
-		sprintf(buffer, "*****Error%d:Expected character: '%c' but found '%c' line:%d\n", err,detail, chr, lineCounter);
-		break;
-	}
 	case ERR_CHAR:
 	{
 		lextype = ERROR;
@@ -111,18 +98,6 @@ void error(int err,int detail)
 		}
 		break;
 	}
-	case ERR_SYNTAX:
-	{
-		sprintf(buffer, "*****Error%d: Should be %s but found %s line:%d\n",err, lexClassName[detail - 1], lexClassName[lextype - 1], lineCounter);
-		break; }
-	case ERR_SYM_RETRACT:
-	{
-		sprintf(buffer, "*****Error%d: Can`t retract sym\n",err);
-		break; }
-	case ERR_ARRAY_FLOW:
-	{
-		sprintf(buffer, "*****Error%d: Array size can`t be %d line:%d\n", err, detail,lineCounter);
-		break; }
 	case ERR_CONST:
 	{
 		sprintf(buffer, "*****Error%d: Can`t assign to a const identifier:%s line:%d\n", err,NAME(detail),lineCounter);
@@ -131,6 +106,22 @@ void error(int err,int detail)
 	case ERR_CASE_MATCH:
 	{
 		sprintf(buffer, "*****Error%d: Case constant`s type doesn`t match switch expression line:%d\n", err,lineCounter);
+		break;
+	}
+	case ERR_DIV_ZERO:
+	{
+		sprintf(buffer, "*****Error%d:Div zero error", err);
+		break;
+	}
+	case ERR_FILE:
+	{
+		sprintf(buffer, "*****Error%d: File error!", err);
+		throw "Source file can`t open";
+		break;
+	}
+	case ERR_INSTR_NOT_DEFINE:
+	{
+		sprintf(buffer, "*****Error%d:Instruction %d not defined", err, detail);
 		break;
 	}
 	case ERR_IDEN_DECLARED:
@@ -146,6 +137,24 @@ void error(int err,int detail)
 	case ERR_INTOCHAR:
 	{
 		sprintf(buffer, "*****Error%d: Can`t turn an int-type into char-type line:%d\n", err,  lineCounter);
+		break;
+	}
+	case ERR_LEX_UNEX:
+	{
+		lextype = ERROR;
+		sprintf(buffer, "*****Error%d:Unexpected character: '%c' line:%d\n", err, chr, lineCounter);
+		break;
+	}
+	case ERR_LEADZERO:
+	{
+		lextype = ERROR;
+		sprintf(buffer, "*****Error%d:Numbers can`t have leading zeroes '%s' line:%d\n", err, token, lineCounter);
+		break;
+	}
+	case ERR_LEX_EX:
+	{
+		lextype = ERROR;
+		sprintf(buffer, "*****Error%d:Expected character: '%c' but found '%c' line:%d\n", err, detail, chr, lineCounter);
 		break;
 	}
 	case ERR_PARAMNUM_LESS:
@@ -167,6 +176,10 @@ void error(int err,int detail)
 	{
 		sprintf(buffer, "*****Error%d:Functon:%s has too many arguments(more than %d)  line:%d\n", err, NAME(detail), maxParmNum, lineCounter);
 	}
+	case ERR_QCODE_NOT_DEFINE:
+	{
+		sprintf(buffer, "*****Error%d:QCode %d not defined", err, detail);
+	}
 	case ERR_REQUIRE_ARRAY:
 	{
 		sprintf(buffer, "*****Error%d: Identifier:%s should be an array line:%d\n", err, NAME(detail), lineCounter);
@@ -187,51 +200,34 @@ void error(int err,int detail)
 		sprintf(buffer, "*****Error%d: Identifier:%s should be a variable line:%d\n", err, NAME(detail), lineCounter);
 		break;
 	}
-	case ERR_DIV_ZERO:
+	case ERR_SYNTAX:
 	{
-		sprintf(buffer, "*****Error%d:Div zero error", err);
+		sprintf(buffer, "*****Error%d: Should be %s but found %s line:%d\n", err, lexClassName[detail - 1], lexClassName[lextype - 1], lineCounter);
+		break; }
+	case ERR_SYM_RETRACT:
+	{
+		sprintf(buffer, "*****Error%d: Can`t retract sym\n", err);
 		break;
 	}
-	case ERR_INSTR_NOT_DEFINE:
+	case ERR_TOKEN_FLOW:
 	{
-		sprintf(buffer, "*****Error%d:Instruction %d not defined", err, detail);
-		break;
-	}
-	case ERR_QCODE_NOT_DEFINE:
-	{
-		sprintf(buffer, "*****Error%d:QCode %d not defined", err, detail);
-	}
+		sprintf(buffer, "*****Error%d:Word is too long!", err);
+		break; }
 	default:
 	{
 		sprintf(buffer, "****Error%d: Error not defined. line:%d\n", err, lineCounter);
 	}
 	}
-	/*
-	case 11:
-	{
-		sprintf(buffer, "*****Error11: Should be %s but found %s at line:%d\n", syntaxClassName[STAT - 1], lexClassName[lextype - 1], lineCounter);
-		break; }
-	case 12:
-	{
-		sprintf(buffer, "*****Error12: Should be %s  but found %s at line:%d\n", syntaxClassName[FACTOR - 1], lexClassName[lextype - 1], lineCounter);
-		break; }
-	case 13:
-	{
-		sprintf(buffer, "*****Error13: Should be %s but found %s at line:%d\n", syntaxClassName[RELATION - 1], lexClassName[lextype - 1], lineCounter);
-		break; }
-	case 14:
-	{
-		sprintf(buffer, "*****Error14: Should be %s but found %s at line:%d\n", "ASSIGNSTAT or FUNCALLSTAT ", lexClassName[lextype - 1], lineCounter);
-		break; }
-	case 15:
-	{
-		sprintf(buffer, "*****Error15: Should be %s but found %s at line:%d\n", syntaxClassName[CONDITION - 1], lexClassName[lextype - 1], lineCounter);
-		break; }
-	}
-	*/
-	output(buffer,outErr,true);
+	//output(buffer,outErr,true);
+	msgStack.push_back(string(buffer));
 }
-void error(int err)
+void printErrInfo()
 {
-	error(err, 0);
+	vector<string>::iterator it;
+	for (it = msgStack.begin(); it != msgStack.end(); it++)
+	{
+		output(it->c_str(), outErr, true);
+	}
+	string total = "Total errors:"+to_string(hasError)+"\n";
+	output(total.c_str(), outErr, true);
 }

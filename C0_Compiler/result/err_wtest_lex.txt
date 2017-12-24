@@ -1,17 +1,33 @@
-*****Error2:Unexpected character: 'a' line:6
-*****Error2:Unexpected character: '&' line:12
-*****Error2:Unexpected character: ''' line:15
-*****Error4:Not legal charachter found line:17
-*****Error4:Not legal charachter found line:18
-*****Error4:More than one charachter is found line:18
-*****Error4:Can`t find matched single quote line:20
-*****Error4:Not legal charachter found line:20
-*****Error4:Not legal charachter found line:21
-*****Error4:More than one charachter is found line:21
-*****Error4:Not legal charachter found line:22
-*****Error5:Not legal ascii-charachter found line:24
-*****Error2:Unexpected character: '¡' line:25
-*****Error2:Unexpected character: '°' line:25
-*****Error2:Unexpected character: '¡' line:25
-*****Error2:Unexpected character: '±' line:25
-*****Error5:Can`t find matched double quote line:27
+*****Error4:Numbers can`t have leading zeroes '00014 ' line:40
+*****Error2:Unexpected character: 'a' line:67
+*****Error2:Unexpected character: '_' line:68
+*****Error2:Unexpected character: '#' line:69
+*****Error2:Unexpected character: '$' line:70
+*****Error2:Unexpected character: '^' line:71
+*****Error5:Not legal charachter found line:105
+*****Error5:Can`t find matched single quote line:105
+*****Error5:More than one charachter is found line:105
+*****Error5:More than one charachter is found line:106
+*****Error5:Not legal charachter found line:107
+*****Error5:More than one charachter is found line:108
+*****Error5:More than one charachter is found line:109
+*****Error5:Not legal charachter found line:110
+*****Error5:Not legal charachter found line:111
+*****Error5:More than one charachter is found line:112
+*****Error5:More than one charachter is found line:113
+*****Error5:Can`t find matched single quote line:114
+*****Error5:More than one charachter is found line:114
+*****Error5:Can`t find matched single quote line:115
+*****Error6:Can`t find matched double quote line:125
+*****Error2:Unexpected character: '"' line:125
+*****Error6:Not legal ascii-charachter found line:126
+*****Error2:Unexpected character: '@' line:136
+*****Error2:Unexpected character: '#' line:136
+*****Error3:Expected character: '=' but found '!' line:136
+*****Error2:Unexpected character: '$' line:136
+*****Error2:Unexpected character: '' line:136
+*****Error2:Unexpected character: '^' line:136
+*****Error2:Unexpected character: '&' line:136
+*****Error2:Unexpected character: '.' line:136
+*****Error2:Unexpected character: '?' line:136
+Total errors:32

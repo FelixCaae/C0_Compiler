@@ -1,7 +1,7 @@
 #pragma once
 #include"Lexeme.h"
 enum Err{ERR_FILE,ERR_INPUT_ARGUMENT_NUM,
-	ERR_LEX_UNEX,ERR_LEX_EX,ERR_CHAR,ERR_STR,ERR_LEX_PROGRAM,
+	ERR_LEX_UNEX,ERR_LEX_EX,ERR_LEADZERO,ERR_CHAR,ERR_STR,ERR_LEX_PROGRAM,
 	ERR_SYNTAX,ERR_SYM_RETRACT,ERR_TOKEN_FLOW,
 	ERR_IDEN_DECLARED,ERR_IDEN_NOT_DECLARED,ERR_REQUIRE_ARRAY,
 	ERR_CONST,ERR_TAB_FLOW,ERR_ARRAY_FLOW,
@@ -10,7 +10,7 @@ enum Err{ERR_FILE,ERR_INPUT_ARGUMENT_NUM,
 	ERR_MAIN_RET_TYPE,ERR_MAIN_PARAM, ERR_PARAM_FLOW,
 	ERR_DIV_ZERO,ERR_INSTR_NOT_DEFINE, ERR_QCODE_NOT_DEFINE, ERR_ARGSTACK_FLOW
 };
-extern bool hasError;
+extern int hasError;
 void skip(lexClass[],int num);
-void error(int err );
-void error(int err, int detail);
+void error(int err, int detail=0);
+void printErrInfo();

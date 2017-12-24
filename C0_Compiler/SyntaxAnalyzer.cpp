@@ -8,6 +8,14 @@
 #include "IO.h"
 #include "SymTable.h"
 //recursively called function]
+syntaxClass lexToSyntax();
+void skip(lexClass group[],int num);
+bool shouldBe(lexClass lex);
+int shouldBe2(lexClass lex1, lexClass lex2);
+bool couldBe(lexClass lex);
+int couldBe2(lexClass lex1, lexClass lex2);
+int shouldExist(char*name);
+void shouldNotExist(char*name);
 void parseProgram();
 void parseIden(int *val,bool setTable);
 void parseInt(int *val);
@@ -79,15 +87,17 @@ int couldBe2(lexClass lc1, lexClass lc2)
 	}
 	return 0;
 }
-void shouldBe(lexClass lc)
+bool shouldBe(lexClass lc)
 {
 	strcpy(tokenbak, token);
 	if (lextype != lc)
 	{
 		error(ERR_SYNTAX,lc);
+		return false;
 	}
 	outputTerminalS(lexToSyntax());
 	readSym();
+	return true;
 }
 int shouldBe2(lexClass lc1,lexClass lc2)
 {
@@ -895,31 +905,40 @@ void parseProgram()
 	outputSyntax(PROGRAM, false);
 	shouldBe(END);
 }
-bool syntaxAnalyze(int argc, char** argv)
+void lexAnalyze(int argc, char **argv)
+{
+	init(argc, argv);
+	while (true) {
+		readSym();
+		if (lextype == END)
+		{
+			break;
+		}
+	}
+	printErrInfo();
+	close();
+}
+void syntaxAnalyze(int argc, char** argv)
 {
 
 	init(argc, argv);
 	readSym();
 	parseProgram();
 	close();
-	return true;
 }
 int main(int argc, char**argv)
 {
 	
 	char *buffer[2];
 	buffer[1] = "../x64/Debug/test/wtest_lex.txt";
-	init(2, buffer);
-	while (lextype != END)
-	{
-		readSym();
-	}
-	close();
-	getchar();
-	buffer[1] = "../x64/Debug/test/kill_roshan.txt";
-	if (syntaxAnalyze(2,buffer))
+	lexAnalyze(2, buffer);
+	if(!hasError)
 	{
 		printf("Success!");
+	}
+	else
+	{
+		printf("Failed!");
 	}
 	getchar();
 	return 0;

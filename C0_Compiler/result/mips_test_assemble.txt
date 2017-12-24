@@ -810,51 +810,6 @@ power_end:
 	lw $ra,64($sp)
 	addi $sp,$sp,68
 	jr $ra
-between:
-	subi $sp,$sp,56
-	sw $s0,20($sp)
-	sw $s1,24($sp)
-	sw $s2,28($sp)
-	sw $ra,52($sp)
-	addi $s0,$sp,0
-	sw $a0,0($s0)
-	addi $s0,$sp,4
-	sw $a1,0($s0)
-	addi $s0,$sp,8
-	sw $a2,0($s0)
-	li $t0,1
-	addi $t1,$sp,12
-	sw $t0,0($t1)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	addi $t1,$sp,8
-	lw $t1,0($t1)
-	sgt $v1,$t0,$t1
-	beq $0,$v1,if_26
-	li $t0,0
-	addi $t1,$sp,12
-	sw $t0,0($t1)
-if_26:
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	addi $t1,$sp,4
-	lw $t1,0($t1)
-	slt $v1,$t0,$t1
-	beq $0,$v1,if_27
-	li $t0,0
-	addi $t1,$sp,12
-	sw $t0,0($t1)
-if_27:
-	addi $v0,$sp,12
-	lw $v0,0($v0)
-	j between_end
-between_end:
-	lw $s0,20($sp)
-	lw $s1,24($sp)
-	lw $s2,28($sp)
-	lw $ra,52($sp)
-	addi $sp,$sp,56
-	jr $ra
 seed:
 	subi $sp,$sp,44
 	sw $s0,8($sp)
@@ -946,7 +901,7 @@ calculate:
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_28_1
+	beq $0,$v1,case_26_1
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -958,13 +913,13 @@ calculate:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-	j switch_28
-case_28_1:
+	j switch_26
+case_26_1:
 	li $t0,45
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_28_2
+	beq $0,$v1,case_26_2
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -976,13 +931,13 @@ case_28_1:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-	j switch_28
-case_28_2:
+	j switch_26
+case_26_2:
 	li $t0,42
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_28_3
+	beq $0,$v1,case_26_3
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -994,13 +949,13 @@ case_28_2:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-	j switch_28
-case_28_3:
+	j switch_26
+case_26_3:
 	li $t0,47
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_28_4
+	beq $0,$v1,case_26_4
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -1012,14 +967,14 @@ case_28_3:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-	j switch_28
-case_28_4:
+	j switch_26
+case_26_4:
 	li $t0,101
 	addi $t1,$sp,36
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,case_28_5
-do_29:
+	beq $0,$v1,case_26_5
+do_27:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,10
@@ -1044,7 +999,7 @@ do_29:
 	lw $t0,0($t0)
 	li $t1,0
 	sne $v1,$t0,$t1
-	bne $0,$v1,do_29
+	bne $0,$v1,do_27
 	li $v0,4
 	la $a0,Str_14
 	syscall
@@ -1058,9 +1013,9 @@ do_29:
 	li $v0,11
 	li $a0,10
 	syscall
-	j switch_28
-case_28_5:
-switch_28:
+	j switch_26
+case_26_5:
+switch_26:
 	addi $v0,$sp,0
 	lw $v0,0($v0)
 	j calculate_end
@@ -1092,7 +1047,7 @@ test_condition:
 	li $t0,1
 	li $t1,1
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_30
+	beq $0,$v1,if_28
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1103,11 +1058,11 @@ test_condition:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_30:
+if_28:
 	li $t0,1
 	li $t1,2
 	sgt $v1,$t0,$t1
-	beq $0,$v1,if_31
+	beq $0,$v1,if_29
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1118,11 +1073,11 @@ if_30:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_31:
+if_29:
 	li $t0,1
 	li $t1,2147483647
 	sgt $v1,$t0,$t1
-	beq $0,$v1,if_32
+	beq $0,$v1,if_30
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1133,11 +1088,11 @@ if_31:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_32:
+if_30:
 	li $t0,2
 	li $t1,1
 	slt $v1,$t0,$t1
-	beq $0,$v1,if_33
+	beq $0,$v1,if_31
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1148,11 +1103,11 @@ if_32:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_33:
+if_31:
 	li $t0,1
 	li $t1,2
 	sge $v1,$t0,$t1
-	beq $0,$v1,if_34
+	beq $0,$v1,if_32
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1163,11 +1118,11 @@ if_33:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_34:
+if_32:
 	li $t0,2
 	li $t1,1
 	sle $v1,$t0,$t1
-	beq $0,$v1,if_35
+	beq $0,$v1,if_33
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1175,6 +1130,36 @@ if_34:
 	addi $t1,$sp,28
 	sw $t0,0($t1)
 	addi $t0,$sp,28
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+if_33:
+	li $t0,1
+	li $t1,1
+	sne $v1,$t0,$t1
+	beq $0,$v1,if_34
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,32
+	sw $t0,0($t1)
+	addi $t0,$sp,32
+	lw $t0,0($t0)
+	addi $t1,$sp,0
+	sw $t0,0($t1)
+if_34:
+	li $t0,1
+	li $t1,2
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_35
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,1
+	add $t0,$t0,$t1
+	addi $t1,$sp,36
+	sw $t0,0($t1)
+	addi $t0,$sp,36
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
@@ -1187,43 +1172,13 @@ if_35:
 	lw $t0,0($t0)
 	li $t1,1
 	add $t0,$t0,$t1
-	addi $t1,$sp,32
-	sw $t0,0($t1)
-	addi $t0,$sp,32
-	lw $t0,0($t0)
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-if_36:
-	li $t0,1
-	li $t1,2
-	seq $v1,$t0,$t1
-	beq $0,$v1,if_37
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	li $t1,1
-	add $t0,$t0,$t1
-	addi $t1,$sp,36
-	sw $t0,0($t1)
-	addi $t0,$sp,36
-	lw $t0,0($t0)
-	addi $t1,$sp,0
-	sw $t0,0($t1)
-if_37:
-	li $t0,1
-	li $t1,1
-	sne $v1,$t0,$t1
-	beq $0,$v1,if_38
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	li $t1,1
-	add $t0,$t0,$t1
 	addi $t1,$sp,40
 	sw $t0,0($t1)
 	addi $t0,$sp,40
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_38:
+if_36:
 	li $t0,1
 	li $t1,1
 	add $t0,$t0,$t1
@@ -1239,7 +1194,7 @@ if_38:
 	addi $t1,$sp,48
 	lw $t1,0($t1)
 	slt $v1,$t0,$t1
-	beq $0,$v1,if_39
+	beq $0,$v1,if_37
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1250,7 +1205,7 @@ if_38:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_39:
+if_37:
 	li $t0,1
 	li $t1,1
 	add $t0,$t0,$t1
@@ -1266,7 +1221,7 @@ if_39:
 	addi $t1,$sp,60
 	lw $t1,0($t1)
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_40
+	beq $0,$v1,if_38
 	addi $t0,$sp,4
 	lw $t0,0($t0)
 	li $t1,1
@@ -1277,11 +1232,11 @@ if_39:
 	lw $t0,0($t0)
 	addi $t1,$sp,4
 	sw $t0,0($t1)
-if_40:
+if_38:
 	li $t0,97
 	li $t1,1
 	sgt $v1,$t0,$t1
-	beq $0,$v1,if_41
+	beq $0,$v1,if_39
 	addi $t0,$sp,4
 	lw $t0,0($t0)
 	li $t1,1
@@ -1292,11 +1247,11 @@ if_40:
 	lw $t0,0($t0)
 	addi $t1,$sp,4
 	sw $t0,0($t1)
-if_41:
+if_39:
 	li $t0,2147483647
 	li $t1,2147483647
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_42
+	beq $0,$v1,if_40
 	addi $t0,$sp,4
 	lw $t0,0($t0)
 	li $t1,1
@@ -1307,7 +1262,7 @@ if_41:
 	lw $t0,0($t0)
 	addi $t1,$sp,4
 	sw $t0,0($t1)
-if_42:
+if_40:
 	li $t0,0
 	li $t1,2147483647
 	sub $t0,$t0,$t1
@@ -1317,7 +1272,7 @@ if_42:
 	addi $t1,$sp,76
 	lw $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_43
+	beq $0,$v1,if_41
 	addi $t0,$sp,4
 	lw $t0,0($t0)
 	li $t1,1
@@ -1328,11 +1283,11 @@ if_42:
 	lw $t0,0($t0)
 	addi $t1,$sp,4
 	sw $t0,0($t1)
-if_43:
+if_41:
 	li $t0,43
 	li $t1,43
 	sge $v1,$t0,$t1
-	beq $0,$v1,if_44
+	beq $0,$v1,if_42
 	addi $t0,$sp,4
 	lw $t0,0($t0)
 	li $t1,1
@@ -1343,7 +1298,7 @@ if_43:
 	lw $t0,0($t0)
 	addi $t1,$sp,4
 	sw $t0,0($t1)
-if_44:
+if_42:
 	li $a0,2147483647
 	jal ischar
 	addi $t0,$sp,88
@@ -1352,7 +1307,7 @@ if_44:
 	lw $t0,0($t0)
 	li $t1,0
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_45
+	beq $0,$v1,if_43
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1363,7 +1318,7 @@ if_44:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_45:
+if_43:
 	li $a0,-2147483647
 	jal ischar
 	addi $t0,$sp,96
@@ -1372,7 +1327,7 @@ if_45:
 	lw $t0,0($t0)
 	li $t1,0
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_46
+	beq $0,$v1,if_44
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1383,7 +1338,7 @@ if_45:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_46:
+if_44:
 	li $a0,1
 	jal ischar
 	addi $t0,$sp,104
@@ -1392,7 +1347,7 @@ if_46:
 	lw $t0,0($t0)
 	li $t1,0
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_47
+	beq $0,$v1,if_45
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -1403,12 +1358,12 @@ if_46:
 	lw $t0,0($t0)
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-if_47:
+if_45:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,0
 	sgt $v1,$t0,$t1
-	beq $0,$v1,if_48
+	beq $0,$v1,if_46
 	li $v0,4
 	la $a0,Str_16
 	syscall
@@ -1416,12 +1371,12 @@ if_47:
 	li $a0,10
 	syscall
 	j test_condition_end
-if_48:
+if_46:
 	addi $t0,$sp,4
 	lw $t0,0($t0)
 	li $t1,5
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_49
+	beq $0,$v1,if_47
 	li $v0,4
 	la $a0,Str_16
 	syscall
@@ -1429,7 +1384,7 @@ if_48:
 	li $a0,10
 	syscall
 	j test_condition_end
-if_49:
+if_47:
 	li $v0,4
 	la $a0,Str_17
 	syscall
@@ -1718,7 +1673,7 @@ test_expression:
 	lw $t0,0($t0)
 	li $t1,1
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_50
+	beq $0,$v1,if_48
 	li $v0,4
 	la $a0,Str_12
 	syscall
@@ -1726,7 +1681,7 @@ test_expression:
 	li $a0,10
 	syscall
 	j test_expression_end
-if_50:
+if_48:
 	li $t0,97
 	addi $t1,$sp,265
 	sb $t0,0($t1)
@@ -1942,38 +1897,38 @@ if_50:
 	lw $t0,0($t0)
 	li $t1,97
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_51
+	beq $0,$v1,if_49
 	addi $t0,$sp,12
 	lw $t0,0($t0)
 	li $t1,97
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_52
+	beq $0,$v1,if_50
 	addi $t0,$sp,16
 	lw $t0,0($t0)
 	li $t1,97
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_53
+	beq $0,$v1,if_51
 	addi $t0,$sp,20
 	lw $t0,0($t0)
 	li $t1,97
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_54
+	beq $0,$v1,if_52
 	addi $t0,$sp,24
 	lw $t0,0($t0)
 	li $t1,97
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_55
+	beq $0,$v1,if_53
 	li $t0,97
 	li $t1,0
 	addi $t2,$sp,264
 	sll $t1,$t1,0
 	add $t2,$t2,$t1
 	sb $t0,0($t2)
-if_55:
-if_54:
 if_53:
 if_52:
 if_51:
+if_50:
+if_49:
 	li $t1,0
 	addi $t0,$sp,264
 	sll $t1,$t1,0
@@ -1985,7 +1940,7 @@ if_51:
 	lb $t0,0($t0)
 	li $t1,97
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_56
+	beq $0,$v1,if_54
 	li $v0,4
 	la $a0,Str_12
 	syscall
@@ -1993,7 +1948,7 @@ if_51:
 	li $a0,10
 	syscall
 	j test_expression_end
-if_56:
+if_54:
 	li $v0,4
 	la $a0,Str_19
 	syscall
@@ -2207,26 +2162,26 @@ test_chicken_rabbit:
 	lw $t0,0($t0)
 	li $t1,0
 	slt $v1,$t0,$t1
-	beq $0,$v1,if_57
+	beq $0,$v1,if_55
 	li $v0,4
 	la $a0,Str_22
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
-if_57:
+if_55:
 	addi $t0,$sp,12
 	lw $t0,0($t0)
 	li $t1,0
 	slt $v1,$t0,$t1
-	beq $0,$v1,if_58
+	beq $0,$v1,if_56
 	li $v0,4
 	la $a0,Str_23
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
-if_58:
+if_56:
 	addi $t0,$sp,8
 	lw $t0,0($t0)
 	li $t1,4
@@ -2238,7 +2193,7 @@ if_58:
 	addi $t1,$sp,16
 	lw $t1,0($t1)
 	sle $v1,$t0,$t1
-	beq $0,$v1,if_59
+	beq $0,$v1,if_57
 	addi $t0,$sp,8
 	lw $t0,0($t0)
 	li $t1,2
@@ -2250,7 +2205,7 @@ if_58:
 	addi $t1,$sp,20
 	lw $t1,0($t1)
 	sge $v1,$t0,$t1
-	beq $0,$v1,if_60
+	beq $0,$v1,if_58
 	li $t0,4
 	addi $t1,$sp,8
 	lw $t1,0($t1)
@@ -2318,8 +2273,8 @@ if_58:
 	li $a0,10
 	syscall
 	j test_chicken_rabbit_end
-if_60:
-if_59:
+if_58:
+if_57:
 	li $v0,4
 	la $a0,Str_26
 	syscall
@@ -2342,7 +2297,7 @@ testrandom:
 	li $t0,0
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-do_61:
+do_59:
 	li $a0,100
 	jal random
 	addi $t0,$sp,4
@@ -2368,7 +2323,7 @@ do_61:
 	lw $t0,0($t0)
 	li $t1,20
 	slt $v1,$t0,$t1
-	bne $0,$v1,do_61
+	bne $0,$v1,do_59
 testrandom_end:
 	lw $s0,16($sp)
 	lw $s1,20($sp)
@@ -2429,7 +2384,7 @@ functest:
 	lw $t0,0($t0)
 	li $t1,6
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_62
+	beq $0,$v1,if_60
 	li $v0,4
 	la $a0,Str_12
 	syscall
@@ -2437,7 +2392,7 @@ functest:
 	li $a0,10
 	syscall
 	j functest_end
-if_62:
+if_60:
 	li $a0,1
 	li $a1,2
 	addi $a2,$sp,8
@@ -2468,7 +2423,7 @@ if_62:
 	addi $t1,$sp,20
 	lw $t1,0($t1)
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_63
+	beq $0,$v1,if_61
 	li $v0,4
 	la $a0,Str_12
 	syscall
@@ -2476,7 +2431,7 @@ if_62:
 	li $a0,10
 	syscall
 	j functest_end
-if_63:
+if_61:
 	li $v0,4
 	la $a0,Str_31
 	syscall
@@ -2558,7 +2513,7 @@ if_63:
 	lw $t0,0($t0)
 	li $t1,5
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_64
+	beq $0,$v1,if_62
 	li $v0,4
 	la $a0,Str_12
 	syscall
@@ -2566,7 +2521,7 @@ if_63:
 	li $a0,10
 	syscall
 	j functest_end
-if_64:
+if_62:
 	li $v0,4
 	la $a0,Str_33
 	syscall
@@ -2816,6 +2771,38 @@ test_switch:
 	addi $t1,$sp,0
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
+	beq $0,$v1,case_63_1
+	li $v0,4
+	la $a0,Str_12
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_63
+case_63_1:
+	li $t0,101
+	addi $t1,$sp,0
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_63_2
+	li $v0,4
+	la $a0,Str_12
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_63
+case_63_2:
+switch_63:
+	li $t0,97
+	addi $t1,$sp,0
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_64_1
+	li $t0,100
+	addi $t1,$sp,1
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
 	beq $0,$v1,case_65_1
 	li $v0,4
 	la $a0,Str_12
@@ -2825,13 +2812,13 @@ test_switch:
 	syscall
 	j switch_65
 case_65_1:
-	li $t0,101
-	addi $t1,$sp,0
+	li $t0,98
+	addi $t1,$sp,1
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_65_2
 	li $v0,4
-	la $a0,Str_12
+	la $a0,Str_48
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2839,41 +2826,9 @@ case_65_1:
 	j switch_65
 case_65_2:
 switch_65:
-	li $t0,97
-	addi $t1,$sp,0
-	lb $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_66_1
-	li $t0,100
-	addi $t1,$sp,1
-	lb $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_67_1
-	li $v0,4
-	la $a0,Str_12
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	j switch_67
-case_67_1:
-	li $t0,98
-	addi $t1,$sp,1
-	lb $t1,0($t1)
-	seq $v1,$t0,$t1
-	beq $0,$v1,case_67_2
-	li $v0,4
-	la $a0,Str_48
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	j switch_67
-case_67_2:
-switch_67:
-	j switch_66
-case_66_1:
-switch_66:
+	j switch_64
+case_64_1:
+switch_64:
 test_switch_end:
 	lw $s0,4($sp)
 	lw $s1,8($sp)

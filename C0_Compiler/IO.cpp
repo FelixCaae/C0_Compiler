@@ -20,7 +20,7 @@ FILE * outTCode = NULL;
 FILE * outErr=NULL;
 char buffer[maxOutputLength];
 int slevel = 0;//syntax level
-void output(char *ch,FILE* outFile,bool toConsole)
+void output(const char *ch,FILE* outFile,bool toConsole)
 {
 	if(toConsole)
 	{ 
@@ -33,7 +33,7 @@ void output(char *ch,FILE* outFile,bool toConsole)
 }
 void outputLexeme()
 {
-	sprintf(buffer, "%d\t%s\t%s\trow:%d\tcolmn:%d\n", lextype, lexClassName[lextype - 1], token, lineCounter, columnCounter);
+	sprintf(buffer, "row:%d\tcol:%d\t%d\t%s\t\t%s\t\n", lineCounter, columnCounter,lextype, lexClassName[lextype - 1], token);
 	output(buffer, outLex,bOutLex);
 }
 void blank()

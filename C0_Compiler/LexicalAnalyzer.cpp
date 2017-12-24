@@ -216,6 +216,12 @@ void skip(const char chrSet[], int num)
 void scannINT()
 {
 	lextype = INT;
+	bool hasLeadZero = false;
+	if (chr=='0')
+	{
+		hasLeadZero = true;
+	}
+	int count = 0;
 	while (!isBlank() && !isInputEnd() && !isSeperator())
 	{
 		if (!isNumber())
@@ -224,7 +230,12 @@ void scannINT()
 			skip(skipSet, skipNum);
 			return;
 		}
+		count++;
 		readChar();
+	}
+	if (hasLeadZero&&count > 1)
+	{
+		error(ERR_LEADZERO);
 	}
 	retractChar();
 }
@@ -273,7 +284,7 @@ void scannCHR()
 	}
 	if (valid == 0) { error(ERR_CHAR, 0); }
 	if (chr == '\n') { error(ERR_CHAR,1); }
-	if (counter > 1) { error(ERR_CHAR,2); }
+	if (counter > 1||counter==0) { error(ERR_CHAR,2); }
 }
 void scannSTR()
 {
@@ -333,6 +344,7 @@ void scannSEP()
         readChar();
         if (chr != '=')
         {
+			retractChar();
             error(ERR_LEX_EX,'=');
         }
         else
@@ -360,6 +372,7 @@ void scannSEP()
 		}
 		else 
 		{
+			
 			error(ERR_LEX_UNEX, '\\');
 			return;
 		}

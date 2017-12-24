@@ -20,7 +20,9 @@ enum IdenObj
 {
 	OVAR=1,OCONST,OARRAY,OFUNC
 };
+
 const int terminalSet[] =  { SIDEN,SINT,SCHAR,SSTR,SSEP,SKEY };
 syntaxClass lexToSyntax();
-bool syntaxAnalyze(int argc, char**argv);
+void matchTest();
+void syntaxAnalyze(int argc, char**argv);
 extern int slevel;

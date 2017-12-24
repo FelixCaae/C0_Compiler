@@ -238,21 +238,6 @@ do_25:
 	$tmp5 < b
 	BZ do_25
 	ret a
-	int between()
-	para int num
-	para int lower
-	para int upper
-	var int result
-	result = 1 
-	num > upper
-	BNZ if_26
-	result = 0 
-if_26:
-	num < lower
-	BNZ if_27
-	result = 0 
-if_27:
-	ret result
 	int seed()
 	para int r
 	_randomseed = r 
@@ -275,43 +260,43 @@ if_27:
 	var int i
 	i = 0 
 	43 == op
-	BNZ case_28_1
+	BNZ case_26_1
 	$tmp2 = a + b
 	a = $tmp2 
-	GOTO switch_28
-case_28_1:
+	GOTO switch_26
+case_26_1:
 	45 == op
-	BNZ case_28_2
+	BNZ case_26_2
 	$tmp4 = a - b
 	a = $tmp4 
-	GOTO switch_28
-case_28_2:
+	GOTO switch_26
+case_26_2:
 	42 == op
-	BNZ case_28_3
+	BNZ case_26_3
 	$tmp6 = a * b
 	a = $tmp6 
-	GOTO switch_28
-case_28_3:
+	GOTO switch_26
+case_26_3:
 	47 == op
-	BNZ case_28_4
+	BNZ case_26_4
 	$tmp8 = a / b
 	a = $tmp8 
-	GOTO switch_28
-case_28_4:
+	GOTO switch_26
+case_26_4:
 	101 == op
-	BNZ case_28_5
-do_29:
+	BNZ case_26_5
+do_27:
 	$tmp11 = a * 10
 	a = $tmp11 
 	$tmp13 = b - 1
 	b = $tmp13 
 	b != 0
-	BZ do_29
+	BZ do_27
 	print "aEb:"
 	print a
-	GOTO switch_28
-case_28_5:
-switch_28:
+	GOTO switch_26
+case_26_5:
+switch_26:
 	ret a
 	int test_condition()
 	const char ch = 97
@@ -324,119 +309,119 @@ switch_28:
 	tset = 0 
 	print "Test 4:condition begin"
 	1 != 1
-	BNZ if_30
+	BNZ if_28
 	$tmp4 = test + 1
 	test = $tmp4 
-if_30:
+if_28:
 	1 > 2
-	BNZ if_31
+	BNZ if_29
 	$tmp6 = test + 1
 	test = $tmp6 
-if_31:
+if_29:
 	1 > 2147483647
-	BNZ if_32
+	BNZ if_30
 	$tmp8 = test + 1
 	test = $tmp8 
-if_32:
+if_30:
 	2 < 1
-	BNZ if_33
+	BNZ if_31
 	$tmp10 = test + 1
 	test = $tmp10 
-if_33:
+if_31:
 	1 >= 2
-	BNZ if_34
+	BNZ if_32
 	$tmp12 = test + 1
 	test = $tmp12 
-if_34:
+if_32:
 	2 <= 1
-	BNZ if_35
+	BNZ if_33
 	$tmp14 = test + 1
 	test = $tmp14 
+if_33:
+	1 != 1
+	BNZ if_34
+	$tmp16 = test + 1
+	test = $tmp16 
+if_34:
+	1 == 2
+	BNZ if_35
+	$tmp18 = test + 1
+	test = $tmp18 
 if_35:
 	1 != 1
 	BNZ if_36
-	$tmp16 = test + 1
-	test = $tmp16 
-if_36:
-	1 == 2
-	BNZ if_37
-	$tmp18 = test + 1
-	test = $tmp18 
-if_37:
-	1 != 1
-	BNZ if_38
 	$tmp21 = test + 1
 	test = $tmp21 
-if_38:
+if_36:
 	$tmp22 = 1 + 1
 	$tmp23 = 1 - 1
 	$tmp22 < $tmp23
-	BNZ if_39
+	BNZ if_37
 	$tmp25 = test + 1
 	test = $tmp25 
-if_39:
+if_37:
 	$tmp26 = 1 + 1
 	$tmp27 = 1 - 1
 	$tmp26 != $tmp27
-	BNZ if_40
+	BNZ if_38
 	$tmp29 = tset + 1
 	tset = $tmp29 
-if_40:
+if_38:
 	97 > 1
-	BNZ if_41
+	BNZ if_39
 	$tmp33 = tset + 1
 	tset = $tmp33 
-if_41:
+if_39:
 	2147483647 == 2147483647
-	BNZ if_42
+	BNZ if_40
 	$tmp36 = tset + 1
 	tset = $tmp36 
-if_42:
+if_40:
 	$tmp39 = 0 - 2147483647
 	-2147483647 == $tmp39
-	BNZ if_43
+	BNZ if_41
 	$tmp41 = tset + 1
 	tset = $tmp41 
-if_43:
+if_41:
 	43 >= 43
-	BNZ if_44
+	BNZ if_42
 	$tmp44 = tset + 1
 	tset = $tmp44 
-if_44:
+if_42:
 	push 2147483647
 	call ischar
 	$tmp45 = RET
 	$tmp45 != 0
-	BNZ if_45
+	BNZ if_43
 	$tmp48 = test + 1
 	test = $tmp48 
-if_45:
+if_43:
 	push -2147483647
 	call ischar
 	$tmp49 = RET
 	$tmp49 != 0
-	BNZ if_46
+	BNZ if_44
 	$tmp52 = test + 1
 	test = $tmp52 
-if_46:
+if_44:
 	push 1
 	call ischar
 	$tmp53 = RET
 	$tmp53 != 0
-	BNZ if_47
+	BNZ if_45
 	$tmp56 = test + 1
 	test = $tmp56 
-if_47:
+if_45:
 	test > 0
-	BNZ if_48
+	BNZ if_46
 	print "fail"
 	ret
-if_48:
+if_46:
 	tset != 5
-	BNZ if_49
+	BNZ if_47
 	print "fail"
 	ret
-if_49:
+if_47:
 	print "Test 4 is ok"
 	int test_expression()
 	array int _a[2]
@@ -498,10 +483,10 @@ if_49:
 	ia[1] = $tmp55
 	$tmp57 = ia[1]
 	$tmp57 != 1
-	BNZ if_50
+	BNZ if_48
 	print "failed"
 	ret
-if_50:
+if_48:
 	c1 = 97 
 	c2 = 95 
 	c3 = 43 
@@ -541,27 +526,27 @@ if_50:
 	ia[0] = $tmp96
 	ca[0] = 98
 	a1 == 97
-	BNZ if_51
+	BNZ if_49
 	a2 == 97
-	BNZ if_52
+	BNZ if_50
 	a3 == 97
-	BNZ if_53
+	BNZ if_51
 	a4 == 97
-	BNZ if_54
+	BNZ if_52
 	a5 == 97
-	BNZ if_55
+	BNZ if_53
 	ca[0] = 97
-if_55:
-if_54:
 if_53:
 if_52:
 if_51:
+if_50:
+if_49:
 	$tmp107 = ca[0]
 	$tmp107 != 97
-	BNZ if_56
+	BNZ if_54
 	print "failed"
 	ret
-if_56:
+if_54:
 	print "Test 5 is ok!"
 	int arg4()
 	para int a
@@ -609,19 +594,19 @@ if_56:
 	read head
 	read foot
 	head < 0
-	BNZ if_57
+	BNZ if_55
 	print "head num can`t be less than zero"
-if_57:
+if_55:
 	foot < 0
-	BNZ if_58
+	BNZ if_56
 	print "foot num can`t be less than zero"
-if_58:
+if_56:
 	$tmp3 = head * 4
 	foot <= $tmp3
-	BNZ if_59
+	BNZ if_57
 	$tmp5 = head * 2
 	foot >= $tmp5
-	BNZ if_60
+	BNZ if_58
 	$tmp6 = 4 * head
 	$tmp7 = $tmp6 - foot
 	$tmp8 = 4 - 2
@@ -634,13 +619,13 @@ if_58:
 	print "chicken_num"
 	print chicken_num
 	ret
-if_60:
-if_59:
+if_58:
+if_57:
 	print "input is not solvable"
 	int testrandom()
 	var int i
 	i = 0 
-do_61:
+do_59:
 	push 100
 	call random
 	$tmp2 = RET
@@ -648,7 +633,7 @@ do_61:
 	$tmp4 = i + 1
 	i = $tmp4 
 	i < 20
-	BZ do_61
+	BZ do_59
 	int functest()
 	const int _1 = 1
 	const int _2 = 2
@@ -674,10 +659,10 @@ do_61:
 	call arg4
 	$tmp7 = RET
 	$tmp7 != 6
-	BNZ if_62
+	BNZ if_60
 	print "failed"
 	ret
-if_62:
+if_60:
 	push 1
 	push 2
 	push _3
@@ -693,10 +678,10 @@ if_62:
 	call arg12
 	$tmp16 = RET
 	327 != $tmp16
-	BNZ if_63
+	BNZ if_61
 	print "failed"
 	ret
-if_63:
+if_61:
 	print "  Test 6-1 is ok"
 	print "  Test 6-2:mod"
 	push 10
@@ -729,10 +714,10 @@ if_63:
 	$tmp37 = RET
 	$tmp38 = $tmp34 + $tmp37
 	$tmp38 != 5
-	BNZ if_64
+	BNZ if_62
 	print "failed"
 	ret
-if_64:
+if_62:
 	print "  Test 6-2 is ok"
 	print "  Test 6-3:max(input,10)"
 	print "Please input a number (1-100): "
@@ -812,32 +797,32 @@ if_64:
 	a = 97 
 	b = 98 
 	98 == a
+	BNZ case_63_1
+	print "failed"
+	GOTO switch_63
+case_63_1:
+	101 == a
+	BNZ case_63_2
+	print "failed"
+	GOTO switch_63
+case_63_2:
+switch_63:
+	97 == a
+	BNZ case_64_1
+	100 == b
 	BNZ case_65_1
 	print "failed"
 	GOTO switch_65
 case_65_1:
-	101 == a
+	98 == b
 	BNZ case_65_2
-	print "failed"
+	print "pass through"
 	GOTO switch_65
 case_65_2:
 switch_65:
-	97 == a
-	BNZ case_66_1
-	100 == b
-	BNZ case_67_1
-	print "failed"
-	GOTO switch_67
-case_67_1:
-	98 == b
-	BNZ case_67_2
-	print "pass through"
-	GOTO switch_67
-case_67_2:
-switch_67:
-	GOTO switch_66
-case_66_1:
-switch_66:
+	GOTO switch_64
+case_64_1:
+switch_64:
 	void main()
 	call test_switch
 	print "This is a test program written with DO-WHILE grammar!"
