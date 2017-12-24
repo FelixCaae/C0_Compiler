@@ -13,9 +13,9 @@ extern FILE * outTCode;
 extern FILE * outErr;
 extern bool toConsole;
 extern char buffer[];
-const  bool bOutSyntax = false;
+const  bool bOutSyntax = true;
 const bool bOutQcode = false;
-const bool bOutLex = true;
+const bool bOutLex = false;
 const bool bOutTCode = false;
 const unsigned int maxOutputLength = 88;
 const char * const syntaxClassName[] = {

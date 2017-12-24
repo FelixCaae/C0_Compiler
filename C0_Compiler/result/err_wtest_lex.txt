@@ -1,33 +1,33 @@
-*****Error4:Numbers can`t have leading zeroes '00014 ' line:40
-*****Error2:Unexpected character: 'a' line:67
-*****Error2:Unexpected character: '_' line:68
-*****Error2:Unexpected character: '#' line:69
-*****Error2:Unexpected character: '$' line:70
-*****Error2:Unexpected character: '^' line:71
-*****Error5:Not legal charachter found line:105
-*****Error5:Can`t find matched single quote line:105
-*****Error5:More than one charachter is found line:105
-*****Error5:More than one charachter is found line:106
-*****Error5:Not legal charachter found line:107
-*****Error5:More than one charachter is found line:108
-*****Error5:More than one charachter is found line:109
-*****Error5:Not legal charachter found line:110
-*****Error5:Not legal charachter found line:111
-*****Error5:More than one charachter is found line:112
-*****Error5:More than one charachter is found line:113
-*****Error5:Can`t find matched single quote line:114
-*****Error5:More than one charachter is found line:114
-*****Error5:Can`t find matched single quote line:115
-*****Error6:Can`t find matched double quote line:125
-*****Error2:Unexpected character: '"' line:125
-*****Error6:Not legal ascii-charachter found line:126
-*****Error2:Unexpected character: '@' line:136
-*****Error2:Unexpected character: '#' line:136
-*****Error3:Expected character: '=' but found '!' line:136
-*****Error2:Unexpected character: '$' line:136
-*****Error2:Unexpected character: '' line:136
-*****Error2:Unexpected character: '^' line:136
-*****Error2:Unexpected character: '&' line:136
-*****Error2:Unexpected character: '.' line:136
-*****Error2:Unexpected character: '?' line:136
+*****Error4:Numbers can`t have leading zeroes '00014 ' line:40 col:1
+*****Error2:Unexpected character: 'a' line:67 col:1
+*****Error2:Unexpected character: '_' line:68 col:2
+*****Error2:Unexpected character: '#' line:69 col:2
+*****Error2:Unexpected character: '$' line:70 col:2
+*****Error2:Unexpected character: '^' line:71 col:2
+*****Error5-0:Not legal charachter found line:105 col:1
+*****Error5-1:Can`t find matched single quote line:105 col:1
+*****Error5-2:More than one charachter is found line:105 col:2
+*****Error5-2:More than one charachter is found line:106 col:1
+*****Error5-0:Not legal charachter found line:107 col:1
+*****Error5-2:More than one charachter is found line:108 col:1
+*****Error5-2:More than one charachter is found line:109 col:1
+*****Error5-0:Not legal charachter found line:110 col:1
+*****Error5-0:Not legal charachter found line:111 col:1
+*****Error5-2:More than one charachter is found line:112 col:1
+*****Error5-2:More than one charachter is found line:113 col:1
+*****Error5-1:Can`t find matched single quote line:114 col:1
+*****Error5-2:More than one charachter is found line:114 col:1
+*****Error5-1:Can`t find matched single quote line:115 col:1
+*****Error6-1:Can`t find matched double quote line:125 col:1
+*****Error2:Unexpected character: '"' line:125 col:2
+*****Error6-0:Not legal ascii-charachter found line:126 col:2
+*****Error2:Unexpected character: '@' line:136 col:1
+*****Error2:Unexpected character: '#' line:136 col:2
+*****Error3:Expected character: '=' but found '!' line:136 col:3
+*****Error2:Unexpected character: '$' line:136 col:4
+*****Error2:Unexpected character: '' line:136 col:5
+*****Error2:Unexpected character: '^' line:136 col:6
+*****Error2:Unexpected character: '&' line:136 col:7
+*****Error2:Unexpected character: '.' line:136 col:8
+*****Error2:Unexpected character: '?' line:136 col:9
 Total errors:32

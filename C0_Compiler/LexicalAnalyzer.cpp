@@ -11,7 +11,7 @@ using namespace std;
 
 char chr=0;
 char token[tokenStrLen];
-int lineCounter = 1, columnCounter = 0;
+int lineCounter = 1, columnCounter = 1;
 int tokenidx = 0;
 int nodesNum = 0;
 lexClass lextype;
@@ -138,7 +138,7 @@ void readChar(bool log=true)
 	if (chr == '\n')
 	{
 		lineCounter += 1;
-		columnCounter = 0;
+		columnCounter = 1;
 	}
 	if (tokenidx == tokenStrLen)error(ERR_TOKEN_FLOW);
 	if (log) {
@@ -149,7 +149,6 @@ void readChar(bool log=true)
 }
 void retractChar()
 {
-
     fseek(inFile, -2, SEEK_CUR);
     chr = fgetc(inFile);
     tokenidx--;

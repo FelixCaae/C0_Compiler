@@ -208,22 +208,38 @@ char * getFileName(char *arg)
 }
 void init(int argc, char ** argv)
 {
-	if (argc != 2 )
+	
+	FILE* f = NULL;
+	char* c = argv[1];
+	char input[100];
+	char name[100];
+	char rawname[100];
+	if (argc == 1)
+	{
+		printf("Please input the source file path\n");
+		scanf("%s",input);
+		f = fopen(input, "r");
+		if (f == NULL)
+		{
+			error(ERR_FILE);
+		}
+		strcpy(rawname, getFileName(input));
+	}
+	else if (argc == 2)
+	{
+		f = fopen(argv[1], "r");
+		if (f == NULL)
+		{
+			error(ERR_FILE);
+		}
+		strcpy(rawname, getFileName(argv[1]));
+	}
+	else
 	{
 		error(ERR_INPUT_ARGUMENT_NUM);
 	}
-	FILE* f = NULL;
-	char* c = argv[1];
-	f = fopen(argv[1], "r");
-	if (f == NULL)
-	{
-		error(ERR_FILE);
-	}
 	inFile = f;
-	char name[100];
-	char rawname[100];
 	_mkdir("result");
-	strcpy(rawname, getFileName(argv[1]));
 	strcpy(name, "result/lex_");
 	strcat(name, rawname);
 	f = fopen(name, "w+");

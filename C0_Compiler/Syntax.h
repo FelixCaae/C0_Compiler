@@ -20,7 +20,8 @@ enum IdenObj
 {
 	OVAR=1,OCONST,OARRAY,OFUNC
 };
-
+const lexClass skipSet1[]={SEMI};
+const lexClass funcHead[] = { RCURB };
 const int terminalSet[] =  { SIDEN,SINT,SCHAR,SSTR,SSEP,SKEY };
 syntaxClass lexToSyntax();
 void matchTest();
