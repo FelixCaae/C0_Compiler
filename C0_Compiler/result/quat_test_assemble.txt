@@ -1,7 +1,10 @@
 	const char _a = 97
 	const char _b = 98
 	const char _c = 99
-	const int _d = 4
+	const int _d = 1
+	const int _e = -1
+	const int _g = 0
+	const int _h = 0
 	const int imax = 2147483647
 	const int imin = -2147483647
 	const char cmin = 43
@@ -9,6 +12,30 @@
 	const char _ = 95
 	const char _a_ = 95
 	const char _b_a_b_ = 95
+	const int _na0 = 0
+	const int _nb0 = 1
+	const int _nc0 = 2
+	const int _nd0 = 3
+	const int _ne0 = 4
+	const int _nf0 = 5
+	const int _ng0 = 6
+	const int _nh0 = 7
+	const int _ni0 = 8
+	const int _nna0 = 10
+	const int _nna1 = 11
+	const int _nna2 = 12
+	const int _nna3 = 1301458769
+	const char ap_0 = 43
+	const char am_1 = 45
+	const char am_2 = 42
+	const char aa_3 = 47
+	const char aa_4 = 97
+	const char aa_5 = 122
+	const char aa_6 = 65
+	const char aa_7 = 90
+	const char aa_8 = 49
+	const char aa_9 = 48
+	const char aa_10 = 57
 	var int _randomseed
 	var int _n1
 	var char _n2
@@ -42,13 +69,22 @@ if_2:
 	ret 1
 if_5:
 if_4:
-	a >= 43
+	a == 43
 	BNZ if_6
-	a <= 47
+	ret 1
+if_6:
+	a == 45
 	BNZ if_7
 	ret 1
 if_7:
-if_6:
+	a == 42
+	BNZ if_8
+	ret 1
+if_8:
+	a == 47
+	BNZ if_9
+	ret 1
+if_9:
 	ret 0
 	int tochar()
 	para int a
@@ -58,28 +94,28 @@ if_6:
 	call ischar
 	$tmp1 = RET
 	$tmp1 != 0
-	BNZ if_8
+	BNZ if_10
 	c = a 
-if_8:
+if_10:
 	ret c
 	int alphabet()
 	var int i
 	var char ch
 	print "Test 2:print alphabet begin!"
-	i = 65 
-do_9:
+	i = 0 
+do_11:
 	push i
 	call ischar
 	$tmp1 = RET
 	$tmp1 != 0
-	BNZ if_10
+	BNZ if_12
 	ch = i 
 	print ch
-if_10:
+if_12:
 	$tmp4 = i + 1
 	i = $tmp4 
 	i != 128
-	BZ do_9
+	BZ do_11
 	print "Test 2 is ok"
 	int set()
 	_n1 = 1 
@@ -88,23 +124,23 @@ if_10:
 	_n3[9] = 9
 	int verify()
 	_n1 != 1
-	BNZ if_11
-	ret 0
-if_11:
-	_n2 != 97
-	BNZ if_12
-	ret 0
-if_12:
-	$tmp5 = _n3[1]
-	$tmp5 != 1
 	BNZ if_13
 	ret 0
 if_13:
-	$tmp9 = _n3[9]
-	$tmp9 != 9
+	_n2 != 97
 	BNZ if_14
 	ret 0
 if_14:
+	$tmp5 = _n3[1]
+	$tmp5 != 1
+	BNZ if_15
+	ret 0
+if_15:
+	$tmp9 = _n3[9]
+	$tmp9 != 9
+	BNZ if_16
+	ret 0
+if_16:
 	ret 1
 	int set2()
 	para int _n1
@@ -124,18 +160,18 @@ if_14:
 	_n1 = 1999 
 	call set
 	_n1 != 1999
-	BNZ if_15
+	BNZ if_17
 	print "failed!"
 	ret
-if_15:
+if_17:
 	_n1 = 2000 
 	call verify
 	$tmp3 = RET
 	$tmp3 == 0
-	BNZ if_16
+	BNZ if_18
 	print "failed!"
 	ret
-if_16:
+if_18:
 	push _n1
 	push _n2
 	$tmp6 = _n3[9]
@@ -144,25 +180,25 @@ if_16:
 	call verify
 	$tmp8 = RET
 	0 >= $tmp8
-	BNZ if_17
+	BNZ if_19
 	print "failed!"
 	ret
-if_17:
+if_19:
 	call set3
 	call verify
 	$tmp10 = RET
 	0 != $tmp10
-	BNZ if_18
+	BNZ if_20
 	print "failed"
 	ret
-if_18:
+if_20:
 	print "Test 3 is ok"
 	int get0()
 	var int i
 	i = 0 
-do_19:
+do_21:
 	i != 0
-	BZ do_19
+	BZ do_21
 	ret i
 	int get10()
 	ret 10
@@ -178,7 +214,7 @@ do_19:
 	para int target
 	print a
 	a > target
-	BNZ if_20
+	BNZ if_22
 	$tmp0 = a - target
 	$tmp2 = $tmp0 - 1
 	$tmp3 = target - $tmp2
@@ -187,9 +223,9 @@ do_19:
 	call ping
 	$tmp4 = RET
 	ret $tmp4
-if_20:
+if_22:
 	a < target
-	BNZ if_21
+	BNZ if_23
 	$tmp5 = target - a
 	$tmp7 = $tmp5 - 1
 	$tmp8 = target + $tmp7
@@ -198,11 +234,11 @@ if_20:
 	call ping
 	$tmp9 = RET
 	ret $tmp9
-if_21:
+if_23:
 	a == target
-	BNZ if_22
+	BNZ if_24
 	ret a
-if_22:
+if_24:
 	int itself()
 	para int a
 	ret a
@@ -210,17 +246,17 @@ if_22:
 	para int a
 	para int b
 	a >= b
-	BNZ if_23
+	BNZ if_25
 	ret a
-if_23:
+if_25:
 	ret b
 	int min()
 	para int a
 	para int b
 	a <= b
-	BNZ if_24
+	BNZ if_26
 	ret a
-if_24:
+if_26:
 	ret b
 	int power()
 	para int a
@@ -229,30 +265,15 @@ if_24:
 	var int c
 	i = 0 
 	c = a 
-do_25:
+do_27:
 	$tmp1 = a * c
 	a = $tmp1 
 	$tmp3 = i + 1
 	i = $tmp3 
 	$tmp5 = i + 1
 	$tmp5 < b
-	BZ do_25
+	BZ do_27
 	ret a
-	int between()
-	para int num
-	para int lower
-	para int upper
-	var int result
-	result = 1 
-	num > upper
-	BNZ if_26
-	result = 0 
-if_26:
-	num < lower
-	BNZ if_27
-	result = 0 
-if_27:
-	ret result
 	int seed()
 	para int r
 	_randomseed = r 
@@ -307,8 +328,6 @@ do_29:
 	b = $tmp13 
 	b != 0
 	BZ do_29
-	print "aEb:"
-	print a
 	GOTO switch_28
 case_28_5:
 switch_28:
@@ -748,55 +767,84 @@ if_64:
 	call max
 	$tmp42 = RET
 	print $tmp42
+	print "number e 1:"
+	push c
+	push 1
+	push 101
+	call calculate
+	$tmp45 = RET
+	print $tmp45
+	print "number e 3:"
+	push c
+	push 2
+	push 101
+	call calculate
+	$tmp48 = RET
+	print $tmp48
+	print "number e 5:"
+	push c
+	push 3
+	push 101
+	call calculate
+	$tmp51 = RET
+	print $tmp51
+	print "number e 1:"
+	push c
+	push 4
+	push 101
+	call calculate
+	$tmp54 = RET
+	print $tmp54
+	print "number ** 1:"
+	push c
+	push 1
+	call power
+	$tmp56 = RET
+	print $tmp56
+	print "number ** 3:"
+	push c
+	push 3
+	call power
+	$tmp58 = RET
+	print $tmp58
+	print "number ** 5:"
+	push c
+	push 5
+	call power
+	$tmp60 = RET
+	print $tmp60
 	print "  Test 6-4:Simple arthmetic operation"
 	print "Please input two numbers (1-100): "
 	read c
 	read c2
-	print "the power is"
-	push c
-	push c2
-	call itself
-	$tmp43 = RET
-	push $tmp43
-	call min
-	$tmp44 = RET
-	push $tmp44
-	push c
-	push c2
-	call max
-	$tmp45 = RET
-	push $tmp45
-	call power
-	$tmp46 = RET
-	print $tmp46
 	print "a + b"
 	push c
 	push c2
 	push 43
 	call calculate
-	$tmp48 = RET
-	print $tmp48
+	$tmp62 = RET
+	print $tmp62
 	print "a - b"
 	push c
 	push c2
 	push 45
 	call calculate
-	$tmp50 = RET
-	print $tmp50
+	$tmp64 = RET
+	print $tmp64
 	print "a * b"
 	push c
 	push c2
 	push 42
 	call calculate
-	$tmp52 = RET
-	print $tmp52
+	$tmp66 = RET
+	print $tmp66
 	print "a / b"
 	push c
 	push c2
 	push 47
 	call calculate
-	$tmp54 = RET
-	print $tmp54
+	$tmp68 = RET
+	print $tmp68
 	print "  Test 6-5:Ji Tu Tong Long"
 	call test_chicken_rabbit
 	print "  Test 6-6:Random numbers"
@@ -807,8 +855,14 @@ if_64:
 	call testrandom
 	print "Test 6 is ok"
 	int test_switch()
+	const int num = 4
 	var char a
 	var char b
+	array int _a[3]
+	array[0] = 0
+	array[1] = 1
+	array[2] = 3
+	print "Test 7:switchbegin!"
 	a = 97 
 	b = 98 
 	98 == a
@@ -821,25 +875,43 @@ case_65_1:
 	print "failed"
 	GOTO switch_65
 case_65_2:
-switch_65:
 	97 == a
+	BNZ case_65_3
+	97 == b
 	BNZ case_66_1
-	100 == b
+	GOTO switch_66
+case_66_1:
+	98 == b
+	BNZ case_66_2
+	a = 98 
+	100 == a
 	BNZ case_67_1
 	print "failed"
 	GOTO switch_67
 case_67_1:
-	98 == b
+	98 == a
 	BNZ case_67_2
-	print "pass through"
+	1 == 4
+	BNZ case_68_1
+	print "failed"
+	GOTO switch_68
+case_68_1:
+	4 == 4
+	BNZ case_68_2
+	print "Test 7 is ok"
+	GOTO switch_68
+case_68_2:
+switch_68:
 	GOTO switch_67
 case_67_2:
 switch_67:
 	GOTO switch_66
-case_66_1:
+case_66_2:
 switch_66:
+	GOTO switch_65
+case_65_3:
+switch_65:
 	void main()
-	call test_switch
 	print "This is a test program written with DO-WHILE grammar!"
 	call test_hw
 	call alphabet
@@ -847,4 +919,5 @@ switch_66:
 	call test_condition
 	call test_expression
 	call functest
+	call test_switch
 	ret

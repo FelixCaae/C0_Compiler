@@ -107,17 +107,35 @@ if_4:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,43
-	sge $v1,$t0,$t1
+	seq $v1,$t0,$t1
 	beq $0,$v1,if_6
+	li $v0,1
+	j ischar_end
+if_6:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
-	li $t1,47
-	sle $v1,$t0,$t1
+	li $t1,45
+	seq $v1,$t0,$t1
 	beq $0,$v1,if_7
 	li $v0,1
 	j ischar_end
 if_7:
-if_6:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,42
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_8
+	li $v0,1
+	j ischar_end
+if_8:
+	addi $t0,$sp,0
+	lw $t0,0($t0)
+	li $t1,47
+	seq $v1,$t0,$t1
+	beq $0,$v1,if_9
+	li $v0,1
+	j ischar_end
+if_9:
 	li $v0,0
 	j ischar_end
 ischar_end:
@@ -147,12 +165,12 @@ tochar:
 	lw $t0,0($t0)
 	li $t1,0
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_8
+	beq $0,$v1,if_10
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,8
 	sb $t0,0($t1)
-if_8:
+if_10:
 	addi $v0,$sp,8
 	lb $v0,0($v0)
 	j tochar_end
@@ -175,10 +193,10 @@ alphabet:
 	li $v0,11
 	li $a0,10
 	syscall
-	li $t0,65
+	li $t0,0
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-do_9:
+do_11:
 	addi $a0,$sp,0
 	lw $a0,0($a0)
 	jal ischar
@@ -188,7 +206,7 @@ do_9:
 	lw $t0,0($t0)
 	li $t1,0
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_10
+	beq $0,$v1,if_12
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,12
@@ -200,7 +218,7 @@ do_9:
 	li $v0,11
 	li $a0,10
 	syscall
-if_10:
+if_12:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,1
@@ -215,7 +233,7 @@ if_10:
 	lw $t0,0($t0)
 	li $t1,128
 	sne $v1,$t0,$t1
-	bne $0,$v1,do_9
+	bne $0,$v1,do_11
 	li $v0,4
 	la $a0,Str_9
 	syscall
@@ -270,18 +288,18 @@ verify:
 	lw $t0,0($t0)
 	li $t1,1
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_11
+	beq $0,$v1,if_13
 	li $v0,0
 	j verify_end
-if_11:
+if_13:
 	la $t0,_n2
 	lb $t0,0($t0)
 	li $t1,97
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_12
+	beq $0,$v1,if_14
 	li $v0,0
 	j verify_end
-if_12:
+if_14:
 	li $t1,1
 	la $t0,_n3
 	sll $t1,$t1,2
@@ -293,10 +311,10 @@ if_12:
 	lw $t0,0($t0)
 	li $t1,1
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_13
+	beq $0,$v1,if_15
 	li $v0,0
 	j verify_end
-if_13:
+if_15:
 	li $t1,9
 	la $t0,_n3
 	sll $t1,$t1,2
@@ -308,10 +326,10 @@ if_13:
 	lw $t0,0($t0)
 	li $t1,9
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_14
+	beq $0,$v1,if_16
 	li $v0,0
 	j verify_end
-if_14:
+if_16:
 	li $v0,1
 	j verify_end
 verify_end:
@@ -394,7 +412,7 @@ testscope:
 	lw $t0,0($t0)
 	li $t1,1999
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_15
+	beq $0,$v1,if_17
 	li $v0,4
 	la $a0,Str_11
 	syscall
@@ -402,7 +420,7 @@ testscope:
 	li $a0,10
 	syscall
 	j testscope_end
-if_15:
+if_17:
 	li $t0,2000
 	addi $t1,$sp,0
 	sw $t0,0($t1)
@@ -413,7 +431,7 @@ if_15:
 	lw $t0,0($t0)
 	li $t1,0
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_16
+	beq $0,$v1,if_18
 	li $v0,4
 	la $a0,Str_11
 	syscall
@@ -421,7 +439,7 @@ if_15:
 	li $a0,10
 	syscall
 	j testscope_end
-if_16:
+if_18:
 	li $t1,9
 	la $t0,_n3
 	sll $t1,$t1,2
@@ -443,7 +461,7 @@ if_16:
 	addi $t1,$sp,12
 	lw $t1,0($t1)
 	sge $v1,$t0,$t1
-	beq $0,$v1,if_17
+	beq $0,$v1,if_19
 	li $v0,4
 	la $a0,Str_11
 	syscall
@@ -451,7 +469,7 @@ if_16:
 	li $a0,10
 	syscall
 	j testscope_end
-if_17:
+if_19:
 	jal set3
 	jal verify
 	addi $t0,$sp,16
@@ -460,7 +478,7 @@ if_17:
 	addi $t1,$sp,16
 	lw $t1,0($t1)
 	sne $v1,$t0,$t1
-	beq $0,$v1,if_18
+	beq $0,$v1,if_20
 	li $v0,4
 	la $a0,Str_12
 	syscall
@@ -468,7 +486,7 @@ if_17:
 	li $a0,10
 	syscall
 	j testscope_end
-if_18:
+if_20:
 	li $v0,4
 	la $a0,Str_13
 	syscall
@@ -491,12 +509,12 @@ get0:
 	li $t0,0
 	addi $t1,$sp,0
 	sw $t0,0($t1)
-do_19:
+do_21:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	li $t1,0
 	sne $v1,$t0,$t1
-	bne $0,$v1,do_19
+	bne $0,$v1,do_21
 	addi $v0,$sp,0
 	lw $v0,0($v0)
 	j get0_end
@@ -585,7 +603,7 @@ ping:
 	addi $t1,$sp,4
 	lw $t1,0($t1)
 	sgt $v1,$t0,$t1
-	beq $0,$v1,if_20
+	beq $0,$v1,if_22
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
@@ -616,13 +634,13 @@ ping:
 	addi $v0,$sp,20
 	lw $v0,0($v0)
 	j ping_end
-if_20:
+if_22:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
 	lw $t1,0($t1)
 	slt $v1,$t0,$t1
-	beq $0,$v1,if_21
+	beq $0,$v1,if_23
 	addi $t0,$sp,4
 	lw $t0,0($t0)
 	addi $t1,$sp,0
@@ -653,17 +671,17 @@ if_20:
 	addi $v0,$sp,36
 	lw $v0,0($v0)
 	j ping_end
-if_21:
+if_23:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,4
 	lw $t1,0($t1)
 	seq $v1,$t0,$t1
-	beq $0,$v1,if_22
+	beq $0,$v1,if_24
 	addi $v0,$sp,0
 	lw $v0,0($v0)
 	j ping_end
-if_22:
+if_24:
 ping_end:
 	lw $s0,44($sp)
 	lw $s1,48($sp)
@@ -704,11 +722,11 @@ max:
 	addi $t1,$sp,4
 	lw $t1,0($t1)
 	sge $v1,$t0,$t1
-	beq $0,$v1,if_23
+	beq $0,$v1,if_25
 	addi $v0,$sp,0
 	lw $v0,0($v0)
 	j max_end
-if_23:
+if_25:
 	addi $v0,$sp,4
 	lw $v0,0($v0)
 	j max_end
@@ -734,11 +752,11 @@ min:
 	addi $t1,$sp,4
 	lw $t1,0($t1)
 	sle $v1,$t0,$t1
-	beq $0,$v1,if_24
+	beq $0,$v1,if_26
 	addi $v0,$sp,0
 	lw $v0,0($v0)
 	j min_end
-if_24:
+if_26:
 	addi $v0,$sp,4
 	lw $v0,0($v0)
 	j min_end
@@ -766,7 +784,7 @@ power:
 	lw $t0,0($t0)
 	addi $t1,$sp,12
 	sw $t0,0($t1)
-do_25:
+do_27:
 	addi $t0,$sp,0
 	lw $t0,0($t0)
 	addi $t1,$sp,12
@@ -799,7 +817,7 @@ do_25:
 	addi $t1,$sp,4
 	lw $t1,0($t1)
 	slt $v1,$t0,$t1
-	bne $0,$v1,do_25
+	bne $0,$v1,do_27
 	addi $v0,$sp,0
 	lw $v0,0($v0)
 	j power_end
@@ -809,51 +827,6 @@ power_end:
 	lw $s2,40($sp)
 	lw $ra,64($sp)
 	addi $sp,$sp,68
-	jr $ra
-between:
-	subi $sp,$sp,56
-	sw $s0,20($sp)
-	sw $s1,24($sp)
-	sw $s2,28($sp)
-	sw $ra,52($sp)
-	addi $s0,$sp,0
-	sw $a0,0($s0)
-	addi $s0,$sp,4
-	sw $a1,0($s0)
-	addi $s0,$sp,8
-	sw $a2,0($s0)
-	li $t0,1
-	addi $t1,$sp,12
-	sw $t0,0($t1)
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	addi $t1,$sp,8
-	lw $t1,0($t1)
-	sgt $v1,$t0,$t1
-	beq $0,$v1,if_26
-	li $t0,0
-	addi $t1,$sp,12
-	sw $t0,0($t1)
-if_26:
-	addi $t0,$sp,0
-	lw $t0,0($t0)
-	addi $t1,$sp,4
-	lw $t1,0($t1)
-	slt $v1,$t0,$t1
-	beq $0,$v1,if_27
-	li $t0,0
-	addi $t1,$sp,12
-	sw $t0,0($t1)
-if_27:
-	addi $v0,$sp,12
-	lw $v0,0($v0)
-	j between_end
-between_end:
-	lw $s0,20($sp)
-	lw $s1,24($sp)
-	lw $s2,28($sp)
-	lw $ra,52($sp)
-	addi $sp,$sp,56
 	jr $ra
 seed:
 	subi $sp,$sp,44
@@ -1045,19 +1018,6 @@ do_29:
 	li $t1,0
 	sne $v1,$t0,$t1
 	bne $0,$v1,do_29
-	li $v0,4
-	la $a0,Str_14
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
-	addi $a0,$sp,0
-	lw $a0,0($a0)
-	li $v0,1
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
 	j switch_28
 case_28_5:
 switch_28:
@@ -1084,7 +1044,7 @@ test_condition:
 	addi $t1,$sp,4
 	sw $t0,0($t1)
 	li $v0,4
-	la $a0,Str_15
+	la $a0,Str_14
 	syscall
 	li $v0,11
 	li $a0,10
@@ -1410,7 +1370,7 @@ if_47:
 	sgt $v1,$t0,$t1
 	beq $0,$v1,if_48
 	li $v0,4
-	la $a0,Str_16
+	la $a0,Str_15
 	syscall
 	li $v0,11
 	li $a0,10
@@ -1423,7 +1383,7 @@ if_48:
 	sne $v1,$t0,$t1
 	beq $0,$v1,if_49
 	li $v0,4
-	la $a0,Str_16
+	la $a0,Str_15
 	syscall
 	li $v0,11
 	li $a0,10
@@ -1431,7 +1391,7 @@ if_48:
 	j test_condition_end
 if_49:
 	li $v0,4
-	la $a0,Str_17
+	la $a0,Str_16
 	syscall
 	li $v0,11
 	li $a0,10
@@ -1450,7 +1410,7 @@ test_expression:
 	sw $s2,280($sp)
 	sw $ra,304($sp)
 	li $v0,4
-	la $a0,Str_18
+	la $a0,Str_17
 	syscall
 	li $v0,11
 	li $a0,10
@@ -1995,7 +1955,7 @@ if_51:
 	j test_expression_end
 if_56:
 	li $v0,4
-	la $a0,Str_19
+	la $a0,Str_18
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2184,13 +2144,13 @@ test_chicken_rabbit:
 	sw $s2,56($sp)
 	sw $ra,80($sp)
 	li $v0,4
-	la $a0,Str_20
+	la $a0,Str_19
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_21
+	la $a0,Str_20
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2209,7 +2169,7 @@ test_chicken_rabbit:
 	slt $v1,$t0,$t1
 	beq $0,$v1,if_57
 	li $v0,4
-	la $a0,Str_22
+	la $a0,Str_21
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2221,7 +2181,7 @@ if_57:
 	slt $v1,$t0,$t1
 	beq $0,$v1,if_58
 	li $v0,4
-	la $a0,Str_23
+	la $a0,Str_22
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2292,7 +2252,7 @@ if_58:
 	addi $t1,$sp,0
 	sw $t0,0($t1)
 	li $v0,4
-	la $a0,Str_24
+	la $a0,Str_23
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2305,7 +2265,7 @@ if_58:
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_25
+	la $a0,Str_24
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2321,7 +2281,7 @@ if_58:
 if_60:
 if_59:
 	li $v0,4
-	la $a0,Str_26
+	la $a0,Str_25
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2377,19 +2337,19 @@ testrandom_end:
 	addi $sp,$sp,52
 	jr $ra
 functest:
-	subi $sp,$sp,152
-	sw $s0,116($sp)
-	sw $s1,120($sp)
-	sw $s2,124($sp)
-	sw $ra,148($sp)
+	subi $sp,$sp,164
+	sw $s0,128($sp)
+	sw $s1,132($sp)
+	sw $s2,136($sp)
+	sw $ra,160($sp)
 	li $v0,4
-	la $a0,Str_27
+	la $a0,Str_26
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_28
+	la $a0,Str_27
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2398,13 +2358,13 @@ functest:
 	li $a1,50
 	jal ping
 	li $v0,4
-	la $a0,Str_29
+	la $a0,Str_28
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_30
+	la $a0,Str_29
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2416,7 +2376,7 @@ functest:
 	addi $t1,$sp,12
 	sw $t0,0($t1)
 	li $t0,101
-	addi $t1,$sp,112
+	addi $t1,$sp,124
 	sb $t0,0($t1)
 	li $a0,1
 	li $a1,1
@@ -2444,7 +2404,7 @@ if_62:
 	lw $a2,0($a2)
 	addi $a3,$sp,12
 	lw $a3,0($a3)
-	addi $t0,$sp,112
+	addi $t0,$sp,124
 	lb $t0,0($t0)
 	sw $t0,-4($sp)
 	li $t0,102
@@ -2478,13 +2438,13 @@ if_62:
 	j functest_end
 if_63:
 	li $v0,4
-	la $a0,Str_31
+	la $a0,Str_30
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_32
+	la $a0,Str_31
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2568,6 +2528,12 @@ if_63:
 	j functest_end
 if_64:
 	li $v0,4
+	la $a0,Str_32
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
 	la $a0,Str_33
 	syscall
 	li $v0,11
@@ -2579,18 +2545,12 @@ if_64:
 	li $v0,11
 	li $a0,10
 	syscall
-	li $v0,4
-	la $a0,Str_35
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
 	li $v0,5
 	syscall
 	addi $t0,$sp,0
 	sw $v0,0($t0)
 	li $v0,4
-	la $a0,Str_36
+	la $a0,Str_35
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2618,7 +2578,41 @@ if_64:
 	li $a0,10
 	syscall
 	li $v0,4
+	la $a0,Str_36
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	li $a1,1
+	li $a2,101
+	jal calculate
+	addi $t0,$sp,80
+	sw $v0,0($t0)
+	addi $a0,$sp,80
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
 	la $a0,Str_37
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	li $a1,2
+	li $a2,101
+	jal calculate
+	addi $t0,$sp,84
+	sw $v0,0($t0)
+	addi $a0,$sp,84
+	lw $a0,0($a0)
+	li $v0,1
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2629,47 +2623,53 @@ if_64:
 	li $v0,11
 	li $a0,10
 	syscall
-	li $v0,5
-	syscall
-	addi $t0,$sp,0
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	li $a1,3
+	li $a2,101
+	jal calculate
+	addi $t0,$sp,88
 	sw $v0,0($t0)
-	li $v0,5
+	addi $a0,$sp,88
+	lw $a0,0($a0)
+	li $v0,1
 	syscall
-	addi $t0,$sp,4
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_36
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	li $a1,4
+	li $a2,101
+	jal calculate
+	addi $t0,$sp,92
 	sw $v0,0($t0)
+	addi $a0,$sp,92
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 	li $v0,4
 	la $a0,Str_39
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
-	addi $a0,$sp,4
-	lw $a0,0($a0)
-	jal itself
-	addi $t0,$sp,80
-	sw $v0,0($t0)
 	addi $a0,$sp,0
 	lw $a0,0($a0)
-	addi $a1,$sp,80
-	lw $a1,0($a1)
-	jal min
-	addi $t0,$sp,84
-	sw $v0,0($t0)
-	addi $a0,$sp,0
-	lw $a0,0($a0)
-	addi $a1,$sp,4
-	lw $a1,0($a1)
-	jal max
-	addi $t0,$sp,88
-	sw $v0,0($t0)
-	addi $a0,$sp,84
-	lw $a0,0($a0)
-	addi $a1,$sp,88
-	lw $a1,0($a1)
+	li $a1,1
 	jal power
-	addi $t0,$sp,92
+	addi $t0,$sp,96
 	sw $v0,0($t0)
-	addi $a0,$sp,92
+	addi $a0,$sp,96
 	lw $a0,0($a0)
 	li $v0,1
 	syscall
@@ -2684,13 +2684,11 @@ if_64:
 	syscall
 	addi $a0,$sp,0
 	lw $a0,0($a0)
-	addi $a1,$sp,4
-	lw $a1,0($a1)
-	li $a2,43
-	jal calculate
-	addi $t0,$sp,96
+	li $a1,3
+	jal power
+	addi $t0,$sp,100
 	sw $v0,0($t0)
-	addi $a0,$sp,96
+	addi $a0,$sp,100
 	lw $a0,0($a0)
 	li $v0,1
 	syscall
@@ -2705,13 +2703,11 @@ if_64:
 	syscall
 	addi $a0,$sp,0
 	lw $a0,0($a0)
-	addi $a1,$sp,4
-	lw $a1,0($a1)
-	li $a2,45
-	jal calculate
-	addi $t0,$sp,100
+	li $a1,5
+	jal power
+	addi $t0,$sp,104
 	sw $v0,0($t0)
-	addi $a0,$sp,100
+	addi $a0,$sp,104
 	lw $a0,0($a0)
 	li $v0,1
 	syscall
@@ -2724,32 +2720,31 @@ if_64:
 	li $v0,11
 	li $a0,10
 	syscall
-	addi $a0,$sp,0
-	lw $a0,0($a0)
-	addi $a1,$sp,4
-	lw $a1,0($a1)
-	li $a2,42
-	jal calculate
-	addi $t0,$sp,104
-	sw $v0,0($t0)
-	addi $a0,$sp,104
-	lw $a0,0($a0)
-	li $v0,1
-	syscall
-	li $v0,11
-	li $a0,10
-	syscall
 	li $v0,4
 	la $a0,Str_43
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
+	li $v0,5
+	syscall
+	addi $t0,$sp,0
+	sw $v0,0($t0)
+	li $v0,5
+	syscall
+	addi $t0,$sp,4
+	sw $v0,0($t0)
+	li $v0,4
+	la $a0,Str_44
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 	addi $a0,$sp,0
 	lw $a0,0($a0)
 	addi $a1,$sp,4
 	lw $a1,0($a1)
-	li $a2,47
+	li $a2,43
 	jal calculate
 	addi $t0,$sp,108
 	sw $v0,0($t0)
@@ -2761,20 +2756,83 @@ if_64:
 	li $a0,10
 	syscall
 	li $v0,4
-	la $a0,Str_44
+	la $a0,Str_45
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
-	jal test_chicken_rabbit
-	li $v0,4
-	la $a0,Str_45
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	addi $a1,$sp,4
+	lw $a1,0($a1)
+	li $a2,45
+	jal calculate
+	addi $t0,$sp,112
+	sw $v0,0($t0)
+	addi $a0,$sp,112
+	lw $a0,0($a0)
+	li $v0,1
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
 	li $v0,4
 	la $a0,Str_46
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	addi $a1,$sp,4
+	lw $a1,0($a1)
+	li $a2,42
+	jal calculate
+	addi $t0,$sp,116
+	sw $v0,0($t0)
+	addi $a0,$sp,116
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_47
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	addi $a0,$sp,0
+	lw $a0,0($a0)
+	addi $a1,$sp,4
+	lw $a1,0($a1)
+	li $a2,47
+	jal calculate
+	addi $t0,$sp,120
+	sw $v0,0($t0)
+	addi $a0,$sp,120
+	lw $a0,0($a0)
+	li $v0,1
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_48
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	jal test_chicken_rabbit
+	li $v0,4
+	la $a0,Str_49
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	li $v0,4
+	la $a0,Str_50
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2788,32 +2846,56 @@ if_64:
 	jal seed
 	jal testrandom
 	li $v0,4
-	la $a0,Str_47
+	la $a0,Str_51
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
 functest_end:
-	lw $s0,116($sp)
-	lw $s1,120($sp)
-	lw $s2,124($sp)
-	lw $ra,148($sp)
-	addi $sp,$sp,152
+	lw $s0,128($sp)
+	lw $s1,132($sp)
+	lw $s2,136($sp)
+	lw $ra,160($sp)
+	addi $sp,$sp,164
 	jr $ra
 test_switch:
-	subi $sp,$sp,40
-	sw $s0,4($sp)
-	sw $s1,8($sp)
-	sw $s2,12($sp)
-	sw $ra,36($sp)
+	subi $sp,$sp,52
+	sw $s0,16($sp)
+	sw $s1,20($sp)
+	sw $s2,24($sp)
+	sw $ra,48($sp)
+	li $t0,0
+	li $t1,0
+	addi $t2,$sp,0
+	sll $t1,$t1,2
+	add $t2,$t2,$t1
+	sw $t0,0($t2)
+	li $t0,1
+	li $t1,1
+	addi $t2,$sp,0
+	sll $t1,$t1,2
+	add $t2,$t2,$t1
+	sw $t0,0($t2)
+	li $t0,3
+	li $t1,2
+	addi $t2,$sp,0
+	sll $t1,$t1,2
+	add $t2,$t2,$t1
+	sw $t0,0($t2)
+	li $v0,4
+	la $a0,Str_52
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
 	li $t0,97
-	addi $t1,$sp,0
+	addi $t1,$sp,12
 	sb $t0,0($t1)
 	li $t0,98
-	addi $t1,$sp,1
+	addi $t1,$sp,13
 	sb $t0,0($t1)
 	li $t0,98
-	addi $t1,$sp,0
+	addi $t1,$sp,12
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_65_1
@@ -2826,7 +2908,7 @@ test_switch:
 	j switch_65
 case_65_1:
 	li $t0,101
-	addi $t1,$sp,0
+	addi $t1,$sp,12
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_65_2
@@ -2838,14 +2920,28 @@ case_65_1:
 	syscall
 	j switch_65
 case_65_2:
-switch_65:
 	li $t0,97
-	addi $t1,$sp,0
+	addi $t1,$sp,12
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_65_3
+	li $t0,97
+	addi $t1,$sp,13
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_66_1
+	j switch_66
+case_66_1:
+	li $t0,98
+	addi $t1,$sp,13
+	lb $t1,0($t1)
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_66_2
+	li $t0,98
+	addi $t1,$sp,12
+	sb $t0,0($t1)
 	li $t0,100
-	addi $t1,$sp,1
+	addi $t1,$sp,12
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_67_1
@@ -2858,34 +2954,55 @@ switch_65:
 	j switch_67
 case_67_1:
 	li $t0,98
-	addi $t1,$sp,1
+	addi $t1,$sp,12
 	lb $t1,0($t1)
 	seq $v1,$t0,$t1
 	beq $0,$v1,case_67_2
+	li $t0,1
+	li $t1,4
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_68_1
 	li $v0,4
-	la $a0,Str_48
+	la $a0,Str_12
 	syscall
 	li $v0,11
 	li $a0,10
 	syscall
+	j switch_68
+case_68_1:
+	li $t0,4
+	li $t1,4
+	seq $v1,$t0,$t1
+	beq $0,$v1,case_68_2
+	li $v0,4
+	la $a0,Str_53
+	syscall
+	li $v0,11
+	li $a0,10
+	syscall
+	j switch_68
+case_68_2:
+switch_68:
 	j switch_67
 case_67_2:
 switch_67:
 	j switch_66
-case_66_1:
+case_66_2:
 switch_66:
+	j switch_65
+case_65_3:
+switch_65:
 test_switch_end:
-	lw $s0,4($sp)
-	lw $s1,8($sp)
-	lw $s2,12($sp)
-	lw $ra,36($sp)
-	addi $sp,$sp,40
+	lw $s0,16($sp)
+	lw $s1,20($sp)
+	lw $s2,24($sp)
+	lw $ra,48($sp)
+	addi $sp,$sp,52
 	jr $ra
 main:
 	subi $sp,$sp,40
-	jal test_switch
 	li $v0,4
-	la $a0,Str_49
+	la $a0,Str_54
 	syscall
 	li $v0,11
 	li $a0,10
@@ -2896,6 +3013,7 @@ main:
 	jal test_condition
 	jal test_expression
 	jal functest
+	jal test_switch
 	j main_end
 main_end:
 	addi $sp,$sp,40
@@ -2918,39 +3036,44 @@ main_end:
 	Str_11 :.asciiz "failed!"
 	Str_12 :.asciiz "failed"
 	Str_13 :.asciiz "Test 3 is ok"
-	Str_14 :.asciiz "aEb:"
-	Str_15 :.asciiz "Test 4:condition begin"
-	Str_16 :.asciiz "fail"
-	Str_17 :.asciiz "Test 4 is ok"
-	Str_18 :.asciiz "Test5:expression begin"
-	Str_19 :.asciiz "Test 5 is ok!"
-	Str_20 :.asciiz "chicken and rabbit test begin!"
-	Str_21 :.asciiz "Please input the number of heads and feet:"
-	Str_22 :.asciiz "head num can`t be less than zero"
-	Str_23 :.asciiz "foot num can`t be less than zero"
-	Str_24 :.asciiz "rabbit num"
-	Str_25 :.asciiz "chicken_num"
-	Str_26 :.asciiz "input is not solvable"
-	Str_27 :.asciiz "Test 6:function ability begin"
-	Str_28 :.asciiz "  Test 6-0:bounce 1 to 50"
-	Str_29 :.asciiz "  Test 6-0 is ok"
-	Str_30 :.asciiz "  Test 6-1:multi argument function"
-	Str_31 :.asciiz "  Test 6-1 is ok"
-	Str_32 :.asciiz "  Test 6-2:mod"
-	Str_33 :.asciiz "  Test 6-2 is ok"
-	Str_34 :.asciiz "  Test 6-3:max(input,10)"
-	Str_35 :.asciiz "Please input a number (1-100): "
-	Str_36 :.asciiz "the max number is:"
-	Str_37 :.asciiz "  Test 6-4:Simple arthmetic operation"
-	Str_38 :.asciiz "Please input two numbers (1-100): "
-	Str_39 :.asciiz "the power is"
-	Str_40 :.asciiz "a + b"
-	Str_41 :.asciiz "a - b"
-	Str_42 :.asciiz "a * b"
-	Str_43 :.asciiz "a / b"
-	Str_44 :.asciiz "  Test 6-5:Ji Tu Tong Long"
-	Str_45 :.asciiz "  Test 6-6:Random numbers"
-	Str_46 :.asciiz "Please enter a number seed(1-100)"
-	Str_47 :.asciiz "Test 6 is ok"
-	Str_48 :.asciiz "pass through"
-	Str_49 :.asciiz "This is a test program written with DO-WHILE grammar!"
+	Str_14 :.asciiz "Test 4:condition begin"
+	Str_15 :.asciiz "fail"
+	Str_16 :.asciiz "Test 4 is ok"
+	Str_17 :.asciiz "Test5:expression begin"
+	Str_18 :.asciiz "Test 5 is ok!"
+	Str_19 :.asciiz "chicken and rabbit test begin!"
+	Str_20 :.asciiz "Please input the number of heads and feet:"
+	Str_21 :.asciiz "head num can`t be less than zero"
+	Str_22 :.asciiz "foot num can`t be less than zero"
+	Str_23 :.asciiz "rabbit num"
+	Str_24 :.asciiz "chicken_num"
+	Str_25 :.asciiz "input is not solvable"
+	Str_26 :.asciiz "Test 6:function ability begin"
+	Str_27 :.asciiz "  Test 6-0:bounce 1 to 50"
+	Str_28 :.asciiz "  Test 6-0 is ok"
+	Str_29 :.asciiz "  Test 6-1:multi argument function"
+	Str_30 :.asciiz "  Test 6-1 is ok"
+	Str_31 :.asciiz "  Test 6-2:mod"
+	Str_32 :.asciiz "  Test 6-2 is ok"
+	Str_33 :.asciiz "  Test 6-3:max(input,10)"
+	Str_34 :.asciiz "Please input a number (1-100): "
+	Str_35 :.asciiz "the max number is:"
+	Str_36 :.asciiz "number e 1:"
+	Str_37 :.asciiz "number e 3:"
+	Str_38 :.asciiz "number e 5:"
+	Str_39 :.asciiz "number ** 1:"
+	Str_40 :.asciiz "number ** 3:"
+	Str_41 :.asciiz "number ** 5:"
+	Str_42 :.asciiz "  Test 6-4:Simple arthmetic operation"
+	Str_43 :.asciiz "Please input two numbers (1-100): "
+	Str_44 :.asciiz "a + b"
+	Str_45 :.asciiz "a - b"
+	Str_46 :.asciiz "a * b"
+	Str_47 :.asciiz "a / b"
+	Str_48 :.asciiz "  Test 6-5:Ji Tu Tong Long"
+	Str_49 :.asciiz "  Test 6-6:Random numbers"
+	Str_50 :.asciiz "Please enter a number seed(1-100)"
+	Str_51 :.asciiz "Test 6 is ok"
+	Str_52 :.asciiz "Test 7:switchbegin!"
+	Str_53 :.asciiz "Test 7 is ok"
+	Str_54 :.asciiz "This is a test program written with DO-WHILE grammar!"

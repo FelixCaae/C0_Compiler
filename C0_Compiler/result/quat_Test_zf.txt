@@ -1,0 +1,17 @@
+	const int max = 10
+	const char a = 97
+	const char plus = 43
+	const char minus = 45
+	const char mult = 42
+	const char div = 47
+	var int n
+	var int x
+	var int y
+	var int kind
+	var int m
+	var int ans
+	var int _a
+	var int _b
+	var char ch
+	array char max[26]
+	int testdefine()

@@ -38,7 +38,40 @@
     <identifier> _d <\identifier>
     <seperator> = <\seperator>
     <seperator> + <\seperator>
-    <unsignedInt> 000004 <\unsignedInt>
+    <unsignedInt> 1 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> _e <\identifier>
+    <seperator> = <\seperator>
+    <seperator> - <\seperator>
+    <unsignedInt> 1 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> _g <\identifier>
+    <seperator> = <\seperator>
+    <seperator> + <\seperator>
+    <unsignedInt> 0 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> _h <\identifier>
+    <seperator> = <\seperator>
+    <seperator> - <\seperator>
+    <unsignedInt> 0 <\unsignedInt>
     <\constDecl>
   <seperator> ; <\seperator>
   <keyword> const <\keyword>
@@ -110,6 +143,120 @@
     <identifier> _b_a_b_ <\identifier>
     <seperator> = <\seperator>
     <char> '_' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> _na0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 0 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _nb0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 1 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _nc0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 2 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _nd0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 3 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _ne0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 4 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _nf0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 5 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _ng0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 6 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _nh0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 7 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _ni0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 8 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> _nna0 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 10 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _nna1 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 11 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _nna2 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 12 <\unsignedInt>
+    <seperator> , <\seperator>
+    <identifier> _nna3 <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 1301458769 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> ap_0 <\identifier>
+    <seperator> = <\seperator>
+    <char> '+' <\char>
+    <seperator> , <\seperator>
+    <identifier> am_1 <\identifier>
+    <seperator> = <\seperator>
+    <char> '-' <\char>
+    <seperator> , <\seperator>
+    <identifier> am_2 <\identifier>
+    <seperator> = <\seperator>
+    <char> '*' <\char>
+    <seperator> , <\seperator>
+    <identifier> aa_3 <\identifier>
+    <seperator> = <\seperator>
+    <char> '/' <\char>
+    <seperator> , <\seperator>
+    <identifier> aa_4 <\identifier>
+    <seperator> = <\seperator>
+    <char> 'a' <\char>
+    <seperator> , <\seperator>
+    <identifier> aa_5 <\identifier>
+    <seperator> = <\seperator>
+    <char> 'z' <\char>
+    <seperator> , <\seperator>
+    <identifier> aa_6 <\identifier>
+    <seperator> = <\seperator>
+    <char> 'A' <\char>
+    <seperator> , <\seperator>
+    <identifier> aa_7 <\identifier>
+    <seperator> = <\seperator>
+    <char> 'Z' <\char>
+    <seperator> , <\seperator>
+    <identifier> aa_8 <\identifier>
+    <seperator> = <\seperator>
+    <char> '1' <\char>
+    <seperator> , <\seperator>
+    <identifier> aa_9 <\identifier>
+    <seperator> = <\seperator>
+    <char> '0' <\char>
+    <seperator> , <\seperator>
+    <identifier> aa_10 <\identifier>
+    <seperator> = <\seperator>
+    <char> '9' <\char>
     <\constDecl>
   <seperator> ; <\seperator>
   <\constDeclGroup>
@@ -436,7 +583,7 @@
                 <\term>
               <\expression>
               <identifier>
-              <seperator> >= <\seperator>
+              <seperator> == <\seperator>
               <\identifier>
               <expression>
                 <term>
@@ -448,45 +595,142 @@
             <\condition>
           <seperator> ) <\seperator>
             <statement>
-              <constant>
-              <keyword> if <\keyword>
+              <returnStat>
+              <keyword> return <\keyword>
               <seperator> ( <\seperator>
-                <condition>
-                  <expression>
-                    <term>
-                      <factor>
-                      <identifier> a <\identifier>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                  <identifier>
-                  <seperator> <= <\seperator>
-                  <\identifier>
-                  <expression>
-                    <term>
-                      <factor>
-                      <char> '/' <\char>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <\condition>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 1 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
               <seperator> ) <\seperator>
-                <statement>
-                  <returnStat>
-                  <keyword> return <\keyword>
-                  <seperator> ( <\seperator>
-                    <expression>
-                      <term>
-                        <factor>
-                        <unsignedInt> 1 <\unsignedInt>
-                        <\factor>
-                      <\term>
-                    <\expression>
-                  <seperator> ) <\seperator>
-                  <\returnStat>
-                <seperator> ; <\seperator>
-                <\statement>
-              <\constant>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> a <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <char> '-' <\char>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 1 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> a <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <char> '*' <\char>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 1 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
+            <\statement>
+          <\constant>
+        <\statement>
+        <statement>
+          <constant>
+          <keyword> if <\keyword>
+          <seperator> ( <\seperator>
+            <condition>
+              <expression>
+                <term>
+                  <factor>
+                  <identifier> a <\identifier>
+                  <\factor>
+                <\term>
+              <\expression>
+              <identifier>
+              <seperator> == <\seperator>
+              <\identifier>
+              <expression>
+                <term>
+                  <factor>
+                  <char> '/' <\char>
+                  <\factor>
+                <\term>
+              <\expression>
+            <\condition>
+          <seperator> ) <\seperator>
+            <statement>
+              <returnStat>
+              <keyword> return <\keyword>
+              <seperator> ( <\seperator>
+                <expression>
+                  <term>
+                    <factor>
+                    <unsignedInt> 1 <\unsignedInt>
+                    <\factor>
+                  <\term>
+                <\expression>
+              <seperator> ) <\seperator>
+              <\returnStat>
+            <seperator> ; <\seperator>
             <\statement>
           <\constant>
         <\statement>
@@ -658,7 +902,7 @@
             <expression>
               <term>
                 <factor>
-                <char> 'A' <\char>
+                <unsignedInt> 0 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -2389,154 +2633,6 @@
     <type>
     <keyword> int <\keyword>
     <\type>
-  <identifier> between <\identifier>
-    <paramList>
-    <seperator> ( <\seperator>
-      <type>
-      <keyword> int <\keyword>
-      <\type>
-    <identifier> num <\identifier>
-    <seperator> , <\seperator>
-      <type>
-      <keyword> int <\keyword>
-      <\type>
-    <identifier> lower <\identifier>
-    <seperator> , <\seperator>
-      <type>
-      <keyword> int <\keyword>
-      <\type>
-    <identifier> upper <\identifier>
-    <seperator> ) <\seperator>
-    <\paramList>
-  <seperator> { <\seperator>
-    <compoundStatement>
-      <varDeclGroup>
-        <varDecl>
-          <type>
-          <keyword> int <\keyword>
-          <\type>
-        <identifier> result <\identifier>
-        <\varDecl>
-      <seperator> ; <\seperator>
-      <\varDeclGroup>
-      <statements>
-        <statement>
-        <identifier> result <\identifier>
-          <assignStat>
-          <seperator> = <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <unsignedInt> 1 <\unsignedInt>
-                <\factor>
-              <\term>
-            <\expression>
-          <\assignStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <constant>
-          <keyword> if <\keyword>
-          <seperator> ( <\seperator>
-            <condition>
-              <expression>
-                <term>
-                  <factor>
-                  <identifier> num <\identifier>
-                  <\factor>
-                <\term>
-              <\expression>
-              <identifier>
-              <seperator> > <\seperator>
-              <\identifier>
-              <expression>
-                <term>
-                  <factor>
-                  <identifier> upper <\identifier>
-                  <\factor>
-                <\term>
-              <\expression>
-            <\condition>
-          <seperator> ) <\seperator>
-            <statement>
-            <identifier> result <\identifier>
-              <assignStat>
-              <seperator> = <\seperator>
-                <expression>
-                  <term>
-                    <factor>
-                    <unsignedInt> 0 <\unsignedInt>
-                    <\factor>
-                  <\term>
-                <\expression>
-              <\assignStat>
-            <seperator> ; <\seperator>
-            <\statement>
-          <\constant>
-        <\statement>
-        <statement>
-          <constant>
-          <keyword> if <\keyword>
-          <seperator> ( <\seperator>
-            <condition>
-              <expression>
-                <term>
-                  <factor>
-                  <identifier> num <\identifier>
-                  <\factor>
-                <\term>
-              <\expression>
-              <identifier>
-              <seperator> < <\seperator>
-              <\identifier>
-              <expression>
-                <term>
-                  <factor>
-                  <identifier> lower <\identifier>
-                  <\factor>
-                <\term>
-              <\expression>
-            <\condition>
-          <seperator> ) <\seperator>
-            <statement>
-            <identifier> result <\identifier>
-              <assignStat>
-              <seperator> = <\seperator>
-                <expression>
-                  <term>
-                    <factor>
-                    <unsignedInt> 0 <\unsignedInt>
-                    <\factor>
-                  <\term>
-                <\expression>
-              <\assignStat>
-            <seperator> ; <\seperator>
-            <\statement>
-          <\constant>
-        <\statement>
-        <statement>
-          <returnStat>
-          <keyword> return <\keyword>
-          <seperator> ( <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> result <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\returnStat>
-        <seperator> ; <\seperator>
-        <\statement>
-      <\statements>
-    <\compoundStatement>
-  <seperator> } <\seperator>
-  <\funcDecl>
-  <funcDecl>
-    <type>
-    <keyword> int <\keyword>
-    <\type>
   <identifier> seed <\identifier>
     <paramList>
     <seperator> ( <\seperator>
@@ -2913,23 +3009,6 @@
                         <\condition>
                       <seperator> ) <\seperator>
                       <\loopStat>
-                    <\statement>
-                    <statement>
-                      <writeStat>
-                      <keyword> printf <\keyword>
-                      <seperator> ( <\seperator>
-                      <string> "aEb:" <\string>
-                      <seperator> , <\seperator>
-                        <expression>
-                          <term>
-                            <factor>
-                            <identifier> a <\identifier>
-                            <\factor>
-                          <\term>
-                        <\expression>
-                      <seperator> ) <\seperator>
-                      <\writeStat>
-                    <seperator> ; <\seperator>
                     <\statement>
                   <\statements>
                 <seperator> } <\seperator>
@@ -6650,6 +6729,304 @@
           <writeStat>
           <keyword> printf <\keyword>
           <seperator> ( <\seperator>
+          <string> "number e 1:" <\string>
+          <seperator> , <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> calculate <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> c <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 1 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <char> 'e' <\char>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "number e 3:" <\string>
+          <seperator> , <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> calculate <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> c <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 2 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <char> 'e' <\char>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "number e 5:" <\string>
+          <seperator> , <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> calculate <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> c <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 3 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <char> 'e' <\char>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "number e 1:" <\string>
+          <seperator> , <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> calculate <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> c <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 4 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <char> 'e' <\char>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "number ** 1:" <\string>
+          <seperator> , <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> power <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> c <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 1 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "number ** 3:" <\string>
+          <seperator> , <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> power <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> c <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 3 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "number ** 5:" <\string>
+          <seperator> , <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> power <\identifier>
+                  <funCallStat>
+                  <seperator> ( <\seperator>
+                    <argumentList>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> c <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <seperator> , <\seperator>
+                      <expression>
+                        <term>
+                          <factor>
+                          <unsignedInt> 5 <\unsignedInt>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                    <\argumentList>
+                  <seperator> ) <\seperator>
+                  <\funCallStat>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
           <string> "  Test 6-4:Simple arthmetic operation" <\string>
           <seperator> ) <\seperator>
           <\writeStat>
@@ -6673,99 +7050,6 @@
           <identifier> c2 <\identifier>
           <seperator> ) <\seperator>
           <\readStat>
-        <seperator> ; <\seperator>
-        <\statement>
-        <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-          <string> "the power is" <\string>
-          <seperator> , <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> power <\identifier>
-                  <funCallStat>
-                  <seperator> ( <\seperator>
-                    <argumentList>
-                      <expression>
-                        <term>
-                          <factor>
-                          <identifier> min <\identifier>
-                            <funCallStat>
-                            <seperator> ( <\seperator>
-                              <argumentList>
-                                <expression>
-                                  <term>
-                                    <factor>
-                                    <identifier> c <\identifier>
-                                    <\factor>
-                                  <\term>
-                                <\expression>
-                              <seperator> , <\seperator>
-                                <expression>
-                                  <term>
-                                    <factor>
-                                    <identifier> itself <\identifier>
-                                      <funCallStat>
-                                      <seperator> ( <\seperator>
-                                        <argumentList>
-                                          <expression>
-                                            <term>
-                                              <factor>
-                                              <identifier> c2 <\identifier>
-                                              <\factor>
-                                            <\term>
-                                          <\expression>
-                                        <\argumentList>
-                                      <seperator> ) <\seperator>
-                                      <\funCallStat>
-                                    <\factor>
-                                  <\term>
-                                <\expression>
-                              <\argumentList>
-                            <seperator> ) <\seperator>
-                            <\funCallStat>
-                          <\factor>
-                        <\term>
-                      <\expression>
-                    <seperator> , <\seperator>
-                      <expression>
-                        <term>
-                          <factor>
-                          <identifier> max <\identifier>
-                            <funCallStat>
-                            <seperator> ( <\seperator>
-                              <argumentList>
-                                <expression>
-                                  <term>
-                                    <factor>
-                                    <identifier> c <\identifier>
-                                    <\factor>
-                                  <\term>
-                                <\expression>
-                              <seperator> , <\seperator>
-                                <expression>
-                                  <term>
-                                    <factor>
-                                    <identifier> c2 <\identifier>
-                                    <\factor>
-                                  <\term>
-                                <\expression>
-                              <\argumentList>
-                            <seperator> ) <\seperator>
-                            <\funCallStat>
-                          <\factor>
-                        <\term>
-                      <\expression>
-                    <\argumentList>
-                  <seperator> ) <\seperator>
-                  <\funCallStat>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <\writeStat>
         <seperator> ; <\seperator>
         <\statement>
         <statement>
@@ -7047,6 +7331,18 @@
     <\paramList>
   <seperator> { <\seperator>
     <compoundStatement>
+      <constDeclGroup>
+      <keyword> const <\keyword>
+        <constDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> num <\identifier>
+        <seperator> = <\seperator>
+        <unsignedInt> 4 <\unsignedInt>
+        <\constDecl>
+      <seperator> ; <\seperator>
+      <\constDeclGroup>
       <varDeclGroup>
         <varDecl>
           <type>
@@ -7057,8 +7353,96 @@
         <identifier> b <\identifier>
         <\varDecl>
       <seperator> ; <\seperator>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> array <\identifier>
+        <seperator> [ <\seperator>
+        <unsignedInt> 3 <\unsignedInt>
+        <seperator> ] <\seperator>
+        <\varDecl>
+      <seperator> ; <\seperator>
       <\varDeclGroup>
       <statements>
+        <statement>
+        <identifier> array <\identifier>
+          <assignStat>
+          <seperator> [ <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 0 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ] <\seperator>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 0 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> array <\identifier>
+          <assignStat>
+          <seperator> [ <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ] <\seperator>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> array <\identifier>
+          <assignStat>
+          <seperator> [ <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 2 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <seperator> ] <\seperator>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 3 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+          <string> "Test 7:switchbegin!" <\string>
+          <seperator> ) <\seperator>
+          <\writeStat>
+        <seperator> ; <\seperator>
+        <\statement>
         <statement>
         <identifier> a <\identifier>
           <assignStat>
@@ -7133,24 +7517,6 @@
                 <seperator> ; <\seperator>
                 <\statement>
               <\subSwitchStat>
-            <\switchTable>
-          <seperator> } <\seperator>
-          <\switchStat>
-        <\statement>
-        <statement>
-          <switchStat>
-          <keyword> switch <\keyword>
-          <seperator> ( <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> a <\identifier>
-                <\factor>
-              <\term>
-            <\expression>
-          <seperator> ) <\seperator>
-          <seperator> { <\seperator>
-            <switchTable>
               <subSwitchStat>
               <keyword> case <\keyword>
                 <constant>
@@ -7174,16 +7540,10 @@
                       <subSwitchStat>
                       <keyword> case <\keyword>
                         <constant>
-                        <char> 'd' <\char>
+                        <char> 'a' <\char>
                         <\constant>
                       <seperator> : <\seperator>
                         <statement>
-                          <writeStat>
-                          <keyword> printf <\keyword>
-                          <seperator> ( <\seperator>
-                          <string> "failed" <\string>
-                          <seperator> ) <\seperator>
-                          <\writeStat>
                         <seperator> ; <\seperator>
                         <\statement>
                       <\subSwitchStat>
@@ -7197,22 +7557,115 @@
                         <seperator> { <\seperator>
                           <statements>
                             <statement>
-                              <writeStat>
-                              <keyword> printf <\keyword>
+                            <identifier> a <\identifier>
+                              <assignStat>
+                              <seperator> = <\seperator>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <char> 'b' <\char>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
+                              <\assignStat>
+                            <seperator> ; <\seperator>
+                            <\statement>
+                            <statement>
+                              <switchStat>
+                              <keyword> switch <\keyword>
                               <seperator> ( <\seperator>
-                              <string> "pass through" <\string>
+                                <expression>
+                                  <term>
+                                    <factor>
+                                    <identifier> a <\identifier>
+                                    <\factor>
+                                  <\term>
+                                <\expression>
                               <seperator> ) <\seperator>
-                              <\writeStat>
-                            <seperator> ; <\seperator>
-                            <\statement>
-                            <statement>
-                            <seperator> ; <\seperator>
-                            <\statement>
-                            <statement>
-                            <seperator> ; <\seperator>
-                            <\statement>
-                            <statement>
-                            <seperator> ; <\seperator>
+                              <seperator> { <\seperator>
+                                <switchTable>
+                                  <subSwitchStat>
+                                  <keyword> case <\keyword>
+                                    <constant>
+                                    <char> 'd' <\char>
+                                    <\constant>
+                                  <seperator> : <\seperator>
+                                    <statement>
+                                      <writeStat>
+                                      <keyword> printf <\keyword>
+                                      <seperator> ( <\seperator>
+                                      <string> "failed" <\string>
+                                      <seperator> ) <\seperator>
+                                      <\writeStat>
+                                    <seperator> ; <\seperator>
+                                    <\statement>
+                                  <\subSwitchStat>
+                                  <subSwitchStat>
+                                  <keyword> case <\keyword>
+                                    <constant>
+                                    <char> 'b' <\char>
+                                    <\constant>
+                                  <seperator> : <\seperator>
+                                    <statement>
+                                    <seperator> { <\seperator>
+                                      <statements>
+                                        <statement>
+                                          <switchStat>
+                                          <keyword> switch <\keyword>
+                                          <seperator> ( <\seperator>
+                                            <expression>
+                                              <term>
+                                                <factor>
+                                                <identifier> num <\identifier>
+                                                <\factor>
+                                              <\term>
+                                            <\expression>
+                                          <seperator> ) <\seperator>
+                                          <seperator> { <\seperator>
+                                            <switchTable>
+                                              <subSwitchStat>
+                                              <keyword> case <\keyword>
+                                                <constant>
+                                                <unsignedInt> 1 <\unsignedInt>
+                                                <\constant>
+                                              <seperator> : <\seperator>
+                                                <statement>
+                                                  <writeStat>
+                                                  <keyword> printf <\keyword>
+                                                  <seperator> ( <\seperator>
+                                                  <string> "failed" <\string>
+                                                  <seperator> ) <\seperator>
+                                                  <\writeStat>
+                                                <seperator> ; <\seperator>
+                                                <\statement>
+                                              <\subSwitchStat>
+                                              <subSwitchStat>
+                                              <keyword> case <\keyword>
+                                                <constant>
+                                                <unsignedInt> 4 <\unsignedInt>
+                                                <\constant>
+                                              <seperator> : <\seperator>
+                                                <statement>
+                                                  <writeStat>
+                                                  <keyword> printf <\keyword>
+                                                  <seperator> ( <\seperator>
+                                                  <string> "Test 7 is ok" <\string>
+                                                  <seperator> ) <\seperator>
+                                                  <\writeStat>
+                                                <seperator> ; <\seperator>
+                                                <\statement>
+                                              <\subSwitchStat>
+                                            <\switchTable>
+                                          <seperator> } <\seperator>
+                                          <\switchStat>
+                                        <\statement>
+                                      <\statements>
+                                    <seperator> } <\seperator>
+                                    <\statement>
+                                  <\subSwitchStat>
+                                <\switchTable>
+                              <seperator> } <\seperator>
+                              <\switchStat>
                             <\statement>
                           <\statements>
                         <seperator> } <\seperator>
@@ -7241,16 +7694,6 @@
   <seperator> { <\seperator>
     <compoundStatement>
       <statements>
-        <statement>
-        <identifier> test_switch <\identifier>
-          <funCallStat>
-          <seperator> ( <\seperator>
-            <argumentList>
-            <\argumentList>
-          <seperator> ) <\seperator>
-          <\funCallStat>
-        <seperator> ; <\seperator>
-        <\statement>
         <statement>
           <writeStat>
           <keyword> printf <\keyword>
@@ -7312,6 +7755,16 @@
         <\statement>
         <statement>
         <identifier> functest <\identifier>
+          <funCallStat>
+          <seperator> ( <\seperator>
+            <argumentList>
+            <\argumentList>
+          <seperator> ) <\seperator>
+          <\funCallStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> test_switch <\identifier>
           <funCallStat>
           <seperator> ( <\seperator>
             <argumentList>

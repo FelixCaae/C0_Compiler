@@ -1,0 +1,84 @@
+<program>
+  <constDeclGroup>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> max <\identifier>
+    <seperator> = <\seperator>
+    <unsignedInt> 10 <\unsignedInt>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> a <\identifier>
+    <seperator> = <\seperator>
+    <char> 'a' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <keyword> const <\keyword>
+    <constDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> plus <\identifier>
+    <seperator> = <\seperator>
+    <char> '+' <\char>
+    <seperator> , <\seperator>
+    <identifier> minus <\identifier>
+    <seperator> = <\seperator>
+    <char> '-' <\char>
+    <seperator> , <\seperator>
+    <identifier> mult <\identifier>
+    <seperator> = <\seperator>
+    <char> '*' <\char>
+    <seperator> , <\seperator>
+    <identifier> div <\identifier>
+    <seperator> = <\seperator>
+    <char> '/' <\char>
+    <\constDecl>
+  <seperator> ; <\seperator>
+  <\constDeclGroup>
+  <varDeclGroup>
+    <varDecl>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> n <\identifier>
+    <seperator> , <\seperator>
+    <identifier> x <\identifier>
+    <seperator> , <\seperator>
+    <identifier> y <\identifier>
+    <seperator> , <\seperator>
+    <identifier> kind <\identifier>
+    <seperator> , <\seperator>
+    <identifier> m <\identifier>
+    <seperator> , <\seperator>
+    <identifier> ans <\identifier>
+    <seperator> , <\seperator>
+    <identifier> _a <\identifier>
+    <seperator> , <\seperator>
+    <identifier> _b <\identifier>
+    <\varDecl>
+  <seperator> ; <\seperator>
+    <varDecl>
+      <type>
+      <keyword> char <\keyword>
+      <\type>
+    <identifier> ch <\identifier>
+    <seperator> , <\seperator>
+    <identifier> alphabet <\identifier>
+    <seperator> [ <\seperator>
+    <unsignedInt> 26 <\unsignedInt>
+    <seperator> ] <\seperator>
+    <\varDecl>
+  <seperator> ; <\seperator>
+  <\varDeclGroup>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <identifier> testdefine <\identifier>
+    <paramList>
