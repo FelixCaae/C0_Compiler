@@ -7,9 +7,14 @@
 #include "Error.h"
 #include "IO.h"
 #include "SymTable.h"
+#define ERR_PROC_FALSE	return false;
+#define ERR_PROC_SKIP skip();return false;
+#define ERR_PROC_UNLINK skip();unlink();return false;
 //recursively called function]
+bool mainFlag = false;
+bool retractFlag = false;
 syntaxClass lexToSyntax();
-void skip(lexClass group[], int num);
+void skip(const lexClass group[]=skipSym, int num=skipNum);
 bool shouldBe(lexClass lex);
 int shouldBe2(lexClass lex1, lexClass lex2);
 bool couldBe(lexClass lex);
@@ -21,52 +26,52 @@ bool parseIden(int *val, bool setTable);
 bool parseInt(int *val);
 bool parseChar(int *val);
 bool parseStr(int*val);
-void parseSubscript(bool isUnsigned, int *val);
-void parseRelation(lexClass* relation);
+bool parseSubscript(bool isUnsigned, int *val);
+bool parseRelation(lexClass* relation);
 void parseConstGrup();
-void parseConstDecl();
-bool parseVarGrup();
+bool parseConstDecl();
+void parseVarGrup();
 bool parseVarDecl();
-bool parseFuncDecl();
-void parseParamList(IdenType paramType[], int* paramNum);
-void parseStatements();
-void parseStat();
-void parseCompoundStat();
-void parseAFHead();
-void parseAssignStat(int iden);
-void parseFuncCallStat(int iden);
-void parseArgList(IdenType pt[], int);
-void parseExpression(int *r);
-void parseTerm(int*r);
-void parseFactor(int *r);
-void parseCondition();
-void parseConditionStat();
-void parseLoopStat();
-void parseSwitchStat();
-void parseSwitchTab(int val, int label);
-void parseSubSwitchStat(int val, int label);
-void parseConstant(int *val);
-void parseReadStat();
-void parseWriteStat();
-void parseReturnStat();
+void parseFuncDecl();
+bool parseParamList(IdenType paramType[], int* paramNum);
+bool parseStatements();
+bool parseStat();
+bool parseCompoundStat();
+bool parseAFHead();
+bool parseAssignStat(int iden);
+bool parseFuncCallStat(int iden);
+bool parseArgList(IdenType pt[], int);
+bool parseExpression(int *r);
+bool parseTerm(int*r);
+bool parseFactor(int *r);
+bool parseCondition();
+bool parseConditionStat();
+bool parseLoopStat();
+bool parseSwitchStat();
+bool parseSwitchTab(int val, int label);
+bool parseSubSwitchStat(int val, int label);
+bool parseConstant(int *val);
+bool parseReadStat();
+bool parseWriteStat();
+bool parseReturnStat();
 char tokenbak[tokenStrLen];
 const bool set = true;
 const bool get = false;
-void skip(lexClass lexSet[], int num)
+void skip(const lexClass lexSet[], int num)
 {
 	bool found = false;
 	while (true)
 	{
 		for (int i = 0; i < num; i++)
 		{
-			if (lexSet[i] == lextype)
+			if (lexSet[i] == lextype ||END==lextype)
 			{
 				found = true;
 				break;
 			}
 		}
-		if (found)break;
 		readSym();
+		if (found)break;
 	}
 }
 syntaxClass lexToSyntax()
@@ -233,25 +238,35 @@ bool parseTypeIden(IdenType *it)//out:semantic type
 	outputSyntax(TYPE, false);
 	return true;
 }
-void parseSubscript(bool isUnsigned, int* r)//out:integer
+bool parseSubscript(bool isUnsigned, int* r)//out:integer
 {
 	shouldBe(LBRAK);
 	if (isUnsigned)
 	{
 		//replace with parseUnsignedInt();
-		parseInt(r);
-		if (*r <= 0)
+		if (parseInt(r)) {
+			if (*r <= 0)
+			{
+				error(ERR_ARRAY_FLOW);
+				return false;
+			}
+		}
+		else
 		{
-			error(ERR_ARRAY_FLOW);
+			return false;
 		}
 	}
 	else
 	{
-		parseExpression(r);
+		if(!parseExpression(r))
+		{
+			return false;
+		}
 	}
 	shouldBe(RBRAK);
+	return true;
 }
-void parseRelation(lexClass* lex)//out:
+bool parseRelation(lexClass* lex)//out:
 {
 	outputSyntax(SIDEN);
 	switch (lextype)
@@ -265,30 +280,52 @@ void parseRelation(lexClass* lex)//out:
 		*lex = lextype;
 		outputTerminalS(lexToSyntax());
 		readSym();
-		break;
+		return true;
 	default:
 		error(ERR_SYNTAX, RELATION);
+		return false;
 	}
 	outputSyntax(SIDEN, false);
+	return true;
 }
-void parseConstDecl()
+bool parseConstDecl()
 {
 	outputSyntax(CONSTDECL);
 	int iden;
 	IdenType varType;
 	int val;
-	parseTypeIden(&varType);
+	if (!parseTypeIden(&varType))
+	{
+		skip();
+		return false;
+	}
 	while (true)
 	{
-		parseIden(&iden, set);
-		shouldBe(ASSIGN);
+		if (!parseIden(&iden, set))
+		{
+			skip();
+			return false;
+		}
+		if (!shouldBe(ASSIGN))
+		{
+			unlink();
+			skip();
+			return false;
+		}
+		bool r;
 		if (varType == INTS)
 		{
-			parseInt(&val);
+			r=parseInt(&val);
 		}
 		else if (varType == CHARS)
 		{
-			parseChar(&val);
+			r=parseChar(&val);
+		}
+		if (!r)
+		{
+			unlink();
+			skip();
+			return false;
 		}
 		modifyIdent(iden, varType, OCONST, val);
 		emit(QCONST, iden);
@@ -302,6 +339,7 @@ void parseConstDecl()
 		}
 	}
 	outputSyntax(CONSTDECL, false);
+	return true;
 }
 bool parseVarDecl()
 {
@@ -309,13 +347,26 @@ bool parseVarDecl()
 	IdenType it;
 	int iden;
 	int dimension;
-	parseTypeIden(&it);
+	if (!parseTypeIden(&it))
+	{
+		skip();
+		return false;
+	}
 	while (true)
 	{
-		parseIden(&iden, set);
+		if (!parseIden(&iden, set))
+		{
+			skip();
+			return false;
+		}
 		if (lextype == LBRAK)
 		{
-			parseSubscript(true, &dimension);
+			if (!parseSubscript(true, &dimension))
+			{
+				unlink();
+				skip();
+				return false;
+			}
 			modifyIdent(iden, it, OARRAY, dimension);
 			emit(QARRAY, iden);
 		}
@@ -324,7 +375,8 @@ bool parseVarDecl()
 			retractSym(2);
 			unlink();
 			outputSyntax(SRETRACT, false);
-			return RETRACT;
+			retractFlag = true;
+			return true;
 		}
 		else
 		{
@@ -343,7 +395,7 @@ bool parseVarDecl()
 		}
 	}
 	outputSyntax(VARDECL, false);
-	return NORMAL;
+	return true;
 }
 void parseConstGrup()
 {
@@ -353,32 +405,30 @@ void parseConstGrup()
 	outputSyntax(CONSTGRUP);
 	do
 	{
-		shouldBe(CONSTYP);
+		readSym();
 		parseConstDecl();
 		shouldBe(SEMI);
 	} while (lextype == CONSTYP);
 	outputSyntax(CONSTGRUP, false);
 }
-bool parseVarGrup()
+void parseVarGrup()
 {
 	outputSyntax(VARGRUP);
 	bool r;
 	do
 	{
-		r = parseVarDecl();
-		if (r == RETRACT)
+		parseVarDecl();
+		if (retractFlag=true)
 		{
 			outputSyntax(VARGRUP, false);
-			return RETRACT;
+			return;
 		}
 		shouldBe(SEMI);
 	} while (lextype == INTYP || lextype == CHARTYP);
 	outputSyntax(VARGRUP, false);
-	return NORMAL;
 }
 bool parseFuncDecl()
 {
-	bool mainFound = false;
 	outputSyntax(FUNCDECL);
 	IdenType it;
 	int func;
@@ -399,7 +449,7 @@ bool parseFuncDecl()
 		{
 			error(ERR_MAIN_RET_TYPE);
 		}
-		mainFound = true;
+		mainFlag = true;
 	}
 	else
 	{
@@ -410,7 +460,7 @@ bool parseFuncDecl()
 	parseParamList(paramType, &paramNum);
 	int ref = insertFunc(it, paramNum, paramType);
 	modifyIdent(func, it, OFUNC, ref);
-	if (mainFound && paramNum)
+	if (mainFlag && paramNum)
 	{
 		error(ERR_MAIN_PARAM);
 	}
@@ -421,11 +471,11 @@ bool parseFuncDecl()
 	shouldBe(LCURB);
 	parseCompoundStat();
 
-	if (!hasError)objFunc(mainFound);
+	if (!hasError)objFunc(mainFlag);
 	leaveFunc();
 	shouldBe(RCURB);
 	outputSyntax(FUNCDECL, false);
-	return mainFound;
+	return true;
 }
 void parseParamList(IdenType paramType[], int* paramNum)
 {
@@ -967,13 +1017,14 @@ void lexAnalyze(int argc, char **argv)
 	printErrInfo();
 	close();
 }
-void syntaxAnalyze(int argc, char** argv)
+ syntaxAnalyze(int argc, char** argv)
 {
 	init(argc, argv);
 	readSym();
 	parseProgram();
 	close();
 }
+
 int main(int argc, char**argv)
 {
 
@@ -992,3 +1043,4 @@ int main(int argc, char**argv)
 	return 0;
 	//parse();
 }
+

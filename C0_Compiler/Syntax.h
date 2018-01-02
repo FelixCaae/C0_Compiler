@@ -1,7 +1,5 @@
 #pragma once
 #include "Lexeme.h"
-const bool RETRACT = true;
-const bool NORMAL = false;
 enum syntaxClass {
 	SINT=1, SIDEN, SCHAR, SSTR, SSEP, SKEY, TYPE,INTEGER,SRELATION,
 	COMPOUNDSTAT,CONSTGRUP,CONSTDECL,
@@ -20,9 +18,10 @@ enum IdenObj
 {
 	OVAR=1,OCONST,OARRAY,OFUNC
 };
-const lexClass skipSet1[]={SEMI};
 const lexClass funcHead[] = { RCURB };
+const lexClass skipSym[] = { SEMI };
 const int terminalSet[] =  { SIDEN,SINT,SCHAR,SSTR,SSEP,SKEY };
+const int skipNum=1;
 syntaxClass lexToSyntax();
 void matchTest();
 void syntaxAnalyze(int argc, char**argv);
