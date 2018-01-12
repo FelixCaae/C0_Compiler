@@ -1,5 +1,6 @@
 #pragma once
 const unsigned int maxQCodeSize=5000;
+const unsigned int codeSize = 4;
 const unsigned int LAIDEN = 0;
 const unsigned int LASTR = 1;
 const unsigned int MIPS_PRINT_CHAR = 11;
