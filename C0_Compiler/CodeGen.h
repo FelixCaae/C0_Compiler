@@ -1,8 +1,8 @@
 #pragma once
-#define OPT(i) qCode[i*codeSize]
-#define OPD1(i) qCode[i*codeSize+1]
-#define OPD2(i) qCode[i*codeSize+2]
-#define OPD3(i) qCode[i*codeSize+3]
+#define OPT(i) qCode[(i)*codeSize]
+#define OPD1(i) qCode[(i)*codeSize+1]
+#define OPD2(i) qCode[(i)*codeSize+2]
+#define OPD3(i) qCode[(i)*codeSize+3]
 const unsigned int maxQCodeSize=5000;
 const unsigned int codeSize = 4;
 const unsigned int LAIDEN = 0;

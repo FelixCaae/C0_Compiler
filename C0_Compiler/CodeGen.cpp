@@ -24,11 +24,11 @@ void clearQCode()
 }
 void emit(qCType qc,int arg1,int arg2,int arg3)
 {
-	outputQCode(qc, arg1, arg2, arg3);
 	qCode[line*4] = qc;
 	qCode[line * 4 + 1] = arg1;
 	qCode[line * 4 + 2] = arg2;
 	qCode[line * 4 + 3] = arg3;
+	outputQCode(line);
 	//qcPos += 4;
 	line += 1;
 }

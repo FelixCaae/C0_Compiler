@@ -68,10 +68,12 @@ void outputSyntax(syntaxClass sc,bool isHead)
 			output(buffer, outSyntax, bOutSyntax);
 		}
 }
-void outputQCode(qCType qc, int arg1, int arg2, int arg3)
+void outputQCode(int line)
 {
 	char numbuff1[20],numbuff2[20];
 	char* str;
+	qCType qc = (qCType)OPT(line);
+	int arg1 = OPD1(line),  arg2 = OPD2(line), arg3 = OPD3(line);
 	if (qc != QLABEL)
 	{
 		buffer[0] = '\t';

@@ -52,7 +52,7 @@ const char *const regName[] =
 void outputLexeme();
 void outputSyntax(syntaxClass sc, bool isHead = true);
 void outputTerminalS(syntaxClass sc);
-void outputQCode(qCType qc, int arg1, int arg2, int arg3);
+void outputQCode(int line);
 void outputOCode();
 void output(char*ch,FILE* outFile,bool toConsole=false);
 void init(int argc, char**argv);
