@@ -17,7 +17,7 @@ void initCNode(int cnode);
 bool isLeaf(int cnode);
 void connectLeft(int parent, int child);
 void connectRight(int parent, int child);
-void clear();
+void dagClear();
 void connect(int blockHead, int blockTail)
 {
 	OUTSET(blockHead).push_back(blockTail);
@@ -49,6 +49,7 @@ void flowGraphBuild()
 	{
 		if (qCode[i*codeSize] == QBNZ || qCode[i*codeSize] == QBZ)
 		{
+			if (i < left)continue;
 			setBlock(bnodePos, left, i);
 			connect(bnodePos, bnodePos + 1);
 			left = i + 1;
@@ -56,6 +57,7 @@ void flowGraphBuild()
 		}
 		else if (OPT(i) == QLABEL)
 		{
+			if (i-1 < left)continue;
 			labelBlockMap[OPD1(i)] = bnodePos+1;
 			setBlock(bnodePos, left, i - 1);
 			connect(bnodePos, bnodePos + 1);
@@ -64,16 +66,20 @@ void flowGraphBuild()
 		}
 		else if (OPT(i) == QRET || OPT(i) == QGOTO)
 		{
+			if (i < left)continue;
 			setBlock(bnodePos, left, i);
 			left = i + 1;
 			bnodePos++;
 		}
 	}
 	//compelete final block 
-	setBlock(bnodePos,left, line);
+	if (left <= line-1)
+	{
+		setBlock(bnodePos++, left, line - 1);
+	}
 	//set and connect to end block
-	setBlock(bnodePos+1, NotExist, NotExist);
-	connect(bnodePos, bnodePos+1);
+	setBlock(bnodePos, NotExist, NotExist);
+	connect(bnodePos-1, bnodePos);
 	bnodePos++;
 	//Second loop:build connection based on labels
 	for (int i = 0; i < line; i++)
@@ -87,19 +93,20 @@ void flowGraphBuild()
 		else if (OPT(i) == QRETX)
 		{
 			int bCur = lineMapBlock(i);
-			connect(bCur, bnodePos);//connect to end block
+			connect(bCur, bnodePos-1);//connect to end block
 		}
 	}
 }
 void flowGraphExtract()
 {
-	for (int blk = 0; blk < bnodePos; blk++)
+	int startPos = 0;
+	for (int blk = 0; blk < bnodePos-1; blk++)
 	{
 		dagBuild(LSTART(blk),LEND(blk));
-		bnodeBuff[blk].lineEnd=dagExtract(bnodeBuff[blk].lineStart);
-		clear();
+		LSTART(blk)=startPos;
+		LEND(blk)=dagExtract(startPos);
+		startPos = LEND(blk) + 1;
 	}
-	merge();
 
 }
 void initCNode(int cnode)
@@ -122,9 +129,11 @@ void connectRight(int parent, int child)
 	cnodeBuff[child].parents.push_back(parent);
 	cnodeBuff[parent].rchild = child;
 }
-void clear()
+void dagClear()
 {
-	while(cnodePos!=0)
+	headCodes.clear();
+	tailCodes.clear();
+	while(cnodePos>0)
 	{
 		initCNode(cnodePos - 1);
 	}
@@ -181,8 +190,7 @@ int buildNodes(int opt, int opd1, int opd2, int opd3)
 }
 void dagBuild(int start, int end)
 {
-	headCodes.clear();
-	tailCodes.clear();
+	dagClear();//
 	int lchild=0,i;
 	for (i = start; i <= end; i++)
 	{
@@ -380,22 +388,6 @@ int dagExtract(int start)
 	}
 	cnodePos = 0;
 	return start-1;
-}
-void merge()
-{
-	int  dstln =LEND(0)+1;
-	for (int blk = 1; blk < bnodePos; blk++)
-	{
-		int srcln = LSTART(blk);
-		while(srcln<=LEND(blk))
-		{
-			codeCopy(srcln ++, dstln ++);
-		}
-	}
-	for (int i = LSTART(0); i <= LEND(bnodePos - 1); i++)
-	{
-		outputQCode(i);
-	}
 }
 void optimize()
 {
