@@ -154,7 +154,6 @@ namespace C0_UnitTest
 		//	outputLabel(lhead, true);
 			objFunc();
 			//outputLabel(ltail, true);
-
 		}
 	};
 }

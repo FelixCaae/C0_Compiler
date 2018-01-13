@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include "error.h"
 #include"CodeGen.h"
+#include "Optimizer.h"
 #include"IO.h"
 #include "SymTable.h"
 #define REG(arg) regName[arg]
@@ -207,6 +208,7 @@ void objFuncHead(bool main)
 void objFunc(bool main)
 {
 	int lhead, ltail, lc;
+	optimize();
 	lhead = genLabel(LFUNC, symTable[funcRef]._name);
 	ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
 	lc = 0;

@@ -1,0 +1,136 @@
+<program>
+  <funcDecl>
+  <keyword> void <\keyword>
+  <keyword> main <\keyword>
+    <paramList>
+    <seperator> ( <\seperator>
+    <seperator> ) <\seperator>
+    <\paramList>
+  <seperator> { <\seperator>
+    <compoundStatement>
+      <varDeclGroup>
+        <varDecl>
+          <type>
+          <keyword> int <\keyword>
+          <\type>
+        <identifier> a <\identifier>
+        <seperator> , <\seperator>
+        <identifier> b <\identifier>
+        <seperator> , <\seperator>
+        <identifier> c <\identifier>
+        <seperator> , <\seperator>
+        <identifier> t <\identifier>
+        <\varDecl>
+      <seperator> ; <\seperator>
+      <\varDeclGroup>
+      <statements>
+        <statement>
+        <identifier> a <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 1 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> b <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <unsignedInt> 2 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+        <identifier> c <\identifier>
+          <assignStat>
+          <seperator> = <\seperator>
+            <expression>
+            <seperator> - <\seperator>
+              <term>
+                <factor>
+                <seperator> ( <\seperator>
+                  <expression>
+                    <term>
+                      <factor>
+                      <identifier> a <\identifier>
+                      <\factor>
+                    <\term>
+                  <seperator> + <\seperator>
+                    <term>
+                      <factor>
+                      <identifier> b <\identifier>
+                      <\factor>
+                    <\term>
+                  <\expression>
+                <seperator> ) <\seperator>
+                <\factor>
+              <\term>
+            <seperator> - <\seperator>
+              <term>
+                <factor>
+                <seperator> ( <\seperator>
+                  <expression>
+                    <term>
+                      <factor>
+                      <identifier> a <\identifier>
+                      <\factor>
+                    <\term>
+                  <seperator> + <\seperator>
+                    <term>
+                      <factor>
+                      <identifier> b <\identifier>
+                      <\factor>
+                    <\term>
+                  <\expression>
+                <seperator> ) <\seperator>
+                <\factor>
+              <\term>
+            <seperator> + <\seperator>
+              <term>
+                <factor>
+                <seperator> ( <\seperator>
+                  <expression>
+                    <term>
+                      <factor>
+                      <identifier> a <\identifier>
+                      <\factor>
+                    <\term>
+                  <seperator> + <\seperator>
+                    <term>
+                      <factor>
+                      <identifier> b <\identifier>
+                      <\factor>
+                    <\term>
+                  <\expression>
+                <seperator> ) <\seperator>
+                <\factor>
+              <seperator> * <\seperator>
+                <factor>
+                <unsignedInt> 2 <\unsignedInt>
+                <\factor>
+              <\term>
+            <\expression>
+          <\assignStat>
+        <seperator> ; <\seperator>
+        <\statement>
+        <statement>
+          <writeStat>
+          <keyword> printf <\keyword>
+          <seperator> ( <\seperator>
+            <expression>
+              <term>
+                <factor>
+                <identifier> c <\identifier>
+                <\fac

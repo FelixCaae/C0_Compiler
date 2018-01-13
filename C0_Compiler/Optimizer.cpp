@@ -1,21 +1,28 @@
-#include "Optimizer.h"
+#include "stdafx.h"
 #include <map>
+#include "Optimizer.h"
+
 using namespace std;
 CNode cnodeBuff[cnodeBuffSize];
 BNode bnodeBuff[bnodeBuffSize];
 map<int, int> varNodeMap;
+vector<int> tailCodes;
 int cnodePos = 0;
 int bnodePos = 0;
-void initBlock(int i)
+void initCNode(int cnode)
 {
-	bnodeBuff[i].inEnd = 0;
-	bnodeBuff[i].outEnd = 0;
+	LCHILDC(cnode)= NotExist;
+	RCHILDC(cnode) = NotExist;
+}
+bool isLeaf(int cnode)
+{
+	if (LCHILDC(cnode) == NotExist&&RCHILDC(cnode) == NotExist)return true;
+	return false;
 }
 void connect(int blockHead, int blockTail)
 {
-	int i;
-	bnodeBuff[blockHead].out[bnodeBuff[blockHead].outEnd++] = blockTail;
-	bnodeBuff[blockTail].in[bnodeBuff[blockTail].inEnd++] = blockHead;
+	OUTSET(blockHead).push_back(blockTail);
+	INSET(blockTail).push_back(blockHead);
 }
 void setBlock(int i, int left, int right)
 {
@@ -33,45 +40,55 @@ int lineMapBlock(int line)
 	}
 	return NotFound;
 }
-void flowGraphBuild(qCType* qCode,int linesTotal)
+void flowGraphBuild()
 {
-	int index[100];
 	map<int, int> labelBlockMap;
-	int left, right;
+	int left;
 	left = 0;
 	//First loop:build blocks and basic connection
-	for (int i = 0; i < linesTotal; i++)
+	for (int i = 0; i < line; i++)
 	{
 		if (qCode[i*codeSize] == QBNZ || qCode[i*codeSize] == QBZ)
 		{
 			setBlock(bnodePos, left, i);
-			initBlock(bnodePos+1);
 			connect(bnodePos, bnodePos + 1);
 			left = i + 1;
 			bnodePos++;
 		}
-		else if (qCode[i] == QLABEL)
+		else if (OPT(i) == QLABEL)
 		{
-			labelBlockMap.insert(pair<int,int>(qCode[i*codeSize + 1], bnodePos));
-			setBlock(bnodePos, left, i-1);
-			initBlock(bnodePos+1);
+			labelBlockMap[OPD1(i)] = bnodePos+1;
+			setBlock(bnodePos, left, i - 1);
 			connect(bnodePos, bnodePos + 1);
 			left = i;
 			bnodePos++;
 		}
+		else if (OPT(i) == QRETX || OPT(i) == QGOTO)
+		{
+			setBlock(bnodePos, left, i);
+			left = i + 1;
+			bnodePos++;
+		}
 	}
-	//set final block and end block
-	setBlock(bnodePos,left, linesTotal);
-	initBlock(bnodePos+1);
+	//compelete final block 
+	setBlock(bnodePos,left, line);
+	//set and connect to end block
+	setBlock(bnodePos+1, NotExist, NotExist);
 	connect(bnodePos, bnodePos+1);
+	bnodePos++;
 	//Second loop:build connection based on labels
-	for (int i = 0; i < linesTotal; i++)
+	for (int i = 0; i < line; i++)
 	{
 		if (qCode[i*codeSize] == QBNZ || qCode[i*codeSize] == QBZ || qCode[i*codeSize] == QGOTO)
 		{
-			int label = qCode[i*codeSize + 1];
+			int label = OPD1(i);
 			int bCur = lineMapBlock(i);
 			connect(bCur,labelBlockMap[label]);
+		}
+		else if (OPT(i) == QRETX)
+		{
+			int bCur = lineMapBlock(i);
+			connect(bCur, bnodePos);//connect to end block
 		}
 	}
 }
@@ -80,26 +97,35 @@ void flowGraphExtract()
 	for (int i = 0; i < bnodePos; i++)
 	{
 		dagBuild(bnodeBuff[i].lineStart, bnodeBuff[i].lineEnd);
-		dagExtract(bnodeBuff[i].lineStart);
+		bnodeBuff[i].lineEnd=dagExtract(bnodeBuff[i].lineStart);
 	}
 	merge();
 }
 int leafNodeSelect(int val)
 {
-	for (int i = 0; i < cnodePos; i++)
+	map<int, int>::iterator result;
+	result = varNodeMap.find(val);
+	//1.search the var-node map first 
+	if (result != varNodeMap.end())
+	{
+		return result->second;
+	}
+	//2.If not found, build it into the tree
+	/*for (int i = 0; i < cnodePos; i++)
 	{
 		if (cnodeBuff[i].mark == val)
 		{
 			return i;
 		}
-	}
+	}*/
 	cnodePos++;
-	cnodeBuff[cnodePos].mark = val;
+	MARK(cnodePos) = val;
 	varNodeMap[val] = cnodePos;
 	return cnodePos;
 }
-int midNodeSelect(int op,int res, int lchild, int rchild)
+int midNodeSelect(int op,int lchild, int rchild)
 {
+	//1.Search the tree for a node that has wanted mark,lchild and rchild
 	for (int i = 0; i < cnodePos; i++)
 	{
 		if (cnodeBuff[i].mark == op && cnodeBuff[i].lchild == lchild && cnodeBuff[i].rchild == rchild)
@@ -107,19 +133,28 @@ int midNodeSelect(int op,int res, int lchild, int rchild)
 			return i;
 		}
 	}
+	//2.If not found ,build it into the tree again
 	cnodePos++;
 	cnodeBuff[cnodePos].mark = op;
 	cnodeBuff[cnodePos].lchild = lchild;
 	cnodeBuff[cnodePos].rchild = rchild;
 	cnodeBuff[lchild].parents.push_back(cnodePos);
 	cnodeBuff[rchild].parents.push_back(cnodePos);
-	varNodeMap[res] = cnodePos;
 	return cnodePos;
+}
+int buildNodes(int opt, int opd1, int opd2, int opd3)
+{
+	int mid = 0, lchild = 0, rchild = 0;
+	lchild = leafNodeSelect(opd2);
+	rchild = leafNodeSelect(opd3);
+	mid = midNodeSelect(opt, opd2, opd3);
+	varNodeMap[opd1] = mid;
+	return mid;
 }
 void dagBuild(int start, int end)
 {
+	tailCodes.clear();
 	int i = 0;
-	int mid=0, lchild=0, rchild=0;
 	for (i = start; i < end; i++)
 	{
 		switch (qCode[i*codeSize])
@@ -130,25 +165,36 @@ void dagBuild(int start, int end)
 		case QDIV:
 		case QARR:
 		case QARL:
-		lchild=leafNodeSelect(OP1(i));
-		rchild = leafNodeSelect(OP2(i));
-		midNodeSelect(-OP(i), RES(i), lchild, rchild);
+			buildNodes(OPT(i), OPD1(i), OPD2(i), OPD3(i));
 		break;
 		case QASSIGN:
-			lchild = leafNodeSelect(OP1(i));
-			midNodeSelect(-OP(i), RES(i),lchild, 0);
+			int lchild = leafNodeSelect(OPD2(i));
+			varNodeMap[OPD1(i)] = lchild;
 			break;
+		case QBNZ:
+		case QBZ:
+		case QEQU:
+		case QNEQU:
+		case QGT:
+		case QGTEQU:
+		case QLS:
+		case QLSEQU:
+			tailCodes.push_back(i);
 		case QREAD:
-			midNodeSelect(-OP(i), RES(i), -OP(i), 0);
+			varNodeMap[OPD1(i)]= buildNodes(OPT(i), INPUT, INPUT, INPUT);
 			break;
 		case QPRINT:
-			midNodeSelect(-OP(i), RES(i), -OP(i), 0);
+			buildNodes(OPT(i), OUTPUT, OPD1(i), OUTPUT);
 			break;
 		case QPUSH:
-			midNodeSelect(-QPLUS,STACK,STACK,RES(i));
+			buildNodes(OPT(i), ARGSTACK, OPD1(i),ARGSTACK);
 			break;
 		case QCALL:
-			midNodeSelect(-QMINUS, STACK, STACK, RES(i));
+			int mid=buildNodes(OPT(i),ARGSTACK, OPD1(i),ARGSTACK);
+			if (OPT(i + 1) == QRET)
+			{
+				varNodeMap[OPD1(i + 1)] = mid;
+			}
 		default:
 			continue;
 		}
@@ -157,9 +203,13 @@ void dagBuild(int start, int end)
 bool testOpt(int node, vector<int>& midNodeQueue)
 {
 	bool select = true;
+	if (isLeaf(node))
+	{
+		return false;
+	}
 	for (int j = 0; j < cnodeBuff[node].parents.size(); j++)
 	{
-		if (midNodeQueue.end() == find(midNodeQueue.begin(), midNodeQueue.end(), cnodeBuff[node].parents[j]))
+		if (midNodeQueue.end() != find(midNodeQueue.begin(), midNodeQueue.end(), cnodeBuff[node].parents[j]))
 		{
 			select = false;
 		}
@@ -191,57 +241,73 @@ void getVarsByNode(int node,vector<int>& vars)
 }
 int selectVarAsStore(vector<int>& vars)
 {
-	if (vars.size() == 1)return vars[0];
-	else if(vars.size()>1)
+	vector<int>::iterator it;
+	for (it = vars.begin(); it != vars.end(); it++)
 	{
-
+		if (*it >= 0)
+		{
+			return *it;
+		}
 	}
-	return -1;
+	return NotFound;
 }
 int nodeToCode(int node, int line)
 {
-	qCType qc = (qCType)-OP(node);
+	int total;
+	vector<int> vars;
+	qCType qc = (qCType)OPT(node);
+	OPT(line) = qc;
+	total = 1;
 	switch (qc)
 	{
-		switch (qc)
-		{
 		case QPLUS:
 		case QMINUS:
 		case QSTAR:
 		case QDIV:
 		case QARR:
 		case QARL:
-			lchild = leafNodeSelect(OP1(i));
-			rchild = leafNodeSelect(OP2(i));
-			midNodeSelect(-OP(i), RES(i), lchild, rchild);
-			break;
-		case QASSIGN:
-			lchild = leafNodeSelect(OP1(i));
-			midNodeSelect(-OP(i), RES(i), lchild, 0);
+			getVarsByNode(node, vars); 
+			OPD1(line) = selectVarAsStore(vars);
+			getVarsByNode(LCHILDC(node), vars);
+			OPD2(line) = selectVarAsStore(vars);
+			getVarsByNode(RCHILDC(node), vars);
+			OPD3(line) = selectVarAsStore(vars);
 			break;
 		case QREAD:
-			midNodeSelect(-OP(i), RES(i), -OP(i), 0);
+			getVarsByNode(node, vars);
+			OPD1(line) = selectVarAsStore(vars);
 			break;
 		case QPRINT:
-			midNodeSelect(-OP(i), RES(i), -OP(i), 0);
 		case QPUSH:
-			midNodeSelect();
-		default:
-			continue;
-		}
+			getVarsByNode(LCHILDC(node),vars);
+			OPD1(line) = selectVarAsStore(vars);
+			break;
+		case QCALL:
+			getVarsByNode(LCHILDC(node), vars);
+			OPD1(line) = selectVarAsStore(vars);
+			getVarsByNode(node, vars);
+			int ret = selectVarAsStore(vars);
+			if (ret != NotFound)
+			{
+				OPT(line + 1) = QRET;
+				OPD1(line + 1) = ret;
+				total += 1;
+			}
+			break;
 	}
-	return 1;
+	return total;
 }
 int dagExtract(int start)
 {
 	//1.reserve labels
-	while (OP(start) == QLABEL) { start++; }
+	while (OPT(start) == QLABEL) { start++; }
 	//2.generate mid node queue
 	vector<int> midNodeQueue;
 	int nextNode;
 	while (true)
 	{
 		nextNode = findOptNode(midNodeQueue);
+
 		if (nextNode == cnodePos)//all mid nodes are in the queue
 		{
 			break;
@@ -256,6 +322,7 @@ int dagExtract(int start)
 		//find all related vars
 		start+=nodeToCode(mid,start);
 	}
+	return start;
 }
 void codeCopy(int lineSrc, int lineDst)
 {
@@ -275,4 +342,9 @@ void merge()
 			codeCopy(src+j,dst+j);
 		}
 	}
+}
+void optimize()
+{
+	flowGraphBuild();
+	flowGraphExtract();
 }

@@ -1,40 +1,43 @@
 #pragma once
-#include <Vector>
+#include <vector>
 #include "SymTable.h"
 #include "CodeGen.h"
-#define OP(i) qCode[i*codeSize]
-#define RES(i) qCode[i*codeSize+1]
-#define OP1(i) qCode[i*codeSize+2]
-#define OP2(i) qCode[i*codeSize+3]
+#define LCHILDC(node) cnodeBuff[node].lchild
+#define RCHILDC(node) cnodeBuff[node].rchild
+#define PARENTC (node) cnodeBuff[node].parents
+#define MARK(node) cnodeBuff[node].mark
+#define INSET(node) bnodeBuff[node].inSet
+#define OUTSET(node) bnodeBuff[node].outSet
+#define GENSET(node) bnodeBuff[node].genSet
+#define KILLSET(node) bnodeBuff[node].killSet
+#define USESET(node) bnodeBuff[node].useSet
+#define DEFSET(node) bnodeBuff[node].defSet
+using namespace std;
 const unsigned int cnodeBuffSize = 500;
 const unsigned int bnodeBuffSize = 500;
-const unsigned int outSetSize = 5;
-const unsigned int inSetSize = 50;
-const int END = -1;//end of set
-const int STACK = -1;
-const int INPUT = -2;
-const int OUTPUT = -3;
+const int specOPTSize = 10;
+enum specOPT {INPUT,OUTPUT,ARGSTACK} ;
 struct CNode
 {
 	std::vector<int> parents;
 	int lchild;
 	int rchild;
-	int parentEnd;
 	int mark;
 };
 struct BNode
 {
 	int lineStart;
 	int lineEnd;
-	int out[outSetSize];
-	int in[inSetSize];
-	int inEnd;
-	int outEnd;
+	vector<int> inSet;
+	vector<int> outSet;
+	vector<int> genSet;
+	vector<int> killSet;
+	vector<int> useSet;
+	vector<int> defSet;
 };
-extern int qCode[maxQCodeSize * 4];
 extern CNode cnodeBuff[cnodeBuffSize];
 extern BNode bnodeBuff[bnodeBuffSize];
-void flowGraphBuild(int lineTotal);
+void flowGraphBuild();
 void flowGraphExtract();
 void dagBuild(int start,int end);
 int dagExtract(int start);

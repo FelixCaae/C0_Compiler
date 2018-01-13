@@ -1,4 +1,8 @@
 #pragma once
+#define OPT(i) qCode[i*codeSize]
+#define OPD1(i) qCode[i*codeSize+1]
+#define OPD2(i) qCode[i*codeSize+2]
+#define OPD3(i) qCode[i*codeSize+3]
 const unsigned int maxQCodeSize=5000;
 const unsigned int codeSize = 4;
 const unsigned int LAIDEN = 0;
@@ -37,7 +41,8 @@ enum reg
 {
 	_0,at,v0,v1, a0,a1,a2,a3,t0,t1,t2,t3,t4,t5,t6,t7,s0,s1,s2,s3,s4,s5,s6,s7,t8,t9, k0, k1,gp,sp,fp,ra
 };
-
+extern int qCode[maxQCodeSize * 4];
+extern unsigned int line;
 const unsigned int condR = v1;
 void emit(qCType q, int arg1 = 0, int arg2 = 0, int arg3 = 0);
 void emitObj(tCType t, int arg1 = 0, int arg2=0,int arg3=0);
