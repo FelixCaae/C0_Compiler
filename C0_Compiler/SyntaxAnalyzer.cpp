@@ -887,6 +887,7 @@ void parseProgram()
 	{
 		parseVarGrup();
 	}
+	clearQCode();
 	objEntry();
 	while (!mainFound) {
 		mainFound = parseFuncDecl();
