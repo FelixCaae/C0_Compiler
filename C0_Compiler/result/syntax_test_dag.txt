@@ -1,9 +1,18 @@
 <program>
   <funcDecl>
   <keyword> void <\keyword>
-  <keyword> main <\keyword>
+  <identifier> test <\identifier>
     <paramList>
     <seperator> ( <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> a <\identifier>
+    <seperator> , <\seperator>
+      <type>
+      <keyword> int <\keyword>
+      <\type>
+    <identifier> b <\identifier>
     <seperator> ) <\seperator>
     <\paramList>
   <seperator> { <\seperator>
@@ -13,25 +22,25 @@
           <type>
           <keyword> int <\keyword>
           <\type>
-        <identifier> a <\identifier>
+        <identifier> x <\identifier>
         <seperator> , <\seperator>
-        <identifier> b <\identifier>
+        <identifier> y <\identifier>
         <seperator> , <\seperator>
-        <identifier> c <\identifier>
+        <identifier> z <\identifier>
         <seperator> , <\seperator>
-        <identifier> t <\identifier>
+        <identifier> i <\identifier>
         <\varDecl>
       <seperator> ; <\seperator>
       <\varDeclGroup>
       <statements>
         <statement>
-        <identifier> a <\identifier>
+        <identifier> x <\identifier>
           <assignStat>
           <seperator> = <\seperator>
             <expression>
               <term>
                 <factor>
-                <unsignedInt> 1 <\unsignedInt>
+                <identifier> a <\identifier>
                 <\factor>
               <\term>
             <\expression>
@@ -39,13 +48,13 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> b <\identifier>
+        <identifier> y <\identifier>
           <assignStat>
           <seperator> = <\seperator>
             <expression>
               <term>
                 <factor>
-                <unsignedInt> 2 <\unsignedInt>
+                <identifier> b <\identifier>
                 <\factor>
               <\term>
             <\expression>
@@ -53,72 +62,13 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-        <identifier> c <\identifier>
+        <identifier> i <\identifier>
           <assignStat>
           <seperator> = <\seperator>
             <expression>
-            <seperator> - <\seperator>
               <term>
                 <factor>
-                <seperator> ( <\seperator>
-                  <expression>
-                    <term>
-                      <factor>
-                      <identifier> a <\identifier>
-                      <\factor>
-                    <\term>
-                  <seperator> + <\seperator>
-                    <term>
-                      <factor>
-                      <identifier> b <\identifier>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <seperator> ) <\seperator>
-                <\factor>
-              <\term>
-            <seperator> - <\seperator>
-              <term>
-                <factor>
-                <seperator> ( <\seperator>
-                  <expression>
-                    <term>
-                      <factor>
-                      <identifier> a <\identifier>
-                      <\factor>
-                    <\term>
-                  <seperator> + <\seperator>
-                    <term>
-                      <factor>
-                      <identifier> b <\identifier>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <seperator> ) <\seperator>
-                <\factor>
-              <\term>
-            <seperator> + <\seperator>
-              <term>
-                <factor>
-                <seperator> ( <\seperator>
-                  <expression>
-                    <term>
-                      <factor>
-                      <identifier> a <\identifier>
-                      <\factor>
-                    <\term>
-                  <seperator> + <\seperator>
-                    <term>
-                      <factor>
-                      <identifier> b <\identifier>
-                      <\factor>
-                    <\term>
-                  <\expression>
-                <seperator> ) <\seperator>
-                <\factor>
-              <seperator> * <\seperator>
-                <factor>
-                <unsignedInt> 2 <\unsignedInt>
+                <unsignedInt> 0 <\unsignedInt>
                 <\factor>
               <\term>
             <\expression>
@@ -126,11 +76,59 @@
         <seperator> ; <\seperator>
         <\statement>
         <statement>
-          <writeStat>
-          <keyword> printf <\keyword>
-          <seperator> ( <\seperator>
-            <expression>
-              <term>
-                <factor>
-                <identifier> c <\identifier>
-                <\fac
+          <loopStat>
+          <keyword> do <\keyword>
+            <statement>
+            <seperator> { <\seperator>
+              <statements>
+                <statement>
+                <identifier> z <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> a <\identifier>
+                        <\factor>
+                      <seperator> * <\seperator>
+                        <factor>
+                        <unsignedInt> 10 <\unsignedInt>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                <identifier> x <\identifier>
+                  <assignStat>
+                  <seperator> = <\seperator>
+                    <expression>
+                      <term>
+                        <factor>
+                        <identifier> x <\identifier>
+                        <\factor>
+                      <\term>
+                    <seperator> + <\seperator>
+                      <term>
+                        <factor>
+                        <identifier> y <\identifier>
+                        <\factor>
+                      <\term>
+                    <\expression>
+                  <\assignStat>
+                <seperator> ; <\seperator>
+                <\statement>
+                <statement>
+                  <constant>
+                  <keyword> if <\keyword>
+                  <seperator> ( <\seperator>
+                    <condition>
+                      <expression>
+                        <term>
+                          <factor>
+                          <identifier> x <\identifier>
+                          <\factor>
+                        <\term>
+                      <\expression>
+                      <identifier>

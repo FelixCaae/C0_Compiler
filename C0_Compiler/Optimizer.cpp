@@ -12,16 +12,23 @@ int cnodePos = 0;
 int bnodePos = 0;
 void connect(int blockHead, int blockTail);
 void setBlock(int i, int left, int right);
+void fgClear();
 int lineMapBlock(int line);
 void initCNode(int cnode);
 bool isLeaf(int cnode);
 void connectLeft(int parent, int child);
 void connectRight(int parent, int child);
 void dagClear();
+void defReachingAnalysis();
+void activeVarAnalysis();
+void flowGraphBuild();
+void flowGraphExtract();
+void dagBuild(int start, int end);
+int dagExtract(int start);
 void connect(int blockHead, int blockTail)
 {
-	OUTSET(blockHead).push_back(blockTail);
-	INSET(blockTail).push_back(blockHead);
+	OUTSET(blockHead).insert(blockTail);
+	INSET(blockTail).insert(blockHead);
 }
 void setBlock(int i, int left, int right)
 {
@@ -39,6 +46,82 @@ int lineMapBlock(int line)
 	}
 	return NotFound;
 }
+void fgClear()
+{
+	while (bnodePos > 0)
+	{
+		bnodePos = bnodePos - 1;
+		LSTART(bnodePos) = 0;
+		LEND(bnodePos) = 0;
+		INSET(bnodePos).clear();
+		OUTSET(bnodePos).clear();
+	}
+}
+bool isDefPoint(int line)
+{
+	switch (OPT(line))
+	{
+	case QASSIGN:
+	case QPLUS:
+	case QMINUS:
+	case QSTAR:
+	case QDIV:
+	case QARL:
+	case QARR:
+	case QREAD:
+	case QRETX:
+		return true;
+		break;
+	default:
+		return false;
+	}
+}
+bool isUsePoint(int line)
+{
+	switch (OPT(line))
+	{
+
+	case QARR:
+	case QPRINT:
+	case QPUSH:
+		return true;
+		break;
+	default:
+		return false;
+	}
+}
+int codeType(int line)
+{
+	switch (OPT(line))
+	{
+	case QASSIGN:
+		return udAssign;
+	case QPLUS:
+	case QMINUS:
+	case QSTAR:
+	case QDIV:
+	case QARL:
+	case QARR:
+		return udPlus;
+	case QREAD:
+	case QRETX:
+		return udRead;
+	case QPRINT:
+	case QPUSH:
+		return udPrint;
+	default:
+		return udDefault;
+	}
+}
+/*
+void addDefPoint(int var, int line)
+{
+	if (FIND(defPntsMap, var) == defPntsMap.end())
+	{
+		//..
+	}
+	defPntsMap[var].insert(line);
+}*/
 void flowGraphBuild()
 {
 	map<int, int> labelBlockMap;
@@ -107,12 +190,20 @@ void flowGraphExtract()
 		LEND(blk)=dagExtract(startPos);
 		startPos = LEND(blk) + 1;
 	}
+	line = startPos;
+	printf("Dag:\n");
+	for (int ln = 0; ln <= LEND(bnodePos - 2); ln++)
+	{
+		outputQCode(ln);
+	}
 
 }
 void initCNode(int cnode)
 {
 	LCHILDC(cnode) = NotExist;
 	RCHILDC(cnode) = NotExist;
+	MARK(cnode) = 0;
+	PARENTSC(cnode).clear();
 }
 bool isLeaf(int cnode)
 {
@@ -136,6 +227,7 @@ void dagClear()
 	while(cnodePos>0)
 	{
 		initCNode(cnodePos - 1);
+		cnodePos = cnodePos - 1;
 	}
 	varNodeMap.clear();
 }
@@ -159,6 +251,7 @@ int leafNodeSelect(int val)
 	initCNode(cnodePos);
 	MARK(cnodePos) = val;
 	varNodeMap[val] = cnodePos;
+	printf("add leafnode:%d ident:%d\n",cnodePos,val);
 	return cnodePos++;
 }
 int midNodeSelect(int op,int lchild, int rchild)
@@ -176,7 +269,7 @@ int midNodeSelect(int op,int lchild, int rchild)
 	MARK(cnodePos) = op;
 	connectLeft(cnodePos, lchild);
 	connectRight(cnodePos, rchild);
-	//printf("midnode:%d op:%d\n", cnodePos, op);
+	printf("add midnode:%d op:%d\n", cnodePos, op);
 	return cnodePos++;
 }
 int buildNodes(int opt, int opd1, int opd2, int opd3)
@@ -220,7 +313,9 @@ void dagBuild(int start, int end)
 			tailCodes.push_back(i);
 			break;
 		case QLABEL:
+		case QFUNCDECL:
 			headCodes.push_back(i);
+			break;
 		case QREAD:
 			varNodeMap[OPD1(i)]= buildNodes(OPT(i), INPUT, INPUT, INPUT);
 			break;
@@ -272,16 +367,78 @@ int findOptNode(vector<int>& midNodeQueue)
 	}
 	return i;
 }
+bool isSpecialOPD(int val)
+{
+	if (val >= specOpdIndex && val < specOpdIndex + specOpdSize)
+	{
+		return true;
+	}
+	return false;
+}
+int selectVar(int node)
+{
+	map<int, int>::iterator it;
+	for (it = varNodeMap.begin(); it != varNodeMap.end(); it++)
+	{
+		if (it->second == node && !isSpecialOPD(it->first))
+		{
+			return it->first;
+		}
+	}
+	return NOTFOUND;
+}
+int selectComputVar(int node)
+{
+	map<int, int>::iterator it;
+	for (it = varNodeMap.begin(); it != varNodeMap.end(); it++)
+	{
+		if (it->second==node && !isSpecialOPD(it->first))
+		{
+			return it->first;
+		}
+	}
+	{
+		vector<int>::iterator it;
+		for (it = PARENTSC(node).begin(); it != PARENTSC(node).end(); it++)
+		{
+			int r = selectComputVar(*it);
+			if (r != NotFound)return r;
+		}
+	}
+	return NOTFOUND;
+}
+int selectDisplayVar(int node)
+{
+	int r=selectComputVar(node);
+	if (r == NOTFOUND)
+	{
+		r = genTemp(INTS);
+		return r;
+	}
+}
 void getVarsByNode(int node,vector<int>& vars)
 {
 	map<int, int>::iterator it;
 	vars.clear();
 	for (it = varNodeMap.begin(); it != varNodeMap.end(); it++)
 	{
-		if ((*it).second == node)
+		if (it->second == node && it->first>=0)
 		{
 			vars.push_back(it->first);
 		}
+	}
+	if (vars.size() == 0)
+	{
+		vector<int>::iterator it;
+		for (it = PARENTSC(node).begin(); it != PARENTSC(node).end(); it++)
+		{
+			getVarsByNode(*it, vars);
+			if (vars.size() != 0)
+			{
+				break;
+			}
+		}
+	
 	}
 }
 int selectVarAsStore(vector<int>& vars)
@@ -311,39 +468,27 @@ int nodeToCode(int node, int line)
 		case QDIV:
 		case QARR:
 		case QARL:
-			getVarsByNode(node, vars); 
-			OPD1(line) = selectVarAsStore(vars);
-			getVarsByNode(LCHILDC(node), vars);
-			OPD2(line) = selectVarAsStore(vars);
-			getVarsByNode(RCHILDC(node), vars);
-			OPD3(line) = selectVarAsStore(vars);
+			OPD1(line) = selectComputVar(node);
+			OPD2(line) = selectComputVar(LCHILDC(node));
+			OPD3(line) = selectComputVar(RCHILDC(node));
 			break;
 		case QREAD:
-			getVarsByNode(node, vars);
-			OPD1(line) = selectVarAsStore(vars);
+			OPD1(line) = selectComputVar(node);
 			break;
 		case QPRINT:
 		case QPUSH:
-			getVarsByNode(LCHILDC(node),vars);
-			OPD1(line) = selectVarAsStore(vars);
+			OPD1(line) =selectDisplayVar(LCHILDC(node));
 			break;
 		case QCALL:
-			getVarsByNode(LCHILDC(node), vars);
-			OPD1(line) = selectVarAsStore(vars);
-			getVarsByNode(node, vars);
-			int ret = selectVarAsStore(vars);
-			if (ret != NotFound)
+			OPD1(line) = selectComputVar(LCHILDC(node));
+			int ret = selectVar(node);
+			if (ret != NOTFOUND)
 			{
 				OPT(line + 1) = QRETX;
 				OPD1(line + 1) = ret;
 				total += 1;
 			}
 			break;
-	}
-	for (int i = 0; i < total; i++)
-	{
-		int t1 = OPT(line + i);;
-		outputQCode(line+i);
 	}
 	return total;
 }
@@ -389,8 +534,201 @@ int dagExtract(int start)
 	cnodePos = 0;
 	return start-1;
 }
+void debugShowSet(set<int> st,int mode=0)
+{
+	set<int>::iterator it;
+	for (it = st.begin(); it != st.end(); it++)
+	{
+		if (mode == 0)
+		{
+			printf("%d ", *it);
+		}
+		else
+		{
+			printf("%s ", OP(*it));
+		}
+	}
+}
+void defReachingAnalysis()
+{
+	//<debug>
+	printf("\nReaching definition analysis\n");
+	//</debug>
+	bool debug = true;
+	map<int, set<int>> defPntsMap;
+	for (int ln = 0; ln < line; ln++)
+	{
+		if (isDefPoint(ln))
+		{
+			//<debug>
+			printf("def point:%d\n", ln);
+			outputQCode(ln);
+			//</debug>
+			defPntsMap[OPD1(ln)].insert(ln);
+		}
+	}
+	set<int> temp,tempKill;
+	for (int blk = 0; blk < bnodePos-1 ; blk++)
+	{
+		for (int ln = LSTART(blk); ln <= LEND(blk); ln++)
+		{
+			if (isDefPoint(ln))
+			{
+				temp.clear();
+				tempKill.clear();
+				temp.insert(ln);
+				DIFF(defPntsMap[OPD1(ln)], temp, tempKill);
+				UNION(tempKill, KILLSET(blk), KILLSET(blk));
+				DIFF(GENSET(blk), tempKill, GENSET(blk));
+				UNION(GENSET(blk), temp, GENSET(blk));
+			}
+		}
+	}
+	//<debug>
+	for (int blk = 0; blk < bnodePos-1; blk++)
+	{
+		printf("\nblk-%d gen:",blk);
+		debugShowSet(GENSET(blk));
+		printf("\nblk-%d kill:",blk);
+		debugShowSet(KILLSET(blk));
+	}
+	//</debug>
+	bool isContinue=true;
+	set<int> tempOut,test;
+	while (isContinue)
+	{
+		isContinue = false;
+		for (int blk=0;blk<bnodePos;blk++)
+		{
+			tempOut.clear();
+			test.clear();
+			DIFF(DEFINSET(blk), KILLSET(blk), tempOut);
+			UNION(tempOut, GENSET(blk), tempOut);
+			DIFF(tempOut,DEFOUTSET(blk), test);
+			DEFOUTSET(blk) = tempOut;
+			if (test.size() != 0)
+			{
+				int nxtBlk;
+				set<int>::iterator it;
+				for (it=OUTSET(blk).begin();it!=OUTSET(blk).end(); it++)
+				{
+					nxtBlk = *it;
+					UNION(DEFINSET(nxtBlk), DEFOUTSET(blk), DEFINSET(nxtBlk));
+					//DEFINSET(nxtBlk) = DEFOUTSET(blk);
+				}
+				isContinue = true;
+			}
+		}
+	}
+	//<debug>
+	for (int blk = 0; blk < bnodePos; blk++)
+	{
+		printf("\nblk-%d  in:",blk);
+		debugShowSet(DEFINSET(blk));
+		printf("\nblk-%d  out:",blk);
+		debugShowSet(DEFOUTSET(blk));
+	}
+	//</debug>
+}
+void addActUse(int block, int iden)
+{
+	if (!FOUND(DEFSET(block), iden)&&!ISCONST(iden))
+	{
+		USESET(block).insert(iden);
+	}
+}
+void addActDef(int block, int iden)
+{
+	if (!FOUND(USESET(block), iden))
+	{
+		DEFSET(block).insert(iden);
+	}
+}
+void activeVarAnalysis()
+{
+	bool debug = true;
+	//<debug>
+	printf("\nActive var analysis\n");
+	//</debug>
+	set<int> temp, tempKill;
+	for (int blk = 0; blk < bnodePos - 1; blk++)
+	{
+		for (int ln = LSTART(blk); ln <= LEND(blk); ln++)
+		{
+			temp.clear();
+			switch (codeType(ln))
+			{
+			case udAssign:
+				addActUse(blk,OPD2(ln));
+				addActDef(blk,OPD1(ln));
+				break;
+			case udPlus:
+				addActUse(blk, OPD3(ln));
+				addActUse(blk, OPD2(ln));
+				addActDef(blk, OPD1(ln));
+				break;
+			case udRead:
+				addActDef(blk, OPD1(ln));
+				break;
+			case udPrint:
+				addActUse(blk, OPD1(ln));
+				break;
+			default:
+				continue;
+			}
+		}
+	}
+	//<debug>
+	for (int blk = 0; blk < bnodePos - 1; blk++)
+	{
+		printf("\nblk-%d def:", blk);
+		debugShowSet(DEFSET(blk),1);
+		printf("\nblk-%d use:", blk);
+		debugShowSet(USESET(blk),1);
+	}
+	//</debug>
+	bool isContinue = true;
+	set<int> tempIn, test;
+	while (isContinue)
+	{
+		isContinue = false;
+		for (int blk = bnodePos-1; blk>=0; blk--)
+		{
+			int nxtBlk;
+			set<int>::iterator it;
+			for (it = OUTSET(blk).begin(); it != OUTSET(blk).end(); it++)
+			{
+				nxtBlk = *it;
+				UNION(ACTINSET(nxtBlk), ACTOUTSET(blk), ACTOUTSET(blk));
+				//DEFINSET(nxtBlk) = DEFOUTSET(blk);
+			}
+			tempIn.clear();
+			test.clear();
+			DIFF(ACTOUTSET(blk), DEFSET(blk), tempIn);
+			UNION(tempIn, USESET(blk), tempIn);
+			DIFF(tempIn, ACTINSET(blk), test);
+			ACTINSET(blk)=tempIn;
+			if (test.size() != 0)
+			{
+				isContinue = true;
+			}
+		}
+	}
+	//<debug>
+	for (int blk = 0; blk < bnodePos; blk++)
+	{
+		printf("\nblk-%d  in:", blk);
+		debugShowSet(ACTINSET(blk),1);
+		printf("\nblk-%d  out:", blk);
+		debugShowSet(ACTOUTSET(blk),1);
+	}
+	//</debug>
+}
 void optimize()
 {
+	fgClear();
 	flowGraphBuild();
+	defReachingAnalysis();
+	activeVarAnalysis();
 	flowGraphExtract();
 }

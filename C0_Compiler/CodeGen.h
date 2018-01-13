@@ -20,10 +20,11 @@ enum qCType {
 	QFUNCDECL=1, QPARA, QPUSH,QPRINT,QREAD,QCALL,QRETX,QRET, QVAR, QCONST, QARRAY,QASSIGN, QPLUS, QMINUS,
 	QSTAR, QDIV, QEQU, QNEQU, QGT, QLS, QGTEQU, QLSEQU, QARL, QARR, QGOTO, QBZ, QBNZ,QLABEL
 };
+/*
 enum printFormat
 {
 	FSTRING,FEXPRESSION
-};
+};*/
 enum returnFormat
 {
 	RNOVAL, RVAL
@@ -60,5 +61,5 @@ void objCall(int func);
 void objCondition(tCType tc,int iden1,int iden2);
 void objArthOp(tCType tc, int iden1, int iden2, int iden3);
 void objRead(int iden);
-void objWrite(int pf,int iden);
+void objWrite(int iden);
 void objGloblData();

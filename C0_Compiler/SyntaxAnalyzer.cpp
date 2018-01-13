@@ -363,7 +363,6 @@ bool parseFuncDecl()
 	}
 	shouldBe(LCURB);
 	parseCompoundStat();
-	locateAdr();
 	objFunc(mainFound);
 	leaveFunc();
 	shouldBe(RCURB);
@@ -842,17 +841,17 @@ void parseWriteStat()
 	if (lextype==STR)
 	{
 		parseStr(&str);
-		emit(QPRINT, FSTRING, str);
+		emit(QPRINT,-str);
 		if (couldBe(COMMA))
 		{
 			parseExpression(&exp);
-			emit(QPRINT, FEXPRESSION, exp);
+			emit(QPRINT, exp);
 		}
 	}
 	else
 	{
 		parseExpression(&exp);
-		emit(QPRINT, FEXPRESSION, exp);
+		emit(QPRINT, exp);
 	}
 	shouldBe(RPAR);
 	outputSyntax(WRITESTAT,false);
@@ -909,7 +908,7 @@ int main(int argc, char**argv)
 {
 	
 	char *buffer[2];
-	buffer[1] = "../x64/Debug/test/test_funcall.txt";
+	buffer[1] = "../x64/Debug/test/test_assemble.txt";
 	if (syntaxAnalyze(2,buffer))
 	{
 		printf("Success!");

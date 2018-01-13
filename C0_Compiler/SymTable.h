@@ -17,9 +17,9 @@
 #define FUNCSIZE(arg) funcTable[REF(arg)]._size
 #define PARANUM(arg) funcTable[REF(arg)]._paraNum
 #define PARATYPE(arg,arg2) funcTable[REF(arg)]._param[arg2]
-#define ISVAR(arg) OBJ(arg)==OVAR
-#define ISARRAY(arg) OBJ(arg)==OARRAY
-#define ISCONST(arg) OBJ(arg)==OCONST
+#define ISVAR(arg) (OBJ(arg)==OVAR)
+#define ISARRAY(arg) (OBJ(arg)==OARRAY)
+#define ISCONST(arg) (OBJ(arg)==OCONST)
 #define ISINT(arg) symTable[arg]._type==INTS
 #define ISCHAR(arg) symTable[arg]._type==CHARS
 const unsigned int maxStrLength = 100;

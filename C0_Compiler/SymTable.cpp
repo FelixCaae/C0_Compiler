@@ -11,7 +11,7 @@ strTableEntry strTable[strTableSize];
 unsigned int funcRef=NotExist;
 unsigned int curLevPos=0;
 unsigned int curSym=0;
-unsigned int curStr = 0;
+unsigned int curStr = 1;
 unsigned int curCon = 0;
 unsigned int curFunc = 0;
 unsigned int labelID = 0;

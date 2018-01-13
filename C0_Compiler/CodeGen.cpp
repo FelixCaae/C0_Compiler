@@ -209,6 +209,7 @@ void objFunc(bool main)
 {
 	int lhead, ltail, lc;
 	optimize();
+	locateAdr();
 	lhead = genLabel(LFUNC, symTable[funcRef]._name);
 	ltail = genLabel(LFUNCEND, symTable[funcRef]._name);
 	lc = 0;
@@ -272,7 +273,7 @@ void objLine(int lc,int ltail)
 		objArthOp(TADD, arg1, arg2, arg3);
 		break;
 	case QPRINT:
-		objWrite(arg1, arg2);
+		objWrite(arg1);
 		break;
 	case QREAD:
 		objRead(arg1);
@@ -409,6 +410,10 @@ void objCall(int func)
 {
 	int paramCounter = 0;
 	int paramNum = PARANUM(func);
+	if (argPos < paramNum)
+	{
+		error(ERR_ARGSTACK_FLOW);
+	}
 	argPos -= paramNum;
 	for (; paramCounter < paramNum; paramCounter++) {
 		if (paramCounter < 4)
@@ -449,14 +454,15 @@ void objRead(int iden)
 	emitObj(TSYSCALL);
 	objSave(v0, t0, iden);
 }
-void objWrite(int  pf,int iden)
+void objWrite(int iden)
 {
-	if (pf == FSTRING)
+	if (iden<0)
 	{
+		iden = -iden;
 		emitObj(TLI, v0, MIPS_PRINT_STR);
 		emitObj(TLA, a0, iden, LASTR);
 	}
-	else if (pf == FEXPRESSION)
+	else
 	{
 		objLoad(a0, iden);
 		if (symTable[iden]._type == CHARS)

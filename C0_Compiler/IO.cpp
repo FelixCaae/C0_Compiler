@@ -101,13 +101,13 @@ void outputQCode(int line)
 		sprintf(str, "para %s %s", typeName[symTable[arg1]._type], symTable[arg1]._name);
 		break;
 	case QPRINT:
-		if (arg1 == FSTRING) {
-			sprintf(str, "print \"%s\"",STR(arg2));
+		if (arg1<0) {
+			sprintf(str, "print \"%s\"",STR(-arg1));
 		}
-		else if (arg1 == FEXPRESSION)
+		else
 		{
 			string a;
-			sprintf(str, "print %s", OP(arg2));
+			sprintf(str, "print %s", OP(arg1));
 		}
 		break;
 	case QREAD:
